@@ -1,11 +1,11 @@
-# <p style="text-align:center;">DI32011: Mathematical Biology</p> I {.unnumbered} 
-<p style="text-align:center;">
+# DI32011: Mathematical Biology I {.unnumbered} 
+
 **Lecturer:** Thomas Winyard
 
 **Email:** [twinyard001@dundee.ac.uk](mailto:twinyard001@dundee.ac.uk)
 
 **Office:** TBA
-</p>
+
 
 ## Lectures
 * Mondays 10:00 -- 12:00, TBA
