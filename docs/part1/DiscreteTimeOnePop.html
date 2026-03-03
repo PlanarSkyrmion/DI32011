@@ -186,7 +186,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"></span></a>
+ <span class="menu-text">DI32011: Mathematical Biology I</span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -515,29 +515,35 @@ N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
 <span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot solutions</span></span>
 <span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>)</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N_1)</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2)</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(t, N_3)</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N_1, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>) <span class="co"># faint line</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N_1, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>) <span class="co"># solid </span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'$r = 0.5$'</span>)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>) <span class="co"># faint line</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>) <span class="co"># solid </span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'$r = 1.5$'</span>)</span>
 <span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(t, N_3, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>) <span class="co"># faint line</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].plot(t, N_3, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>) <span class="co"># solid</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>].set_title(<span class="st">'$r = 2.5$'</span>)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-plotricker" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plotricker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="DiscreteTimeOnePop_files/figure-html/fig-plotricker-output-1.png" width="661" height="470" class="figure-img">
+<img src="DiscreteTimeOnePop_files/figure-html/fig-plotricker-output-1.png" width="661" height="469" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plotricker-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1.2: A plot of numerical solutions of the Ricker model. (a)r=0.5. (b) r=1.5. (c) r=2.5.
+Figure&nbsp;1.2: Numerical solutions of the Ricker model for (a)r=0.5, (b) r=1.5, (c) r=2.5.
 </figcaption>
 </figure>
 </div>
@@ -636,7 +642,9 @@ def server(input, output, session):
 
         # Plot results
         
-        ax[0].plot(t,y)
+        #ax[0].plot(t,y)
+        ax[0].plot(t, y, linestyle='-', alpha=0.4) # faint line
+        ax[0].plot(t, y, linestyle='None', marker='o',color='C0', ms=3) # solid 
         ax[0].set_xlabel('$t$')
         ax[0].set_ylabel('$N_t$')
         ax[0].set_title('Time series')
@@ -2339,8 +2347,8 @@ N_{t+1}=rN_1(1-N_t).
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="<p style=&quot;text-align:center;&quot;>DI32011: Mathematical Biology</p> I">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"></span>
+      <a href="../index.html" class="pagination-link" aria-label="DI32011: Mathematical Biology I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">DI32011: Mathematical Biology I</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
