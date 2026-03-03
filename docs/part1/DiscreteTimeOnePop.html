@@ -186,7 +186,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text"></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -334,38 +334,27 @@ window.Quarto = {
 </header>
 
 
-<p>Let us firstly consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g.&nbsp;fish eggs hatching at a fixed time in the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size.</p>
+<p>We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g.&nbsp;fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size.</p>
 <section id="a-general-model-for-a-single-population-in-discrete-time" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="a-general-model-for-a-single-population-in-discrete-time"><span class="header-section-number">1.1</span> A general model for a single population in discrete time</h2>
-<p>Let <span class="math inline">\(t\)</span> be an independent variable representing time and <span class="math inline">\(N_t\)</span> be a dependent variable representing the size of the population of a given species at time <span class="math inline">\(t\)</span>.</p>
-<p>Consider the first order difference equation <span id="eq-GeneralPopulationModel"><span class="math display">\[
-N_{t+1}=N_tf(N_t)=H(N_t),
-\tag{1.1}\]</span></span> where <span class="math inline">\(f(N_t)\)</span> is a function that defines the <em>per capita</em> growth rate. The function <span class="math inline">\(H(N_t)\)</span> describes the total (net) growth rate.</p>
-<p>Given some initial condition <span class="math inline">\(N_0\)</span> defined such that <span class="math display">\[
-N_{t=0}=N_0,
-\]</span> the goal of this section is to develop a range of techniques that allow us to analyse the behaviour of <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> for a given <span class="math inline">\(H\)</span>.</p>
-<p>Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations.</p>
+<p>Let <span class="math inline">\(N_t\)</span> be a dependent variable, representing the population size of a single species, at the discrete time <span class="math inline">\(t\in\mathbb{N}\)</span>. We write the change in population as the first order difference equation, <span id="eq-GeneralPopulationModel"><span class="math display">\[
+N_{t+1} = H(N_t) = N_tf(N_t),
+\tag{1.1}\]</span></span> where <span class="math inline">\(H(N_t)\)</span> describes the total net growth rate and <span class="math inline">\(f(N_t)\)</span> defines the <em>net per capita</em> growth rate.</p>
+<p>Note, <em>per capita</em> is Latin for <em>per person</em> and hence is used to express something averaged over the population.</p>
+<p>The goal of this section is to develop a range of techniques that allow us to analyse the behaviour of <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> for a given function <span class="math inline">\(H\)</span> and initial condition <span class="math inline">\(N_0\)</span> (population at <span class="math inline">\(t=0\)</span>).</p>
+<p>Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.</p>
 </section>
 <section id="the-malthusian-model" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="the-malthusian-model"><span class="header-section-number">1.2</span> The Malthusian model</h2>
-<p>Perhaps the simplest form for equation <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> is when the net per capita growth rate is a constant.</p>
-<p>Let <span class="math inline">\(b\)</span> be the per capita growth rate and <span class="math inline">\(d\)</span> the per capita death rate with <span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span> both positive real constants.</p>
-<p>Hence, a population of size <span class="math inline">\(N_t\)</span> at time <span class="math inline">\(t\)</span> will grow by <span class="math display">\[
-bN_t
-\]</span></p>
-<p>over the course of the next iteration and decay by<br>
-<span class="math display">\[
-dN_t.
-\]</span> Therefore the population size at time <span class="math inline">\(t+1\)</span> is <span id="eq-MalthusianEqn"><span class="math display">\[
+<p>The simplest form for <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>1.1</span></a> is a <em>constant net per capita growth rate</em>. Let <span class="math inline">\(b\)</span> be the per capita growth rate and <span class="math inline">\(d\)</span> the per capita death rate where <span class="math inline">\(b,d \in \mathbb{R}_{\geq 0}\)</span> (<span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span> are both positive real constants) and <span class="math inline">\(d \leq 1\)</span> (it’s not possible for more than 100 % of the population to die). This gives the difference equations as, <span id="eq-MalthusianEqn"><span class="math display">\[
 N_{t+1}=N_t + bN_t - dN_t=rN_t,
-\tag{1.2}\]</span></span> where the parameter <span class="math inline">\(r=1+b-d\)</span> is known as the net growth rate.</p>
-<p>Given the initial condition <span class="math inline">\(N_0\)</span>, equation <a href="#eq-MalthusianEqn" class="quarto-xref">Equation&nbsp;<span>1.2</span></a> can be solved recursively as follows:</p>
-<p><span class="math display">\[
-N_1=rN_0,
-N_2=r(N_1)=r^2N_0,   
-N_3=rN_2=r^3N_0, ...,    
-N_t=r^tN_0.
-\]</span></p>
+\tag{1.2}\]</span></span> where the parameter <span class="math inline">\(r=1+b-d\)</span> is the <em>net per capita growth rate</em>. Note that <span class="math inline">\(d \leq 1\)</span> and <span class="math inline">\(b \geq 0\)</span> implies that <span class="math inline">\(r \geq 0\)</span>.</p>
+<p>Given the initial condition <span class="math inline">\(N_0\)</span>, <a href="#eq-MalthusianEqn" class="quarto-xref">Equation&nbsp;<span>1.2</span></a> can be solved recursively, <span id="eq-MalthusianRecursive"><span class="math display">\[\begin{align}
+N_1&amp;=rN_0,\\
+N_2&amp;=r N_1=r^2N_0,\\
+N_3&amp;=r N_2=r^3N_0,\\ &amp;\ldots\\
+N_t&amp;=r^tN_0.
+\end{align} \tag{1.3}\]</span></span></p>
 <p>Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all <span class="math inline">\(t\)</span>.</p>
 <p>In <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> a numerical solution of the model is computed for different values of the parameter <span class="math inline">\(r\)</span>.</p>
 <div id="cell-fig-plotmalthusian" class="cell" data-execution_count="1">
@@ -385,7 +374,7 @@ N_t=r^tN_0.
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters and initial condition</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">3.0</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>r<span class="op">=</span><span class="fl">0.5</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">0.5</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">1.5</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
@@ -406,28 +395,32 @@ N_t=r^tN_0.
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> N</span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the difference equation</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span>SolveSingleDiff(t,rhs,N_0,r)</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>N<span class="op">=</span>SolveSingleDiff(t,rhs,N_0,r_1)</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the difference equation with different value of parmeter r</span></span>
 <span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>N_2<span class="op">=</span>SolveSingleDiff(t,rhs,N_0,r_2)</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N)</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2)</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)      <span class="co"># faint line</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].plot(t, N, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C0'</span>) <span class="co"># solid markers</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>].set_title(<span class="st">'$r = 0.5$'</span>)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)      <span class="co"># faint line</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].plot(t, N_2, linestyle<span class="op">=</span><span class="st">'None'</span>, marker<span class="op">=</span><span class="st">'o'</span>,color<span class="op">=</span><span class="st">'C0'</span>) <span class="co"># solid </span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>].set_title(<span class="st">'$r = 1.5$'</span>)</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-plotmalthusian" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plotmalthusian-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="DiscreteTimeOnePop_files/figure-html/fig-plotmalthusian-output-1.png" width="661" height="470" class="figure-img">
+<img src="DiscreteTimeOnePop_files/figure-html/fig-plotmalthusian-output-1.png" width="661" height="469" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plotmalthusian-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1.1: A plot of the Malthusian model solution when (a) <span class="math inline">\(r\)</span>=0.5 and (b) <span class="math inline">\(r\)</span>=1.5.
@@ -436,19 +429,18 @@ Figure&nbsp;1.1: A plot of the Malthusian model solution when (a) <span class="m
 </div>
 </div>
 </div>
-<p>Can you describe the behaviour of the Malthusian model? How does it depend on the value of the parameter <span class="math inline">\(r\)</span>?</p>
-<p>Qualitative analyses allows us to categorise solution behaviours into different cases. For example, note that the behaviour of the population at large <span class="math inline">\(t\)</span> is governed by the magnitude of the parameter <span class="math inline">\(r\)</span>.</p>
-<p>As <span class="math inline">\(t\rightarrow \infty\)</span></p>
+<p>Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and <span class="math inline">\(N_t\)</span> is only evaluated at the natural numbers (points).</p>
+<p><strong>Exercise:</strong> Describe how the behaviour of the Malthusian model changes with <span class="math inline">\(r\)</span>. What are the critical values of <span class="math inline">\(r\)</span> that split the Malthusian model into qualitatively different behaviour?</p>
+<p>Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of <span class="math inline">\(r = 1\)</span> for which <span class="math inline">\(N_t = N_0\)</span> is constant. For <span class="math inline">\(r &gt; 1\)</span> (<span class="math inline">\(r&lt;1\)</span>) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large <span class="math inline">\(t\)</span> also changes,</p>
 <p><span class="math display">\[
-N \rightarrow
+\lim_{t\rightarrow\infty}N_t =
 \left\{
 \begin{array}{ll}
-\infty &amp; r&gt;1  \\
-N_0&amp; r=1  \\  
+\infty &amp; r&gt;1,  \\
+N_0&amp; r=1,  \\  
 0 &amp; r&lt;1.     
 \end{array} \right.
 \]</span></p>
-<p>In <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>1.1</span></a> solutions in each of the (nontrivial) parameter regimes are plotted. When <span class="math inline">\(r&lt;1\)</span> the population tends to zero and when <span class="math inline">\(r&gt;1\)</span> the population explodes.</p>
 <p>Whilst the simplicity of the Malthusian model allows us to calculate explicit solutions that yield insight into how the processes of birth and death combine to give either net growth or net reduction in population size, an obvious flaw with this model is that it displays unbounded growth for <span class="math inline">\(r&gt;1\)</span>. In most biological systems, other effects, such as competition for resources or predation, will tend to limit a population’s size. In single species population models, these effects are accounted for phenomenologically by introducing nonlinear terms into the function <span class="math inline">\(f\)</span>.</p>
 </section>
 <section id="a-motivating-example-of-a-nonlinear-model---the-ricker-model" class="level2" data-number="1.3">
@@ -459,14 +451,14 @@ N_{t+1}=\frac{rN_t}{1+\frac{N_t}{K}},
 N_{t+1}=\frac{rN_t}{(1+\frac{N_t}{K})^b},
 \]</span> and the Ricker model <span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\]</span> where <span class="math inline">\(r\)</span>, <span class="math inline">\(K\)</span> and <span class="math inline">\(b\)</span> are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
+\]</span> where $r, K, n _{&gt; 0} are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
 <section id="model-development" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="model-development"><span class="header-section-number">1.3.1</span> Model development</h3>
 <p>One way to capture a decreased growth rate at high densities, is to assume that the per capita growth rate is an exponentially decreasing function of population density, i.e.&nbsp; <span class="math display">\[
 f(N_t)=e^{r(1-\frac{N_t}{K})},
 \]</span> where <span class="math inline">\(r\)</span> is a growth rate and <span class="math inline">\(K\)</span> a carrying capacity (both positive constants). Hence the governing equation is <span id="eq-RickerDefn1"><span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\tag{1.3}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
+\tag{1.4}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
 <p>Note that the model is nonlinear and does not have an explicit solution.</p>
 </section>
 <section id="computational-solutions" class="level3" data-number="1.3.2">
@@ -677,15 +669,15 @@ Figure&nbsp;1.3: An app to explore behaviour of the Ricker model.
 <h2 data-number="1.4" class="anchored" data-anchor-id="general-techniques-for-analysing-nonlinear-difference-equations"><span class="header-section-number">1.4</span> General techniques for analysing nonlinear difference equations</h2>
 <p>In this section we develop techniques that will be used to analyse first order, discrete-time models of the form <span id="eq-generaleqn"><span class="math display">\[
 N_{t+1}=N_t f(N_t)=H(N_t).
-\tag{1.4}\]</span></span></p>
+\tag{1.5}\]</span></span></p>
 <section id="computational-solutions-1" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="computational-solutions-1"><span class="header-section-number">1.4.1</span> Computational solutions</h3>
-<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.4</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
+<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
 <p>Hence given some initial population <span class="math inline">\(N_0\)</span>, the solution set <span class="math inline">\(\{N_0,N_1,N_2,...,N_T\}\)</span> is computed up to some end time <span class="math inline">\(T\)</span>. Such an approach provides a numerical solution for a given parameter set and initial condition. However, it does not provide much insight into the general behaviour of model.</p>
 </section>
 <section id="fixed-points" class="level3" data-number="1.4.2">
 <h3 data-number="1.4.2" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">1.4.2</span> Fixed points</h3>
-<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.4</span></a> if and only if <span class="math display">\[
+<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> if and only if <span class="math display">\[
 N^*=N^*f(N^*)=H(N^*).
 \]</span> Hence the fixed points can be identified by solving an algebraic equation.</p>
 </section>
@@ -694,7 +686,7 @@ N^*=N^*f(N^*)=H(N^*).
 <p>By linearising about the identified fixed points using a Taylor series expansion, it can be determined whether or not small perturbations around the fixed point grow or decay in subsequent iterations.</p>
 <p>Making a change of dependent variables <span class="math display">\[
 N_t=N^*+\hat{N_t},
-\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.4</span></a> transforms upon substitution to <span class="math display">\[
+\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> transforms upon substitution to <span class="math display">\[
 N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t).
 \]</span></p>
 <p>Taylor expanding the right-hand side yields <span class="math display">\[
@@ -961,7 +953,7 @@ Figure&nbsp;1.5: A cobweb plot of the Malthusian model solution when <span class
 <h2 data-number="1.5" class="anchored" data-anchor-id="a-nonlinear-model-of-population-dynamics-in-discrete-time"><span class="header-section-number">1.5</span> A nonlinear model of population dynamics in discrete time</h2>
 <p>Consider a model of population growth given by <span id="eq-denslimgrowtheqn"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2},
-\tag{1.5}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
+\tag{1.6}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
 <section id="the-per-capita-growth-rate" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="the-per-capita-growth-rate"><span class="header-section-number">1.5.1</span> The per capita growth rate</h3>
 <p>Note that the per capita growth rate is described by the function <span class="math display">\[
@@ -1158,7 +1150,7 @@ Figure&nbsp;1.7: An app to explore model behaviour.
 </section>
 <section id="fixed-points-1" class="level3" data-number="1.5.3">
 <h3 data-number="1.5.3" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">1.5.3</span> Fixed points</h3>
-<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>1.5</span></a> satisfy the algebraic equation <span class="math display">\[
+<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>1.6</span></a> satisfy the algebraic equation <span class="math display">\[
 N^*=\frac{\gamma N^*}{1+{N^*}^2}
 \]</span> which has solutions <span class="math display">\[
 N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
@@ -1398,7 +1390,7 @@ The derivative evaluated at FP 2 is:
 <h2 data-number="1.6" class="anchored" data-anchor-id="an-application---how-much-harvesting-can-a-population-sustain"><span class="header-section-number">1.6</span> An application - how much harvesting can a population sustain?</h2>
 <p>Models of population dynamics can be used to study how interventions will affect population dynamics. Extending from the model developed in the previous example, a valid question might be what is the maximal rate of harvesting a fish stock can sustain without becoming extinct? ### Including a harvesting term Introducing a harvesting term at per capita harvesting rate <span class="math inline">\(h\)</span>, the governing model equation becomes <span id="eq-harvestingmodel"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2} - h N_t,
-\tag{1.6}\]</span></span></p>
+\tag{1.7}\]</span></span></p>
 <p>and the questions we want to ask are: (i) does the introduction of harvesting change the dynamics of the system?; and (ii) what rate of harvesting such a population could withstand?</p>
 <section id="direct-simulation" class="level3" data-number="1.6.1">
 <h3 data-number="1.6.1" class="anchored" data-anchor-id="direct-simulation"><span class="header-section-number">1.6.1</span> Direct simulation</h3>
@@ -1630,7 +1622,7 @@ H'\left(\sqrt{\frac{\gamma}{1+h}-1}\right)=\frac{\gamma }{1+\frac{\gamma}{1+h}-1
 <p>Hence linear stability is a function of two parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span>.</p>
 <p>We can show that <span id="eq-arvestingH_prime"><span class="math display">\[
 H'(N^*) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1,
-\tag{1.7}\]</span></span></p>
+\tag{1.8}\]</span></span></p>
 <p>and hence that when <span class="math inline">\(h=0\)</span> we retrieve the stability condition from the previous model.</p>
 <div id="cell-fig-plotdensmodelharveststab" class="cell" data-execution_count="10">
 <details class="code-fold">
@@ -1828,14 +1820,14 @@ The derivative evaluated at FP 2 is:
 <p>Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where <span class="math inline">\(H'(N^*)&lt;-1\)</span>, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions.<br>
 ### Defining a periodic solution Consider the general form <span id="eq-genformagain"><span class="math display">\[
 N_{t+1}=H(N_t)
-\tag{1.8}\]</span></span></p>
-<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>1.8</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[
+\tag{1.9}\]</span></span></p>
+<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>1.9</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[
 \begin{aligned}
 N_{t+T}&amp;=N_t \ \  \forall t,
 N_{t+\tau}&amp;\neq N_t  \ \ \forall t, \  \ \ \tau&lt;T.
 \end{aligned}
 \]</span></p>
-<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>1.8</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span class="math display">\[
+<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>1.9</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span class="math display">\[
 N_{2}=H(\bar{N}).
 \]</span></p>
 <p>However, <span class="math display">\[
@@ -2347,8 +2339,8 @@ N_{t+1}=rN_1(1-N_t).
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Preface">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="../index.html" class="pagination-link" aria-label="<p style=&quot;text-align:center;&quot;>DI32011: Mathematical Biology</p> I">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

@@ -8,55 +8,37 @@ format:
 jupyter: python3
 ---
 
-Let us firstly consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time in the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size.
+We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size.
 
 ## A general model for a single population in discrete time
 
-Let $t$ be an independent variable representing time and $N_t$ be a dependent variable representing the size of the population of a given species at time $t$.
-
-Consider the first order difference equation 
+Let $N_t$ be a dependent variable, representing the population size of a single species, at the discrete time $t\in\mathbb{N}$. We write the change in population as the first order difference equation,
 $$
-N_{t+1}=N_tf(N_t)=H(N_t),
+N_{t+1} = H(N_t) = N_tf(N_t),
 $$ {#eq-GeneralPopulationModel} 
-where $f(N_t)$ is a function that defines the *per capita* growth rate. The function $H(N_t)$ describes the total (net) growth rate.
+where $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.
 
-Given some initial condition $N_0$ defined such that 
-$$
-N_{t=0}=N_0,
-$$ 
-the goal of this section is to develop a range of techniques that allow us to analyse the behaviour of @eq-GeneralPopulationModel for a given $H$.
+Note, *per capita* is Latin for *per person* and hence is used to express something averaged over the population.
 
-Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations.
+The goal of this section is to develop a range of techniques that allow us to analyse the behaviour of @eq-GeneralPopulationModel for a given function $H$ and initial condition $N_0$ (population at $t=0$).
+
+Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.
 
 ## The Malthusian model
 
-Perhaps the simplest form for equation @eq-GeneralPopulationModel is when the net per capita growth rate is a constant.
-
-Let $b$ be the per capita growth rate and $d$ the per capita death rate with $b$ and $d$ both positive real constants.
-
-Hence, a population of size $N_t$ at time $t$ will grow by 
-$$
-bN_t
-$$ 
-
-over the course of the next iteration and decay by\
-$$
-dN_t.
-$$ 
-Therefore the population size at time $t+1$ is 
+The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \in \mathbb{R}_{\geq 0}$ ($b$ and $d$ are both positive real constants) and $d \leq 1$ (it's not possible for more than 100 \% of the population to die). This gives the difference equations as,
 $$
 N_{t+1}=N_t + bN_t - dN_t=rN_t,
 $$ {#eq-MalthusianEqn} 
-where the parameter $r=1+b-d$ is known as the net growth rate.
+where the parameter $r=1+b-d$ is the *net per capita growth rate*. Note that $d \leq 1$ and $b \geq 0$ implies that $r \geq 0$.
 
-Given the initial condition $N_0$, equation @eq-MalthusianEqn can be solved recursively as follows:
-
-$$
-N_1=rN_0, 
-N_2=r(N_1)=r^2N_0,   
-N_3=rN_2=r^3N_0, ...,    
-N_t=r^tN_0. 
-$$ 
+Given the initial condition $N_0$, @eq-MalthusianEqn can be solved recursively,
+$$\begin{align}
+N_1&=rN_0,\\
+N_2&=r N_1=r^2N_0,\\
+N_3&=r N_2=r^3N_0,\\ &\ldots\\
+N_t&=r^tN_0. 
+\end{align}$$ {#eq-MalthusianRecursive} 
 
 Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$.
 
@@ -79,7 +61,7 @@ N_2 = np.zeros_like(t,dtype=float)
 
 # Define model parameters and initial condition
 N_0=3.0
-r=0.5
+r_1=0.5
 r_2=1.5
 
 
@@ -100,41 +82,43 @@ def SolveSingleDiff(t,rhs,N_0,par):
   return N
 
 # Solve the difference equation
-N=SolveSingleDiff(t,rhs,N_0,r)
+N=SolveSingleDiff(t,rhs,N_0,r_1)
 # Solve the difference equation with different value of parmeter r
 
 N_2=SolveSingleDiff(t,rhs,N_0,r_2)
 
 # Plot results
 fig, ax = plt.subplots(1,2)
-ax[0].plot(t, N)
+ax[0].plot(t, N, linestyle='-', alpha=0.4)      # faint line
+ax[0].plot(t, N, linestyle='None', marker='o',color='C0') # solid markers
 ax[0].set_xlabel('$t$')
 ax[0].set_ylabel('$N_{t}$')
+ax[0].set_title('$r = 0.5$')
 
-ax[1].plot(t, N_2)
+ax[1].plot(t, N_2, linestyle='-', alpha=0.4)      # faint line
+ax[1].plot(t, N_2, linestyle='None', marker='o',color='C0') # solid 
 ax[1].set_xlabel('$t$')
 ax[1].set_ylabel('$N_{t}$')
+ax[1].set_title('$r = 1.5$')
 plt.tight_layout()
 plt.show()
 ```
 
-Can you describe the behaviour of the Malthusian model? How does it depend on the value of the parameter $r$?
+Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and $N_t$ is only evaluated at the natural numbers (points).
 
-Qualitative analyses allows us to categorise solution behaviours into different cases. For example, note that the behaviour of the population at large $t$ is governed by the magnitude of the parameter $r$.
+**Exercise:** Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour?
 
-As $t\rightarrow \infty$
+Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of $r = 1$ for which $N_t = N_0$ is constant. For $r > 1$ ($r<1$) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large $t$ also changes,
 
 $$
- N \rightarrow 
+ \lim_{t\rightarrow\infty}N_t =
 \left\{
 \begin{array}{ll}
-\infty & r>1  \\
-N_0& r=1  \\  
+\infty & r>1,  \\
+N_0& r=1,  \\  
 0 & r<1.     
 \end{array} \right.
 $$
-
-In @fig-plotmalthusian solutions in each of the (nontrivial) parameter regimes are plotted. When $r<1$ the population tends to zero and when $r>1$ the population explodes.
 
 Whilst the simplicity of the Malthusian model allows us to calculate explicit solutions that yield insight into how the processes of birth and death combine to give either net growth or net reduction in population size, an obvious flaw with this model is that it displays unbounded growth for $r>1$. In most biological systems, other effects, such as competition for resources or predation, will tend to limit a population's size. In single species population models, these effects are accounted for phenomenologically by introducing nonlinear terms into the function $f$.
 
@@ -152,7 +136,7 @@ and the Ricker model
 $$
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
 $$ 
-where $r$, $K$ and $b$ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
+where $r, K, n \in \mathbb{R}_{> 0} are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
 
 ### Model development
 
