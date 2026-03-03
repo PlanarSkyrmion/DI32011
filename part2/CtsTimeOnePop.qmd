@@ -1,0 +1,6 @@
+---
+title: "Single species population dynamics"
+format: html
+---
+
+In this chapter we define time, $t$, to be a continuous variable and the population density, $N(t)$, to represent the size of a given population.  

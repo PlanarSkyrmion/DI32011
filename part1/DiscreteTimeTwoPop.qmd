@@ -1,0 +1,12 @@
+---
+title: "Multi species population dynamics in discrete time"
+format:
+  html:
+    code-fold: true
+  pdf:
+    code-fold: false    
+jupyter: python3
+---
+
+
+In this chapter we generalise the previous approach by considering the population dynamics of two interacting populations.

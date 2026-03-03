@@ -1,0 +1,6 @@
+---
+title: "Biochemical kinetics"
+format: html
+---
+
+Biochemical kinetics concern the concentration of chemical substances in biological systems. In this section we neglect spatial variation in concentrations, effectively assuming  chemical reactions occur in environments that are "well-mixed".
