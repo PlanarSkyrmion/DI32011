@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: website
+  output-dir: docs
 
 book:
   title: "DI32011"
