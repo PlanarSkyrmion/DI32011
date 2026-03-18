@@ -1,0 +1,34 @@
+---
+title: "Introduction"
+format:
+  html:
+    code-fold: true
+  pdf:
+    code-fold: false    
+jupyter: python3
+---
+
+While biology is the study of living organisms, mathematical biology is application of mathematical tools to give enhanced understanding of biological systems. 
+
+
+## Population Dynamics
+
+One the key propoerties of any biological system is population
+
+The general question of these lectures is how populations 
+
+The basic question that we have to address when building any mathematical model
+of the world is: what are the dynamical degrees of freedom? In other words, what
+are the right variables to use? For our immediate purposes, the answer would seem to
+be blindingly obvious: we want to understand the size of the population and how it
+changes with time. We denote this as N(t).
+
+
+approach that we will take will be mirrored throughout these lectures:
+first we try to isolate the relevant dynamical degree of freedom; then we introduce
+models of increasing complexity to capture some basic idea about life or death or
+movement. Each of the complications will usually (but not always) change the form of
+our equations in some way and a large part of this chapter will be devoted to describing
+the techniques needed to solve the resulting equations.
+
+## Exponential Growth

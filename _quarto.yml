@@ -5,7 +5,7 @@ project:
 book:
   title: "DI32011"
   author: "Thomas Winyard"
-  date: "03/03/2026"
+  date: "16/03/2026"
   repo-url: https://github.com/PlanarSkyrmion/DI32011/
   downloads: pdf
   repo-actions: [issue]
@@ -15,6 +15,7 @@ book:
   
   chapters:
     - index.qmd
+    - introduction/Introduction.qmd
     - part: "Discrete time"
       chapters: 
         - part1/DiscreteTimeOnePop.qmd
@@ -24,7 +25,6 @@ book:
         - part2/CtsTimeOnePop.qmd
         - part2/CtsTimeMultiPop.qmd  
         - part2/Biochemicalkinetics.qmd
-
     - part: "Appendices"
       chapters:
         - appendix/PythonAppendix.qmd    
