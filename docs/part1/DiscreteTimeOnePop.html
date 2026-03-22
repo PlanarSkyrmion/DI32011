@@ -345,10 +345,10 @@ window.Quarto = {
 <h2 data-number="2.1" class="anchored" data-anchor-id="a-general-model-for-a-single-population-in-discrete-time"><span class="header-section-number">2.1</span> A general model for a single population in discrete time</h2>
 <p>Let <span class="math inline">\(N_t\)</span> be a dependent variable, representing the population size of a single species, at the discrete time <span class="math inline">\(t\in\mathbb{Z}\)</span>. We write the change in population as the first order difference equation, <span id="eq-GeneralPopulationModel"><span class="math display">\[
 N_{t+1} = H(N_t) = N_tf(N_t),
-\tag{2.1}\]</span></span> where <span class="math inline">\(H(N_t)\)</span> describes the total net growth rate and <span class="math inline">\(f(N_t)\)</span> defines the <em>net per capita</em> growth rate.</p>
+\tag{2.1}\]</span></span> where the function <span class="math inline">\(H(N_t)\)</span> describes the total net growth rate and <span class="math inline">\(f(N_t)\)</span> defines the <em>net per capita</em> growth rate.</p>
 <p>Note, <em>per capita</em> is Latin for <em>per person</em> and hence is used to express something averaged over the population.</p>
 <p>The goal of this section is to develop a range of techniques that allow us to analyse the behaviour of <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> for a given function <span class="math inline">\(H\)</span> and initial condition <span class="math inline">\(N_0\)</span> (population at <span class="math inline">\(t=0\)</span>).</p>
-<p>Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.</p>
+<p>Finally, note that many of you were introduced to difference equations in the module Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.</p>
 </section>
 <section id="the-malthusian-model" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="the-malthusian-model"><span class="header-section-number">2.2</span> The Malthusian model</h2>
@@ -361,8 +361,8 @@ N_2&amp;=r N_1=r^2N_0,\\
 N_3&amp;=r N_2=r^3N_0,\\ &amp;\ldots\\
 N_t&amp;=r^tN_0.
 \end{align} \tag{2.3}\]</span></span></p>
-<p>Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all <span class="math inline">\(t\)</span>.</p>
-<p>In <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> a numerical solution of the model is computed for different values of the parameter <span class="math inline">\(r\)</span>.</p>
+<p>Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all <span class="math inline">\(t\)</span>. In <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter <span class="math inline">\(r\)</span>.</p>
+<p><strong>Exercise:</strong> Use python to simulate the solution of a general difference equation <span class="math inline">\(N_{t+1} = H(N_t)\)</span>. This should be modular so you pass it different models in the form of different functions <span class="math inline">\(H\)</span>. Test it with the Malthusian model and compare with <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
 <div id="cell-fig-plotmalthusian" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
@@ -436,7 +436,7 @@ Figure&nbsp;2.1: A plot of the Malthusian model solution when (a) <span class="m
 </div>
 </div>
 <p>Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and <span class="math inline">\(N_t\)</span> is only evaluated at the natural numbers (points).</p>
-<p><strong>Exercise:</strong> Describe how the behaviour of the Malthusian model changes with <span class="math inline">\(r\)</span>. What are the critical values of <span class="math inline">\(r\)</span> that split the Malthusian model into qualitatively different behaviour?</p>
+<p><strong>Exercise:</strong> Describe how the behaviour of the Malthusian model changes with <span class="math inline">\(r\)</span>. What are the critical values of <span class="math inline">\(r\)</span> that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in <a href="../introduction/Introduction.html#eq-continousExp" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>? Are the parameters <span class="math inline">\(r\)</span> in the two equations describing the same thing, how do they differ?</p>
 <p>Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of <span class="math inline">\(r = 1\)</span> for which <span class="math inline">\(N_t = N_0\)</span> is constant. For <span class="math inline">\(r &gt; 1\)</span> (<span class="math inline">\(r&lt;1\)</span>) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large <span class="math inline">\(t\)</span> also changes,</p>
 <p><span class="math display">\[
 \lim_{t\rightarrow\infty}N_t =

@@ -32,7 +32,7 @@ $$ {#eq-exponential}
 If $\Delta t$ is finite then this is a discrete exponential model (called the Malthusian model) and if it is infinitesimal $\Delta t \rightarrow 0$ then we have the first order continous differential equation,
 
 $$
-\frac{dN}{dt} = (b-d)N.
+\frac{dN}{dt} = (b-d)N = rN.
 $$ {#eq-continousExp}
 For convenience we will define the constant $r = b-d$. The solution follows from previous courses on ODEs,
 
@@ -80,7 +80,7 @@ n = \frac{N}{\tilde{N}}, \qquad \tau = \frac{t}{\tilde{T}}.
 $${#eq-generalNonDim}
 such that a general ODE transforms as,
 $$
-\frac{dN}{dt} = H(N(t)) \qquad \longrightarrow \qquad \frac{dn}{d\tau} = \frac{\tilde{T}}{\tilde{N}}\, H\left( \right).
+\frac{dN}{dt} = H(N(t)) \qquad \longrightarrow \qquad \frac{dn}{d\tau} = \frac{\tilde{T}}{\tilde{N}}\, H\left(  \right).
 $$ {#eq-nonDimTransform}
 
 A good example is the logistic equation in @eq-logisticRedef, where we absorb the constants by choosing $\tilde{N} = K$ and $\tilde{T} = 1/r$ such that we define,

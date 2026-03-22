@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.3.11)  22 MAR 2026 12:22
+This is LuaHBTeX, Version 1.24.0 (TeX Live 2026)  (format=lualatex 2026.3.11)  22 MAR 2026 16:45
  restricted system commands enabled.
 **index.tex
 (./index.tex
@@ -77,9 +77,9 @@ Class scrreprt Info: File `scrsize11pt.clo' used instead of
 (/usr/local/texlive/2026/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 File: scrsize11pt.clo 2026/02/02 v3.49.2 KOMA-Script font size class option (11
 pt)
-luaotfload | db : Font names database not found, generating new one.
-luaotfload | db : This can take several minutes; please be patient.) (/usr/loca
-l/texlive/2026/texmf-dist/tex/latex/koma-script/typearea.sty
+luaotfload | db : Font names database loaded from /Users/thomas/Library/texlive/
+2026/texmf-var/luatex-cache/generic/names/luaotfload-names.luc.gz) (/usr/local/
+texlive/2026/texmf-dist/tex/latex/koma-script/typearea.sty
 Package: typearea 2026/02/02 v3.49.2 KOMA-Script package (type area)
 \ta@bcor=\skip50
 \ta@div=\count273

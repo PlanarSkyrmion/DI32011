@@ -264,7 +264,7 @@
 
 \title{DI32011}
 \author{Thomas Winyard}
-\date{2027-04-03}
+\date{2026-03-22}
 \begin{document}
 \maketitle
 
@@ -292,8 +292,7 @@ I}
 
 \textbf{Office:} TBA
 
-\textbf{Office Hour:} Wednesday 17:00 -- 18:00,
-\href{https://teams.microsoft.com/meet/35732151695742?p=c7r8m3Qw0Yd3wqUiqK}{Teams}
+\textbf{Office Hour:} Wednesday 17:00 -- 18:00, {[}Teams Link{]}
 
 \section*{Contact Hours}\label{contact-hours}
 \addcontentsline{toc}{section}{Contact Hours}
@@ -406,7 +405,7 @@ as standalone Python codes.
 To use Python on your own computer we recomend Anaconda. Instructions on
 how to install it were provided in Introduction to Programming and are
 available
-\href{www.twinyard.co.uk/DI32011/assets/pythonIntro.pdf}{here}.
+\href{https://www.twinyard.co.uk/DI32011/assets/pythonIntro.pdf}{here}.
 
 To use it:
 
@@ -490,7 +489,7 @@ of freedom}.
 
 When we say that a quantity changes in time, an important consideration
 is whether time is modeled as continuous, \(t \in \mathbb{R}^+\), such
-that changes occur infinitesimally, or discrete, \(t \in \mathbb{N}\),
+that changes occur infinitesimally, or discrete, \(t \in \mathbb{Z}\),
 such that changes occur in finite steps (e.g., yearly updates).
 
 \section{Population Dynamics}\label{population-dynamics}
@@ -503,7 +502,8 @@ the salient dynamical degrees of freedom (variables that change over
 time), the most obvious of which is,
 \[N(t) - \text{Population change as a function of time},\]
 
-though there may be other variables involved.
+though there may be other variables involved or multiple competing
+populations.
 
 \section{Exponential Growth}\label{exponential-growth}
 
@@ -524,19 +524,18 @@ If \(\Delta t\) is finite then this is a discrete exponential model
 differential equation,
 
 \begin{equation}\protect\phantomsection\label{eq-continousExp}{
-\frac{dN}{dt} = (b-d)N.
-}\end{equation}
-
-which we know the solution to from our courses on ODEs,
+\frac{dN}{dt} = (b-d)N = rN.
+}\end{equation} For convenience we will define the constant \(r = b-d\).
+The solution follows from previous courses on ODEs,
 
 \begin{equation}\protect\phantomsection\label{eq-expSol}{
-N = N_0 \, e^{(b-d)t}
+N = N_0 \, e^{rt}
 }\end{equation}
 
 where \(N_0\) is the initial population at time \(t=0\). Note that this
 model predicts that population grows or shrinks (depending on the sign
-of \(b-d\)) indefinitely. Unsurprisingly such a simplistic model is
-rarely accurate.
+of \(r\)) indefinitely. Unsurprisingly such a simplistic model is rarely
+accurate.
 
 It is important to note that in everyday language the word exponential
 is often used not to refer to a system with such behaviour, for example
@@ -544,9 +543,9 @@ you will have no doubt heard people refer to the exponential growth of
 the world population, which can be seen in
 Figure~\ref{fig-worldPopulation}. For most of our history (until the
 1960's) we have experienced super-exponential growth (where the exponent
-\(b-d\) increases with time) and since then \(b-d\) has started to
-decrease. It is even predicted that the exponent may become negative in
-the future leading to population decrease.
+\(r\) increases with time) and since then \(r\) has started to decrease.
+It is even predicted that the exponent may become negative in the future
+leading to population decrease.
 
 \begin{figure}
 
@@ -603,15 +602,25 @@ comparing different models without focussing imediately on direct
 measurement. A useful way of abstracting our models so we can easily
 compare for example population models of bacteria and elephants on very
 different scales is \textbf{nondimensionalisation}, where we make
-variables dimensionless. To achieve this, we absorb some of the
-constants in the equations into the dynamical variables e.g.~for
-Equation~\ref{eq-logisticRedef} we can define,
-\begin{equation}\protect\phantomsection\label{eq-nonDim}{
-n = \frac{N}{K} \qquad \tau = rt
+variables (both dependent and independent) dimensionless. In general
+this will be the population N
+
+In general this will involve rewriting the population and time as the
+dimensionless variables,
+\begin{equation}\protect\phantomsection\label{eq-generalNonDim}{
+n = \frac{N}{\tilde{N}}, \qquad \tau = \frac{t}{\tilde{T}}.
+}\end{equation} such that a general ODE transforms as,
+\begin{equation}\protect\phantomsection\label{eq-nonDimTransform}{
+\frac{dN}{dt} = H(N(t)) \qquad \longrightarrow \qquad \frac{dn}{d\tau} = \frac{\tilde{T}}{\tilde{N}}\, H\left(  \right).
 }\end{equation}
 
-such that the equation becomes the simpler,
-
+A good example is the logistic equation in
+Equation~\ref{eq-logisticRedef}, where we absorb the constants by
+choosing \(\tilde{N} = K\) and \(\tilde{T} = 1/r\) such that we define,
+\begin{equation}\protect\phantomsection\label{eq-nonDim}{
+n = \frac{N}{K}, \qquad \tau = rt,
+}\end{equation} which we call the \textbf{dimensionless variables}. The
+equation then becomes significantly simpler,
 \begin{equation}\protect\phantomsection\label{eq-nonDim}{
 \frac{dn}{d\tau} = n(1-n).
 }\end{equation}
@@ -619,10 +628,39 @@ such that the equation becomes the simpler,
 So we have now stripped away all the parameters that are unnecessary for
 studying the features of behaviours of the model. It is easy to revert
 back to the original equation by simply substituting back in for \(n\)
-and \(\tau\). Note, be careful with absorbing signs e.g.~for
+and \(\tau\).
+
+Note, be careful with absorbing signs e.g.~for
 Equation~\ref{eq-continousExp}, the exponential growth model, if we
-defined \(\tau = (b-d)N\) and \(d > b\) then we have reversed time and
-it may look like population always grows.
+defined \(\tau = r N\) we get the dimensionless solution,
+\begin{equation}\protect\phantomsection\label{eq-nonDimExp}{
+N(\tau) = N_0 \, e^{\tau}.
+}\end{equation} This may be suggestive that population always grows, but
+if \(d > b \Leftrightarrow r < 0\) then the rescaling has reversed time.
+
+\subsection{Dimensional analysis}\label{dimensional-analysis}
+
+The dimensions/units of each term in a model must be consistent. This
+observation helps to determine the units of different parameters in a
+model.
+
+For example, we can deduce that the units of the parameter \(r\) in
+Equation~\ref{eq-expSol}
+\begin{equation}\protect\phantomsection\label{eq-dim1}{
+\frac{dN}{dt}=rN.
+}\end{equation} The units of the left-hand term are
+\begin{equation}\protect\phantomsection\label{eq-dim2}{
+\frac{\# pop density}{\# time},
+}\end{equation} thus the units of the right-hand side must match. This
+means that \(r\) must have the units,
+\begin{equation}\protect\phantomsection\label{eq-dim3}{
+\#r = \frac{1}{\#time},
+}\end{equation} for dimensional consistency. This is a useful technique
+for making sure equations are correct and also gives some physical
+intuition as to what different parameters represent. In the above
+example \(r\) is inverse in time, so it is describing a rate of change,
+which matches our intuiton that it is the difference in birth and death
+rate.
 
 \part{Discrete time}
 
@@ -635,18 +673,20 @@ models where, for example, there are strong annual trends in the
 underlying animal behaviour (e.g.~fish eggs hatching at a fixed time of
 the year), there are not overlapping generations and the population size
 at the next time step can be written as a function of the current
-population size.
+population size (e.g.~a mutation that evolves from one generation to the
+next).
 
 \section{A general model for a single population in discrete
 time}\label{a-general-model-for-a-single-population-in-discrete-time}
 
 Let \(N_t\) be a dependent variable, representing the population size of
-a single species, at the discrete time \(t\in\mathbb{N}\). We write the
+a single species, at the discrete time \(t\in\mathbb{Z}\). We write the
 change in population as the first order difference equation,
 \begin{equation}\protect\phantomsection\label{eq-GeneralPopulationModel}{
 N_{t+1} = H(N_t) = N_tf(N_t),
-}\end{equation} where \(H(N_t)\) describes the total net growth rate and
-\(f(N_t)\) defines the \emph{net per capita} growth rate.
+}\end{equation} where the function \(H(N_t)\) describes the total net
+growth rate and \(f(N_t)\) defines the \emph{net per capita} growth
+rate.
 
 Note, \emph{per capita} is Latin for \emph{per person} and hence is used
 to express something averaged over the population.
@@ -657,15 +697,15 @@ for a given function \(H\) and initial condition \(N_0\) (population at
 \(t=0\)).
 
 Finally, note that many of you were introduced to difference equations
-in the module MA21003 Discrete Mathematics. It is recommended that you
-revisit the section on Discrete Difference Equations in your notes.
+in the module Discrete Mathematics. It is recommended that you revisit
+the section on Discrete Difference Equations in your notes.
 
 \section{The Malthusian model}\label{the-malthusian-model}
 
 The simplest form for Equation~\ref{eq-GeneralPopulationModel} is a
 \emph{constant net per capita growth rate}. Let \(b\) be the per capita
 growth rate and \(d\) the per capita death rate where
-\(b,d \in \mathbb{R}_{\geq 0}\) (\(b\) and \(d\) are both positive real
+\(b,d \in \mathbb{R}^+\) (\(b\) and \(d\) are both positive real
 constants) and \(d \leq 1\) (it's not possible for more than 100 \% of
 the population to die). This gives the difference equations as,
 \begin{equation}\protect\phantomsection\label{eq-MalthusianEqn}{
@@ -684,10 +724,10 @@ N_t&=r^tN_0.
 \end{align}}\end{equation}
 
 Hence for the case of Malthusian growth, the size of the population can
-be explicitly calculated for all \(t\).
-
-In Figure~\ref{fig-plotmalthusian} a numerical solution of the model is
-computed for different values of the parameter \(r\).
+be explicitly calculated for all \(t\). In
+Figure~\ref{fig-plotmalthusian} we present a numerical solution of the
+model where we have simply iterated through solutions for different
+values of the parameter \(r\).
 
 \begin{figure}
 
@@ -706,9 +746,20 @@ Note, I have included connecting (straight) lines between the points to
 make the trend clear. However, this is a discrete system and \(N_t\) is
 only evaluated at the natural numbers (points).
 
+\protect\phantomsection\label{exercise-Malthusian}
+Describe how the behaviour of the Malthusian model changes with \(r\).
+What are the critical values of \(r\) that split the Malthusian model
+into qualitatively different behaviour? How does this compare with the
+continous exponential ODE in Equation~\ref{eq-continousExp}? Are the
+parameters \(r\) in the two equations describing the same thing, how do
+they differ?
+
 \textbf{Exercise:} Describe how the behaviour of the Malthusian model
 changes with \(r\). What are the critical values of \(r\) that split the
-Malthusian model into qualitatively different behaviour?
+Malthusian model into qualitatively different behaviour? How does this
+compare with the continous exponential ODE in
+Equation~\ref{eq-continousExp}? Are the parameters \(r\) in the two
+equations describing the same thing, how do they differ?
 
 Qualitative analyses categorise solution behaviours into different cases
 based on their parameters. The behaviour of the Malthusian model changes
@@ -748,9 +799,9 @@ N_{t+1}=\frac{rN_t}{1+\frac{N_t}{K}},
 N_{t+1}=\frac{rN_t}{(1+\frac{N_t}{K})^b},
 \] and the Ricker model \[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\] where \$r, K, n \in \mathbb{R}\_\{\textgreater{} 0\} are positive
-parameters. Below we consider the Ricker model which was initially used
-to study Canadian sockeye salmon population dynamics.
+\] where \$r, K, n \in \mathbb{R}\^{}+ are positive parameters. Below we
+consider the Ricker model which was initially used to study Canadian
+sockeye salmon population dynamics.
 
 \subsection{Model development}\label{model-development}
 
@@ -2389,7 +2440,7 @@ We nondimensionalise a model by changing from variables that have
 dimensions (both dependent and independent) to variables that are
 dimensionless.
 
-\subsubsection{Dimensional analysis}\label{dimensional-analysis}
+\subsubsection{Dimensional analysis}\label{dimensional-analysis-1}
 
 The dimensions/units of each term in a model must be consistent. This
 observation helps to determine the units of different parameters in a

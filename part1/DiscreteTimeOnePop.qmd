@@ -40,9 +40,9 @@ N_3&=r N_2=r^3N_0,\\ &\ldots\\
 N_t&=r^tN_0. 
 \end{align}$$ {#eq-MalthusianRecursive} 
 
-Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$.
+Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$. In @fig-plotmalthusian we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter $r$.
 
-In @fig-plotmalthusian a numerical solution of the model is computed for different values of the parameter $r$.
+**Exercise:** Use python to simulate the solution of a general difference equation $N_{t+1} = H(N_t)$. This should be modular so you pass it different models in the form of different functions $H$. Test it with the Malthusian model and compare with @fig-plotmalthusian.
 
 ```{python}
 #| label: fig-plotmalthusian
@@ -106,7 +106,7 @@ plt.show()
 
 Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and $N_t$ is only evaluated at the natural numbers (points).
 
-**Exercise:** Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour?
+**Exercise:** Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in @eq-continousExp? Are the parameters $r$ in the two equations describing the same thing, how do they differ?
 
 Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of $r = 1$ for which $N_t = N_0$ is constant. For $r > 1$ ($r<1$) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large $t$ also changes,
 

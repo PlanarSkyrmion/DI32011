@@ -2,7 +2,7 @@
  "cells": [
   {
    "cell_type": "markdown",
-   "id": "1929d6f9",
+   "id": "8834272f",
    "metadata": {},
    "source": [
     "---\n",
@@ -17,25 +17,23 @@
     "\n",
     "We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size (e.g. a mutation that evolves from one generation to the next).\n",
     "\n",
-    "\n",
-    "\n",
     "## A general model for a single population in discrete time\n",
     "\n",
     "Let $N_t$ be a dependent variable, representing the population size of a single species, at the discrete time $t\\in\\mathbb{Z}$. We write the change in population as the first order difference equation,\n",
     "$$\n",
     "N_{t+1} = H(N_t) = N_tf(N_t),\n",
     "$$ {#eq-GeneralPopulationModel} \n",
-    "where $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.\n",
+    "where the function $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.\n",
     "\n",
     "Note, *per capita* is Latin for *per person* and hence is used to express something averaged over the population.\n",
     "\n",
     "The goal of this section is to develop a range of techniques that allow us to analyse the behaviour of @eq-GeneralPopulationModel for a given function $H$ and initial condition $N_0$ (population at $t=0$).\n",
     "\n",
-    "Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.\n",
+    "Finally, note that many of you were introduced to difference equations in the module Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.\n",
     "\n",
     "## The Malthusian model\n",
     "\n",
-    "The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \\in \\mathbb{R}_{\\geq 0}$ ($b$ and $d$ are both positive real constants) and $d \\leq 1$ (it's not possible for more than 100 \\% of the population to die). This gives the difference equations as,\n",
+    "The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \\in \\mathbb{R}^+$ ($b$ and $d$ are both positive real constants) and $d \\leq 1$ (it's not possible for more than 100 \\% of the population to die). This gives the difference equations as,\n",
     "$$\n",
     "N_{t+1}=N_t + bN_t - dN_t=rN_t,\n",
     "$$ {#eq-MalthusianEqn} \n",
@@ -49,9 +47,7 @@
     "N_t&=r^tN_0. \n",
     "\\end{align}$$ {#eq-MalthusianRecursive} \n",
     "\n",
-    "Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$.\n",
-    "\n",
-    "In @fig-plotmalthusian a numerical solution of the model is computed for different values of the parameter $r$."
+    "Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$. In @fig-plotmalthusian we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter $r$."
    ]
   },
   {
@@ -138,12 +134,17 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d189c8cd",
+   "id": "8519c244",
    "metadata": {},
    "source": [
-    "Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and $N_t$ is only evaluated at the natural numbers (points).\n",
+    "Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and $N_t$ is only evaluated at the natural numbers (points). \n",
     "\n",
-    "**Exercise:** Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour?\n",
+    "::: {.theorem #exercise-Malthusian}\n",
+    "Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in @eq-continousExp? Are the parameters $r$ in the two equations describing the same thing, how do they differ?\n",
+    ":::\n",
+    "\n",
+    "\n",
+    "**Exercise:** Describe how the behaviour of the Malthusian model changes with $r$. What are the critical values of $r$ that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in @eq-continousExp? Are the parameters $r$ in the two equations describing the same thing, how do they differ?\n",
     "\n",
     "Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of $r = 1$ for which $N_t = N_0$ is constant. For $r > 1$ ($r<1$) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large $t$ also changes,\n",
     "\n",
@@ -173,7 +174,7 @@
     "$$\n",
     "N_{t+1}=N_te^{r(1-\\frac{N_t}{K})}.\n",
     "$$ \n",
-    "where $r, K, n \\in \\mathbb{R}_{> 0} are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.\n",
+    "where $r, K, n \\in \\mathbb{R}^+ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.\n",
     "\n",
     "### Model development\n",
     "\n",
@@ -292,7 +293,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "f4649527",
+   "id": "3ad4c918",
    "metadata": {},
    "source": [
     "In @fig-rickerapp you can explore simulations of the Ricker model.\n",
@@ -637,7 +638,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "bb982e29",
+   "id": "eaad4378",
    "metadata": {},
    "source": [
     "### Bifurcation diagrams\n",
@@ -745,7 +746,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "d95075c0",
+   "id": "6f445688",
    "metadata": {},
    "source": [
     "For bifurcation diagram:\n",
@@ -849,7 +850,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "e1dc424b",
+   "id": "3ea7bfbf",
    "metadata": {},
    "source": [
     "::: {#fig-nonlinModel}\n",
@@ -1143,7 +1144,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "4f49139a",
+   "id": "570853f9",
    "metadata": {},
    "source": [
     "### Bifurcation diagram\n",
@@ -1167,7 +1168,7 @@
      "text": [
       "<>:20: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:20: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_64898/187932474.py:20: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_71265/187932474.py:20: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  plt.xlabel('$\\gamma$')\n"
      ]
     },
@@ -1216,7 +1217,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "eede2a8a",
+   "id": "2f23a09a",
    "metadata": {},
    "source": [
     "Many of the calculations can be aided by using a symbolic calculator."
@@ -1292,7 +1293,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "01f553c4",
+   "id": "ba227a04",
    "metadata": {},
    "source": [
     "## An application - how much harvesting can a population sustain?\n",
@@ -1381,7 +1382,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5fe2af7f",
+   "id": "b5356904",
    "metadata": {},
    "source": [
     "::: {#fig-harvestingModel}\n",
@@ -1586,7 +1587,7 @@
      "text": [
       "<>:25: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:25: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_64898/255576047.py:25: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_71265/255576047.py:25: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  plt.ylabel('$\\gamma$')\n"
      ]
     },
@@ -1639,7 +1640,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "c4b4134e",
+   "id": "05f12b44",
    "metadata": {},
    "source": [
     "### Stability boundaries in the $h\\gamma$ plane\n",
@@ -1751,7 +1752,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "63554b21",
+   "id": "b1682e99",
    "metadata": {},
    "source": [
     "Many of the above calculations can be aided using a symbolic calculator:"
@@ -1829,7 +1830,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "5442bfa0",
+   "id": "b82c7e00",
    "metadata": {},
    "source": [
     "## Oscillations\n",
@@ -1966,7 +1967,7 @@
   },
   {
    "cell_type": "markdown",
-   "id": "faca66fe",
+   "id": "a8becf99",
    "metadata": {},
    "source": [
     "Exercise: identify an equation satisfied by period 2 solutions of the logistic map $$ \n",
