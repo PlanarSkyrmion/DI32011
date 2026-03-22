@@ -10,21 +10,19 @@ jupyter: python3
 
 We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size (e.g. a mutation that evolves from one generation to the next).
 
-
-
 ## A general model for a single population in discrete time
 
 Let $N_t$ be a dependent variable, representing the population size of a single species, at the discrete time $t\in\mathbb{Z}$. We write the change in population as the first order difference equation,
 $$
 N_{t+1} = H(N_t) = N_tf(N_t),
 $$ {#eq-GeneralPopulationModel} 
-where $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.
+where the function $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.
 
 Note, *per capita* is Latin for *per person* and hence is used to express something averaged over the population.
 
 The goal of this section is to develop a range of techniques that allow us to analyse the behaviour of @eq-GeneralPopulationModel for a given function $H$ and initial condition $N_0$ (population at $t=0$).
 
-Finally, note that many of you were introduced to difference equations in the module MA21003 Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.
+Finally, note that many of you were introduced to difference equations in the module Discrete Mathematics. It is recommended that you revisit the section on Discrete Difference Equations in your notes.
 
 ## The Malthusian model
 
