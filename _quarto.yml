@@ -5,7 +5,7 @@ project:
 book:
   title: "DI32011"
   author: "Thomas Winyard"
-  date: "16/03/2026"
+  date: last-modified
   repo-url: https://github.com/PlanarSkyrmion/DI32011/
   downloads: pdf
   repo-actions: [issue]
