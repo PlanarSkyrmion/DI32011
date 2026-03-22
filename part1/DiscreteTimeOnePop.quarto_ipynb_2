@@ -50,7 +50,7 @@
         "\n",
         "In @fig-plotmalthusian a numerical solution of the model is computed for different values of the parameter $r$."
       ],
-      "id": "8e875516"
+      "id": "86f74f2f"
     },
     {
       "cell_type": "code",
@@ -188,7 +188,7 @@
         "\n",
         "We will return to analysis of the Ricker model in Worksheet 1."
       ],
-      "id": "96f4becd"
+      "id": "90ca4b24"
     },
     {
       "cell_type": "code",
@@ -462,7 +462,7 @@
         "-   when $H'(N^*)=-1$, the fixed point is oscillatory; and\n",
         "-   when $H'(N^*)<-1$, the fixed point is oscillatory unstable."
       ],
-      "id": "db77572d"
+      "id": "af4b68a6"
     },
     {
       "cell_type": "code",
@@ -618,7 +618,7 @@
         "-   Fill in the cobwebbed trajectories with some arbitrarily chosen initial condition.\n",
         "-   Establish that behaviour of the cobweb is consistent with linear stability analysis."
       ],
-      "id": "08ab7652"
+      "id": "68b0c12b"
     },
     {
       "cell_type": "code",
@@ -711,7 +711,7 @@
         "\n",
         "In @fig-plotdensmodel1 time series solution of the model are plotted for parameter values $\\gamma=0.5$, $\\gamma=1.5$, $\\gamma=2.5$. Note qualitative changes in model behaviour in the different parameter regimes. Can you identify the fixed points? Are the solutions oscillatory?"
       ],
-      "id": "08a4ec5f"
+      "id": "7e3c8787"
     },
     {
       "cell_type": "code",
@@ -964,7 +964,7 @@
         "\n",
         "In @fig-densmodelcobweb cobweb diagrams illustrate model behaviour in the three different parameter regimes. Note that the cobweb diagrams can be sketched by hand, given an accurate enough sketch of the right-hand side function $H(N_t)$. Note also that the cobweb diagrams are consistent with the linear stability analysis but that the linear approximation is only valid close to the equilibrium point."
       ],
-      "id": "5d9633f4"
+      "id": "3d8f6333"
     },
     {
       "cell_type": "code",
@@ -1055,7 +1055,7 @@
         "\n",
         "We can use symbolic calculators to aid many of computations performed above. Below is an example using the Python library sympi."
       ],
-      "id": "1e1a9ac3"
+      "id": "6c07d286"
     },
     {
       "cell_type": "code",
@@ -1096,7 +1096,7 @@
       "source": [
         "Many of the calculations can be aided by using a symbolic calculator."
       ],
-      "id": "a5795bf7"
+      "id": "afb05897"
     },
     {
       "cell_type": "code",
@@ -1168,7 +1168,7 @@
         "\n",
         "Based on the previous analysis we consider the system in a parameter regime where without harvesting there is a stable fixed point ($\\gamma>1$)."
       ],
-      "id": "5913be1d"
+      "id": "d88d68af"
     },
     {
       "cell_type": "code",
@@ -1417,7 +1417,7 @@
         "\n",
         "and hence that when $h=0$ we retrieve the stability condition from the previous model."
       ],
-      "id": "f374a8df"
+      "id": "3b444a63"
     },
     {
       "cell_type": "code",
@@ -1481,7 +1481,7 @@
         "\n",
         "In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note that the points in parameter space used to generate the simulation results in @fig-plotdensmodelharvest are $(h,\\gamma)=(0.1,5)$ $(h,\\gamma)=(1,5)$ and $(h,\\gamma)=(3,5)$. Cobweb diagrams in different regions of parameter space are presented in @fig-densharvestingmodelcobweb. The plot in @fig-plotdensmodelharveststab can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to $1$ and then 5?\n"
       ],
-      "id": "6a05cfa8"
+      "id": "e363b119"
     },
     {
       "cell_type": "code",
@@ -1558,7 +1558,7 @@
       "source": [
         "Many of the above calculations can be aided using a symbolic calculator:"
       ],
-      "id": "d908d95f"
+      "id": "90d37a39"
     },
     {
       "cell_type": "code",
@@ -1650,7 +1650,7 @@
         "$$ \n",
         "Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, @fig-densharvestingmodelcobwebp4)."
       ],
-      "id": "0ce499bc"
+      "id": "a89674a2"
     },
     {
       "cell_type": "code",
@@ -1746,7 +1746,7 @@
         "\n",
         "You can find reports on fish stocks (measurements and modelling work) from the International Council for the Exploration of the Sea at the [link](http://www.ices.dk/Pages/default.aspx). Here's a link to the data for [Atlantic salmon](https://tinyurl.com/ya8sh72j). Note that although the models we have worked on are not detailed enough to accurately model real fish population dynamics, many of the principles we have covered arise in the cutting edge models."
       ],
-      "id": "a0c88683"
+      "id": "f4523eaa"
     }
   ],
   "metadata": {

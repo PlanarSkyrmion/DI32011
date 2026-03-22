@@ -186,7 +186,7 @@
         "$$\n",
         "Note that  $c$ and $e$ evolve rapidly in time close to the initial data whilst those of $s$ and $p$ do not."
       ],
-      "id": "07b67e23"
+      "id": "3aa59626"
     },
     {
       "cell_type": "code",
@@ -750,7 +750,7 @@
         "\n",
         "In @fig-bruss-numsol we numerically solve @eq-brussnondim in the case of oscillatory solutions. Note that when the steady state is unstable, the numerical solution indicates that the system has limit cycle solutions. A valid question to ask is whether one can prove that this is the case.\n"
       ],
-      "id": "b1e78a88"
+      "id": "cbbfea96"
     },
     {
       "cell_type": "code",
@@ -825,7 +825,7 @@
         "\n",
         "In the positive quadrant, this nullcline has a  single root at $a/(1+b)$, tends to 0 as $x\\rightarrow \\infty$ and has a maximum at $x=2a/(1+b)$."
       ],
-      "id": "80e00aff"
+      "id": "751d2074"
     },
     {
       "cell_type": "code",
@@ -996,7 +996,7 @@
         "\\mathbf{n}.\\left[\\frac{dx}{dt},\\frac{dy}{dt}\\right] =  \\frac{dx}{dt} <0.\n",
         "$$"
       ],
-      "id": "3b547015"
+      "id": "8844bde3"
     },
     {
       "cell_type": "code",
@@ -1090,7 +1090,7 @@
       "source": [
         "Hence at all points on the closed loop ABCDEA trajectories point inwards (see @fig-bruss-numsol-phplane-confinedset). Hence ABDCEA is a confined set and the Poincaire-Bendixson theorem states that the system exhibits limit cycle solutions when the steady state is unstable. This is precisely the behaviour that we see numerically in Figure @fig-bruss-numsol-phplane."
       ],
-      "id": "f61a64f6"
+      "id": "6ce1f7cc"
     }
   ],
   "metadata": {
