@@ -12,14 +12,14 @@ While biology is the study of living organisms, mathematical biology is the appl
 
 The key quantities we consider broadly fall into two categories: fixed quantities that do not change in time, called **constants**, and quantities that evolve in time, called **dynamical variables**. Quantities whose values are specified a priori are called **parameters**, and are typically constant in time (though can be dynamic with clear defined behaviour), while quantities whose values are determined by the model are called **variables** or **degrees of freedom**.
 
-When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, $t \in \mathbb{R}^+$, such that changes occur infinitesimally, or discrete, $t \in \mathbb{N}$, such that changes occur in finite steps (e.g., yearly updates).
+When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, $t \in \mathbb{R}^+$, such that changes occur infinitesimally, or discrete, $t \in \mathbb{Z}$, such that changes occur in finite steps (e.g., yearly updates).
 
 ## Population Dynamics
 
 A key problem in biology is modelling mathematically how the population of various species changes over time (tracking births, deaths and migration). This might be quite abstract when studying, for example, the population of a chemical. As with our general approach we must identify the salient dynamical degrees of freedom (variables that change over time), the most obvious of which is,
 $$N(t) - \text{Population change as a function of time},$$
 
-though there may be other variables involved.
+though there may be other variables involved or multiple competing populations.
 
 ## Exponential Growth
 

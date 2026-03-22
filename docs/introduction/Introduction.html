@@ -271,11 +271,11 @@ window.Quarto = {
 
 <p>While biology is the study of living organisms, mathematical biology is the application of mathematical tools to give enhanced understanding of biological systems. In particular, we will study equations that capture the key features of a given system. Constructing such models requires stripping away the systems complex nature and identifying a handfull of key quantities required to describe how the system changes.</p>
 <p>The key quantities we consider broadly fall into two categories: fixed quantities that do not change in time, called <strong>constants</strong>, and quantities that evolve in time, called <strong>dynamical variables</strong>. Quantities whose values are specified a priori are called <strong>parameters</strong>, and are typically constant in time (though can be dynamic with clear defined behaviour), while quantities whose values are determined by the model are called <strong>variables</strong> or <strong>degrees of freedom</strong>.</p>
-<p>When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, <span class="math inline">\(t \in \mathbb{R}^+\)</span>, such that changes occur infinitesimally, or discrete, <span class="math inline">\(t \in \mathbb{N}\)</span>, such that changes occur in finite steps (e.g., yearly updates).</p>
+<p>When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, <span class="math inline">\(t \in \mathbb{R}^+\)</span>, such that changes occur infinitesimally, or discrete, <span class="math inline">\(t \in \mathbb{Z}\)</span>, such that changes occur in finite steps (e.g., yearly updates).</p>
 <section id="population-dynamics" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="population-dynamics"><span class="header-section-number">1.1</span> Population Dynamics</h2>
 <p>A key problem in biology is modelling mathematically how the population of various species changes over time (tracking births, deaths and migration). This might be quite abstract when studying, for example, the population of a chemical. As with our general approach we must identify the salient dynamical degrees of freedom (variables that change over time), the most obvious of which is, <span class="math display">\[N(t) - \text{Population change as a function of time},\]</span></p>
-<p>though there may be other variables involved.</p>
+<p>though there may be other variables involved or multiple competing populations.</p>
 </section>
 <section id="exponential-growth" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="exponential-growth"><span class="header-section-number">1.2</span> Exponential Growth</h2>

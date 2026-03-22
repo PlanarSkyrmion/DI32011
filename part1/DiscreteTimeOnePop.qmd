@@ -8,11 +8,13 @@ format:
 jupyter: python3
 ---
 
-We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size.
+We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size (e.g. a mutation that evolves from one generation to the next).
+
+
 
 ## A general model for a single population in discrete time
 
-Let $N_t$ be a dependent variable, representing the population size of a single species, at the discrete time $t\in\mathbb{N}$. We write the change in population as the first order difference equation,
+Let $N_t$ be a dependent variable, representing the population size of a single species, at the discrete time $t\in\mathbb{Z}$. We write the change in population as the first order difference equation,
 $$
 N_{t+1} = H(N_t) = N_tf(N_t),
 $$ {#eq-GeneralPopulationModel} 
@@ -26,7 +28,7 @@ Finally, note that many of you were introduced to difference equations in the mo
 
 ## The Malthusian model
 
-The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \in \mathbb{R}_{\geq 0}$ ($b$ and $d$ are both positive real constants) and $d \leq 1$ (it's not possible for more than 100 \% of the population to die). This gives the difference equations as,
+The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \in \mathbb{R}^+$ ($b$ and $d$ are both positive real constants) and $d \leq 1$ (it's not possible for more than 100 \% of the population to die). This gives the difference equations as,
 $$
 N_{t+1}=N_t + bN_t - dN_t=rN_t,
 $$ {#eq-MalthusianEqn} 
@@ -136,7 +138,7 @@ and the Ricker model
 $$
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
 $$ 
-where $r, K, n \in \mathbb{R}_{> 0} are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
+where $r, K, n \in \mathbb{R}^+ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
 
 ### Model development
 
