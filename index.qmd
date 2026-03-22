@@ -8,7 +8,8 @@
 
 **Office:** TBA
 
-**Office Hour:** Wednesday 17:00 -- 18:00, [Teams](https://teams.microsoft.com/meet/35732151695742?p=c7r8m3Qw0Yd3wqUiqK)
+**Office Hour:** Wednesday 17:00 -- 18:00, <a href="https://teams.microsoft.com/meet/35732151695742?p=c7r8m3Qw0Yd3wqUiqK" target="_blank">[Teams Link]</a>
+
 
 <br>
 
@@ -50,7 +51,7 @@ Python code is provided for most of the figures in the notes (you can expand the
 
 ::: {.callout-note}
 
-To use Python on your own computer we recomend Anaconda. Instructions on how to install it were provided in Introduction to Programming and are available [here](www.twinyard.co.uk/DI32011/assets/pythonIntro.pdf). 
+To use Python on your own computer we recomend Anaconda. Instructions on how to install it were provided in Introduction to Programming and are available [here](https://www.twinyard.co.uk/DI32011/assets/pythonIntro.pdf). 
 
 To use it:
 
