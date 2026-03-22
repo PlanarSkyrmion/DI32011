@@ -275,7 +275,7 @@
         "\n",
         "### Numerical solution"
       ],
-      "id": "eedec4e2"
+      "id": "da14e552"
     },
     {
       "cell_type": "code",
@@ -619,7 +619,7 @@
         "\n",
         "Below sympy is used to identify the fixed points. The Jacobian matrix is then computed and evaluated at the fixed points.  "
       ],
-      "id": "e50b02f9"
+      "id": "a32ccd4e"
     },
     {
       "cell_type": "code",

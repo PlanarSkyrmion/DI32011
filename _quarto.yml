@@ -10,8 +10,6 @@ book:
   downloads: pdf
   repo-actions: [issue]
   cover-image: DI32011Cover.png
-
-
   
   chapters:
     - index.qmd

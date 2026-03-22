@@ -205,7 +205,7 @@
         " In @fig-logisticgrowthmodel we present numerical solutions of equation   using different initial conditions. Note the limiting behaviour of solutions as $t\\rightarrow \\infty$. In @fig-logisticgrowthmodel it is clear that even though some solutions are initialised at $N_0=0.1$, much closer to $N^*=0$ than $N^*=K$, they tend to the limit $N=K$. \n",
         " Why do solutions not tend to $N^*=0$?"
       ],
-      "id": "39372617"
+      "id": "b433268b"
     },
     {
       "cell_type": "code",
@@ -340,7 +340,7 @@
         "We can qualitatively describe model solutions by considering the arrow along the x axis. \n",
         "Suppose we consider an initial condition with $0<n_0<1$. Using the graph of $H(n)$, $dn/d\\tau$ is positive, hence $n$ increases as a function of time until $n(\\tau)\\rightarrow 1$. "
       ],
-      "id": "0d6f64cf"
+      "id": "f4f205d5"
     },
     {
       "cell_type": "code",
@@ -478,7 +478,7 @@
         "\n",
         "Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? \n"
       ],
-      "id": "aef79e0f"
+      "id": "e7105271"
     },
     {
       "cell_type": "code",
@@ -541,7 +541,7 @@
         "\n",
         "Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.\n"
       ],
-      "id": "67074b43"
+      "id": "fe089711"
     },
     {
       "cell_type": "code",
@@ -647,7 +647,7 @@
         " When $r$ is both large and small the nonzero steady state is stable (the derivative at the roots is negative). \n",
         " In the case where three biologically relevant roots exist, the intermediate root is unstable."
       ],
-      "id": "29186c1d"
+      "id": "390c712f"
     },
     {
       "cell_type": "code",
@@ -767,7 +767,7 @@
         "\\left(\\frac{2n{^*}^3}{n{^*}^{2}-1},\\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\\right) \\ \\ \\ \\ \\ \\ \\ n^*>1.\n",
         "$$"
       ],
-      "id": "146b170b"
+      "id": "7c9a60e8"
     },
     {
       "cell_type": "code",
@@ -861,7 +861,7 @@
         "\n",
         "Considering $n^*<q$ we  compute $r$; plotting $n^*$ against $r$ yields the bifurcation curve presented in @fig-sprucebudworm-bfc. "
       ],
-      "id": "50025a0b"
+      "id": "9b81868c"
     },
     {
       "cell_type": "code",
@@ -1066,7 +1066,7 @@
         "\n",
         "## References"
       ],
-      "id": "ed77cd18"
+      "id": "bcf56655"
     }
   ],
   "metadata": {
