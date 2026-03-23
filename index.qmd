@@ -1,5 +1,6 @@
 # DI32011: Mathematical Biology I {.unnumbered}
 <br>
+
 **Lecturer:** Thomas Winyard
 
 **Email:** [twinyard001@dundee.ac.uk](mailto:twinyard001@dundee.ac.uk)
@@ -14,8 +15,8 @@
 <br>
 
 ## Contact Hours
-* Mondays 10:00 -- 12:00, TBA (Lecture)
-* Fridays 16:00 -- 18:00, TBA (Lecture/Tutorial)
+* Mondays 10:00 -- 12:00, A206 (Lecture)
+* Fridays 16:00 -- 18:00, A206 (Lecture/Tutorial)
 
 These will take the form of two roughly 45 minute lectures on Monday seperated by a break and a 30 to 45 minute lecture and 45 to 60 minute tutorial on Friday. Hence, the schedule is based on roughly 2 hours of lectures and 1 hour of tutorial a week.
 
