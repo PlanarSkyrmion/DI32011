@@ -17,7 +17,9 @@ When we say that a quantity changes in time, an important consideration is wheth
 ## Population Dynamics
 
 A key problem in biology is modelling mathematically how the population of various species changes over time (tracking births, deaths and migration). This might be quite abstract when studying, for example, the population of a chemical. As with our general approach we must identify the salient dynamical degrees of freedom (variables that change over time), the most obvious of which is,
-$$N(t) - \text{Population change as a function of time},$$
+$$
+N(t) - \text{Population change as a function of time},
+$$ {#eq-noLabel}
 
 though there may be other variables involved or multiple competing populations.
 

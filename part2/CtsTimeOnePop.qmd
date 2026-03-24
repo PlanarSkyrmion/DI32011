@@ -14,27 +14,26 @@ As time is now a continuous variable, we consider an interval of time $\delta t$
 If the per capita production rate is $b$, then in time $\delta t$ the increase in population size will be
 $$
 b N(t) \delta t.
-$$
+$$ {#eq-noLabel}
 Similarly, if the per capita death rate is $d$, the decrease in population size in time $\delta t$ will be
 $$
 d N(t) \delta t.
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 N(t+\delta t)= N(t) + (bN(t)-dN(t))\delta t.
-$$
+$$ {#eq-noLabel}
 Rearranging and taking the limit as $\delta t \rightarrow 0$ yields
 $$
 \frac{dN}{dt}=(b-d)N=rN(t).
-$$
-
+$$ {#eq-noLabel}
 
 ### Solution
 
 The solution is given by
 $$
 N(t)=N_0\exp(rt).
-$$
+$$ {#eq-noLabel}
 
 
 We can describe qualitatively different solutions behaviours.
@@ -57,77 +56,16 @@ where $f$ is the per capita growth rate and $H$ is the net growth rate.
 ### Numerical solution
 Although an equation of the form @eq-gensinglespecodeagain may not be explicitly integrable, so long as the right-hand side is sufficiently well behaved, we can numerically integrate the problem (e.g. using packages such as Python's odeint). Such a technique provides a numerical approximation to the exact solution, given specific values of model parameters and initial conditions (i.e. we can graph solutions). 
 
-### Nondimensionalisation
-We nondimensionalise a model  by  changing from  variables that have dimensions (both dependent and independent) to variables that are dimensionless.
-
-#### Dimensional analysis
-The dimensions/units of each term in a model must be consistent. This observation helps to determine the units of different parameters in a model.
-
-For example, we can deduce that the units of the parameter $r$ in the Malthusian model
-$$
-\frac{dN}{dt}=rN.
-$$
-\vspace{5cm}
-
-The units of the left-hand term are
-$$
-\frac{\# pop density}{\# time}.
-$$
-
-The units of the term on the right-hand side are
-$$
-\#r\#popdensity.
-$$
-
-For dimensional consistency
-$$
-\#r = \frac{1}{\#time}.
-$$
-
-####  Dimensionless variables
-
-We could nondimensionalise @eq-gensinglespecodeagain by defining the dimensionless variables
-$$
-\begin{aligned}
-n=\frac{N}{\tilde{N}} \nonumber \\
-\tau=\frac{t}{\tilde{T}}.\nonumber
-\end{aligned}
-$$
-
-Making the proposed change of variables in @eq-gensinglespecodeagain we obtain the dimensionless model
-$$
-\frac{dn}{d\tau}= \frac{\tilde{T}}{\tilde{N}}H(\tilde{N}n(\tau)).
-$$
-The choice for scalings is in general not unique (i.e. $N^*$ and $T^*$).
-Appropriate choices can result in fewer dimensionless parameters in the dimensionless model.
-
-Introducing dimensionless variable
-$$
-n=\frac{N}{\tilde{N}} \quad \tau=\frac{t}{\tilde{T}}
-$$
-yields
-$$
-\frac{dn}{d\tau}=r\tilde{T}n
-$$
-Choosing
-$$
-\tilde{T}=\frac{1}{r} 
-$$
-yields
-$$
-\frac{dn}{d\tau}=n.
-$$
-
 ### Steady-state
 
 We denote steady-state solutions of @eq-gensinglespecodeagain using $N=N^*$. At a steady-state,
 $$
 \frac{dN}{dt}=0
-$$
+$$ {#eq-noLabel}
 and hence steady-states can be obtained by solving the algebraic equation
 $$
 H(N^*)=0.
-$$
+$$ {#eq-noLabel}
 
 
 ### Linear stability analysis
@@ -136,36 +74,36 @@ $$
 To perform a linear stability analysis we make the change of variables
 $$
 N(t)=N^*+\hat{N}(t)
-$$
+$$ {#eq-noLabel}
 where the new dependent variable, $\hat{N}(t)$, is a perturbation about the steady state.
 
 The time derivative on the left-hand side of @eq-gensinglespecodeagain transforms to
 $$
 \frac{dN}{dt}= \frac{d }{dt} (N^*) + \frac{d }{dt}(\hat{N}(t))=\frac{d\hat{N}(t) }{dt}.
-$$
+$$ {#eq-noLabel}
 Hence @eq-gensinglespecodeagain  transforms to
 $$
 \frac{d\hat{N}(t) }{dt} = H(N^*+\hat{N}(t)).
-$$
+$$ {#eq-noLabel}
 
 ####  Taylor expansion and a linear system
 
 Employing the Taylor expansion on the right-hand side of @eq-gensinglespecodeagain and making  the assumption that perturbations are small
 $$
 \frac{d\hat{N}(t) }{dt} = H(N^*)+  H'(N^*)\hat{N}(t) + H''(N^*)\hat{N}^2(t) + h.o.t.
-$$
+$$ {#eq-noLabel}
 Noting that  
 $$
 H(N^*)=0
-$$ 
+$$ {#eq-noLabel}
 and retaining linear terms yields 
 $$
 \frac{d\hat{N}(t) }{dt} =  H'(N^*)\hat{N}(t)
-$$
+$$ {#eq-noLabel}
 with solution
 $$
 \hat{N}(t)=  \eta e^{H'(N^*) t}
-$$
+$$ {#eq-noLabel}
 where $\eta$ is some initial perturbation about the steady-state.
 
 #### A condition for linear stability
@@ -260,19 +198,19 @@ The second term has the form $rN^2/K$. Given the chosen units for $r$ and $N$, t
 We define the nondimensionalised variables
 $$
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}
-$$
+$$ {#eq-noLabel}
 where $\tilde{N}$ and $\tilde{T}$ are constants that have units of population density and time, respectively. Hence @eq-logisticode transforms, upon change of variables, to
 $$
 \begin{aligned}
 \frac{\tilde{N}}{\tilde{T} }\frac{dn}{d\tau}=r\tilde{N}n(1-\frac{n\tilde{N}}{K}).
 \end{aligned}
-$$
+$$ {#eq-noLabel}
 
 
 In the case of the logistic equation there is only one time scale and density scale in the problem, hence we choose
 $$
 \tilde{T}=\frac{1}{r}  \ \ \ and \ \ \ \tilde{N}=K
-$$
+$$ {#eq-noLabel}
 and the dimensionless model is
 $$
 \begin{aligned}
@@ -290,21 +228,21 @@ Note that we can retrieve the original equation by rescaling and calculating $N=
 Steady states satisfy
 $$
 n^*(1-n^*)=0.
-$$
+$$ {#eq-noLabel}
 Hence 
 $$
 n^*=0, \ \ \ \ n^*=1.
-$$
+$$ {#eq-noLabel}
 
 
 To determine linear stability we compute
 $$
 H'(n)= (1-2n).
-$$
+$$ {#eq-noLabel}
  When $n=n^*=0$ we obtain
 $$
 H'(n)= 1.
-$$
+$$ {#eq-noLabel}
 Hence the origin is an unstable steady-state.
 
 
@@ -312,7 +250,7 @@ Hence the origin is an unstable steady-state.
 At the steady-state $n^*=1$
 $$
 H'(n^*)= -1
-$$
+$$ {#eq-noLabel}
 hence $n^*=1$ is linearly stable. 
 
 Note that the linear stability analysis can explain the observations regarding the numeric solutions presented in @fig-logisticgrowthmodel.
@@ -347,23 +285,23 @@ plt.show()
 Separation of variables yields
 $$
 \int\frac{ dN}{N(1-\frac{N}{K})}=r\int dt.
-$$
+$$ {#eq-noLabel}
 Using partial fractions 
 $$
 \int\frac{ dN}{N} + \frac{1}{K}\int\frac{ dN}{1-\frac{N}{K}}=r\int dt.
-$$
+$$ {#eq-noLabel}
 Integration yields
 $$
 \ln N - \ln\left(1-\frac{N}{K}\right)= \ln \frac{N }{1-\frac{N}{K}} =  rt+C.
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 N=\frac{De^{rt}}{1+\frac{D}{K}e^{rt}}
-$$
+$$ {#eq-noLabel}
 Given an initial condition $N(0)=N_0$, we obtain
 $$
 N(t)=\frac{N_0K e^{rt}}{K+N_0(e^{rt}-1)}
-$$
+$$ {#eq-noLabel}
 
 
 #### Qualitative analysis of the exact solution
@@ -371,7 +309,7 @@ As $t\rightarrow \infty$, $N\rightarrow K$.
 At $t=0$, $N=N_0$ and that for small $N_0\ll K$ the initial growth phase is exponential, i.e. 
 $$
 N(t)\sim N_0 e^{rt} \\ \ \ \ \ N_0\ll K, t\ll \frac{1}{r}.
-$$
+$$ {#eq-noLabel}
 
 Note that in almost all the models that we will consider the above method is not an usually an option as the ODE is not explicitly integrable.
 
@@ -388,14 +326,14 @@ $${#eq-sprucebudworm}
 where 
 $$
 p(N) =\frac{B N^2}{A^2 +N^2},
-$$
+$$ {#eq-noLabel}
 $r_B$ is the linear growth rate, $K_B$ is the carrying capacity, $B$ is the maximum rate of predation and $A$ is a measure of budworm population where predation switches on (specifically, $A$ represents the budworm density at which predation is half its maximum value).
 
 
 It is informative to graph  the predation term
 $$
 p(N) =\frac{B N^2}{A^2 +N^2},
-$$
+$$ {#eq-noLabel}
 and annotate the parameters $A$ and $B$.
 
 There is a root at $N=0$.
@@ -404,7 +342,7 @@ Note that $N=A$, $p=A/2$.
 The derivative is
 $$
 p'(N)=\frac{2BN}{A^2+N^2} - \frac{2BN^3}{(A^2+N^2)^2} =  \frac{2BA^2N}{(A^2+N^2)^2}
-$$
+$$ {#eq-noLabel}
 Thus there is a turning point at $N=0$ and $p'>0 \forall N>0$.
 
 
@@ -414,29 +352,29 @@ Introducing the (as yet unspecified) dimensional scalings $\tilde{N}$ and $\tild
 
 $$
 n=\frac{N}{\tilde{N}} \ \ \ \ \ \ \tau=\frac{t}{\tilde{T}}.
-$$
+$$ {#eq-noLabel}
 
 Changing  variables in @eq-sprucebudworm yields
 
 $$
 \frac{\tilde{N}}{\tilde{T}}\frac{d n }{d\tau}= r_B \tilde{N}n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N}^2n^2}{A^2+\tilde{N}^2 n^2}.
-$$
+$$ {#eq-noLabel}
 
 After some tidying
 
 $$
 \frac{dn }{d\tau}= r_B\tilde{T} n\left(1-\frac{\tilde{N}n}{K_B}\right)-\frac{B\tilde{N} \tilde{T}}{A^2}\frac{n^2}{1+\frac{\tilde{N}^2}{A^2}n^2}.
-$$
+$$ {#eq-noLabel}
 
 
 A natural scale for cell density in the model is given by the parameter $A$, as it determines the density of budworm at which predation is half its maximal value. Hence we choose the scaling on the budworm density
 $$
 \tilde{N}=A.
-$$ 
+$$ {#eq-noLabel}
 Similarly, a natural time scale for the model is given by  
 $$
 \tilde{T}=A/B.
-$$
+$$ {#eq-noLabel}
 
 
 Substituting for $\tilde{N}$ and $\tilde{T}$ yields
@@ -446,7 +384,7 @@ $${#eq-budwormnondim}
 where we define the nondimensional parameters
 $$
 r= \frac{r_B A}{B} \ \ \  \textrm{and} \ \ \  q=\frac{K_B}{A}.
-$$
+$$ {#eq-noLabel}
 
 Note that @eq-budwormnondim has two nondimensional parameters and all variables are dimensionless.  See @fig-sprucebudworm-rhs for a plot of right-hand side of equation @eq-budwormnondim. What kind of behaviours do you expect to see from the model? 
 
@@ -537,15 +475,15 @@ plt.show()
 Letting $n^*$ represent steady states of @eq-budwormnondim yields
 $$
 rn^*(1-\frac{n^*}{q})- \frac{n^*{^2}}{1+n^*{^2}}=0.
-$$
+$$ {#eq-noLabel}
 Hence either 
 $$
 n^*=0,
-$$ 
+$$ {#eq-noLabel}
 or $n^*$ satisfies the cubic equation
 $$
 r\left(1-\frac{n^*}{q}\right)- \frac{n^*}{1+n^*{^2}}=0.
-$$
+$$ {#eq-noLabel}
 
 Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with.  We proceed using a graphical/qualitative approach.
 
@@ -575,7 +513,7 @@ $g$ has a unique root at $n^*=0$.
 The derivative is
 $$
 g'=\frac{1-n{^*}^2}{(1+n^*)^2}.
-$$
+$$ {#eq-noLabel}
 There is a turning point at $n^*=1$. Here $g=1/2$.
 As $n^*\rightarrow \infty$, $g\rightarrow 0$.
 $f'(0)=1$.
@@ -587,12 +525,12 @@ $f'(0)=1$.
 The linear stability of the model is determined by the quantity
 $$
 H'(n)=r(1-\frac{2n}{q})-\frac{2{n}}{1+{n}^2} +\frac{2{n}^3}{(1+{n}^2)^2}.
-$$
+$$ {#eq-noLabel}
 
 Hence at the steady state $n^*=0$ 
 $$
 H'(0)=r
-$$
+$$ {#eq-noLabel}
 and the steady state is linearly unstable.
 
 Given the  nonzero steady states have not been calculated explicitly, we proceed using graphical analysis of stability. In @fig-sprucebudworm-rhsfg  (b) we plot the right-hand side of @eq-budwormnondim against $n$ and examine the cases of large, small and intermediate $r$ for a given value of $q$. 
@@ -673,7 +611,7 @@ The goal is to identify boundaries of $rq$ parameter space where the stability c
 We can define points in $rq$ parameter space where bifurcations arise by seeking values of $n^*$ that satisfy
 $$
 f(n^*)= g(n^*) \ \ \ \  f'(n^*)= g'(n^*).
-$$
+$$ {#eq-noLabel}
 
 The first of these equations yields
 $$
@@ -688,20 +626,20 @@ $${#eq-rqeqn2}
 Hence
 $$
    \frac{r}{q}= \frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}.
-$$
+$$ {#eq-noLabel}
 
 Substituting for $r/q$ in the first equation yields
 $$
 r-\frac{n{^*}^{2}-1}{(1+n{^*}^{2})^2}n^*=\frac{n^*}{1+n{^*}^{2}},
-$$
+$$ {#eq-noLabel}
 which can be written in the form
 $$
 r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}.
-$$
+$$ {#eq-noLabel}
 Substituting for $r$ in @eq-rqeqn1 yields
 $$
 \frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\frac{n^*}{q}+\frac{n^*}{1+n{^*}^2}
-$$
+$$ {#eq-noLabel}
 which, after some algebra, yields
 $$
 q=\frac{2n{^*}^3}{n{^*}^{2}-1}.
@@ -709,7 +647,7 @@ $$ {#eq-sprucebudwormqpara}
 Hence a set of points that define bifurcations where three steady states transform to a single steady state are given in parametric form in $qr$ parameter space by
 $$
 \left(\frac{2n{^*}^3}{n{^*}^{2}-1},\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2}\right) \ \ \ \ \ \ \ n^*>1.
-$$
+$$ {#eq-noLabel}
 
 ```{python}
 #| label: fig-sprucebudworm-rq
@@ -747,35 +685,35 @@ We can show that the cusp in  @fig-sprucebudworm-rq
 is given by
 $$
 \left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-$$
+$$ {#eq-noLabel}
 
 Note that $r$ is a decreasing function of $q$ for $1<n^*<\sqrt{3}$ but that $r$ is an increasing function of $n^*$ for $\sqrt{3}<n^*<\infty$. This can be shown by finding the turning points of $r$ w.r.t $n^*$, i.e.
 Given that
 $$
 r=\frac{2n{^*}^{3}}{(1+n{^*}^{2})^2},
-$$
+$$ {#eq-noLabel}
 differentiation with respect to $n^*$ yields
 $$
 \frac{dr}{dn^*}=\frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}.
-$$
+$$ {#eq-noLabel}
 The turning point satisfies
 $$
 \frac{6{n^*}^2}{(1+n^*)^2} - \frac{8n{^*}^4}{(1+n^*)^3}=0
-$$
+$$ {#eq-noLabel}
 Solving for $n^*$ yields
 $$
 6(1+{n^*}^2) - 8n{^*}^2=0 
-$$
+$$ {#eq-noLabel}
 Hence
 $$
   n^*=\sqrt{3}.
-$$
+$$ {#eq-noLabel}
 Thus there is a turning point that minimises $r$ at $n^*=\sqrt{3}$.
 
 Substitution for this value of $n^*$ yields
 $$
 \left(q,r\right)=\left(3^{\frac{3}{2}},\left(\frac{\sqrt{3}}{2}\right)^3\right).
-$$
+$$ {#eq-noLabel}
 See @fig-sprucebudworm-rq.
 
 
@@ -848,61 +786,60 @@ By introducing terms that represent harvesting, population models can be used to
 Consider a model for logistic growth supplemented with a harvesting term
 $$
 \frac{dN}{dt}=rN\left(1-\frac{N}{K}\right) -EN.
-$$
+$$ {#eq-noLabel}
 The term $EN$ is the harvesting yield per unit time and the constant $E$ represents the harvesting effort.
 
 
 Steady states satisfy
 $$
 rN^*\left(1-\frac{N^*}{K}\right) -EN^*=0
-$$
+$$ {#eq-noLabel}
 Thus either $N^*=0$ or
 $$
 \left(1-\frac{N^*}{K}\right) -E=0
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 N^*=K(1-\frac{E}{r}).
-$$ 
+$$ {#eq-noLabel}
 Note that this is positive only if
 $$
 E<r.
-$$
+$$ {#eq-noLabel}
 Thus if the harvesting rate exceeds the linear growth rate the only steady state corresponds to extinction.
-
 
 The yield is
 $$
 Y(E)=EN^*=EK(1-\frac{E}{r})
-$$
+$$ {#eq-noLabel}
 
 
 To maximise the yields we differentiate with respect to $E$.
 $$
 \frac{dY}{dE} = K - 2\frac{EK}{r}.
-$$
+$$ {#eq-noLabel}
 Thus the maximum yield is identified by setting 
 $$
 \frac{dY}{dE} = K - 2\frac{EK}{r}=0.
-$$
+$$ {#eq-noLabel}
 THe maximum occurs at harvesting rate
 $$
 E_c=\frac{r}{2}.
-$$
+$$ {#eq-noLabel}
 The maximum yield is
 $$
 E^*=\frac{rK}{4}.
-$$
+$$ {#eq-noLabel}
 
 
 We identify the time scale over which stocks return to steady state by linearising about the steady state $N^*=K(1-E/r)$, hence
 $$
 \frac{d \hat{N}}{dt} = (E-r)\hat{N}.
-$$
+$$ {#eq-noLabel}
 Hence the recovery time scale is
 $$
 T_R(E)=O(\frac{1}{r-E}).
-$$
+$$ {#eq-noLabel}
 As the harvesting rate approaches the linear growth rate $r$, not only does the steady state population tend to zero but the timescale for stocks to recover tends to infinity.
 
 
@@ -910,46 +847,46 @@ As the harvesting rate approaches the linear growth rate $r$, not only does the 
 Consider a model of the form
 $$
 \frac{dN}{dt}=H(N(t),N(t-T)),
-$$
+$$ {#eq-noLabel}
 such that the right-hand side now depends on the value $N$ not just at time $t$ but also at some delay time $t-T$. We now need to prescribe initial conditions of the form
 $$
 N(t)=f(t), \quad -T<t\leq0.
-$$
+$$ {#eq-noLabel}
 
 Consider a simple case of a linear model
 $$
 \frac{dN}{dt}=-N(t-T).
-$$
+$$ {#eq-noLabel}
 A steady state, $N^*$, is defined such that $N(t)=N(t-T)=N^*$. Hence
 $$
 0=-kN^*.
-$$
+$$ {#eq-noLabel}
 The only steady state is $N^*=0$.
 
 To compute the linear stability we consider solution of the linearised equation of the form
 $$
 N(t)=e^{\lambda t}.
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 N(t-T)=e^{\lambda (t-T)}.
-$$
+$$ {#eq-noLabel}
 
 Substitution yields
 $$
 \lambda  e^{\lambda t} = - e^{\lambda (t-T)}.
-$$
+$$ {#eq-noLabel}
 Hence the eigenvalue, $\lambda$, satisfies a transcendental equation
 $$
 \lambda=-e^{-\lambda T}.
-$$
+$$ {#eq-noLabel}
 This equation has no  solutions for $\lambda \in \Re^+$. Hence any steady-states with real eigenvalues are linearly stable.
 
 Now consider solutions $\lambda \in \mathbb{C}$.
 Let $\lambda=\mu+i\omega$. Substitution yields
 $$
 \mu+i\omega = -e^{-\mu T}(\cos(\omega T)-i \sin(\omega T)).
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 \mu=-\cos(\omega T)e^{-\mu T} 
@@ -966,23 +903,23 @@ If $\omega$ is a solution of @eq-mu and @eq-om then so is $-\omega$. Hence w.l.o
 Consider $\mu=0$ in @eq-mu. This implies
 $$
 \omega T=\frac{\pi}{2} + 2n\pi, \quad n \in Z.
-$$
+$$ {#eq-noLabel}
 We consider the smallest positive root, i.e. $n=0$, as we want to consider the smallest value of delay time, $T$, at which instability arises.
 
 Note $\mu<0$ for 
 $$
 \omega T< \frac{\pi}{2}.
-$$
+$$ {#eq-noLabel}
 
 On the stablity boundary, $\mu=0$. Upon substitution in @eq-om
 $$
 \omega = \sin(\frac{\pi}{2})=1.
-$$
+$$ {#eq-noLabel}
 
 Hence the steady state is linearly stable for 
 $$
  T< \frac{\pi}{2}.
-$$
+$$ {#eq-noLabel}
 
 
 ## References

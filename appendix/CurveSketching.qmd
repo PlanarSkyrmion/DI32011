@@ -10,7 +10,7 @@ In the module we will be required to graph of nonlinear function.
 Consider a nonlinear function 
 $$
 f(x;p), \quad x \in \Re.
-$$
+$$ {#eq-noLabel}
 where $p$ is a constant.
 
 

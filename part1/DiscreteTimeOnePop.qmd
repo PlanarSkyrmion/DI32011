@@ -119,7 +119,7 @@ $$
 N_0& r=1,  \\  
 0 & r<1.     
 \end{array} \right.
-$$
+$$ {#eq-noLabel}
 
 Whilst the simplicity of the Malthusian model allows us to calculate explicit solutions that yield insight into how the processes of birth and death combine to give either net growth or net reduction in population size, an obvious flaw with this model is that it displays unbounded growth for $r>1$. In most biological systems, other effects, such as competition for resources or predation, will tend to limit a population's size. In single species population models, these effects are accounted for phenomenologically by introducing nonlinear terms into the function $f$.
 
@@ -128,15 +128,15 @@ Whilst the simplicity of the Malthusian model allows us to calculate explicit so
 Many models of population dynamics in discrete time were initially developed to study fisheries. Well-studied examples include the Beverton Holt model 
 $$
 N_{t+1}=\frac{rN_t}{1+\frac{N_t}{K}},
-$$ 
+$$ {#eq-noLabel}
 the Hassell model 
 $$
 N_{t+1}=\frac{rN_t}{(1+\frac{N_t}{K})^b},
-$$ 
+$$ {#eq-noLabel}
 and the Ricker model 
 $$
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-$$ 
+$$ {#eq-noLabel}
 where $r, K, n \in \mathbb{R}^+$ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
 
 ### Model development
@@ -144,7 +144,7 @@ where $r, K, n \in \mathbb{R}^+$ are positive parameters. Below we consider the 
 One way to capture a decreased growth rate at high densities, is to assume that the per capita growth rate is an exponentially decreasing function of population density, i.e. 
 $$
 f(N_t)=e^{r(1-\frac{N_t}{K})},
-$$ 
+$$ {#eq-noLabel}
 where $r$ is a growth rate and $K$ a carrying capacity (both positive constants). Hence the governing equation is 
 $$
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
@@ -369,7 +369,7 @@ Hence given some initial population $N_0$, the solution set $\{N_0,N_1,N_2,...,N
 We define $N^*$ to be a fixed point of @eq-generaleqn if and only if 
 $$ 
 N^*=N^*f(N^*)=H(N^*).
-$$ 
+$$ {#eq-noLabel}
 Hence the fixed points can be identified by solving an algebraic equation.
 
 ### Linear stability
@@ -383,30 +383,30 @@ $$ @eq-generaleqn
 transforms upon substitution to 
 $$
 N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t). 
-$$
+$$ {#eq-noLabel}
 
 Taylor expanding the right-hand side yields 
 $$
 N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + h.o.t. .
-$$
+$$ {#eq-noLabel}
 
 Noting that at the fixed point 
 $$
 N^*= H(N^*), 
-$$ 
+$$ {#eq-noLabel}
 cancellation yields 
 $$
 \hat{N}_{t+1} = H'(N^*)\hat{N}_t + h.o.t. 
-$$ 
+$$ {#eq-noLabel}
 Hence considering only small perturbations about the fixed point, the leading order behaviour of the perturbation is governed by 
 $$
 \hat{N}_{t} = (H'(N^*))^t\hat{N}_0.
-$$
+$$ {#eq-noLabel}
 
 Hence the linear stability of the fixed point is governed by the sign and magnitude of the term $H'(N^*)$. If 
 $$
  |H'(N^*)| >1,
-$$ 
+$$ {#eq-noLabel}
 the fixed point is unstable. Otherwise it it stable.
 
 ### Cobwebbing and linear stability
@@ -559,13 +559,13 @@ Let's work through the various concepts introduced above using the Malthusian mo
 The fixed points satisfy 
 $$
 N^*=rN^*.
-$$ 
+$$ {#eq-noLabel}
 As $r>0$ the only solution is $N^*=0$.
 
 In this case 
 $$
 H'(N_t)=r.
-$$ 
+$$ {#eq-noLabel}
 Hence the linear stability of the solution depends on the value of the parameter $r$ For $r>1$ the fixed point $N^*=0$ is monotonically unstable. For $r<1$ the fixed point $N^*=0$ is monotonically unstable. As expected this result is consistent with the simulation results in @fig-plotmalthusian.
 
 For cobweb diagram:
@@ -650,11 +650,11 @@ where $\gamma\in \Re^+$ is the linear growth rate.
 Note that the per capita growth rate is described by the function 
 $$
 f(N_{t})=\frac{\gamma}{1+N_t^2}.
-$$ 
+$$ {#eq-noLabel}
 Hence at large populations the per capita growth rate tends to zero whilst for small populations it tends to $\gamma$. Hence so long as $\gamma>1$ we will have net growth for small populations and net removal for large populations. The net growth rate is given by 
 $$
 H(N_{t})=\frac{\gamma N_t}{1+N_t^2}.
-$$
+$$ {#eq-noLabel}
 
 ### Numerical solution
 
@@ -830,11 +830,11 @@ An app to explore model behaviour.
 The fixed points of @eq-denslimgrowtheqn satisfy the algebraic equation 
 $$
 N^*=\frac{\gamma N^*}{1+{N^*}^2}
-$$ 
+$$ {#eq-noLabel}
 which has solutions 
 $$
 N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
-$$
+$$ {#eq-noLabel}
 
 #### Parameter restrictions for biological validity
 
@@ -845,14 +845,14 @@ If $\gamma<1$, there is only one biologically relevant fixed point. If $\gamma >
 For the given model we compute 
 $$
 H'(N_t)= \frac{\gamma}{1+N_t^2} + \frac{-2 \gamma N_t^2}{(1+N_t^2)^2}.
-$$
+$$ {#eq-noLabel}
 
 #### $N^*=0$
 
 The stability of the fixed point $N^*=0$ is determined by 
 $$
 H'(0)= \gamma.
-$$ 
+$$ {#eq-noLabel}
 Hence if $\gamma <1$ the first fixed point is monotonically stable as $0<H'(0) < 1$.
 
 When $\gamma > 1$ the second fixed point becomes biologically relevant and the first fixed point becomes monotonically unstable.
@@ -870,28 +870,29 @@ Hence if $N^*$ were monotonically unstable,
 
 $$
 H'(\sqrt{\gamma-1}) = \frac{2}{\gamma}-1 >1,
-$$ 
+$$ {#eq-noLabel}
 and 
 $$
 \gamma<1.
-$$ As a necessary condition for the biological relevance of $N^*$ is that $\gamma>1$ we obtain a contradiction. Hence $N^*$, if it is biologically relevant, cannot be monotonically unstable.
+$$ {#eq-noLabel}
+As a necessary condition for the biological relevance of $N^*$ is that $\gamma>1$ we obtain a contradiction. Hence $N^*$, if it is biologically relevant, cannot be monotonically unstable.
 
 Suppose $N^*$ is monotonically stable. Then 
 $$
 0<H'(N^*) <1 
-$$ 
+$$ {#eq-noLabel}
 which upon substitution yields 
 $$
 0<\frac{2}{\gamma}-1  <1. 
-$$ 
+$$ {#eq-noLabel}
 Hence $1<\gamma<2$. Suppose $N^*$ is oscillatory stable. Then 
 $$
 -1<H'(N^*) <0 
-$$ 
+$$ {#eq-noLabel}
 which upon substitution yields 
 $$
 -1<\frac{2}{\gamma}-1  < 0.
-$$ 
+$$ {#eq-noLabel}
 Hence $\gamma>2$. Hence the linear stability of the fixed point $N^*=\sqrt{\gamma-1}$ depends on whether $\gamma$ lies in the range $[0,1]$, $[1,2 ]$ or $[2,\infty]$.
 
 ### Cobweb diagrams
@@ -1245,17 +1246,17 @@ Can analysis of the model help us understand how/why changes in solutions occur?
 The fixed points of the system satisfy 
 $$
 N^*=\frac{\gamma N^*}{1+{N^*}^2} - h N^*.
-$$
+$$ {#eq-noLabel}
 
 Hence the fixed points are 
 $$
 N^*=0
-$$
+$$ {#eq-noLabel}
 
 and 
 $$
 N^*=\sqrt{\frac{\gamma}{1+h}-1}.
-$$
+$$ {#eq-noLabel}
 
 Note that harvesting lowers the population size of the non-zero fixed point (when it exists).
 
@@ -1264,35 +1265,35 @@ Can we deduce a condition that must hold on the parameters $\gamma$ and $h$ in o
 Requiring 
 $$
 N^* >0
-$$
+$$ {#eq-noLabel}
 
 implies 
 $$
 \frac{\gamma}{1+h}-1>0.
-$$
+$$ {#eq-noLabel}
 
 ### Linear stability
 
 The linear stability is determined by 
 $$
 H'(N_t)=\frac{\gamma }{1+{N_t}^2} - \frac{2\gamma N_t^2 }{(1+{N_t}^2)^2} - h.
-$$
+$$ {#eq-noLabel}
 
 At $N^*=0$ we obtain 
 $$
 H'(0)=\gamma-h.
-$$
+$$ {#eq-noLabel}
 
 Hence if $\gamma>1+h$, $N^*=0$ is unstable. Note that this is the condition that determines whether the non-zero fixed point exists or not.
 
 At 
 $$
 N^*=\sqrt{\frac{\gamma}{1+h}-1},
-$$
+$$ {#eq-noLabel}
 
 $$
 H'\left(\sqrt{\frac{\gamma}{1+h}-1}\right)=\frac{\gamma }{1+\frac{\gamma}{1+h}-1} - \frac{2\gamma \frac{\gamma}{1+h}-1 }{(1+\frac{\gamma}{1+h}-1)^2} - h.
-$$
+$$ {#eq-noLabel}
 
 Hence linear stability is a function of two parameters $\gamma$ and $h$.
 
@@ -1339,19 +1340,21 @@ plt.show()
 The contour at $H'(N^*)=1$ can be identified by solving 
 $$
  h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
-$$ yielding $$
- \gamma= 1+h.
+$$ {#eq-noLabel}
+yielding 
 $$
+ \gamma= 1+h.
+$$ {#eq-noLabel}
 
 The contour at $H'(N^*)=-1$ can be represented by 
 $$
  h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
-$$
+$$ {#eq-noLabel}
 
 Solving for $\gamma$ yields 
 $$
 \gamma=\frac{(1+h)^2}{h}.
-$$
+$$ {#eq-noLabel}
 
 In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note that the points in parameter space used to generate the simulation results in @fig-plotdensmodelharvest are $(h,\gamma)=(0.1,5)$ $(h,\gamma)=(1,5)$ and $(h,\gamma)=(3,5)$. Cobweb diagrams in different regions of parameter space are presented in @fig-densharvestingmodelcobweb. The plot in @fig-plotdensmodelharveststab can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to $1$ and then 5?
 
@@ -1485,18 +1488,20 @@ N_{t+\tau}&\neq N_t  \ \ \forall t, \  \ \ \tau<T.
 Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose $\bar{N}$ is a period 2 solution of @eq-genformagain and let $\bar{N}=N_1$. Then 
 $$
 N_{2}=H(\bar{N}).
-$$ 
+$$ {#eq-noLabel}
 
 However, 
 $$
 N_{3}=H(N_2)=H(H(\bar{N}))
-$$ and if $\bar{N}$ is a period 2 solution $N_3=N_1=\bar{N}$. Hence period 2 solutions can be calculated by solving the algebraic equation $$
+$$ {#eq-noLabel}
+and if $\bar{N}$ is a period 2 solution $N_3=N_1=\bar{N}$. Hence period 2 solutions can be calculated by solving the algebraic equation 
+$$
 \bar{N}=H(H(\bar{N})).
-$$ 
+$$ {#eq-noLabel}
 Note that period two solutions are fixed points of the problem 
 $$
 N_{t+2}=H^2(N_t)=g(N_t).
-$$ 
+$$ {#eq-noLabel}
 Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, @fig-densharvestingmodelcobwebp4).
 
 ```{python}
@@ -1575,9 +1580,10 @@ plt.tight_layout()
 plt.show()
 ```
 
-Exercise: identify an equation satisfied by period 2 solutions of the logistic map $$ 
+Exercise: identify an equation satisfied by period 2 solutions of the logistic map 
+$$ 
  N_{t+1}=rN_1(1-N_t).
-$$
+$$ {#eq-noLabel}
 
 ## A note on the modelling of real-world fish stocks
 

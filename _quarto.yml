@@ -36,6 +36,7 @@ format:
   html:
     theme: cosmo
     code-fold: true
+    include-in-header: mathjax.html
   pdf:
     documentclass: scrreprt
     echo: false

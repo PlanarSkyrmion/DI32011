@@ -112,6 +112,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+  MathJax = {
+    tex: {
+      macros: {
+        Re: "\\mathbb{R}"   // or whatever you want
+      }
+    }
+  };
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -343,12 +352,12 @@ P_{t+1}=g(N_t,P_t).
 <h2 data-number="3.2" class="anchored" data-anchor-id="general-techniques-for-analysing-coupled-first-order-difference-equations"><span class="header-section-number">3.2</span> General techniques for analysing coupled first order difference equations</h2>
 <section id="fixed-points" class="level3" data-number="3.2.1">
 <h3 data-number="3.2.1" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">3.2.1</span> Fixed points</h3>
-<p>The fixed points of <a href="#eq-discretetimetwovar" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> <span class="math inline">\((N^*,P^*)\)</span> satisfy <span class="math display">\[
+<p>The fixed points of <a href="#eq-discretetimetwovar" class="quarto-xref">Equation&nbsp;<span>3.19</span></a> <span class="math inline">\((N^*,P^*)\)</span> satisfy <span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 N^*=g(N^*,P^*) \nonumber \\
 P^*=f(N^*,P^*).
 \end{aligned}
-\]</span></p>
+\tag{3.2}\]</span></span></p>
 <!--
 Identify the fixed points of the model
 \begin{aligned}
@@ -368,47 +377,47 @@ Thus the only fixed point is (0,0).
 </section>
 <section id="linear-stability-analysis" class="level3" data-number="3.2.2">
 <h3 data-number="3.2.2" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">3.2.2</span> Linear stability analysis</h3>
-<p>To consider linear stability of a steady state we consider the change of variable <span class="math display">\[
+<p>To consider linear stability of a steady state we consider the change of variable <span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 N_t&amp;=N^*+\hat{N}_{t},   \nonumber\\
 P_t&amp;=P^*+\hat{P}_{t}.  \nonumber
 \end{aligned}
-\]</span> After substitution in <a href="#eq-discretetimetwovar" class="quarto-xref">Equation&nbsp;<span>3.3</span></a> and making Taylor expansions about <span class="math inline">\((N^*,P^*)\)</span> we obtain at leading order</p>
+\tag{3.3}\]</span></span> After substitution in <a href="#eq-discretetimetwovar" class="quarto-xref">Equation&nbsp;<span>3.19</span></a> and making Taylor expansions about <span class="math inline">\((N^*,P^*)\)</span> we obtain at leading order</p>
 <p><span id="eq-discretetimesecondorderdiff"><span class="math display">\[
 \left(\begin{array}{c}
 \hat{N}_{t+1} \\ \hat{P}_{t+1}\end{array}\right) = \left(\begin{array}{rr}
 \frac{\partial f}{\partial N}&amp;\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&amp;\frac{\partial g}{\partial P} \end{array}\right)_{(N^*,P^*)} \left(\begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array}\right).
-\tag{3.2}\]</span></span></p>
-<p>Note the appearance of the Jacobian matrix <span class="math display">\[
+\tag{3.4}\]</span></span></p>
+<p>Note the appearance of the Jacobian matrix <span id="eq-noLabel"><span class="math display">\[
 A= \left(\begin{array}{rr}
 \frac{\partial f}{\partial N}&amp;\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&amp;\frac{\partial g}{\partial P} \end{array}\right)_{(N^*,P^*)} \left(\begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array}\right).
-\]</span></p>
+\tag{3.5}\]</span></span></p>
 </section>
 <section id="solving-the-linearised-problem" class="level3" data-number="3.2.3">
 <h3 data-number="3.2.3" class="anchored" data-anchor-id="solving-the-linearised-problem"><span class="header-section-number">3.2.3</span> Solving the linearised problem</h3>
-<p>Defining <span class="math display">\[
+<p>Defining <span id="eq-noLabel"><span class="math display">\[
 \mathbf{w}_t=\left(\begin{array}{c}\hat{N}_{t} \\ \hat{P}_{t}\end{array}\right),
-\]</span></p>
-<p><span class="math display">\[
+\tag{3.6}\]</span></span></p>
+<p><span id="eq-noLabel"><span class="math display">\[
 \mathbf{w}_{t+1}=A\mathbf{w}_{t}
-\]</span> By solving this linear system we can investigate whether small perturbation about the fixed point grow or decay in magnitude as time evolves and hence determine the linear stability of the fixed point.</p>
-<p>The solution of <a href="#eq-discretetimesecondorderdiff" class="quarto-xref">Equation&nbsp;<span>3.2</span></a> takes the form <span class="math display">\[
+\tag{3.7}\]</span></span> By solving this linear system we can investigate whether small perturbation about the fixed point grow or decay in magnitude as time evolves and hence determine the linear stability of the fixed point.</p>
+<p>The solution of <a href="#eq-discretetimesecondorderdiff" class="quarto-xref">Equation&nbsp;<span>3.4</span></a> takes the form <span id="eq-noLabel"><span class="math display">\[
 \mathbf{w}_t=\sum_{i=1}^2 C_i \lambda_i^t\mathbf{c}_i,
-\]</span> where the <span class="math inline">\(C_i\)</span>’s are constants determined by initial conditions and the <span class="math inline">\(\lambda_i\)</span>’s and <span class="math inline">\(\mathbf{c}_i\)</span>’s are the eigenvalues and eigenvectors of A, respectively. From this form we can see that if the magnitude of all eigenvalues is less than one, i.e. <span class="math display">\[
+\tag{3.8}\]</span></span> where the <span class="math inline">\(C_i\)</span>’s are constants determined by initial conditions and the <span class="math inline">\(\lambda_i\)</span>’s and <span class="math inline">\(\mathbf{c}_i\)</span>’s are the eigenvalues and eigenvectors of A, respectively. From this form we can see that if the magnitude of all eigenvalues is less than one, i.e. <span id="eq-noLabel"><span class="math display">\[
 |\lambda_i|&lt;1, \ \ \ \ \ \forall i,
-\]</span> the fixed point is linearly stable. If at least one of the eigenvalues has <span class="math inline">\(|\lambda_i|&gt;1\)</span> then the fixed point is unstable to linear perturbations.</p>
+\tag{3.9}\]</span></span> the fixed point is linearly stable. If at least one of the eigenvalues has <span class="math inline">\(|\lambda_i|&gt;1\)</span> then the fixed point is unstable to linear perturbations.</p>
 </section>
 <section id="jury-conditions" class="level3" data-number="3.2.4">
 <h3 data-number="3.2.4" class="anchored" data-anchor-id="jury-conditions"><span class="header-section-number">3.2.4</span> Jury conditions</h3>
 <p>In many cases it is not very useful to explicitly compute the eigenvalues of the Jacobian matrix. In such cases we can employ the Jury conditions in order to determine when a fixed point is linearly stable.</p>
 <p>Recall that for a two dimensional matrix, the eigenvalues satisfy the quadratic characteristic equation</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \lambda^2- trA \lambda + detA=0.
-\]</span></p>
+\tag{3.10}\]</span></span></p>
 <p>The stability of the fixed is guaranteed if <span class="math inline">\(|\lambda _i|&lt;1\)</span> <span class="math inline">\(\forall i\)</span>.</p>
-<p>Consider the characteristic equation <span class="math display">\[
+<p>Consider the characteristic equation <span id="eq-noLabel"><span class="math display">\[
 P(\lambda)=\lambda^2 + a \lambda +b=0,
-\]</span> where <span class="math inline">\(a,b \in \Re\)</span>. Note that <span class="math inline">\(a=-tr{A}\)</span> and <span class="math inline">\(b=\det{A}\)</span>.</p>
+\tag{3.11}\]</span></span> where <span class="math inline">\(a,b \in \Re\)</span>. Note that <span class="math inline">\(a=-tr{A}\)</span> and <span class="math inline">\(b=\det{A}\)</span>.</p>
 <p>The Jury conditions state that <span class="math inline">\(|\lambda_i |&lt;1 \forall \ \  i\)</span> if, and only if, * <span class="math inline">\(b&lt;1\)</span>, * <span class="math inline">\(1+a+b&gt;0\)</span>, * *<span class="math inline">\(1-a+b&gt;0\)</span>. See <a href="#fig-juryconditions" class="quarto-xref">Figure&nbsp;<span>3.1</span></a> for schematic diagram.</p>
 <div id="fig-juryconditions" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -423,36 +432,36 @@ Figure&nbsp;3.1: Jury conditions
 </section>
 <section id="proof-of-the-jury-conditions" class="level3" data-number="3.2.5">
 <h3 data-number="3.2.5" class="anchored" data-anchor-id="proof-of-the-jury-conditions"><span class="header-section-number">3.2.5</span> Proof of the Jury conditions</h3>
-<p>The roots of <span class="math inline">\(P(\lambda)\)</span> are <span class="math display">\[
+<p>The roots of <span class="math inline">\(P(\lambda)\)</span> are <span id="eq-noLabel"><span class="math display">\[
 \lambda_{1,2}=\frac{-a \pm \sqrt{a^2-4b}}{2}.
-\]</span></p>
+\tag{3.12}\]</span></span></p>
 </section>
 <section id="complex-roots" class="level3" data-number="3.2.6">
 <h3 data-number="3.2.6" class="anchored" data-anchor-id="complex-roots"><span class="header-section-number">3.2.6</span> Complex roots</h3>
 <p>Suppose <span class="math inline">\(a^2-4b&lt; 0\)</span>. The roots are complex. Since <span class="math inline">\(b\)</span> is equal to the product of the roots, we find that</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 b=\lambda_1\lambda_2 = |\lambda_1|^2 = |\lambda_2^2|.
-\]</span> Hence <span class="math inline">\(\lambda_i&lt;1\)</span> <span class="math inline">\(\forall \ \ i\)</span> if and only if <span class="math inline">\(b&lt;1\)</span>.</p>
-<p>For the other conditions we introduce the identity: <span class="math display">\[
+\tag{3.13}\]</span></span> Hence <span class="math inline">\(\lambda_i&lt;1\)</span> <span class="math inline">\(\forall \ \ i\)</span> if and only if <span class="math inline">\(b&lt;1\)</span>.</p>
+<p>For the other conditions we introduce the identity: <span id="eq-noLabel"><span class="math display">\[
 a^2-4b=(|a|-2)^2 - 4(1+b-|a|).
-\]</span> Therefore, when <span class="math inline">\(a^2-4b&lt;0\)</span>, the inequality requires <span class="math display">\[
+\tag{3.14}\]</span></span> Therefore, when <span class="math inline">\(a^2-4b&lt;0\)</span>, the inequality requires <span id="eq-noLabel"><span class="math display">\[
 (|a|-2)^2 - 4(1+b-|a|)&lt;0.
-\]</span> This can only occur if <span class="math display">\[
+\tag{3.15}\]</span></span> This can only occur if <span id="eq-noLabel"><span class="math display">\[
 1+b-|a| &gt;0 \implies 1+b-a&gt;0 \ \ \textrm{and} \ \  1+b+a&gt;0.
-\]</span></p>
+\tag{3.16}\]</span></span></p>
 </section>
 <section id="real-roots" class="level3" data-number="3.2.7">
 <h3 data-number="3.2.7" class="anchored" data-anchor-id="real-roots"><span class="header-section-number">3.2.7</span> Real roots</h3>
 <p>Suppose <span class="math inline">\(a^2-4b\geq 0\)</span></p>
-<p>The largest magnitude of the roots is <span class="math display">\[
+<p>The largest magnitude of the roots is <span id="eq-noLabel"><span class="math display">\[
 R=\max\{|\lambda_1|,|\lambda_2|\} =  \frac{|a| + \sqrt{a^2-4b}}{2}.
-\]</span> This is an increasing function of <span class="math inline">\(|a|\)</span>.</p>
-<p><span class="math inline">\(R=1\)</span> <span class="math display">\[
+\tag{3.17}\]</span></span> This is an increasing function of <span class="math inline">\(|a|\)</span>.</p>
+<p><span class="math inline">\(R=1\)</span> <span id="eq-noLabel"><span class="math display">\[
 \implies  \frac{|a| + \sqrt{a^2-4b}}{2}=1
 \implies |a|-2=-\sqrt{|a|^2-4b}
 \implies |a|^2-4|a|+4=|a|^2-4b
 \implies |a|=b+1.
-\]</span> Hence <span class="math inline">\(0\leq R &lt; 1\)</span> if and only if <span class="math inline">\(0\leq |a|&lt;1+b\)</span>. Also, since <span class="math inline">\(|\lambda_i|&lt;1 \forall i\)</span> implies that <span class="math inline">\(|\lambda_1\lambda_2|&lt;1\)</span>, it follows that <span class="math inline">\(|b|&lt;1\)</span> must hold.</p>
+\tag{3.18}\]</span></span> Hence <span class="math inline">\(0\leq R &lt; 1\)</span> if and only if <span class="math inline">\(0\leq |a|&lt;1+b\)</span>. Also, since <span class="math inline">\(|\lambda_i|&lt;1 \forall i\)</span> implies that <span class="math inline">\(|\lambda_1\lambda_2|&lt;1\)</span>, it follows that <span class="math inline">\(|b|&lt;1\)</span> must hold.</p>
 <!--
 \begin{figure}
 \centering
@@ -465,17 +474,17 @@ R=\max\{|\lambda_1|,|\lambda_2|\} =  \frac{|a| + \sqrt{a^2-4b}}{2}.
 $$
 A= \left(\begin{array}{cc}
 1 & 0 \\0&r  \end{array}\right).
-$$
+$$ {#eq-noLabel}
 where $r\in\Re^+$.
 Use the Jury conditions to determine whether or not the fixed point is linearly stable.
 The characteristic equation is
 $$
 \lambda^2 -\lambda(1+r) + r=0.
-$$
+$$ {#eq-noLabel}
 Hence in this case $a=-(1+r)$, $b=r$.
 $$
 b<1 \implies r< 1 \implies 
-$$
+$$ {#eq-noLabel}
 -->
 </section>
 </section>
@@ -489,37 +498,37 @@ $$
 N_{t+1}&amp;=R_0N_t f(N_t,P_t), \nonumber \\
 P_{t+1}&amp;=CN_t (1- f(N_t,P_t)). \nonumber
 \end{aligned}
-\tag{3.3}\]</span></span></p>
+\tag{3.19}\]</span></span></p>
 <p>The justification for this form is that at a given time <span class="math inline">\(t\)</span> there are <span class="math inline">\(N_t\)</span> hosts. A total of <span class="math inline">\(N_t f(N_t,P_t)\)</span> escape the parasite and are able to reproduce whilst a total of <span class="math inline">\(N_t(1-f(N_t,P_t))\)</span> do not escape the parasite and lead to parasitic reproduction at the next time step.</p>
-<p>Choosing <span class="math display">\[
+<p>Choosing <span id="eq-noLabel"><span class="math display">\[
 f(N_t,P_t)=e^{-aP_t},
-\]</span> yields the Nicholson Bailey model <span id="eq-nichbail"><span class="math display">\[
+\tag{3.20}\]</span></span> yields the Nicholson Bailey model <span id="eq-nichbail"><span class="math display">\[
 \begin{aligned}
 N_{t+1}=R_0N_t e^{-aP_t}, \nonumber \\
 P_{t+1}=CN_t (1- e^{-aP_t}).
 \end{aligned}
-\tag{3.4}\]</span></span></p>
+\tag{3.21}\]</span></span></p>
 <!--
 Show that in the limit of small parasite numbers the parasite equation can be approximated by
 $$
 P_{t+1}=CaN_t P_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 Also show that has parasite number get very large the parasite equation can be approximated by
 $$
 P_{t+1}=CN_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 
 
 Taylor expanding the exponential yields at leading order
 $$
 P_{t+1}=CaN_t P_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 In the limit of small parasite population the per capita growth rate is proportional to $N_t$. 
 \\
 Taking the limit $P_t\rightarrow \infty$ yields
 $$
 P_{t+1}=CN_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 The population dynamics are approximately independent of parasite population.
 
 -->
@@ -734,85 +743,85 @@ Figure&nbsp;3.3: An app to explore behaviour in the Nicholson Bailey model.
 </section>
 <section id="fixed-points-1" class="level3" data-number="3.3.3">
 <h3 data-number="3.3.3" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">3.3.3</span> Fixed points</h3>
-<p>The fixed points satisfy <span class="math display">\[
+<p>The fixed points satisfy <span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 N^*=R_0N^*e^{-aP^*}, \nonumber \\
 P^*=CN^* (1- e^{-aP^*}).
 \end{aligned}
-\]</span></p>
-<p>The first equation yields <span class="math display">\[
+\tag{3.22}\]</span></span></p>
+<p>The first equation yields <span id="eq-noLabel"><span class="math display">\[
 N^*=0.
-\]</span></p>
-<p>Suppose <span class="math inline">\(N^*\neq 0\)</span> <span class="math display">\[
+\tag{3.23}\]</span></span></p>
+<p>Suppose <span class="math inline">\(N^*\neq 0\)</span> <span id="eq-noLabel"><span class="math display">\[
 1=R_0e^{-aP^*}.
-\]</span></p>
-<p>Hence <span class="math display">\[
+\tag{3.24}\]</span></span></p>
+<p>Hence <span id="eq-noLabel"><span class="math display">\[
 P^*=\frac{1}{a}\ln R_0.
-\]</span></p>
-<p>Consider the second equation. Suppose <span class="math inline">\(N^*=0\)</span>. We obtain <span class="math display">\[
+\tag{3.25}\]</span></span></p>
+<p>Consider the second equation. Suppose <span class="math inline">\(N^*=0\)</span>. We obtain <span id="eq-noLabel"><span class="math display">\[
 P^*=0.
-\]</span> Hence one fixed point is <span class="math inline">\((0,0)\)</span>.</p>
-<p>Suppose <span class="math inline">\(P^*=\frac{1}{a}\ln R_0\)</span>. <span class="math display">\[
+\tag{3.26}\]</span></span> Hence one fixed point is <span class="math inline">\((0,0)\)</span>.</p>
+<p>Suppose <span class="math inline">\(P^*=\frac{1}{a}\ln R_0\)</span>. <span id="eq-noLabel"><span class="math display">\[
 \frac{1}{a}\ln R_0 = CN^*(1-\frac{1}{R_0}).
-\]</span> Hence <span class="math display">\[
+\tag{3.27}\]</span></span> Hence <span id="eq-noLabel"><span class="math display">\[
 N^* = \frac{\frac{1}{a}\ln R_0 }{C(1-\frac{1}{R_0})} = \frac{R_0\ln R_0 }{aC(R_0-1)}.
-\]</span> Hence the second fixed point is <span class="math display">\[
+\tag{3.28}\]</span></span> Hence the second fixed point is <span id="eq-noLabel"><span class="math display">\[
 \left(\frac{R_0\ln R_0 }{aC(R_0-1)},\frac{1}{a} \ln R_0 \right).
-\]</span></p>
-<p>We can verify by substitution that <span class="math display">\[
+\tag{3.29}\]</span></span></p>
+<p>We can verify by substitution that <span id="eq-noLabel"><span class="math display">\[
 \left(\frac{R_0\ln R_0 }{aC(R_0-1)},\frac{1}{a} \ln R_0 \right).
-\]</span> is a fixed point. We can then deduce a condition on the model parameters that must hold in order that the fixed point is biologically relevant.</p>
-<p>To verify by substitution we substitute the proposed solution into the governing equations. Note that <span class="math display">\[
+\tag{3.30}\]</span></span> is a fixed point. We can then deduce a condition on the model parameters that must hold in order that the fixed point is biologically relevant.</p>
+<p>To verify by substitution we substitute the proposed solution into the governing equations. Note that <span id="eq-noLabel"><span class="math display">\[
 e^{-aP^*}=\frac{1}{R_0}.
-\]</span> In this case <span id="eq-nichbail"><span class="math display">\[
+\tag{3.31}\]</span></span> In this case <span id="eq-nichbail"><span class="math display">\[
 \begin{aligned}
 \frac{R_0\ln R_0 }{aC(R_0-1)}=R_0 \frac{R_0\ln R_0 }{aC(R_0-1)}\frac{1}{R_0}, \nonumber \\
 \frac{1}{a} \ln R_0=C\frac{R_0\ln R_0 }{aC(R_0-1)} (1-\frac{1}{R_0}).
 \end{aligned}
-\tag{3.5}\]</span></span></p>
+\tag{3.32}\]</span></span></p>
 <p>Cancellation shows that both equations hold. Hence the fixed point is a valid fixed point. To be biologically relevant we require that both components of the solution are real and positive. In this case this leads to the condition <span class="math inline">\(R_0&gt;1\)</span>}.</p>
 </section>
 <section id="linear-stability" class="level3" data-number="3.3.4">
 <h3 data-number="3.3.4" class="anchored" data-anchor-id="linear-stability"><span class="header-section-number">3.3.4</span> Linear stability</h3>
-<p>The Jacobian matrix is given by <span class="math display">\[
+<p>The Jacobian matrix is given by <span id="eq-noLabel"><span class="math display">\[
 A_{(N_t,P_t)}= \left(\begin{array}{cc}
 R_0e^{-aP_t}&amp;-R_0aN_te^{-aP_t} \\ c(1-e^{-aP_t})&amp;aCN_te^{-aP_t} \end{array}\right).
-\]</span></p>
+\tag{3.33}\]</span></span></p>
 </section>
 <section id="linear-stability-of-the-trivial-fixed-point" class="level3" data-number="3.3.5">
 <h3 data-number="3.3.5" class="anchored" data-anchor-id="linear-stability-of-the-trivial-fixed-point"><span class="header-section-number">3.3.5</span> Linear stability of the trivial fixed point</h3>
-<p>Evaluating at (0,0) yields <span class="math display">\[
+<p>Evaluating at (0,0) yields <span id="eq-noLabel"><span class="math display">\[
 A= \left(\begin{array}{cc}
 R_0 &amp; 0 \\ 0 &amp; 0 \end{array}\right).
-\]</span> Hence the eigenvalues are <span class="math inline">\(R_0\)</span> and 0. If <span class="math inline">\(0&lt;R_0&lt;1\)</span> (0,0) is stable whilst if <span class="math inline">\(R_0&gt;1\)</span> (0,0) is unstable.</p>
+\tag{3.34}\]</span></span> Hence the eigenvalues are <span class="math inline">\(R_0\)</span> and 0. If <span class="math inline">\(0&lt;R_0&lt;1\)</span> (0,0) is stable whilst if <span class="math inline">\(R_0&gt;1\)</span> (0,0) is unstable.</p>
 </section>
 <section id="linear-stability-of-the-nontrivial-fixed-point" class="level3" data-number="3.3.6">
 <h3 data-number="3.3.6" class="anchored" data-anchor-id="linear-stability-of-the-nontrivial-fixed-point"><span class="header-section-number">3.3.6</span> Linear stability of the nontrivial fixed point</h3>
-<p>We can show that the Jacobian matrix evaluated at the nontrivial fixed point can be written as <span class="math display">\[
+<p>We can show that the Jacobian matrix evaluated at the nontrivial fixed point can be written as <span id="eq-noLabel"><span class="math display">\[
 A= \left(\begin{array}{cc}
 1&amp;-\frac{R_0 \ln R_0}{c(R_0-1)} \\ c(1-\frac{1}{R_0})&amp;\frac{\ln R_0}{R_0-1} \end{array}\right) .
-\]</span> and deduce that the eigenvalues of A satisfy the characteristic polynomial <span class="math display">\[
+\tag{3.35}\]</span></span> and deduce that the eigenvalues of A satisfy the characteristic polynomial <span id="eq-noLabel"><span class="math display">\[
 \lambda^2 - \lambda\left(1+\frac{\ln R_0}{R_0-1}\right)+ \frac{R_0\ln(R_0)}{R_0-1}=0.
-\]</span></p>
+\tag{3.36}\]</span></span></p>
 </section>
 <section id="employing-the-jury-conditions" class="level3" data-number="3.3.7">
 <h3 data-number="3.3.7" class="anchored" data-anchor-id="employing-the-jury-conditions"><span class="header-section-number">3.3.7</span> Employing the Jury conditions</h3>
-<p>To proceed with linear stability analysis we employ the Jury conditions. Consider the polynomial <span class="math display">\[
+<p>To proceed with linear stability analysis we employ the Jury conditions. Consider the polynomial <span id="eq-noLabel"><span class="math display">\[
 \lambda^2+a\lambda+b=0,
-\]</span> In our case <span class="math display">\[
+\tag{3.37}\]</span></span> In our case <span id="eq-noLabel"><span class="math display">\[
 a= - (1+\frac{\ln R_0}{R_0-1})
-\]</span> and <span class="math display">\[
+\tag{3.38}\]</span></span> and <span id="eq-noLabel"><span class="math display">\[
 b=\frac{R_0\ln(R_0)}{R_0-1}.
-\]</span></p>
-<p>The third Jury condition (<span class="math inline">\(b&lt;1\)</span>) implies that for linear stability <span class="math display">\[
+\tag{3.39}\]</span></span></p>
+<p>The third Jury condition (<span class="math inline">\(b&lt;1\)</span>) implies that for linear stability <span id="eq-noLabel"><span class="math display">\[
 \ln R_0 &lt; 1-\frac{1}{R_0}.
-\]</span> To demonstrate that this inequality is not true for <span class="math inline">\(R_0&gt;1\)</span>, let <span class="math inline">\(f_1=\ln R_0\)</span> and <span class="math inline">\(f_2=1- 1/R_0\)</span>. When <span class="math inline">\(R_0=1\)</span>, <span class="math inline">\(f_1=f_2=0\)</span>. However, <span class="math display">\[
+\tag{3.40}\]</span></span> To demonstrate that this inequality is not true for <span class="math inline">\(R_0&gt;1\)</span>, let <span class="math inline">\(f_1=\ln R_0\)</span> and <span class="math inline">\(f_2=1- 1/R_0\)</span>. When <span class="math inline">\(R_0=1\)</span>, <span class="math inline">\(f_1=f_2=0\)</span>. However, <span id="eq-noLabel"><span class="math display">\[
 f_1'=\frac{1}{R_0}  \ \ \textrm{and} \ \ f_2'=\frac{1}{R_0^2},
-\]</span> implies <span class="math display">\[
+\tag{3.41}\]</span></span> implies <span id="eq-noLabel"><span class="math display">\[
 f_1'&gt;f_2'  \ \ \forall \ R_0&gt;1.
-\]</span> Hence <span class="math display">\[
+\tag{3.42}\]</span></span> Hence <span id="eq-noLabel"><span class="math display">\[
 \ln R_0 &gt; 1-\frac{1}{R_0}.
-\]</span> Hence the fixed point is unstable if <span class="math inline">\(R_0&gt;1\)</span>.</p>
+\tag{3.43}\]</span></span> Hence the fixed point is unstable if <span class="math inline">\(R_0&gt;1\)</span>.</p>
 </section>
 <section id="symbolic-calculations-in-python" class="level3" data-number="3.3.8">
 <h3 data-number="3.3.8" class="anchored" data-anchor-id="symbolic-calculations-in-python"><span class="header-section-number">3.3.8</span> Symbolic calculations in Python</h3>

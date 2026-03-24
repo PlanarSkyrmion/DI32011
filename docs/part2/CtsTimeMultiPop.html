@@ -107,6 +107,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+  MathJax = {
+    tex: {
+      macros: {
+        Re: "\\mathbb{R}"   // or whatever you want
+      }
+    }
+  };
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -347,18 +356,18 @@ window.Quarto = {
 <section id="steady-states" class="level3" data-number="5.1.1">
 <h3 data-number="5.1.1" class="anchored" data-anchor-id="steady-states"><span class="header-section-number">5.1.1</span> Steady states</h3>
 <p><span class="math inline">\((u^*,v^*)\)</span> is defined to be a steady state of <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> if</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 f(u^*,v^*)=g(u^*,v^*)=0.
-\]</span></p>
+\tag{5.2}\]</span></span></p>
 <p>Hence, by definition, the time derivatives of <span class="math inline">\(u(t)\)</span> and <span class="math inline">\(v(t)\)</span> are both zero at <span class="math inline">\((u^*,v^*)\)</span>. As was the case for single species models, steady states are obtained by solving algebraic equations.</p>
 </section>
 <section id="linear-stability-analysis" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">5.1.2</span> Linear stability analysis</h3>
 <p>Suppose that <span class="math inline">\((u^*,v^*)\)</span> is a steady state of equations <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a>.</p>
 <p>We consider a change of dependent variables such that</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 u(t)=u^*+ \hat{u}(t)  \  \  \textrm{and} \ \ v(t)=v^*+\hat{v}(t),
-\]</span></p>
+\tag{5.3}\]</span></span></p>
 <p>where <span class="math inline">\(\hat{u}(t)\)</span> and <span class="math inline">\(\hat{v}(t)\)</span> are perturbations about the steady state.</p>
 <p>Rewriting equation <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> in the transformed variables yields</p>
 <p><span id="eq-twovariablfegentrans"><span class="math display">\[
@@ -366,42 +375,42 @@ u(t)=u^*+ \hat{u}(t)  \  \  \textrm{and} \ \ v(t)=v^*+\hat{v}(t),
 \frac{d\hat{u}}{dt}&amp;=f(u^*+\hat{u},v^*+\hat{v}),  \nonumber \\
 \frac{d\hat{v}}{dt}&amp;=g(u^*+\hat{u},v^*+\hat{v}).
 \end{aligned}
-\tag{5.2}\]</span></span></p>
+\tag{5.4}\]</span></span></p>
 <p>Making Taylor expansions about <span class="math inline">\((u^*,v^*)\)</span> yields the linearised equations</p>
 <p><span id="eq-twovariablfegenlin"><span class="math display">\[
 \begin{aligned}
 \frac{d\hat{u}}{dt}=\frac{\partial f}{\partial u}_{|(u^*,v^*)} \hat{u} +  \frac{\partial f}{\partial v}_{|(u^*,v^*)}  \hat{v} + h.o.t, \nonumber\\
 \frac{d\hat{v}}{dt}=\frac{\partial g}{\partial u}_{|(u^*,v^*)}  \hat{u} +  \frac{\partial g}{\partial v}_{|(u^*,v^*)}  \hat{v} + h.o.t. \nonumber
 \end{aligned}
-\tag{5.3}\]</span></span></p>
+\tag{5.5}\]</span></span></p>
 <p>Upon making the assumption that the perturbations about the steady state are small, the leading order terms are linear and higher order terms are neglected. Defining</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \mathbf{w}=\left
 (\begin{array}{r}
 \hat{u} \\
 \hat{v}
 \end{array}\right),
-\]</span></p>
+\tag{5.6}\]</span></span></p>
 <p>yields the system of linear ODEs given by</p>
 <p><span id="eq-linearsystem2d"><span class="math display">\[
 \frac{d \mathbf{w}}{dt}= A \mathbf{w},
-\tag{5.4}\]</span></span></p>
+\tag{5.7}\]</span></span></p>
 <p>where the matrix <span class="math inline">\(A\)</span>, known as the Jacobian matrix, takes the form</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 \frac{\partial f}{\partial u}&amp;\frac{\partial f}{\partial v} \\ \frac{\partial g}{\partial u}&amp;\frac{\partial g}{\partial v} \end{array}\right)_{(u^*,v^*)}. \qquad
-\]</span></p>
-<p>The linear system arrived upon in <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> was encountered previously in Differential Equations (MA31002). We summarise the important results here. Seeking a solution of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.4</span></a> of the form</p>
-<p><span class="math display">\[
+\tag{5.8}\]</span></span></p>
+<p>The linear system arrived upon in <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> was encountered previously in Differential Equations (MA31002). We summarise the important results here. Seeking a solution of <a href="#eq-linearsystem2d" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> of the form</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 \mathbf{w}=\mathbf{v}e^{\lambda t}
-\]</span></p>
+\tag{5.9}\]</span></span></p>
 <p>one obtains the characteristic equation</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \lambda^2 -\lambda \mathrm{tr}(A)+\det(A)=0,
-\]</span> which has solutions</p>
-<p><span class="math display">\[
+\tag{5.10}\]</span></span> which has solutions</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 \lambda = \frac{\mathrm{tr}{A}\pm \sqrt{\mathrm{tr}{A}^2-4\det{A}}}{2}.
-\]</span></p>
+\tag{5.11}\]</span></span></p>
 <p>Whilst a complete classification of the linear stability of a steady state can be obtained by explicitly calculating the eigenvalues, in many cases it is sufficient to deduce whether or not a steady state is stable or unstable. This can be achieved by calculating the determinant and trace of the Jacobian matrix (<span class="math inline">\(\det(A)\)</span> and <span class="math inline">\(\mathrm{tr}(A)\)</span>, respectively) and referring to <a href="#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>.</p>
 <div id="fig-tdplane" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -434,19 +443,17 @@ Figure&nbsp;5.1: Stability in the trace detemrinant plane.
 <p>Note that it can be shown rigorously that the linear stability of the nonlinear system is equivalent to that of the linearised system in all cases except when the steady state is a centre. In this case, nonlinear stability analysis is required to determine the stability of the nonlinear system.</p>
 <p>The condition<span class="math inline">\(\det(A)&gt;0\)</span> excludes the case that the eigenvalues are real but have opposite signs (i.e.&nbsp;it cannot be a saddle point).</p>
 <p>The condition <span class="math inline">\(\mathrm{tr}(A)&gt;0\)</span> implies that the real part of both eigenvalues are positive (i.e.&nbsp;the steady state is unstable).</p>
-<p>The condition <span class="math inline">\(\mathrm{tr}(A)^2&lt;4 \det(A)\)</span> implies that the eigenvalue are complex. Hence <span class="math display">\[
+<p>The condition <span class="math inline">\(\mathrm{tr}(A)^2&lt;4 \det(A)\)</span> implies that the eigenvalue are complex. Hence <span id="eq-noLabel"><span class="math display">\[
 \lambda_{\pm}=\mu\pm i\omega \ \ \
-\]</span> and the solution of the system can be written <span class="math display">\[
+\tag{5.12}\]</span></span> and the solution of the system can be written <span id="eq-noLabel"><span class="math display">\[
 e^{\lambda t} = e^{(\mu+i\omega) t} = e^{\mu t}e^{i\omega t}.
-\]</span> Thus the magnitude of perturbation grows but it oscillates about the steady state. Hence the steady state is an unstable spiral.</p>
+\tag{5.13}\]</span></span> Thus the magnitude of perturbation grows but it oscillates about the steady state. Hence the steady state is an unstable spiral.</p>
 </section>
 <section id="nullclines" class="level3" data-number="5.1.3">
 <h3 data-number="5.1.3" class="anchored" data-anchor-id="nullclines"><span class="header-section-number">5.1.3</span> Nullclines</h3>
-<p>Nullclines of the equations <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> are given by the curves <span class="math display">\[
-f(u,v)=0
-\]</span> and <span class="math display">\[
-g(u,v)=0,
-\]</span> respectively. Note that steady states arise at the intersection of nullclines.</p>
+<p>Nullclines of the equations <a href="#eq-twovariablfegen" class="quarto-xref">Equation&nbsp;<span>5.1</span></a> are given by the curves <span id="eq-noLabel"><span class="math display">\[
+f(u,v)=0 \qquad \text{and} \qquad g(u,v)=0,
+\tag{5.14}\]</span></span> respectively. Note that steady states arise at the intersection of nullclines.</p>
 <p>Using the <span class="math inline">\(u\)</span> nullclines we identify domains of the phase plane where <span class="math inline">\(du/dt &gt;0\)</span> and <span class="math inline">\(du/dt &lt;0\)</span>.</p>
 <p>Similarly, using the <span class="math inline">\(v\)</span> nullcline we identify domains of the phase plane where <span class="math inline">\(dv/dt &gt;0\)</span> and <span class="math inline">\(dv/dt &lt;0\)</span>.</p>
 <p>The nullclines can be used to help identify confined sets and hence apply the Poincaire-Bendixson theorem.</p>
@@ -455,44 +462,44 @@ g(u,v)=0,
 <h3 data-number="5.1.4" class="anchored" data-anchor-id="poincaire-bendixson-theorem"><span class="header-section-number">5.1.4</span> Poincaire-Bendixson theorem</h3>
 <p>Suppose that the system of equations <span id="eq-xygenphaseplane"><span class="math display">\[
 \frac{du}{dt}=f(u,v), \ \ \ \ \frac{dv}{dt}=g(u,v)
-\tag{5.5}\]</span></span> possesses a confined set (i.e.&nbsp;a bounded domain in the phase plane upon which the derivative field points into the domain) that contains an unstable node or spiral. Any trajectory cannot leave the confined set, nor can it tend to the unstable steady state. The Poincaire-Bendixson theorem states that as <span class="math inline">\(t\rightarrow \infty\)</span>, the trajectory will tend towards a limit cycle.</p>
+\tag{5.15}\]</span></span> possesses a confined set (i.e.&nbsp;a bounded domain in the phase plane upon which the derivative field points into the domain) that contains an unstable node or spiral. Any trajectory cannot leave the confined set, nor can it tend to the unstable steady state. The Poincaire-Bendixson theorem states that as <span class="math inline">\(t\rightarrow \infty\)</span>, the trajectory will tend towards a limit cycle.</p>
 </section>
 <section id="dulac-criterion" class="level3" data-number="5.1.5">
 <h3 data-number="5.1.5" class="anchored" data-anchor-id="dulac-criterion"><span class="header-section-number">5.1.5</span> Dulac criterion</h3>
-<p>Suppose <span class="math inline">\(D\)</span> is a simply connected region in the plane and that there exists a function <span class="math inline">\(B(x,y)\)</span>, continuously differentiable on <span class="math inline">\(D\)</span>, such that the expression <span class="math display">\[
+<p>Suppose <span class="math inline">\(D\)</span> is a simply connected region in the plane and that there exists a function <span class="math inline">\(B(x,y)\)</span>, continuously differentiable on <span class="math inline">\(D\)</span>, such that the expression <span id="eq-noLabel"><span class="math display">\[
 \frac{\partial }{\partial u} (Bf) + \frac{\partial }{\partial v} (Bg)
-\]</span> is not identically zero and does not change sign in D. Then there are no closed orbits in <span class="math inline">\(D\)</span>.</p>
+\tag{5.16}\]</span></span> is not identically zero and does not change sign in D. Then there are no closed orbits in <span class="math inline">\(D\)</span>.</p>
 </section>
 </section>
 <section id="the-lotka-voltera-model" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="the-lotka-voltera-model"><span class="header-section-number">5.2</span> The Lotka-Voltera model</h2>
-<p>Suppose that <span class="math inline">\(N(t)\)</span> and <span class="math inline">\(P(t)\)</span> represent the prey and predator population densities at time <span class="math inline">\(t\)</span>, respectively. Consider a model of the form <span class="math display">\[
+<p>Suppose that <span class="math inline">\(N(t)\)</span> and <span class="math inline">\(P(t)\)</span> represent the prey and predator population densities at time <span class="math inline">\(t\)</span>, respectively. Consider a model of the form <span id="eq-noLabel"><span class="math display">\[
    \begin{aligned}
    \frac{dN }{dt} &amp;= aN -bNP, \nonumber \\
       \frac{dP }{dt} &amp;= cNP -dP,
 \end{aligned}
-\]</span> where <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> are positive constants.</p>
+\tag{5.17}\]</span></span> where <span class="math inline">\(a\)</span>, <span class="math inline">\(b\)</span>, <span class="math inline">\(c\)</span> and <span class="math inline">\(d\)</span> are positive constants.</p>
 <section id="nondimensionalisation" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="nondimensionalisation"><span class="header-section-number">5.2.1</span> Nondimensionalisation</h3>
-<p>Nondimensionalising with <span class="math display">\[
+<p>Nondimensionalising with <span id="eq-noLabel"><span class="math display">\[
 n=\frac{N}{\tilde{N}}, \ \ \ \ p=\frac{P}{\tilde{P}}  \ \ \textrm{and} \ \ \tau= \frac{t}{\tilde{T}},
-\]</span></p>
-<p>yields, after changing variables, <span class="math display">\[  
+\tag{5.18}\]</span></span></p>
+<p>yields, after changing variables, <span id="eq-noLabel"><span class="math display">\[  
 \begin{aligned}
    \frac{dn }{d\tau} &amp;= \tilde{T}an -b\tilde{T} \tilde{P}np,  \nonumber \\
       \frac{dp }{d\tau} &amp;= c\tilde{N} \tilde{T}np -d\tilde{T}p.
 \end{aligned}
-\]</span> Choosing the dimensional scalings</p>
-<p><span class="math display">\[
+\tag{5.19}\]</span></span> Choosing the dimensional scalings</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 \tilde{T}=1/a, \ \ \ \tilde{P}=a/b  \ \ \ \textrm{and} \ \ \ \tilde{N}=d/c,
-\]</span></p>
+\tag{5.20}\]</span></span></p>
 <p>yields</p>
 <p><span id="eq-lotkavolterranondim"><span class="math display">\[
 \begin{aligned}
 \frac{dn }{d\tau} &amp;= n(1-p) = f(n,p), \nonumber \\
 \frac{dp }{d\tau} &amp;=\alpha p(n-1)  = g(n,p),
 \end{aligned}
-\tag{5.6}\]</span></span></p>
+\tag{5.21}\]</span></span></p>
 <p>where <span class="math inline">\(\alpha=d/a\)</span>. Note that all variables and parameter are without dimensions.</p>
 </section>
 <section id="numerical-solutions" class="level3" data-number="5.2.2">
@@ -559,35 +566,35 @@ Figure&nbsp;5.2: Numerical solution of Lotka-Volterra model
 </section>
 <section id="steady-states-1" class="level3" data-number="5.2.3">
 <h3 data-number="5.2.3" class="anchored" data-anchor-id="steady-states-1"><span class="header-section-number">5.2.3</span> Steady states</h3>
-<p>The steady-states of equation <a href="#eq-lotkavolterranondim" class="quarto-xref">Equation&nbsp;<span>5.6</span></a> are identified by seeking solutions of</p>
-<p><span class="math display">\[
+<p>The steady-states of equation <a href="#eq-lotkavolterranondim" class="quarto-xref">Equation&nbsp;<span>5.21</span></a> are identified by seeking solutions of</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 f(n^*,p^*)=g(n^*,p^*)=0.
-\]</span></p>
+\tag{5.22}\]</span></span></p>
 <p>Hence</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 n^*(1-p^*)= 0 \ \ \ \ \ \alpha p^*(n^*-1).
-\]</span></p>
+\tag{5.23}\]</span></span></p>
 <p>The first of these equations has solutions either</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 n^*=0 \ \ \  \textrm{or} \ \ \  p^* =1.
-\]</span></p>
+\tag{5.24}\]</span></span></p>
 <p>Substituting for <span class="math inline">\(n^*=0\)</span> in the second equation yields <span class="math inline">\(p^*=0\)</span>. Hence one steady state is <span class="math inline">\((0,0)\)</span>. Substituting for <span class="math inline">\(p^*=1\)</span> in the second equation yields <span class="math inline">\(n^*=1\)</span>. Hence a second steady state is (1,1).</p>
 </section>
 <section id="linear-stability" class="level3" data-number="5.2.4">
 <h3 data-number="5.2.4" class="anchored" data-anchor-id="linear-stability"><span class="header-section-number">5.2.4</span> Linear stability</h3>
-<p>The linear stability of the steady states is described by the Jacobian matrix <span class="math display">\[
+<p>The linear stability of the steady states is described by the Jacobian matrix <span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 \frac{\partial f}{\partial n}&amp;\frac{\partial f}{\partial p} \\ \frac{\partial g}{\partial n}&amp;\frac{\partial g}{\partial p} \end{array}\right)_{(n^*,p^*)} = \left(\begin{array}{rr}
 1-p&amp;-n \\ \alpha p &amp;\alpha (n-1) \end{array}\right)_{(n^*,p^*)}
-\]</span></p>
+\tag{5.25}\]</span></span></p>
 <p>Evaluating at (0,0) yields</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr} 1&amp;0 \\ 0 &amp;-\alpha \end{array}\right),
-\]</span></p>
+\tag{5.26}\]</span></span></p>
 <p>Hence the eigenvalues of <span class="math inline">\(A\)</span> are <span class="math inline">\(1\)</span> and <span class="math inline">\(-\alpha\)</span>. As <span class="math inline">\(\alpha&gt;0\)</span> the origin is a saddle. The eigenvectors are <span class="math inline">\([1, 0]\)</span> and <span class="math inline">\([0,1].\)</span></p>
-<p>At (1,1) <span class="math display">\[
+<p>At (1,1) <span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr} 0&amp;-1 \\ \alpha &amp;0 \end{array}\right),
-\]</span></p>
+\tag{5.27}\]</span></span></p>
 <p>and the eigenvalues are <span class="math inline">\(\pm i\sqrt{\alpha}\)</span>. Therefore the steady state at (1,1) is a centre.</p>
 </section>
 <section id="solutions-in-the-phase-plane" class="level3" data-number="5.2.5">
@@ -654,85 +661,85 @@ Figure&nbsp;5.3: Numerical solution of Lotka-Volterra model
 <section id="direct-integration" class="level3" data-number="5.2.6">
 <h3 data-number="5.2.6" class="anchored" data-anchor-id="direct-integration"><span class="header-section-number">5.2.6</span> Direct integration</h3>
 <p>The Lotka-Volterra equations are a special case as they are integrable. Trajectories in the phase plane satisfy the differential equation</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \frac{dp }{d n} = \frac{\alpha p (n-1)}{n(1-p)},
-\]</span></p>
+\tag{5.28}\]</span></span></p>
 <p>Using separation of variables</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \int \frac{1-p}{p} dp  = \alpha  \int \frac{n-1}{n} dn.  
-\]</span></p>
+\tag{5.29}\]</span></span></p>
 <p>Integration yields</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \ln p - p =  \alpha (n-\ln n) + H,
-\]</span></p>
+\tag{5.30}\]</span></span></p>
 <p>where <span class="math inline">\(H\)</span> is a conserved quantity that this is determined by the initial conditions. As the equations take conservative form, the Lotka-Voltera model is said to be structurally unstable, as a small perturbation to the solution at a given point in the oscillatory cycle can result in large changes elsewhere in the cycle. For example, suppose the outermost limit cycle in <a href="#fig-lv-numsol-phplane" class="quarto-xref">Figure&nbsp;<span>5.3</span></a> is perturbed by a small amount at the point (1,0.1) onto its nearest limit cycle. Later in the cycle these two trajectories deviate by a large amount.</p>
 </section>
 </section>
 <section id="competition" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="competition"><span class="header-section-number">5.3</span> Competition</h2>
-<p>In models of competition, two or more species compete for the same resource or in some way inhibit each other’s growth. Letting <span class="math inline">\(N_1(t)\)</span> and <span class="math inline">\(N_2(t)\)</span> represent the population density of two species, we consider the ODEs <span class="math display">\[
+<p>In models of competition, two or more species compete for the same resource or in some way inhibit each other’s growth. Letting <span class="math inline">\(N_1(t)\)</span> and <span class="math inline">\(N_2(t)\)</span> represent the population density of two species, we consider the ODEs <span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 \frac{d N_1}{dt} &amp;= r_1N_1\left(1-\frac{N_1}{K_1}-b_{12}\frac{N_2}{K_1}\right), \nonumber \\
 \frac{d N_2}{dt} &amp;= r_2N_2\left(1-\frac{N_2}{K_2}-b_{21}\frac{N_1}{K_2}\right),
 \end{aligned}
-\]</span> where <span class="math inline">\(r_1\)</span>, <span class="math inline">\(r_2\)</span>, <span class="math inline">\(K_1\)</span> and <span class="math inline">\(K_2\)</span> are positive constants. As before, the <span class="math inline">\(r's\)</span> are linear growth rates and the <span class="math inline">\(K\)</span>’s are carrying capacities. The parameters <span class="math inline">\(b_{12}\)</span> and <span class="math inline">\(b_{21}\)</span> measure the competitive effect of <span class="math inline">\(N_2\)</span> on <span class="math inline">\(N_1\)</span> and <span class="math inline">\(N_1\)</span> on <span class="math inline">\(N_2\)</span>, respectively.</p>
+\tag{5.31}\]</span></span> where <span class="math inline">\(r_1\)</span>, <span class="math inline">\(r_2\)</span>, <span class="math inline">\(K_1\)</span> and <span class="math inline">\(K_2\)</span> are positive constants. As before, the <span class="math inline">\(r's\)</span> are linear growth rates and the <span class="math inline">\(K\)</span>’s are carrying capacities. The parameters <span class="math inline">\(b_{12}\)</span> and <span class="math inline">\(b_{21}\)</span> measure the competitive effect of <span class="math inline">\(N_2\)</span> on <span class="math inline">\(N_1\)</span> and <span class="math inline">\(N_1\)</span> on <span class="math inline">\(N_2\)</span>, respectively.</p>
 <section id="nondimensionalisation-1" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="nondimensionalisation-1"><span class="header-section-number">5.3.1</span> Nondimensionalisation</h3>
 <p>After nondimensionalising using the change of variables</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 n_1=\frac{N_1}{K_1} \ \ n_2=\frac{N_2}{K_2} \ \ \tau=\frac{t}{\frac{1}{r_1}},
-\]</span></p>
+\tag{5.32}\]</span></span></p>
 <p>we obtain the equations</p>
 <p><span id="eq-competitionnondim"><span class="math display">\[
 \begin{aligned}
 \frac{d n_1}{d\tau} &amp;= n_1\left(1- n_1-a_{12}n_2\right) = f(n_1,n_2), \nonumber \\
 \frac{d n_2}{d\tau} &amp;= \rho n_2\left(1-n_2-a_{21}n_1\right) =g(n_1,n_2),
 \end{aligned}
-\tag{5.7}\]</span></span></p>
+\tag{5.33}\]</span></span></p>
 <p>where</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \rho=\frac{r_2}{r_1}, \ \ \ a_{12}=b_{12}\frac{K_2}{K_1}, \ \ \  a_{21}=b_{21}\frac{K_1}{K_2}.
-\]</span></p>
+\tag{5.34}\]</span></span></p>
 </section>
 <section id="steady-states-2" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="steady-states-2"><span class="header-section-number">5.3.2</span> Steady states</h3>
-<p>The steady states of <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> are identified in the usual manner, i.e.&nbsp;by seeking <span class="math inline">\(({n_1}^*,{n_2}^*)\)</span> such that</p>
-<p><span class="math display">\[
+<p>The steady states of <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.33</span></a> are identified in the usual manner, i.e.&nbsp;by seeking <span class="math inline">\(({n_1}^*,{n_2}^*)\)</span> such that</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 f({n_1}^*,{n_2}^*)=g({n_1}^*,{n_2}^*)=0.
-\]</span></p>
-<p>The steady state equations are <span class="math display">\[
+\tag{5.35}\]</span></span></p>
+<p>The steady state equations are <span id="eq-noLabel"><span class="math display">\[
 {n_1}^*\left(1- {n_1}^*-a_{12}{n_2}^*\right)=0 \ \ \ \ {n_2}^*\left(1-{n_2}^*-a_{21}{n_1}^*\right)=0.
-\]</span> The first equation has solution <span class="math display">\[
+\tag{5.36}\]</span></span> The first equation has solution <span id="eq-noLabel"><span class="math display">\[
 n_1^*=0
-\]</span> or <span class="math display">\[
+\tag{5.37}\]</span></span> or <span id="eq-noLabel"><span class="math display">\[
 \left(1- {n_1}^*-a_{12}{n_2}^*\right) \implies n_2=\frac{1}{a_{12}}(1-n_1^*).
-\]</span> Consider <span class="math inline">\(n_1^*=0\)</span>. Substitution in the second equation yields <span class="math display">\[
+\tag{5.38}\]</span></span> Consider <span class="math inline">\(n_1^*=0\)</span>. Substitution in the second equation yields <span id="eq-noLabel"><span class="math display">\[
 {n_2}^*\left(1-{n_2}^*\right)=0.
-\]</span> Hence either <span class="math inline">\(n_2^*=0\)</span> or <span class="math inline">\(n_2^*=1\)</span>. Hence two steady states are <span class="math inline">\((0,0)\)</span> and <span class="math inline">\((0,1).\)</span></p>
+\tag{5.39}\]</span></span> Hence either <span class="math inline">\(n_2^*=0\)</span> or <span class="math inline">\(n_2^*=1\)</span>. Hence two steady states are <span class="math inline">\((0,0)\)</span> and <span class="math inline">\((0,1).\)</span></p>
 <p>Now consider <span class="math inline">\(n_2^*=\frac{1}{a_{12}}(1-n_1^*)\)</span> with <span class="math inline">\(n_1^*\neq0\)</span>.</p>
-<p>Substitution in the second steady state equation yields <span class="math display">\[
+<p>Substitution in the second steady state equation yields <span id="eq-noLabel"><span class="math display">\[
 \frac{1}{a_{12}}(1-n_1^*) \left(1- \frac{1}{a_{12}}(1-n_1^*) -a_{21}{n_1}^*\right)
-\]</span> Hence either <span class="math inline">\(n_1^*=1\)</span> or <span class="math display">\[
+\tag{5.40}\]</span></span> Hence either <span class="math inline">\(n_1^*=1\)</span> or <span id="eq-noLabel"><span class="math display">\[
 \left(1- \frac{1}{a_{12}}(1-n_1^*) -a_{21}{n_1}^*\right)=0 \implies n_1^*=\frac{1-a_{12}}{1-a_{12}a_{21}}.
-\]</span> In the case where <span class="math inline">\(n_1^*=1\)</span>, we find that <span class="math inline">\(n_2^*=0\)</span>. Hence the steady state is (1,0).</p>
-<p>In the case where <span class="math display">\[
+\tag{5.41}\]</span></span> In the case where <span class="math inline">\(n_1^*=1\)</span>, we find that <span class="math inline">\(n_2^*=0\)</span>. Hence the steady state is (1,0).</p>
+<p>In the case where <span id="eq-noLabel"><span class="math display">\[
 n_1^*=\frac{1-a_{12}}{1-a_{12}a_{21}}
-\]</span> we find that <span class="math display">\[
+\tag{5.42}\]</span></span> we find that <span id="eq-noLabel"><span class="math display">\[
 n_2^*=\frac{1-a_{21}}{1-a_{12}a_{21}}
-\]</span> Hence the steady state is <span class="math display">\[
+\tag{5.43}\]</span></span> Hence the steady state is <span id="eq-noLabel"><span class="math display">\[
 \left(\frac{1-a_{12}}{1-a_{12}a_{21}},\frac{1-a_{21}}{1-a_{12}a_{21}}\right).
-\]</span></p>
+\tag{5.44}\]</span></span></p>
 </section>
 <section id="nullclines-1" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="nullclines-1"><span class="header-section-number">5.3.3</span> Nullclines</h3>
-<p>The nullclines for <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.7</span></a> are straight lines given by</p>
-<p><span class="math display">\[
+<p>The nullclines for <a href="#eq-competitionnondim" class="quarto-xref">Equation&nbsp;<span>5.33</span></a> are straight lines given by</p>
+<p><span id="eq-noLabel"><span class="math display">\[
 n_1=0 \ \ \ \ \ n_2=\frac{1-n_1}{a_{12}},
-\]</span></p>
+\tag{5.45}\]</span></span></p>
 <p>and</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 n_2=0 \ \  \ \  \ n_2= 1-a_{21}n_1.
-\]</span></p>
+\tag{5.46}\]</span></span></p>
 <p>Note that the steady states <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((1,0)\)</span> and <span class="math inline">\((0,1)\)</span> are always biologically relevant (i.e.&nbsp;independently of the parameter values for <span class="math inline">\(a_{12}\)</span> and <span class="math inline">\(a_{21}\)</span>).</p>
 <p>However, the coexistence steady state is only biologically relevant if the nullclines intersect in the positive quadrant and this occurs only in certain regions of the model’s parameter space.</p>
 <p>In the cases where <span class="math inline">\(a_{12},a_{21}&lt;1\)</span> and <span class="math inline">\(a_{12},a_{21}&gt;1\)</span> there is a coexistence steady state (i.e.&nbsp;the nullclines intersect in the positive quadrant).</p>
@@ -742,64 +749,64 @@ n_2=0 \ \  \ \  \ n_2= 1-a_{21}n_1.
 <section id="linear-stability-1" class="level3" data-number="5.3.4">
 <h3 data-number="5.3.4" class="anchored" data-anchor-id="linear-stability-1"><span class="header-section-number">5.3.4</span> Linear stability</h3>
 <p>The linear stability of the different steady states is determined by calculating the Jacobian matrix</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 \frac{\partial f}{\partial n_1}&amp;\frac{\partial f}{\partial n_2} \\ \frac{\partial g}{\partial n_1 }&amp;\frac{\partial g}{\partial n_2} \end{array}\right)_{({n_1}^*,{n_2}^*)} = \left(\begin{array}{rr}
 1-2n_1 -a_{12}n_2&amp;-a_{12}n_1 \\ -\rho a_{21}n_2 &amp;\rho(1-2n_2-a_{21}n_1)\end{array}\right)_{({n_1}^*,{n_2}^*)}.
-\]</span></p>
+\tag{5.47}\]</span></span></p>
 <p>At (0,0)</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 1&amp; 0 \\ 0 &amp; \rho\end{array}\right).
-\]</span></p>
+\tag{5.48}\]</span></span></p>
 <p>Hence the eigenvalues of the Jacobian are <span class="math inline">\(1\)</span> and <span class="math inline">\(\rho\)</span>. As <span class="math inline">\(\rho&gt;0\)</span>, the origin is therefore an unstable node (there are two real positive eigenvalues).</p>
 <p>At (1,0)</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 -1&amp; -a_{12} \\ 0 &amp; \rho(1-a_{21})\end{array}\right).
-\]</span></p>
+\tag{5.49}\]</span></span></p>
 <p>The trace and determinant are given by</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \det{A}=\rho  (a_{21}-1)\ \ \ \textrm{and} \ \ \ \mathrm{tr}{A}=-1+\rho(1-a_{21}).
-\]</span></p>
+\tag{5.50}\]</span></span></p>
 <p>Hence if <span class="math inline">\(a_{21}&lt;1\)</span>, <span class="math inline">\(\det{A}&lt;0\)</span> and (1,0) is a saddle point and thus unstable (see <a href="#fig-tdplane" class="quarto-xref">Figure&nbsp;<span>5.1</span></a>).</p>
 <p>If <span class="math inline">\(a_{21}&gt;1\)</span>, <span class="math inline">\(\det{A}&gt;0\)</span> and <span class="math inline">\(\mathrm{tr}{A}&lt;0\)</span>. Hence (1,0) is a stable node.</p>
 <p>Hence the parameter <span class="math inline">\(a_{21}\)</span>, which describes how strongly Population 1 inhibits the growth rate of Population 2, determines whether or not the steady state representing extinction of Population 2 but not Population 1 is stable or not.</p>
 <p>At (0,1)</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 A=\left(\begin{array}{rr}
 1-a_{12}&amp; 0\\  -\rho a_{21} &amp; -\rho \end{array}\right).
-\]</span></p>
+\tag{5.51}\]</span></span></p>
 <p>In this case if <span class="math inline">\(a_{12}&lt;1\)</span>, <span class="math inline">\(\det{A}&lt;0\)</span> and (0,1) is a saddle point. If <span class="math inline">\(a_{12}&gt;1\)</span>, <span class="math inline">\(\det{A}&gt;0\)</span> and <span class="math inline">\(\mathrm{tr}{A}&lt;0\)</span> and (0,1) is a stable node. Hence the parameter <span class="math inline">\(a_{12}\)</span>, which describes how strongly Population 2 inhibits the growth rate of Population 1, determines whether or not the steady state representing extinction of Population 1 but not Population 2 is stable or not.</p>
 <p>At the coexistence steady state, recall the steady state is</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \left(\frac{1-a_{12}}{1-a_{12}a_{21}},\frac{1-a_{21}}{1-a_{12}a_{21}}\right).
-\]</span> Note that this steady state is only biologically relevant in the cases <span class="math inline">\(a_{21}&lt;1, a_{12}&lt;1\)</span> or <span class="math inline">\(a_{21}&gt;1, a_{12}&gt;1\)</span>. Evaluating the Jacobian yields <span class="math display">\[
+\tag{5.52}\]</span></span> Note that this steady state is only biologically relevant in the cases <span class="math inline">\(a_{21}&lt;1, a_{12}&lt;1\)</span> or <span class="math inline">\(a_{21}&gt;1, a_{12}&gt;1\)</span>. Evaluating the Jacobian yields <span id="eq-noLabel"><span class="math display">\[
 A=\frac{1}{1-a_{12}a_{21}}\left(\begin{array}{rr}
 a_{12}-1  &amp; -a_{12}(1-a_{12})\\ -\rho a_{21}(1-a_{21}) &amp;\rho(a_{21}-1)\end{array}\right).
-\]</span></p>
+\tag{5.53}\]</span></span></p>
 <p>The determinant and trace of the Jacobian are given by</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 \det{A}&amp;=\rho\left((a_{12}-1)(a_{21}-1)-a_{12}a_{21}(1-a_{12})(1-a_{21})\right)\frac{1}{(1-a_{12}a_{21})^2}, \nonumber \\
 &amp;= \rho\frac{(a_{12}-1)(a_{21}-1)}{(1-a_{12}a_{21})},
 \end{aligned}
-\]</span></p>
+\tag{5.54}\]</span></span></p>
 <p>and</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \mathrm{tr}{A}=\left(a_{12}-1+\rho(a_{21}-1)\right) \frac{1}{1-a_{12}a_{21}},
-\]</span> respectively.</p>
+\tag{5.55}\]</span></span> respectively.</p>
 <p>Let’s firstly consider the case where <span class="math inline">\(a_{21}&lt;1\)</span> and <span class="math inline">\(a_{21}&lt;1\)</span>. This implies that <span class="math inline">\(a_{21}-1&lt;0\)</span> and <span class="math inline">\(a_{12}-1&lt;0\)</span>, hence evaluating the signs of the different products yields</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \det{A} = \rho(-)(-)(+)&gt;0
-\]</span> and <span class="math display">\[
+\tag{5.56}\]</span></span> and <span id="eq-noLabel"><span class="math display">\[
 \mathrm{tr}{A}= \rho(-) + (-)&lt;0.
-\]</span></p>
+\tag{5.57}\]</span></span></p>
 <p>Therefore the coexistence steady state is a stable node or spiral.</p>
 <p>In the case where <span class="math inline">\(a_{21}&gt;1\)</span> and <span class="math inline">\(a_{12}&gt;1\)</span></p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \det{A} = \rho(+)(+)(-)&lt;0 .
-\]</span></p>
+\tag{5.58}\]</span></span></p>
 <p>Hence the coexistence steady state is a saddle.</p>
 </section>
 <section id="phase-portrait" class="level3" data-number="5.3.5">
@@ -991,34 +998,34 @@ Figure&nbsp;5.5: Numerical solution of the competition model
 </section>
 <section id="symbiosismutualism" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="symbiosismutualism"><span class="header-section-number">5.4</span> Symbiosis/Mutualism</h2>
-<p>When the interactions between two species results in mutually benefit, it is known as mutualism or symbiosis. To study this behaviour, we consider a model of the form <span class="math display">\[
+<p>When the interactions between two species results in mutually benefit, it is known as mutualism or symbiosis. To study this behaviour, we consider a model of the form <span id="eq-noLabel"><span class="math display">\[
 \begin{aligned}
 \frac{d N_1}{dt} &amp;= r_1N_1\left(1-\frac{N_1}{K_1}+b_{12}\frac{N_2}{K_1}\right), \nonumber \\
 \frac{d N_2}{dt} &amp;= r_2N_2\left(1-\frac{N_2}{K_2}+b_{21}\frac{N_1}{K_2}\right).
 \end{aligned}
-\]</span> Note the only difference with the competition model is that the sign of the interaction term has changed. Hence we will not work through all the details as the analysis is the same as before.</p>
+\tag{5.59}\]</span></span> Note the only difference with the competition model is that the sign of the interaction term has changed. Hence we will not work through all the details as the analysis is the same as before.</p>
 <section id="nondimensionalisation-2" class="level3" data-number="5.4.1">
 <h3 data-number="5.4.1" class="anchored" data-anchor-id="nondimensionalisation-2"><span class="header-section-number">5.4.1</span> Nondimensionalisation</h3>
 <p>Using the same nondimensionalisation as the competition model, we obtain the nondimensional equations <span id="eq-mutualismnondim"><span class="math display">\[\begin{aligned}
 \frac{d n_1}{d\tau} &amp;= n_1(1- n_1+a_{12}n_2) = f(n_1,n_2), \nonumber \\
 \frac{d n_2}{d\tau} &amp;= \rho n_2(1-n_2+a_{21}n_1) =g(n_1,n_2).
 \end{aligned}
-\tag{5.8}\]</span></span></p>
+\tag{5.60}\]</span></span></p>
 </section>
 <section id="steady-states-3" class="level3" data-number="5.4.2">
 <h3 data-number="5.4.2" class="anchored" data-anchor-id="steady-states-3"><span class="header-section-number">5.4.2</span> Steady states</h3>
 <p>This model has steady-states <span class="math inline">\((0,0)\)</span>, <span class="math inline">\((1,0)\)</span>,<span class="math inline">\((0,1)\)</span> and<br>
-<span class="math display">\[
+<span id="eq-noLabel"><span class="math display">\[
 \left({n_1}^*,{n_2}^*\right)=\left(\frac{1+a_{12}}{1-a_{12}a_{21}},\frac{1+a_{21}}{1-a_{12}a_{21}}\right).
-\]</span> The coexistence steady state is biological relevant if <span class="math inline">\(a_{12}a_{21}&lt;1\)</span></p>
+\tag{5.61}\]</span></span> The coexistence steady state is biological relevant if <span class="math inline">\(a_{12}a_{21}&lt;1\)</span></p>
 </section>
 <section id="nullclines-2" class="level3" data-number="5.4.3">
 <h3 data-number="5.4.3" class="anchored" data-anchor-id="nullclines-2"><span class="header-section-number">5.4.3</span> Nullclines</h3>
-<p>The <span class="math inline">\(n_1\)</span> nullclines satisfy <span class="math display">\[
+<p>The <span class="math inline">\(n_1\)</span> nullclines satisfy <span id="eq-noLabel"><span class="math display">\[
 n_1=0, \ \ \ n_2=\frac{1}{a_{12}}(n_1-1).
-\]</span> The <span class="math inline">\(n_2\)</span> nullclines satisfy <span class="math display">\[
+\tag{5.62}\]</span></span> The <span class="math inline">\(n_2\)</span> nullclines satisfy <span id="eq-noLabel"><span class="math display">\[
 n_2=0, \ \ \ n_2=1+a_{21}n_1.
-\]</span> Note that both nullclines have a positive slope.</p>
+\tag{5.63}\]</span></span> Note that both nullclines have a positive slope.</p>
 </section>
 <section id="linear-stability-2" class="level3" data-number="5.4.4">
 <h3 data-number="5.4.4" class="anchored" data-anchor-id="linear-stability-2"><span class="header-section-number">5.4.4</span> Linear stability</h3>

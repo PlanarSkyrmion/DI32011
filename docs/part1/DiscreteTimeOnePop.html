@@ -112,6 +112,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script>
+  MathJax = {
+    tex: {
+      macros: {
+        Re: "\\mathbb{R}"   // or whatever you want
+      }
+    }
+  };
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -437,9 +446,9 @@ Figure&nbsp;2.1: A plot of the Malthusian model solution when (a) <span class="m
 </div>
 </div>
 <p>Note, I have included connecting (straight) lines between the points to make the trend clear. However, this is a discrete system and <span class="math inline">\(N_t\)</span> is only evaluated at the natural numbers (points).</p>
-<p><strong>Exercise:</strong> Describe how the behaviour of the Malthusian model changes with <span class="math inline">\(r\)</span>. What are the critical values of <span class="math inline">\(r\)</span> that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in <a href="../introduction/Introduction.html#eq-continousExp" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>? Are the parameters <span class="math inline">\(r\)</span> in the two equations describing the same thing, how do they differ?</p>
+<p><strong>Exercise:</strong> Describe how the behaviour of the Malthusian model changes with <span class="math inline">\(r\)</span>. What are the critical values of <span class="math inline">\(r\)</span> that split the Malthusian model into qualitatively different behaviour? How does this compare with the continous exponential ODE in <a href="../introduction/Introduction.html#eq-continousExp" class="quarto-xref">Equation&nbsp;<span>1.3</span></a>? Are the parameters <span class="math inline">\(r\)</span> in the two equations describing the same thing, how do they differ?</p>
 <p>Qualitative analyses categorise solution behaviours into different cases based on their parameters. The behaviour of the Malthusian model changes at the critical value of <span class="math inline">\(r = 1\)</span> for which <span class="math inline">\(N_t = N_0\)</span> is constant. For <span class="math inline">\(r &gt; 1\)</span> (<span class="math inline">\(r&lt;1\)</span>) the solution is monotonically increasing (decreasing). Similarly the behaviour of the population at large <span class="math inline">\(t\)</span> also changes,</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 \lim_{t\rightarrow\infty}N_t =
 \left\{
 \begin{array}{ll}
@@ -447,25 +456,25 @@ Figure&nbsp;2.1: A plot of the Malthusian model solution when (a) <span class="m
 N_0&amp; r=1,  \\  
 0 &amp; r&lt;1.     
 \end{array} \right.
-\]</span></p>
+\tag{2.3}\]</span></span></p>
 <p>Whilst the simplicity of the Malthusian model allows us to calculate explicit solutions that yield insight into how the processes of birth and death combine to give either net growth or net reduction in population size, an obvious flaw with this model is that it displays unbounded growth for <span class="math inline">\(r&gt;1\)</span>. In most biological systems, other effects, such as competition for resources or predation, will tend to limit a population’s size. In single species population models, these effects are accounted for phenomenologically by introducing nonlinear terms into the function <span class="math inline">\(f\)</span>.</p>
 </section>
 <section id="a-motivating-example-of-a-nonlinear-model---the-ricker-model" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="a-motivating-example-of-a-nonlinear-model---the-ricker-model"><span class="header-section-number">2.3</span> A motivating example of a nonlinear model - The Ricker model</h2>
-<p>Many models of population dynamics in discrete time were initially developed to study fisheries. Well-studied examples include the Beverton Holt model <span class="math display">\[
+<p>Many models of population dynamics in discrete time were initially developed to study fisheries. Well-studied examples include the Beverton Holt model <span id="eq-noLabel"><span class="math display">\[
 N_{t+1}=\frac{rN_t}{1+\frac{N_t}{K}},
-\]</span> the Hassell model <span class="math display">\[
+\tag{2.4}\]</span></span> the Hassell model <span id="eq-noLabel"><span class="math display">\[
 N_{t+1}=\frac{rN_t}{(1+\frac{N_t}{K})^b},
-\]</span> and the Ricker model <span class="math display">\[
+\tag{2.5}\]</span></span> and the Ricker model <span id="eq-noLabel"><span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\]</span> where <span class="math inline">\(r, K, n \in \mathbb{R}^+\)</span> are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
+\tag{2.6}\]</span></span> where <span class="math inline">\(r, K, n \in \mathbb{R}^+\)</span> are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
 <section id="model-development" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="model-development"><span class="header-section-number">2.3.1</span> Model development</h3>
-<p>One way to capture a decreased growth rate at high densities, is to assume that the per capita growth rate is an exponentially decreasing function of population density, i.e.&nbsp; <span class="math display">\[
+<p>One way to capture a decreased growth rate at high densities, is to assume that the per capita growth rate is an exponentially decreasing function of population density, i.e.&nbsp; <span id="eq-noLabel"><span class="math display">\[
 f(N_t)=e^{r(1-\frac{N_t}{K})},
-\]</span> where <span class="math inline">\(r\)</span> is a growth rate and <span class="math inline">\(K\)</span> a carrying capacity (both positive constants). Hence the governing equation is <span id="eq-RickerDefn1"><span class="math display">\[
+\tag{2.7}\]</span></span> where <span class="math inline">\(r\)</span> is a growth rate and <span class="math inline">\(K\)</span> a carrying capacity (both positive constants). Hence the governing equation is <span id="eq-RickerDefn1"><span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\tag{2.3}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
+\tag{2.8}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
 <p>Note that the model is nonlinear and does not have an explicit solution.</p>
 </section>
 <section id="computational-solutions" class="level3" data-number="2.3.2">
@@ -684,39 +693,39 @@ Figure&nbsp;2.3: An app to explore behaviour of the Ricker model.
 <h2 data-number="2.4" class="anchored" data-anchor-id="general-techniques-for-analysing-nonlinear-difference-equations"><span class="header-section-number">2.4</span> General techniques for analysing nonlinear difference equations</h2>
 <p>In this section we develop techniques that will be used to analyse first order, discrete-time models of the form <span id="eq-generaleqn"><span class="math display">\[
 N_{t+1}=N_t f(N_t)=H(N_t).
-\tag{2.4}\]</span></span></p>
+\tag{2.9}\]</span></span></p>
 <section id="computational-solutions-1" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="computational-solutions-1"><span class="header-section-number">2.4.1</span> Computational solutions</h3>
-<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
+<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.9</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
 <p>Hence given some initial population <span class="math inline">\(N_0\)</span>, the solution set <span class="math inline">\(\{N_0,N_1,N_2,...,N_T\}\)</span> is computed up to some end time <span class="math inline">\(T\)</span>. Such an approach provides a numerical solution for a given parameter set and initial condition. However, it does not provide much insight into the general behaviour of model.</p>
 </section>
 <section id="fixed-points" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">2.4.2</span> Fixed points</h3>
-<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> if and only if <span class="math display">\[
+<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.9</span></a> if and only if <span id="eq-noLabel"><span class="math display">\[
 N^*=N^*f(N^*)=H(N^*).
-\]</span> Hence the fixed points can be identified by solving an algebraic equation.</p>
+\tag{2.10}\]</span></span> Hence the fixed points can be identified by solving an algebraic equation.</p>
 </section>
 <section id="linear-stability" class="level3" data-number="2.4.3">
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="linear-stability"><span class="header-section-number">2.4.3</span> Linear stability</h3>
 <p>By linearising about the identified fixed points using a Taylor series expansion, it can be determined whether or not small perturbations around the fixed point grow or decay in subsequent iterations.</p>
 <p>Making a change of dependent variables <span class="math display">\[
 N_t=N^*+\hat{N_t},
-\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> transforms upon substitution to <span class="math display">\[
+\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.9</span></a> transforms upon substitution to <span id="eq-noLabel"><span class="math display">\[
 N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t).
-\]</span></p>
-<p>Taylor expanding the right-hand side yields <span class="math display">\[
+\tag{2.11}\]</span></span></p>
+<p>Taylor expanding the right-hand side yields <span id="eq-noLabel"><span class="math display">\[
 N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + h.o.t. .
-\]</span></p>
-<p>Noting that at the fixed point <span class="math display">\[
+\tag{2.12}\]</span></span></p>
+<p>Noting that at the fixed point <span id="eq-noLabel"><span class="math display">\[
 N^*= H(N^*),
-\]</span> cancellation yields <span class="math display">\[
+\tag{2.13}\]</span></span> cancellation yields <span id="eq-noLabel"><span class="math display">\[
 \hat{N}_{t+1} = H'(N^*)\hat{N}_t + h.o.t.
-\]</span> Hence considering only small perturbations about the fixed point, the leading order behaviour of the perturbation is governed by <span class="math display">\[
+\tag{2.14}\]</span></span> Hence considering only small perturbations about the fixed point, the leading order behaviour of the perturbation is governed by <span id="eq-noLabel"><span class="math display">\[
 \hat{N}_{t} = (H'(N^*))^t\hat{N}_0.
-\]</span></p>
-<p>Hence the linear stability of the fixed point is governed by the sign and magnitude of the term <span class="math inline">\(H'(N^*)\)</span>. If <span class="math display">\[
+\tag{2.15}\]</span></span></p>
+<p>Hence the linear stability of the fixed point is governed by the sign and magnitude of the term <span class="math inline">\(H'(N^*)\)</span>. If <span id="eq-noLabel"><span class="math display">\[
 |H'(N^*)| &gt;1,
-\]</span> the fixed point is unstable. Otherwise it it stable.</p>
+\tag{2.16}\]</span></span> the fixed point is unstable. Otherwise it it stable.</p>
 </section>
 <section id="cobwebbing-and-linear-stability" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="cobwebbing-and-linear-stability"><span class="header-section-number">2.4.4</span> Cobwebbing and linear stability</h3>
@@ -877,12 +886,12 @@ Figure&nbsp;2.4: Generating a cobweb plot.
 <section id="perform-a-qualitative-analysis-on-the-malhusian-model" class="level3" data-number="2.4.6">
 <h3 data-number="2.4.6" class="anchored" data-anchor-id="perform-a-qualitative-analysis-on-the-malhusian-model"><span class="header-section-number">2.4.6</span> Perform a qualitative analysis on the Malhusian model</h3>
 <p>Let’s work through the various concepts introduced above using the Malthusian model (<a href="#eq-MalthusianEqn" class="quarto-xref">Equation&nbsp;<span>2.2</span></a>).</p>
-<p>The fixed points satisfy <span class="math display">\[
+<p>The fixed points satisfy <span id="eq-noLabel"><span class="math display">\[
 N^*=rN^*.
-\]</span> As <span class="math inline">\(r&gt;0\)</span> the only solution is <span class="math inline">\(N^*=0\)</span>.</p>
-<p>In this case <span class="math display">\[
+\tag{2.17}\]</span></span> As <span class="math inline">\(r&gt;0\)</span> the only solution is <span class="math inline">\(N^*=0\)</span>.</p>
+<p>In this case <span id="eq-noLabel"><span class="math display">\[
 H'(N_t)=r.
-\]</span> Hence the linear stability of the solution depends on the value of the parameter <span class="math inline">\(r\)</span> For <span class="math inline">\(r&gt;1\)</span> the fixed point <span class="math inline">\(N^*=0\)</span> is monotonically unstable. For <span class="math inline">\(r&lt;1\)</span> the fixed point <span class="math inline">\(N^*=0\)</span> is monotonically unstable. As expected this result is consistent with the simulation results in <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
+\tag{2.18}\]</span></span> Hence the linear stability of the solution depends on the value of the parameter <span class="math inline">\(r\)</span> For <span class="math inline">\(r&gt;1\)</span> the fixed point <span class="math inline">\(N^*=0\)</span> is monotonically unstable. For <span class="math inline">\(r&lt;1\)</span> the fixed point <span class="math inline">\(N^*=0\)</span> is monotonically unstable. As expected this result is consistent with the simulation results in <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
 <p>For cobweb diagram:</p>
 <ul>
 <li>Sketch axes and label with <span class="math inline">\(N_t\)</span> and <span class="math inline">\(N_{t+1}\)</span>.</li>
@@ -968,14 +977,14 @@ Figure&nbsp;2.5: A cobweb plot of the Malthusian model solution when <span class
 <h2 data-number="2.5" class="anchored" data-anchor-id="a-nonlinear-model-of-population-dynamics-in-discrete-time"><span class="header-section-number">2.5</span> A nonlinear model of population dynamics in discrete time</h2>
 <p>Consider a model of population growth given by <span id="eq-denslimgrowtheqn"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2},
-\tag{2.5}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
+\tag{2.19}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
 <section id="the-per-capita-growth-rate" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="the-per-capita-growth-rate"><span class="header-section-number">2.5.1</span> The per capita growth rate</h3>
-<p>Note that the per capita growth rate is described by the function <span class="math display">\[
+<p>Note that the per capita growth rate is described by the function <span id="eq-noLabel"><span class="math display">\[
 f(N_{t})=\frac{\gamma}{1+N_t^2}.
-\]</span> Hence at large populations the per capita growth rate tends to zero whilst for small populations it tends to <span class="math inline">\(\gamma\)</span>. Hence so long as <span class="math inline">\(\gamma&gt;1\)</span> we will have net growth for small populations and net removal for large populations. The net growth rate is given by <span class="math display">\[
+\tag{2.20}\]</span></span> Hence at large populations the per capita growth rate tends to zero whilst for small populations it tends to <span class="math inline">\(\gamma\)</span>. Hence so long as <span class="math inline">\(\gamma&gt;1\)</span> we will have net growth for small populations and net removal for large populations. The net growth rate is given by <span id="eq-noLabel"><span class="math display">\[
 H(N_{t})=\frac{\gamma N_t}{1+N_t^2}.
-\]</span></p>
+\tag{2.21}\]</span></span></p>
 </section>
 <section id="numerical-solution" class="level3" data-number="2.5.2">
 <h3 data-number="2.5.2" class="anchored" data-anchor-id="numerical-solution"><span class="header-section-number">2.5.2</span> Numerical solution</h3>
@@ -1165,11 +1174,11 @@ Figure&nbsp;2.7: An app to explore model behaviour.
 </section>
 <section id="fixed-points-1" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">2.5.3</span> Fixed points</h3>
-<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> satisfy the algebraic equation <span class="math display">\[
+<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>2.19</span></a> satisfy the algebraic equation <span id="eq-noLabel"><span class="math display">\[
 N^*=\frac{\gamma N^*}{1+{N^*}^2}
-\]</span> which has solutions <span class="math display">\[
+\tag{2.22}\]</span></span> which has solutions <span id="eq-noLabel"><span class="math display">\[
 N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
-\]</span></p>
+\tag{2.23}\]</span></span></p>
 <section id="parameter-restrictions-for-biological-validity" class="level4" data-number="2.5.3.1">
 <h4 data-number="2.5.3.1" class="anchored" data-anchor-id="parameter-restrictions-for-biological-validity"><span class="header-section-number">2.5.3.1</span> Parameter restrictions for biological validity</h4>
 <p>If <span class="math inline">\(\gamma&lt;1\)</span>, there is only one biologically relevant fixed point. If <span class="math inline">\(\gamma &gt;1\)</span> there are two fixed-points, <span class="math inline">\(N^*=0\)</span> and <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span>. Hence the value of the model parameter <span class="math inline">\(\gamma\)</span> qualitatively affects the behaviour and number of solutions.</p>
@@ -1177,14 +1186,14 @@ N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
 </section>
 <section id="linear-stability-analysis" class="level3" data-number="2.5.4">
 <h3 data-number="2.5.4" class="anchored" data-anchor-id="linear-stability-analysis"><span class="header-section-number">2.5.4</span> Linear stability analysis</h3>
-<p>For the given model we compute <span class="math display">\[
+<p>For the given model we compute <span id="eq-noLabel"><span class="math display">\[
 H'(N_t)= \frac{\gamma}{1+N_t^2} + \frac{-2 \gamma N_t^2}{(1+N_t^2)^2}.
-\]</span></p>
+\tag{2.24}\]</span></span></p>
 <section id="n0" class="level4" data-number="2.5.4.1">
 <h4 data-number="2.5.4.1" class="anchored" data-anchor-id="n0"><span class="header-section-number">2.5.4.1</span> <span class="math inline">\(N^*=0\)</span></h4>
-<p>The stability of the fixed point <span class="math inline">\(N^*=0\)</span> is determined by <span class="math display">\[
+<p>The stability of the fixed point <span class="math inline">\(N^*=0\)</span> is determined by <span id="eq-noLabel"><span class="math display">\[
 H'(0)= \gamma.
-\]</span> Hence if <span class="math inline">\(\gamma &lt;1\)</span> the first fixed point is monotonically stable as <span class="math inline">\(0&lt;H'(0) &lt; 1\)</span>.</p>
+\tag{2.25}\]</span></span> Hence if <span class="math inline">\(\gamma &lt;1\)</span> the first fixed point is monotonically stable as <span class="math inline">\(0&lt;H'(0) &lt; 1\)</span>.</p>
 <p>When <span class="math inline">\(\gamma &gt; 1\)</span> the second fixed point becomes biologically relevant and the first fixed point becomes monotonically unstable.</p>
 </section>
 <section id="nsqrtgamma-1" class="level4" data-number="2.5.4.2">
@@ -1195,20 +1204,20 @@ H'(\sqrt{\gamma-1})&amp;= \frac{\gamma}{1+\gamma-1} + \frac{-2 \gamma (\gamma-1)
 &amp;= \frac{2}{\gamma}-1.
 \end{align}\]</span></p>
 <p>Hence if <span class="math inline">\(N^*\)</span> were monotonically unstable,</p>
-<p><span class="math display">\[
+<p><span id="eq-noLabel"><span class="math display">\[
 H'(\sqrt{\gamma-1}) = \frac{2}{\gamma}-1 &gt;1,
-\]</span> and <span class="math display">\[
+\tag{2.26}\]</span></span> and <span id="eq-noLabel"><span class="math display">\[
 \gamma&lt;1.
-\]</span> As a necessary condition for the biological relevance of <span class="math inline">\(N^*\)</span> is that <span class="math inline">\(\gamma&gt;1\)</span> we obtain a contradiction. Hence <span class="math inline">\(N^*\)</span>, if it is biologically relevant, cannot be monotonically unstable.</p>
-<p>Suppose <span class="math inline">\(N^*\)</span> is monotonically stable. Then <span class="math display">\[
+\tag{2.27}\]</span></span> As a necessary condition for the biological relevance of <span class="math inline">\(N^*\)</span> is that <span class="math inline">\(\gamma&gt;1\)</span> we obtain a contradiction. Hence <span class="math inline">\(N^*\)</span>, if it is biologically relevant, cannot be monotonically unstable.</p>
+<p>Suppose <span class="math inline">\(N^*\)</span> is monotonically stable. Then <span id="eq-noLabel"><span class="math display">\[
 0&lt;H'(N^*) &lt;1
-\]</span> which upon substitution yields <span class="math display">\[
+\tag{2.28}\]</span></span> which upon substitution yields <span id="eq-noLabel"><span class="math display">\[
 0&lt;\frac{2}{\gamma}-1  &lt;1.
-\]</span> Hence <span class="math inline">\(1&lt;\gamma&lt;2\)</span>. Suppose <span class="math inline">\(N^*\)</span> is oscillatory stable. Then <span class="math display">\[
+\tag{2.29}\]</span></span> Hence <span class="math inline">\(1&lt;\gamma&lt;2\)</span>. Suppose <span class="math inline">\(N^*\)</span> is oscillatory stable. Then <span id="eq-noLabel"><span class="math display">\[
 -1&lt;H'(N^*) &lt;0
-\]</span> which upon substitution yields <span class="math display">\[
+\tag{2.30}\]</span></span> which upon substitution yields <span id="eq-noLabel"><span class="math display">\[
 -1&lt;\frac{2}{\gamma}-1  &lt; 0.
-\]</span> Hence <span class="math inline">\(\gamma&gt;2\)</span>. Hence the linear stability of the fixed point <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span> depends on whether <span class="math inline">\(\gamma\)</span> lies in the range <span class="math inline">\([0,1]\)</span>, <span class="math inline">\([1,2 ]\)</span> or <span class="math inline">\([2,\infty]\)</span>.</p>
+\tag{2.31}\]</span></span> Hence <span class="math inline">\(\gamma&gt;2\)</span>. Hence the linear stability of the fixed point <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span> depends on whether <span class="math inline">\(\gamma\)</span> lies in the range <span class="math inline">\([0,1]\)</span>, <span class="math inline">\([1,2 ]\)</span> or <span class="math inline">\([2,\infty]\)</span>.</p>
 </section>
 </section>
 <section id="cobweb-diagrams" class="level3" data-number="2.5.5">
@@ -1403,7 +1412,7 @@ The derivative evaluated at FP 2 is:
 <h2 data-number="2.6" class="anchored" data-anchor-id="an-application---how-much-harvesting-can-a-population-sustain"><span class="header-section-number">2.6</span> An application - how much harvesting can a population sustain?</h2>
 <p>Models of population dynamics can be used to study how interventions will affect population dynamics. Extending from the model developed in the previous example, a valid question might be what is the maximal rate of harvesting a fish stock can sustain without becoming extinct? ### Including a harvesting term Introducing a harvesting term at per capita harvesting rate <span class="math inline">\(h\)</span>, the governing model equation becomes <span id="eq-harvestingmodel"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2} - h N_t,
-\tag{2.6}\]</span></span></p>
+\tag{2.32}\]</span></span></p>
 <p>and the questions we want to ask are: (i) does the introduction of harvesting change the dynamics of the system?; and (ii) what rate of harvesting such a population could withstand?</p>
 <section id="direct-simulation" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="direct-simulation"><span class="header-section-number">2.6.1</span> Direct simulation</h3>
@@ -1599,43 +1608,43 @@ Figure&nbsp;2.11: An app to explore behaviour in the harvesting model.
 </section>
 <section id="fixed-points-2" class="level3" data-number="2.6.2">
 <h3 data-number="2.6.2" class="anchored" data-anchor-id="fixed-points-2"><span class="header-section-number">2.6.2</span> Fixed points</h3>
-<p>The fixed points of the system satisfy <span class="math display">\[
+<p>The fixed points of the system satisfy <span id="eq-noLabel"><span class="math display">\[
 N^*=\frac{\gamma N^*}{1+{N^*}^2} - h N^*.
-\]</span></p>
-<p>Hence the fixed points are <span class="math display">\[
+\tag{2.33}\]</span></span></p>
+<p>Hence the fixed points are <span id="eq-noLabel"><span class="math display">\[
 N^*=0
-\]</span></p>
-<p>and <span class="math display">\[
+\tag{2.34}\]</span></span></p>
+<p>and <span id="eq-noLabel"><span class="math display">\[
 N^*=\sqrt{\frac{\gamma}{1+h}-1}.
-\]</span></p>
+\tag{2.35}\]</span></span></p>
 <p>Note that harvesting lowers the population size of the non-zero fixed point (when it exists).</p>
 <p>Can we deduce a condition that must hold on the parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span> in order that there is a non trivial biologically relevant fixed point?</p>
-<p>Requiring <span class="math display">\[
+<p>Requiring <span id="eq-noLabel"><span class="math display">\[
 N^* &gt;0
-\]</span></p>
-<p>implies <span class="math display">\[
+\tag{2.36}\]</span></span></p>
+<p>implies <span id="eq-noLabel"><span class="math display">\[
 \frac{\gamma}{1+h}-1&gt;0.
-\]</span></p>
+\tag{2.37}\]</span></span></p>
 </section>
 <section id="linear-stability-1" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="linear-stability-1"><span class="header-section-number">2.6.3</span> Linear stability</h3>
-<p>The linear stability is determined by <span class="math display">\[
+<p>The linear stability is determined by <span id="eq-noLabel"><span class="math display">\[
 H'(N_t)=\frac{\gamma }{1+{N_t}^2} - \frac{2\gamma N_t^2 }{(1+{N_t}^2)^2} - h.
-\]</span></p>
-<p>At <span class="math inline">\(N^*=0\)</span> we obtain <span class="math display">\[
+\tag{2.38}\]</span></span></p>
+<p>At <span class="math inline">\(N^*=0\)</span> we obtain <span id="eq-noLabel"><span class="math display">\[
 H'(0)=\gamma-h.
-\]</span></p>
+\tag{2.39}\]</span></span></p>
 <p>Hence if <span class="math inline">\(\gamma&gt;1+h\)</span>, <span class="math inline">\(N^*=0\)</span> is unstable. Note that this is the condition that determines whether the non-zero fixed point exists or not.</p>
-<p>At <span class="math display">\[
+<p>At <span id="eq-noLabel"><span class="math display">\[
 N^*=\sqrt{\frac{\gamma}{1+h}-1},
-\]</span></p>
-<p><span class="math display">\[
+\tag{2.40}\]</span></span></p>
+<p><span id="eq-noLabel"><span class="math display">\[
 H'\left(\sqrt{\frac{\gamma}{1+h}-1}\right)=\frac{\gamma }{1+\frac{\gamma}{1+h}-1} - \frac{2\gamma \frac{\gamma}{1+h}-1 }{(1+\frac{\gamma}{1+h}-1)^2} - h.
-\]</span></p>
+\tag{2.41}\]</span></span></p>
 <p>Hence linear stability is a function of two parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span>.</p>
 <p>We can show that <span id="eq-arvestingH_prime"><span class="math display">\[
 H'(N^*) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1,
-\tag{2.7}\]</span></span></p>
+\tag{2.42}\]</span></span></p>
 <p>and hence that when <span class="math inline">\(h=0\)</span> we retrieve the stability condition from the previous model.</p>
 <div id="cell-fig-plotdensmodelharveststab" class="cell" data-execution_count="10">
 <details class="code-fold">
@@ -1683,17 +1692,17 @@ Figure&nbsp;2.12: Stability regions for the harvesting model.
 </section>
 <section id="stability-boundaries-in-the-hgamma-plane" class="level3" data-number="2.6.4">
 <h3 data-number="2.6.4" class="anchored" data-anchor-id="stability-boundaries-in-the-hgamma-plane"><span class="header-section-number">2.6.4</span> Stability boundaries in the <span class="math inline">\(h\gamma\)</span> plane</h3>
-<p>The contour at <span class="math inline">\(H'(N^*)=1\)</span> can be identified by solving <span class="math display">\[
+<p>The contour at <span class="math inline">\(H'(N^*)=1\)</span> can be identified by solving <span id="eq-noLabel"><span class="math display">\[
 h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
-\]</span> yielding <span class="math display">\[
+\tag{2.43}\]</span></span> yielding <span id="eq-noLabel"><span class="math display">\[
 \gamma= 1+h.
-\]</span></p>
-<p>The contour at <span class="math inline">\(H'(N^*)=-1\)</span> can be represented by <span class="math display">\[
+\tag{2.44}\]</span></span></p>
+<p>The contour at <span class="math inline">\(H'(N^*)=-1\)</span> can be represented by <span id="eq-noLabel"><span class="math display">\[
 h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
-\]</span></p>
-<p>Solving for <span class="math inline">\(\gamma\)</span> yields <span class="math display">\[
+\tag{2.45}\]</span></span></p>
+<p>Solving for <span class="math inline">\(\gamma\)</span> yields <span id="eq-noLabel"><span class="math display">\[
 \gamma=\frac{(1+h)^2}{h}.
-\]</span></p>
+\tag{2.46}\]</span></span></p>
 <p>In <a href="#fig-plotdensmodelharveststab" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> we plot the contours of the hypersurface <span class="math inline">\(H'(N^*)\)</span> at the critical values of <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> and 1. Note that the points in parameter space used to generate the simulation results in <a href="#fig-plotdensmodelharvest" class="quarto-xref">Figure&nbsp;<span>2.10</span></a> are <span class="math inline">\((h,\gamma)=(0.1,5)\)</span> <span class="math inline">\((h,\gamma)=(1,5)\)</span> and <span class="math inline">\((h,\gamma)=(3,5)\)</span>. Cobweb diagrams in different regions of parameter space are presented in <a href="#fig-densharvestingmodelcobweb" class="quarto-xref">Figure&nbsp;<span>2.13</span></a>. The plot in <a href="#fig-plotdensmodelharveststab" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to <span class="math inline">\(1\)</span> and then 5?</p>
 <div id="cell-fig-densharvestingmodelcobweb" class="cell" data-execution_count="11">
 <details class="code-fold">
@@ -1833,21 +1842,21 @@ The derivative evaluated at FP 2 is:
 <p>Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where <span class="math inline">\(H'(N^*)&lt;-1\)</span>, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions.<br>
 ### Defining a periodic solution Consider the general form <span id="eq-genformagain"><span class="math display">\[
 N_{t+1}=H(N_t)
-\tag{2.8}\]</span></span></p>
-<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.8</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[\begin{align}
+\tag{2.47}\]</span></span></p>
+<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.47</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[\begin{align}
 N_{t+T}&amp;=N_t \ \  \forall t,
 N_{t+\tau}&amp;\neq N_t  \ \ \forall t, \  \ \ \tau&lt;T.
 \end{align}\]</span></p>
-<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.8</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span class="math display">\[
+<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.47</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span id="eq-noLabel"><span class="math display">\[
 N_{2}=H(\bar{N}).
-\]</span></p>
-<p>However, <span class="math display">\[
+\tag{2.48}\]</span></span></p>
+<p>However, <span id="eq-noLabel"><span class="math display">\[
 N_{3}=H(N_2)=H(H(\bar{N}))
-\]</span> and if <span class="math inline">\(\bar{N}\)</span> is a period 2 solution <span class="math inline">\(N_3=N_1=\bar{N}\)</span>. Hence period 2 solutions can be calculated by solving the algebraic equation <span class="math display">\[
+\tag{2.49}\]</span></span> and if <span class="math inline">\(\bar{N}\)</span> is a period 2 solution <span class="math inline">\(N_3=N_1=\bar{N}\)</span>. Hence period 2 solutions can be calculated by solving the algebraic equation <span id="eq-noLabel"><span class="math display">\[
 \bar{N}=H(H(\bar{N})).
-\]</span> Note that period two solutions are fixed points of the problem <span class="math display">\[
+\tag{2.50}\]</span></span> Note that period two solutions are fixed points of the problem <span id="eq-noLabel"><span class="math display">\[
 N_{t+2}=H^2(N_t)=g(N_t).
-\]</span> Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.14</span></a>).</p>
+\tag{2.51}\]</span></span> Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.14</span></a>).</p>
 <div id="cell-fig-densharvestingmodelcobwebp4" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1936,9 +1945,9 @@ Figure&nbsp;2.14: Transition form period 2 to period 4 solutions in the harvesti
 </div>
 </div>
 </div>
-<p>Exercise: identify an equation satisfied by period 2 solutions of the logistic map <span class="math display">\[
+<p>Exercise: identify an equation satisfied by period 2 solutions of the logistic map <span id="eq-noLabel"><span class="math display">\[
 N_{t+1}=rN_1(1-N_t).
-\]</span></p>
+\tag{2.52}\]</span></span></p>
 </section>
 <section id="a-note-on-the-modelling-of-real-world-fish-stocks" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="a-note-on-the-modelling-of-real-world-fish-stocks"><span class="header-section-number">2.8</span> A note on the modelling of real-world fish stocks</h2>

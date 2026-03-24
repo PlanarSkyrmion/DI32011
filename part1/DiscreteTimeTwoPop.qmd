@@ -37,7 +37,7 @@ $$
 N^*=g(N^*,P^*) \nonumber \\
 P^*=f(N^*,P^*).
 \end{aligned}
-$$
+$$ {#eq-noLabel}
 
 <!--
 Identify the fixed points of the model
@@ -63,7 +63,7 @@ $$
 N_t&=N^*+\hat{N}_{t},   \nonumber\\
 P_t&=P^*+\hat{P}_{t}.  \nonumber
 \end{aligned}
-$$
+$$ {#eq-noLabel}
 After substitution in @eq-discretetimetwovar and making Taylor expansions about $(N^*,P^*)$ we obtain at leading order
 
 $$
@@ -76,29 +76,29 @@ Note the appearance of the Jacobian matrix
 $$
 A= \left(\begin{array}{rr}
 \frac{\partial f}{\partial N}&\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&\frac{\partial g}{\partial P} \end{array}\right)_{(N^*,P^*)} \left(\begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array}\right).
-$$
+$$ {#eq-noLabel}
 
 
 ### Solving the linearised problem 
 Defining
 $$
 \mathbf{w}_t=\left(\begin{array}{c}\hat{N}_{t} \\ \hat{P}_{t}\end{array}\right), 
-$$
+$$ {#eq-noLabel}
 
 $$
 \mathbf{w}_{t+1}=A\mathbf{w}_{t}
-$$
+$$ {#eq-noLabel}
 By solving this linear system we can investigate whether small perturbation about the fixed point grow or decay in magnitude as time evolves and hence determine the linear stability of the fixed point.
 
  
 The solution of @eq-discretetimesecondorderdiff takes the form
 $$
 \mathbf{w}_t=\sum_{i=1}^2 C_i \lambda_i^t\mathbf{c}_i,
-$$
+$$ {#eq-noLabel}
 where  the $C_i$'s are constants determined by initial conditions and the $\lambda_i$'s and $\mathbf{c}_i$'s are the eigenvalues and eigenvectors of A, respectively. From this form we can see that if the magnitude of all eigenvalues is less than one, i.e.
 $$
 |\lambda_i|<1, \ \ \ \ \ \forall i,
-$$
+$$ {#eq-noLabel}
 the fixed point is linearly stable. If at least one of the eigenvalues has $|\lambda_i|>1$ then the fixed point is unstable to linear perturbations.
 
 
@@ -113,14 +113,14 @@ Recall that for a two dimensional matrix, the eigenvalues satisfy the quadratic 
 
 $$
 \lambda^2- trA \lambda + detA=0.
-$$
+$$ {#eq-noLabel}
 
 The stability of the fixed is guaranteed if $|\lambda _i|<1$ $\forall i$.
 
 Consider the characteristic equation
 $$
 P(\lambda)=\lambda^2 + a \lambda +b=0,
-$$
+$$ {#eq-noLabel}
 where $a,b \in \Re$. Note that $a=-tr{A}$ and $b=\det{A}$.
 
 The Jury conditions state that  $|\lambda_i |<1 \forall \ \  i$ if, and only if,
@@ -138,7 +138,7 @@ See @fig-juryconditions for schematic diagram.
 The roots of $P(\lambda)$ are
 $$
 \lambda_{1,2}=\frac{-a \pm \sqrt{a^2-4b}}{2}.
-$$
+$$ {#eq-noLabel}
 
 ### Complex roots 
 
@@ -147,7 +147,7 @@ The roots are complex. Since $b$ is equal to the product of the roots, we find t
 
 $$
 b=\lambda_1\lambda_2 = |\lambda_1|^2 = |\lambda_2^2|.
-$$
+$$ {#eq-noLabel}
 Hence $\lambda_i<1$ $\forall \ \ i$ if and only if $b<1$.
 
 
@@ -155,15 +155,15 @@ Hence $\lambda_i<1$ $\forall \ \ i$ if and only if $b<1$.
 For the other conditions we introduce the identity:
 $$
 a^2-4b=(|a|-2)^2 - 4(1+b-|a|).
-$$
+$$ {#eq-noLabel}
 Therefore, when $a^2-4b<0$, the inequality requires
 $$
 (|a|-2)^2 - 4(1+b-|a|)<0.
-$$
+$$ {#eq-noLabel}
 This can only occur if
 $$
 1+b-|a| >0 \implies 1+b-a>0 \ \ \textrm{and} \ \  1+b+a>0.
-$$
+$$ {#eq-noLabel}
 
 
 ###  Real roots 
@@ -173,7 +173,7 @@ The largest magnitude of the roots
 is
 $$
 R=\max\{|\lambda_1|,|\lambda_2|\} =  \frac{|a| + \sqrt{a^2-4b}}{2}.
-$$
+$$ {#eq-noLabel}
 This is an increasing function of $|a|$. 
 
 $R=1$
@@ -182,7 +182,7 @@ $$
 \implies |a|-2=-\sqrt{|a|^2-4b}
 \implies |a|^2-4|a|+4=|a|^2-4b 
 \implies |a|=b+1.
-$$
+$$ {#eq-noLabel}
 Hence $0\leq R < 1$ if and only if $0\leq |a|<1+b$. Also, since $|\lambda_i|<1 \forall i$ implies that $|\lambda_1\lambda_2|<1$, it follows that $|b|<1$ must hold.
 
 
@@ -199,17 +199,17 @@ Hence $0\leq R < 1$ if and only if $0\leq |a|<1+b$. Also, since $|\lambda_i|<1 \
 $$
 A= \left(\begin{array}{cc}
 1 & 0 \\0&r  \end{array}\right).
-$$
+$$ {#eq-noLabel}
 where $r\in\Re^+$.
 Use the Jury conditions to determine whether or not the fixed point is linearly stable.
 The characteristic equation is
 $$
 \lambda^2 -\lambda(1+r) + r=0.
-$$
+$$ {#eq-noLabel}
 Hence in this case $a=-(1+r)$, $b=r$.
 $$
 b<1 \implies r< 1 \implies 
-$$
+$$ {#eq-noLabel}
 -->
 
 ## Host Parasitoid infection
@@ -232,7 +232,7 @@ The justification for this form is that at a given time $t$ there are $N_t$ host
 Choosing 
 $$
 f(N_t,P_t)=e^{-aP_t},
-$$
+$$ {#eq-noLabel}
 yields the Nicholson Bailey model
 $$
 \begin{aligned}
@@ -246,23 +246,23 @@ $$ {#eq-nichbail}
 Show that in the limit of small parasite numbers the parasite equation can be approximated by
 $$
 P_{t+1}=CaN_t P_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 Also show that has parasite number get very large the parasite equation can be approximated by
 $$
 P_{t+1}=CN_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 
 
 Taylor expanding the exponential yields at leading order
 $$
 P_{t+1}=CaN_t P_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 In the limit of small parasite population the per capita growth rate is proportional to $N_t$. 
 \\
 Taking the limit $P_t\rightarrow \infty$ yields
 $$
 P_{t+1}=CN_t. %(1- e^{-aP_t}). 
-$$
+$$ {#eq-noLabel}
 The population dynamics are approximately independent of parasite population.
 
 -->
@@ -467,48 +467,48 @@ $$
 N^*=R_0N^*e^{-aP^*}, \nonumber \\
 P^*=CN^* (1- e^{-aP^*}). 
 \end{aligned}
-$$
+$$ {#eq-noLabel}
 
 The first equation yields
 $$
 N^*=0.
-$$
+$$ {#eq-noLabel}
 
 Suppose $N^*\neq 0$
 $$
 1=R_0e^{-aP^*}.
-$$
+$$ {#eq-noLabel}
 
 Hence
 $$
 P^*=\frac{1}{a}\ln R_0.
-$$
+$$ {#eq-noLabel}
 
 Consider the second equation.
 Suppose $N^*=0$.
 We obtain
 $$
 P^*=0. 
-$$
+$$ {#eq-noLabel}
 Hence one fixed point is $(0,0)$.
 
 Suppose $P^*=\frac{1}{a}\ln R_0$.
 $$
 \frac{1}{a}\ln R_0 = CN^*(1-\frac{1}{R_0}).
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 N^* = \frac{\frac{1}{a}\ln R_0 }{C(1-\frac{1}{R_0})} = \frac{R_0\ln R_0 }{aC(R_0-1)}.
-$$
+$$ {#eq-noLabel}
 Hence the second fixed point is
 $$
 \left(\frac{R_0\ln R_0 }{aC(R_0-1)},\frac{1}{a} \ln R_0 \right).
-$$
+$$ {#eq-noLabel}
 
 We can verify by substitution that 
 $$
 \left(\frac{R_0\ln R_0 }{aC(R_0-1)},\frac{1}{a} \ln R_0 \right).
-$$
+$$ {#eq-noLabel}
 is a fixed point. We can then deduce a condition on the model parameters that must hold in order that the fixed point is biologically relevant.
 
 
@@ -516,7 +516,7 @@ To verify by substitution we substitute the proposed solution into the governing
 Note that
 $$
 e^{-aP^*}=\frac{1}{R_0}.
-$$
+$$ {#eq-noLabel}
 In this case
 $$
 \begin{aligned}
@@ -534,15 +534,15 @@ The Jacobian matrix is given by
 $$
 A_{(N_t,P_t)}= \left(\begin{array}{cc}
 R_0e^{-aP_t}&-R_0aN_te^{-aP_t} \\ c(1-e^{-aP_t})&aCN_te^{-aP_t} \end{array}\right).
-$$
+$$ {#eq-noLabel}
 
 ###  Linear stability of the trivial fixed point  
 
 Evaluating at (0,0) yields
- $$
+$$
 A= \left(\begin{array}{cc}
 R_0 & 0 \\ 0 & 0 \end{array}\right).
-$$
+$$ {#eq-noLabel}
 Hence the eigenvalues are $R_0$ and 0. 
  If $0<R_0<1$ (0,0) is stable whilst if $R_0>1$ (0,0) is unstable.
 
@@ -554,11 +554,11 @@ We can show  that the Jacobian matrix evaluated at  the nontrivial fixed point c
 $$
 A= \left(\begin{array}{cc}
 1&-\frac{R_0 \ln R_0}{c(R_0-1)} \\ c(1-\frac{1}{R_0})&\frac{\ln R_0}{R_0-1} \end{array}\right) .
-$$
+$$ {#eq-noLabel}
 and deduce that the eigenvalues of A satisfy the characteristic polynomial
 $$
 \lambda^2 - \lambda\left(1+\frac{\ln R_0}{R_0-1}\right)+ \frac{R_0\ln(R_0)}{R_0-1}=0.
-$$
+$$ {#eq-noLabel}
 
 
 ### Employing the Jury conditions 
@@ -566,33 +566,33 @@ To proceed with linear stability analysis we employ the Jury conditions.
 Consider the polynomial
 $$
 \lambda^2+a\lambda+b=0,
-$$
+$$ {#eq-noLabel}
 In our case 
 $$
 a= - (1+\frac{\ln R_0}{R_0-1}) 
-$$
+$$ {#eq-noLabel}
 and
 $$
 b=\frac{R_0\ln(R_0)}{R_0-1}.
-$$
+$$ {#eq-noLabel}
 
 
 The third Jury condition ($b<1$) implies that for linear stability
 $$
 \ln R_0 < 1-\frac{1}{R_0}.
-$$
+$$ {#eq-noLabel}
 To demonstrate that this inequality is  not true for $R_0>1$, let $f_1=\ln R_0$ and $f_2=1- 1/R_0$. When $R_0=1$, $f_1=f_2=0$. However, 
 $$
 f_1'=\frac{1}{R_0}  \ \ \textrm{and} \ \ f_2'=\frac{1}{R_0^2},
-$$ 
+$$  {#eq-noLabel}
  implies 
 $$
 f_1'>f_2'  \ \ \forall \ R_0>1.
-$$
+$$ {#eq-noLabel}
 Hence
 $$
 \ln R_0 > 1-\frac{1}{R_0}.
-$$
+$$ {#eq-noLabel}
 Hence the fixed point is unstable if $R_0>1$. 
 
 

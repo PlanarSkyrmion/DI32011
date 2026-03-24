@@ -72,6 +72,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+  MathJax = {
+    tex: {
+      macros: {
+        Re: "\\mathbb{R}"   // or whatever you want
+      }
+    }
+  };
+</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -277,7 +286,9 @@ window.Quarto = {
 <p>When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, <span class="math inline">\(t \in \mathbb{R}^{+}\)</span>, such that changes occur infinitesimally, or discrete, <span class="math inline">\(t \in \mathbb{Z}\)</span>, such that changes occur in finite steps (e.g., yearly updates).</p>
 <section id="population-dynamics" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="population-dynamics"><span class="header-section-number">1.1</span> Population Dynamics</h2>
-<p>A key problem in biology is modelling mathematically how the population of various species changes over time (tracking births, deaths and migration). This might be quite abstract when studying, for example, the population of a chemical. As with our general approach we must identify the salient dynamical degrees of freedom (variables that change over time), the most obvious of which is, <span class="math display">\[N(t) - \text{Population change as a function of time},\]</span></p>
+<p>A key problem in biology is modelling mathematically how the population of various species changes over time (tracking births, deaths and migration). This might be quite abstract when studying, for example, the population of a chemical. As with our general approach we must identify the salient dynamical degrees of freedom (variables that change over time), the most obvious of which is, <span id="eq-noLabel"><span class="math display">\[
+N(t) - \text{Population change as a function of time},
+\tag{1.1}\]</span></span></p>
 <p>though there may be other variables involved or multiple competing populations.</p>
 </section>
 <section id="exponential-growth" class="level2" data-number="1.2">
@@ -285,14 +296,14 @@ window.Quarto = {
 <p>If we assume the simplest population model with fixed birth rate and death rate, then every member of the species has the same fixed probability of giving birth and dying. For a change in time <span class="math inline">\(\Delta t\)</span> the number of births is <span class="math inline">\(b\,\Delta t\)</span> and the number of total deaths is <span class="math inline">\(d\, \Delta t\)</span>, where we call <span class="math inline">\(b\)</span> the <strong>birth rate</strong> and <span class="math inline">\(d\)</span> the <strong>death rate</strong>, such that,</p>
 <p><span id="eq-exponential"><span class="math display">\[
 N(t + \Delta t) = N(t) + (b - d)N(t)\Delta t.
-\tag{1.1}\]</span></span></p>
+\tag{1.2}\]</span></span></p>
 <p>If <span class="math inline">\(\Delta t\)</span> is finite then this is a discrete exponential model (called the Malthusian model) and if it is infinitesimal <span class="math inline">\(\Delta t \rightarrow 0\)</span> then we have the first order continous differential equation,</p>
 <p><span id="eq-continousExp"><span class="math display">\[
 \frac{dN}{dt} = (b-d)N = rN.
-\tag{1.2}\]</span></span> For convenience we will define the constant <span class="math inline">\(r = b-d\)</span>. The solution follows from previous courses on ODEs,</p>
+\tag{1.3}\]</span></span> For convenience we will define the constant <span class="math inline">\(r = b-d\)</span>. The solution follows from previous courses on ODEs,</p>
 <p><span id="eq-expSol"><span class="math display">\[
 N = N_0 \, e^{rt}
-\tag{1.3}\]</span></span></p>
+\tag{1.4}\]</span></span></p>
 <p>where <span class="math inline">\(N_0\)</span> is the initial population at time <span class="math inline">\(t=0\)</span>. Note that this model predicts that population grows or shrinks (depending on the sign of <span class="math inline">\(r\)</span>) indefinitely. Unsurprisingly such a simplistic model is rarely accurate.</p>
 <p>It is important to note that in everyday language the word exponential is often used not to refer to a system with such behaviour, for example you will have no doubt heard people refer to the exponential growth of the world population, which can be seen in <a href="#fig-worldPopulation" class="quarto-xref">Figure&nbsp;<span>1.1</span></a>. For most of our history (until the 1960’s) we have experienced super-exponential growth (where the exponent <span class="math inline">\(r\)</span> increases with time) and since then <span class="math inline">\(r\)</span> has started to decrease. It is even predicted that the exponent may become negative in the future leading to population decrease.</p>
 <div id="fig-worldPopulation" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -317,38 +328,38 @@ N_{t+1} = \left( b(N_t) - d(N_t) \right) N_t &amp; - \text{Discrete model,}\\
 <p>The simplest extension of the above exponential growth is to make <span class="math inline">\(d\)</span> and <span class="math inline">\(b\)</span> linear in <span class="math inline">\(N\)</span> such that for a continous system we have the quadratic,</p>
 <p><span id="eq-logistic"><span class="math display">\[
 \frac{dN}{dt} = rN - \lambda N^2
-\tag{1.4}\]</span></span></p>
+\tag{1.5}\]</span></span></p>
 <p>where <span class="math inline">\(r,\lambda &gt; 0\)</span> are constants. This continous ODE now has a population cap as small populations will grow and large populations shrink. It is easier to see this if we rewrite such that, <span id="eq-logisticRedef"><span class="math display">\[
 \frac{dN}{dt} = r\left( 1 - \frac{N}{K} \right)N,\qquad \text{where} \quad K = \frac{r}{\lambda},
-\tag{1.5}\]</span></span> here <span class="math inline">\(K\)</span> is often refered to as a <strong>carrying capacity</strong>. This is called the <strong>logistic equation</strong>. It exhibits logarithmic solutions and we will study this system later in the course (both continous and discrete).</p>
+\tag{1.6}\]</span></span> here <span class="math inline">\(K\)</span> is often refered to as a <strong>carrying capacity</strong>. This is called the <strong>logistic equation</strong>. It exhibits logarithmic solutions and we will study this system later in the course (both continous and discrete).</p>
 </section>
 <section id="nondimensionalisation" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="nondimensionalisation"><span class="header-section-number">1.4</span> Nondimensionalisation</h2>
 <p>In mathematical biology we are intrested in studying trends and comparing different models without focussing imediately on direct measurement. A useful way of abstracting our models so we can easily compare for example population models of bacteria and elephants on very different scales is <strong>nondimensionalisation</strong>, where we make variables (both dependent and independent) dimensionless. In general this will be the population N</p>
 <p>In general this will involve rewriting the population and time as the dimensionless variables, <span id="eq-generalNonDim"><span class="math display">\[
 n = \frac{N}{\tilde{N}}, \qquad \tau = \frac{t}{\tilde{T}}.
-\tag{1.6}\]</span></span> such that a general ODE transforms as, <span id="eq-nonDimTransform"><span class="math display">\[
+\tag{1.7}\]</span></span> such that a general ODE transforms as, <span id="eq-nonDimTransform"><span class="math display">\[
 \frac{dN}{dt} = H(N(t)) \qquad \longrightarrow \qquad \frac{dn}{d\tau} = \frac{\tilde{T}}{\tilde{N}}\, H\left(  \right).
-\tag{1.7}\]</span></span></p>
-<p>A good example is the logistic equation in <a href="#eq-logisticRedef" class="quarto-xref">Equation&nbsp;<span>1.5</span></a>, where we absorb the constants by choosing <span class="math inline">\(\tilde{N} = K\)</span> and <span class="math inline">\(\tilde{T} = 1/r\)</span> such that we define, <span id="eq-nonDim"><span class="math display">\[
+\tag{1.8}\]</span></span></p>
+<p>A good example is the logistic equation in <a href="#eq-logisticRedef" class="quarto-xref">Equation&nbsp;<span>1.6</span></a>, where we absorb the constants by choosing <span class="math inline">\(\tilde{N} = K\)</span> and <span class="math inline">\(\tilde{T} = 1/r\)</span> such that we define, <span id="eq-nonDim"><span class="math display">\[
 n = \frac{N}{K}, \qquad \tau = rt,
-\tag{1.8}\]</span></span> which we call the <strong>dimensionless variables</strong>. The equation then becomes significantly simpler, <span id="eq-nonDim"><span class="math display">\[
+\tag{1.9}\]</span></span> which we call the <strong>dimensionless variables</strong>. The equation then becomes significantly simpler, <span id="eq-nonDim"><span class="math display">\[
 \frac{dn}{d\tau} = n(1-n).
-\tag{1.9}\]</span></span></p>
+\tag{1.10}\]</span></span></p>
 <p>So we have now stripped away all the parameters that are unnecessary for studying the features of behaviours of the model. It is easy to revert back to the original equation by simply substituting back in for <span class="math inline">\(n\)</span> and <span class="math inline">\(\tau\)</span>.</p>
-<p>Note, be careful with absorbing signs e.g.&nbsp;for <a href="#eq-continousExp" class="quarto-xref">Equation&nbsp;<span>1.2</span></a>, the exponential growth model, if we defined <span class="math inline">\(\tau = r N\)</span> we get the dimensionless solution, <span id="eq-nonDimExp"><span class="math display">\[
+<p>Note, be careful with absorbing signs e.g.&nbsp;for <a href="#eq-continousExp" class="quarto-xref">Equation&nbsp;<span>1.3</span></a>, the exponential growth model, if we defined <span class="math inline">\(\tau = r N\)</span> we get the dimensionless solution, <span id="eq-nonDimExp"><span class="math display">\[
 N(\tau) = N_0 \, e^{\tau}.
-\tag{1.10}\]</span></span> This may be suggestive that population always grows, but if <span class="math inline">\(d &gt; b \Leftrightarrow r &lt; 0\)</span> then the rescaling has reversed time.</p>
+\tag{1.11}\]</span></span> This may be suggestive that population always grows, but if <span class="math inline">\(d &gt; b \Leftrightarrow r &lt; 0\)</span> then the rescaling has reversed time.</p>
 <section id="dimensional-analysis" class="level3" data-number="1.4.1">
 <h3 data-number="1.4.1" class="anchored" data-anchor-id="dimensional-analysis"><span class="header-section-number">1.4.1</span> Dimensional analysis</h3>
 <p>The dimensions/units of each term in a model must be consistent. This observation helps to determine the units of different parameters in a model.</p>
-<p>For example, we can deduce that the units of the parameter <span class="math inline">\(r\)</span> in <a href="#eq-expSol" class="quarto-xref">Equation&nbsp;<span>1.3</span></a> <span id="eq-dim1"><span class="math display">\[
+<p>For example, we can deduce that the units of the parameter <span class="math inline">\(r\)</span> in <a href="#eq-expSol" class="quarto-xref">Equation&nbsp;<span>1.4</span></a> <span id="eq-dim1"><span class="math display">\[
 \frac{dN}{dt}=rN.
-\tag{1.11}\]</span></span> The units of the left-hand term are <span id="eq-dim2"><span class="math display">\[
+\tag{1.12}\]</span></span> The units of the left-hand term are <span id="eq-dim2"><span class="math display">\[
 \frac{\# pop density}{\# time},
-\tag{1.12}\]</span></span> thus the units of the right-hand side must match. This means that <span class="math inline">\(r\)</span> must have the units, <span id="eq-dim3"><span class="math display">\[
+\tag{1.13}\]</span></span> thus the units of the right-hand side must match. This means that <span class="math inline">\(r\)</span> must have the units, <span id="eq-dim3"><span class="math display">\[
 \#r = \frac{1}{\#time},
-\tag{1.13}\]</span></span> for dimensional consistency. This is a useful technique for making sure equations are correct and also gives some physical intuition as to what different parameters represent. In the above example <span class="math inline">\(r\)</span> is inverse in time, so it is describing a rate of change, which matches our intuiton that it is the difference in birth and death rate.</p>
+\tag{1.14}\]</span></span> for dimensional consistency. This is a useful technique for making sure equations are correct and also gives some physical intuition as to what different parameters represent. In the above example <span class="math inline">\(r\)</span> is inverse in time, so it is describing a rate of change, which matches our intuiton that it is the difference in birth and death rate.</p>
 
 
 </section>
