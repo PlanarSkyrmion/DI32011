@@ -46,7 +46,7 @@ format:
           \usepackage{tikz}
           \AtBeginDocument{\thispagestyle{empty}
           \begin{tikzpicture}[remember picture,overlay]
-          \node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{MA32009Cover.png}};
+          \node at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{DI32011Cover.png}};
           \end{tikzpicture}\clearpage}
 filters:
   - shinylive

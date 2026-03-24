@@ -355,12 +355,13 @@ N_{t+1} = H(N_t) = N_tf(N_t),
 <p>The simplest form for <a href="#eq-GeneralPopulationModel" class="quarto-xref">Equation&nbsp;<span>2.1</span></a> is a <em>constant net per capita growth rate</em>. Let <span class="math inline">\(b\)</span> be the per capita growth rate and <span class="math inline">\(d\)</span> the per capita death rate where <span class="math inline">\(b,d \in \mathbb{R}^+\)</span> (<span class="math inline">\(b\)</span> and <span class="math inline">\(d\)</span> are both positive real constants) and <span class="math inline">\(d \leq 1\)</span> (it’s not possible for more than 100 % of the population to die). This gives the difference equations as, <span id="eq-MalthusianEqn"><span class="math display">\[
 N_{t+1}=N_t + bN_t - dN_t=rN_t,
 \tag{2.2}\]</span></span> where the parameter <span class="math inline">\(r=1+b-d\)</span> is the <em>net per capita growth rate</em>. Note that <span class="math inline">\(d \leq 1\)</span> and <span class="math inline">\(b \geq 0\)</span> implies that <span class="math inline">\(r \geq 0\)</span>.</p>
-<p>Given the initial condition <span class="math inline">\(N_0\)</span>, <a href="#eq-MalthusianEqn" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> can be solved recursively, <span id="eq-MalthusianRecursive"><span class="math display">\[\begin{align}
+<p>Given the initial condition <span class="math inline">\(N_0\)</span>, <a href="#eq-MalthusianEqn" class="quarto-xref">Equation&nbsp;<span>2.2</span></a> can be solved recursively, <span class="math display">\[\begin{align}
 N_1&amp;=rN_0,\\
 N_2&amp;=r N_1=r^2N_0,\\
 N_3&amp;=r N_2=r^3N_0,\\ &amp;\ldots\\
 N_t&amp;=r^tN_0.
-\end{align} \tag{2.3}\]</span></span></p>
+\label{eq-MalthusianRecursive}
+\end{align}\]</span></p>
 <p>Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all <span class="math inline">\(t\)</span>. In <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a> we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter <span class="math inline">\(r\)</span>.</p>
 <p><strong>Exercise:</strong> Use python to simulate the solution of a general difference equation <span class="math inline">\(N_{t+1} = H(N_t)\)</span>. This should be modular so you pass it different models in the form of different functions <span class="math inline">\(H\)</span>. Test it with the Malthusian model and compare with <a href="#fig-plotmalthusian" class="quarto-xref">Figure&nbsp;<span>2.1</span></a>.</p>
 <div id="cell-fig-plotmalthusian" class="cell" data-execution_count="1">
@@ -457,14 +458,14 @@ N_{t+1}=\frac{rN_t}{1+\frac{N_t}{K}},
 N_{t+1}=\frac{rN_t}{(1+\frac{N_t}{K})^b},
 \]</span> and the Ricker model <span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\]</span> where $r, K, n ^+ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
+\]</span> where <span class="math inline">\(r, K, n \in \mathbb{R}^+\)</span> are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.</p>
 <section id="model-development" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="model-development"><span class="header-section-number">2.3.1</span> Model development</h3>
 <p>One way to capture a decreased growth rate at high densities, is to assume that the per capita growth rate is an exponentially decreasing function of population density, i.e.&nbsp; <span class="math display">\[
 f(N_t)=e^{r(1-\frac{N_t}{K})},
 \]</span> where <span class="math inline">\(r\)</span> is a growth rate and <span class="math inline">\(K\)</span> a carrying capacity (both positive constants). Hence the governing equation is <span id="eq-RickerDefn1"><span class="math display">\[
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
-\tag{2.4}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
+\tag{2.3}\]</span></span> Note that as the population size gets large (<span class="math inline">\(N_t\gg K\)</span>), the growth rate tends to zero but that for small populations <span class="math inline">\(N_t\ll K\)</span> the growth rate is approximately constant. This is the Ricker model.</p>
 <p>Note that the model is nonlinear and does not have an explicit solution.</p>
 </section>
 <section id="computational-solutions" class="level3" data-number="2.3.2">
@@ -683,15 +684,15 @@ Figure&nbsp;2.3: An app to explore behaviour of the Ricker model.
 <h2 data-number="2.4" class="anchored" data-anchor-id="general-techniques-for-analysing-nonlinear-difference-equations"><span class="header-section-number">2.4</span> General techniques for analysing nonlinear difference equations</h2>
 <p>In this section we develop techniques that will be used to analyse first order, discrete-time models of the form <span id="eq-generaleqn"><span class="math display">\[
 N_{t+1}=N_t f(N_t)=H(N_t).
-\tag{2.5}\]</span></span></p>
+\tag{2.4}\]</span></span></p>
 <section id="computational-solutions-1" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="computational-solutions-1"><span class="header-section-number">2.4.1</span> Computational solutions</h3>
-<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
+<p>Perhaps the most obvious way to investigate an equation of the form of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> is to iteratively compute <span class="math inline">\(N_t\)</span> over a prescribed time range.</p>
 <p>Hence given some initial population <span class="math inline">\(N_0\)</span>, the solution set <span class="math inline">\(\{N_0,N_1,N_2,...,N_T\}\)</span> is computed up to some end time <span class="math inline">\(T\)</span>. Such an approach provides a numerical solution for a given parameter set and initial condition. However, it does not provide much insight into the general behaviour of model.</p>
 </section>
 <section id="fixed-points" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="fixed-points"><span class="header-section-number">2.4.2</span> Fixed points</h3>
-<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> if and only if <span class="math display">\[
+<p>We define <span class="math inline">\(N^*\)</span> to be a fixed point of <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> if and only if <span class="math display">\[
 N^*=N^*f(N^*)=H(N^*).
 \]</span> Hence the fixed points can be identified by solving an algebraic equation.</p>
 </section>
@@ -700,7 +701,7 @@ N^*=N^*f(N^*)=H(N^*).
 <p>By linearising about the identified fixed points using a Taylor series expansion, it can be determined whether or not small perturbations around the fixed point grow or decay in subsequent iterations.</p>
 <p>Making a change of dependent variables <span class="math display">\[
 N_t=N^*+\hat{N_t},
-\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> transforms upon substitution to <span class="math display">\[
+\]</span> <a href="#eq-generaleqn" class="quarto-xref">Equation&nbsp;<span>2.4</span></a> transforms upon substitution to <span class="math display">\[
 N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t).
 \]</span></p>
 <p>Taylor expanding the right-hand side yields <span class="math display">\[
@@ -967,7 +968,7 @@ Figure&nbsp;2.5: A cobweb plot of the Malthusian model solution when <span class
 <h2 data-number="2.5" class="anchored" data-anchor-id="a-nonlinear-model-of-population-dynamics-in-discrete-time"><span class="header-section-number">2.5</span> A nonlinear model of population dynamics in discrete time</h2>
 <p>Consider a model of population growth given by <span id="eq-denslimgrowtheqn"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2},
-\tag{2.6}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
+\tag{2.5}\]</span></span> where <span class="math inline">\(\gamma\in \Re^+\)</span> is the linear growth rate.</p>
 <section id="the-per-capita-growth-rate" class="level3" data-number="2.5.1">
 <h3 data-number="2.5.1" class="anchored" data-anchor-id="the-per-capita-growth-rate"><span class="header-section-number">2.5.1</span> The per capita growth rate</h3>
 <p>Note that the per capita growth rate is described by the function <span class="math display">\[
@@ -1164,7 +1165,7 @@ Figure&nbsp;2.7: An app to explore model behaviour.
 </section>
 <section id="fixed-points-1" class="level3" data-number="2.5.3">
 <h3 data-number="2.5.3" class="anchored" data-anchor-id="fixed-points-1"><span class="header-section-number">2.5.3</span> Fixed points</h3>
-<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>2.6</span></a> satisfy the algebraic equation <span class="math display">\[
+<p>The fixed points of <a href="#eq-denslimgrowtheqn" class="quarto-xref">Equation&nbsp;<span>2.5</span></a> satisfy the algebraic equation <span class="math display">\[
 N^*=\frac{\gamma N^*}{1+{N^*}^2}
 \]</span> which has solutions <span class="math display">\[
 N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
@@ -1189,12 +1190,10 @@ H'(0)= \gamma.
 <section id="nsqrtgamma-1" class="level4" data-number="2.5.4.2">
 <h4 data-number="2.5.4.2" class="anchored" data-anchor-id="nsqrtgamma-1"><span class="header-section-number">2.5.4.2</span> <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span></h4>
 <p>The stability of the second fixed point, <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span>, is determined by</p>
-<p><span class="math display">\[
-\begin{aligned}
+<p><span class="math display">\[\begin{align}
 H'(\sqrt{\gamma-1})&amp;= \frac{\gamma}{1+\gamma-1} + \frac{-2 \gamma (\gamma-1)}{(1+(\gamma-1))^2}, \\
 &amp;= \frac{2}{\gamma}-1.
-\end{aligned}
-\]</span></p>
+\end{align}\]</span></p>
 <p>Hence if <span class="math inline">\(N^*\)</span> were monotonically unstable,</p>
 <p><span class="math display">\[
 H'(\sqrt{\gamma-1}) = \frac{2}{\gamma}-1 &gt;1,
@@ -1404,7 +1403,7 @@ The derivative evaluated at FP 2 is:
 <h2 data-number="2.6" class="anchored" data-anchor-id="an-application---how-much-harvesting-can-a-population-sustain"><span class="header-section-number">2.6</span> An application - how much harvesting can a population sustain?</h2>
 <p>Models of population dynamics can be used to study how interventions will affect population dynamics. Extending from the model developed in the previous example, a valid question might be what is the maximal rate of harvesting a fish stock can sustain without becoming extinct? ### Including a harvesting term Introducing a harvesting term at per capita harvesting rate <span class="math inline">\(h\)</span>, the governing model equation becomes <span id="eq-harvestingmodel"><span class="math display">\[
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2} - h N_t,
-\tag{2.7}\]</span></span></p>
+\tag{2.6}\]</span></span></p>
 <p>and the questions we want to ask are: (i) does the introduction of harvesting change the dynamics of the system?; and (ii) what rate of harvesting such a population could withstand?</p>
 <section id="direct-simulation" class="level3" data-number="2.6.1">
 <h3 data-number="2.6.1" class="anchored" data-anchor-id="direct-simulation"><span class="header-section-number">2.6.1</span> Direct simulation</h3>
@@ -1636,7 +1635,7 @@ H'\left(\sqrt{\frac{\gamma}{1+h}-1}\right)=\frac{\gamma }{1+\frac{\gamma}{1+h}-1
 <p>Hence linear stability is a function of two parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span>.</p>
 <p>We can show that <span id="eq-arvestingH_prime"><span class="math display">\[
 H'(N^*) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1,
-\tag{2.8}\]</span></span></p>
+\tag{2.7}\]</span></span></p>
 <p>and hence that when <span class="math inline">\(h=0\)</span> we retrieve the stability condition from the previous model.</p>
 <div id="cell-fig-plotdensmodelharveststab" class="cell" data-execution_count="10">
 <details class="code-fold">
@@ -1834,14 +1833,12 @@ The derivative evaluated at FP 2 is:
 <p>Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where <span class="math inline">\(H'(N^*)&lt;-1\)</span>, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions.<br>
 ### Defining a periodic solution Consider the general form <span id="eq-genformagain"><span class="math display">\[
 N_{t+1}=H(N_t)
-\tag{2.9}\]</span></span></p>
-<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.9</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[
-\begin{aligned}
+\tag{2.8}\]</span></span></p>
+<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.8</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[\begin{align}
 N_{t+T}&amp;=N_t \ \  \forall t,
 N_{t+\tau}&amp;\neq N_t  \ \ \forall t, \  \ \ \tau&lt;T.
-\end{aligned}
-\]</span></p>
-<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.9</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span class="math display">\[
+\end{align}\]</span></p>
+<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.8</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span class="math display">\[
 N_{2}=H(\bar{N}).
 \]</span></p>
 <p>However, <span class="math display">\[

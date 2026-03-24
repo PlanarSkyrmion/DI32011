@@ -33,12 +33,13 @@ $$ {#eq-MalthusianEqn}
 where the parameter $r=1+b-d$ is the *net per capita growth rate*. Note that $d \leq 1$ and $b \geq 0$ implies that $r \geq 0$.
 
 Given the initial condition $N_0$, @eq-MalthusianEqn can be solved recursively,
-$$\begin{align}
+\begin{align}
 N_1&=rN_0,\\
 N_2&=r N_1=r^2N_0,\\
 N_3&=r N_2=r^3N_0,\\ &\ldots\\
 N_t&=r^tN_0. 
-\end{align}$$ {#eq-MalthusianRecursive} 
+\label{eq-MalthusianRecursive}
+\end{align}
 
 Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$. In @fig-plotmalthusian we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter $r$.
 
@@ -136,7 +137,7 @@ and the Ricker model
 $$
 N_{t+1}=N_te^{r(1-\frac{N_t}{K})}.
 $$ 
-where $r, K, n \in \mathbb{R}^+ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
+where $r, K, n \in \mathbb{R}^+$ are positive parameters. Below we consider the Ricker model which was initially used to study Canadian sockeye salmon population dynamics.
 
 ### Model development
 
@@ -860,12 +861,10 @@ When $\gamma > 1$ the second fixed point becomes biologically relevant and the f
 
 The stability of the second fixed point, $N^*=\sqrt{\gamma-1}$, is determined by
 
-$$
-\begin{aligned}
+\begin{align}
 H'(\sqrt{\gamma-1})&= \frac{\gamma}{1+\gamma-1} + \frac{-2 \gamma (\gamma-1)}{(1+(\gamma-1))^2}, \\
 &= \frac{2}{\gamma}-1.
-\end{aligned}
-$$
+\end{align}
 
 Hence if $N^*$ were monotonically unstable,
 
@@ -1478,12 +1477,10 @@ N_{t+1}=H(N_t)
 $$ {#eq-genformagain} 
 
 A solution to @eq-genformagain is defined to be periodic with period $T$ if
-$$
-\begin{aligned}
+\begin{align}
 N_{t+T}&=N_t \ \  \forall t, 
 N_{t+\tau}&\neq N_t  \ \ \forall t, \  \ \ \tau<T.
-\end{aligned}
-$$
+\end{align}
 
 Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose $\bar{N}$ is a period 2 solution of @eq-genformagain and let $\bar{N}=N_1$. Then 
 $$

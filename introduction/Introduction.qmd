@@ -12,7 +12,7 @@ While biology is the study of living organisms, mathematical biology is the appl
 
 The key quantities we consider broadly fall into two categories: fixed quantities that do not change in time, called **constants**, and quantities that evolve in time, called **dynamical variables**. Quantities whose values are specified a priori are called **parameters**, and are typically constant in time (though can be dynamic with clear defined behaviour), while quantities whose values are determined by the model are called **variables** or **degrees of freedom**.
 
-When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, $t \in \mathbb{R}^+$, such that changes occur infinitesimally, or discrete, $t \in \mathbb{Z}$, such that changes occur in finite steps (e.g., yearly updates).
+When we say that a quantity changes in time, an important consideration is whether time is modeled as continuous, $t \in \mathbb{R}^{+}$, such that changes occur infinitesimally, or discrete, $t \in \mathbb{Z}$, such that changes occur in finite steps (e.g., yearly updates).
 
 ## Population Dynamics
 
@@ -50,12 +50,12 @@ It is important to note that in everyday language the word exponential is often 
 
 To modify the above simplistic approach we might consider a variable birth and death rate that depends on population,
 
-$$
+
 \begin{align}
 N_{t+1} = \left( b(N_t) - d(N_t) \right) N_t & - \text{Discrete model,}\\
 \frac{dN}{dt} = \left( b(N) - d(N) \right) N & - \text{Continous model,}
 \end{align}
-$$ {#eq-generalRates}
+
 which is hardly a model without understanding how the general functions $b(N)$ or $d(N)$ change in time.
 
 The simplest extension of the above exponential growth is to make $d$ and $b$ linear in $N$ such that for a continous system we have the quadratic,
