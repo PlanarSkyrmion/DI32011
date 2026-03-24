@@ -21,7 +21,7 @@
 These will take the form of two roughly 45 minute lectures on Monday seperated by a break and a 30 to 45 minute lecture and 45 to 60 minute tutorial on Friday. Hence, the schedule is based on roughly 2 hours of lectures and 1 hour of tutorial a week.
 
 ## Lecture notes
-The lecture notes are based on ones originally written by Philip Murray, and are aviailable in [HTML](www.twinyard.co.uk/DI32011) or [PDF](www.twinyard.co.uk/DI32011/docs/DI32011.pdf) at my [website](www.twinyard.co.uk). You can also generate the pdf by clicking on the pdf link at the top left of the webpage. Note the PDF version of the notes will not include interactive python elements. I will occasionally edit/update the notes as we proceed through lectures. If you spot any errors, typos or omissions please let me know via [email](mailto:twinyard001@dundee.ac.uk).
+The lecture notes are based on ones originally written by Philip Murray, and are aviailable in [HTML](www.twinyard.co.uk/DI32011) or [PDF](../DI32011.pdf) at my [website](www.twinyard.co.uk). You can also generate the pdf by clicking on the pdf link at the top left of the webpage. Note the PDF version of the notes will not include interactive python elements. I will occasionally edit/update the notes as we proceed through lectures. If you spot any errors, typos or omissions please let me know via [email](mailto:twinyard001@dundee.ac.uk).
 
 ## Reading 
 * Mathematical Biology I: An Introduction, @murray2002mathematical
