@@ -438,7 +438,9 @@ Plotting cobweb diagrams in the vicinity of a fixed point $N^*$ for different va
 #| fig-cap: "Generating a cobweb plot."
 import numpy as np
 import matplotlib.pyplot as plt
-# This code computes the dtaa necessary to make a cobweb diagram
+from matplotlib import animation
+from IPython.display import HTML
+# This code computes the data necessary to make a cobweb diagram
 
 # Define time vector
 T=10
@@ -546,6 +548,264 @@ ax[2,1].set_title('Iterate')
 
 plt.tight_layout()
 plt.show()
+```
+
+```{python}
+#| label: fig-cobwebMal
+#| fig-cap: "Animation of a cobweb diagram for the Malthusian model with $N_0 = 0.2$ and $r = 1.5$."
+#| fig-show: false
+
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+plt.rcParams.update({
+    "text.usetex": True,
+    "text.latex.preamble": r"\usepackage{amsmath}\usepackage{xcolor}"
+})
+
+# ------------------------
+# Parameters
+# ------------------------
+r = 1.5
+N0 = 0.2
+n_steps = 5
+
+# Animation parameters
+n_curve1_frames = 20   # faster initial curve
+n_curve2_frames = 20
+wait_frames = 8
+final_wait = 16
+first_step_frames = 20   # slow first vertical+horizontal
+remaining_frames = 60    # rest of cobweb
+textPos_x = 0.42
+textPos_y = 0.38
+
+total_curve_frames = n_curve1_frames + n_curve2_frames + 4*wait_frames
+total_frames = total_curve_frames + first_step_frames + remaining_frames + wait_frames
+
+# Malthusian functionAnimation parameters
+def f(x):
+    return r * x
+
+# ------------------------
+# Figure setup
+# ------------------------
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+
+x_full = np.linspace(0, 1.2, 400)
+
+curve_line, = ax1.plot([], [], label="$N_{t+1} = r N_t$")
+diag_line, = ax1.plot([], [], '--', label="$N_{t+1} = N_t$")
+
+cobweb_line, = ax1.plot([], [], color='purple', lw=1, label="Cobweb")
+point, = ax1.plot([], [], 'ro', markersize=6)
+
+ax1.set_xlim(0, 1.2)
+ax1.set_ylim(0, 1.2)
+ax1.set_xlabel("$N_t$")
+ax1.set_ylabel("$N_{t+1}$")
+ax1.set_title("Cobweb diagram")
+step_text1 = ax1.text(textPos_x, textPos_y, '', transform=ax1.transAxes,
+                     va='top', fontsize=10)
+step_text2 = ax1.text(textPos_x-0.15, textPos_y-0.145, '', transform=ax1.transAxes,
+                     va='top', fontsize=9.5)                     
+ax1.legend(loc='upper left')
+
+time_line, = ax2.plot([], [], 'r-o', markersize=3)
+ax2.set_xlim(0, n_steps)
+ax2.set_ylim(0, 1.2)
+ax2.set_xlabel("t")
+ax2.set_ylabel("N")
+ax2.set_title("Population vs time")
+
+# ------------------------
+# Precompute cobweb + time series
+# ------------------------
+y_next = f(N0)
+xs, ys = [N0], [y_next]
+time_vals = [0]
+pop_vals = [N0]
+
+x_current = N0
+for n in range(1, n_steps):
+    xs.append(y_next)
+    ys.append(y_next)
+    x_current = y_next
+
+    time_vals.append(n)
+    pop_vals.append(y_next)
+
+    y_next = f(x_current)
+    xs.append(x_current)
+    ys.append(y_next)
+
+# ------------------------
+# Animation update function
+# ------------------------
+def update(frame):
+    # ---- Phase 1: Draw curves ----
+    if frame < n_curve1_frames: # N_t+1 = H(N_t)
+        cobweb_line.set_data([],[])
+        time_line.set_data([], [])
+        k = int(len(x_full) * frame / n_curve1_frames)
+        curve_line.set_data(x_full[:k], f(x_full[:k]))
+        diag_line.set_data([], [])
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$")
+        return curve_line, diag_line, cobweb_line, time_line, point, step_text1
+    elif frame < n_curve1_frames + wait_frames: # pause
+        curve_line.set_data(x_full, f(x_full))
+        diag_line.set_data([], [])
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                           "Step 2: Draw $N_{t+1} = N_t$")
+        return curve_line, diag_line, cobweb_line, point, step_text1
+    elif frame < n_curve1_frames + n_curve2_frames + wait_frames:  # N_t+1 = N_t
+        loc = frame - n_curve1_frames - wait_frames
+        k = int(len(x_full) * loc / n_curve2_frames)
+        curve_line.set_data(x_full, f(x_full))
+        diag_line.set_data(x_full[:k], x_full[:k])
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                           "Step 2: Draw $N_{t+1} = N_t$")
+        return curve_line, diag_line, cobweb_line, point, step_text1
+    elif frame < n_curve1_frames + n_curve2_frames + 2*wait_frames: # pause
+        curve_line.set_data(x_full, f(x_full))
+        diag_line.set_data(x_full, x_full)
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                       "Step 2: Draw $N_{t+1} = N_t$\n"
+                       "Step 3: Mark $(N_0,H(N_0))$")
+        return curve_line, diag_line, cobweb_line, point, step_text1
+    elif frame < n_curve1_frames + n_curve2_frames + 3*wait_frames: # pause
+        curve_line.set_data(x_full, f(x_full))
+        diag_line.set_data(x_full, x_full)
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                       "Step 2: Draw $N_{t+1} = N_t$\n"
+                       "Step 3: Mark $(N_0,H(N_0))$\n")
+        point.set_data([xs[0]], [ys[0]])
+        return curve_line, diag_line, cobweb_line, point, step_text1
+    elif frame < n_curve1_frames + n_curve2_frames + 4*wait_frames: # pause
+        curve_line.set_data(x_full, f(x_full))
+        diag_line.set_data(x_full, x_full)
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                       "Step 2: Draw $N_{t+1} = N_t$\n"
+                       "Step 3: Mark $(N_0,H(N_0))$\n"
+                       "Step 4: Horizonatal to red curve\n"
+                       "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=1 \\rightarrow (H(N_0),H(N_0))$\n")
+        point.set_data([xs[0]], [ys[0]])
+        return curve_line, diag_line, cobweb_line, point, step_text1 
+
+    # ---- Phase 2: Cobweb ----
+    cobweb_frame = frame - total_curve_frames
+
+    total_segments = n_steps * 2  # 2 per iteration (vertical + horizontal)
+    time_progress = n_steps
+    # ---- First slow step ----
+    if cobweb_frame < first_step_frames:
+        progress = cobweb_frame / first_step_frames
+        if progress < 0.25:  # horizontal
+            p = progress / 0.25
+            time_progress = p
+            x0, y0, x1, y1 = xs[0], ys[0], xs[1], ys[1]
+            x_dot, y_dot = x0 + p*(x1 - x0), y0 + p*(y1 - y0)
+            x_draw = [x0, x_dot]
+            y_draw = [y0, y_dot]
+            step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                           "Step 2: Draw $N_{t+1} = N_t$\n"
+                           "Step 3: Mark $(N_0,H(N_0))$\n"
+                           "Step 4: Horizonatal to red curve\n"
+                           "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=1 \\rightarrow (H(N_0),H(N_0))$\n")
+        elif progress < 0.75: # pause
+            time_progress = 1.0
+            x0, y0, x1, y1 = xs[0], ys[0], xs[1], ys[1]
+            x_dot, y_dot = x1, y1
+            x_draw = [x0, x1]
+            y_draw = [y0, y1]
+            if progress > 0.3:
+              step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                           "Step 2: Draw $N_{t+1} = N_t$\n"
+                           "Step 3: Mark $(N_0,H(N_0))$\n"
+                           "Step 4: Horizonatal to red curve\n"
+                           "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=1 \\rightarrow (H(N_0),H(N_0))$\n"
+                           "Step 5: Vertical to blue curve\n"
+                           "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=1 \\rightarrow (N_1,H(N_1))$\n")
+        else: # vertical
+            time_progress = 1.0
+            p = (progress - 0.75)/0.25
+            x0, y0, x1, y1, x2, y2 = xs[0], ys[0], xs[1], ys[1], xs[2], ys[2]
+            x_dot, y_dot = x1 + p*(x2 - x1), y1 + p*(y2 - y1)
+            x_draw = [x0, x1, x_dot]
+            y_draw = [y0, y1, y_dot]
+        point.set_data([x_dot], [y_dot])
+        cobweb_line.set_data(x_draw, y_draw)
+    elif cobweb_frame < first_step_frames + wait_frames:
+        time_progress = 1.0
+        point.set_data([xs[2]], [ys[2]])
+        step_text1.set_text("Step 1: Draw $N_{t+1} = H(N_t)$\n"
+                           "Step 2: Draw $N_{t+1} = N_t$\n"
+                           "Step 3: Mark $(N_0,H(N_0))$\n"
+                           "Step 4: Horizonatal to red curve\n"
+                           "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=n \\rightarrow (H(N_{n-1}),H(N_{n-1}))$\n"
+                           "Step 5: Vertical to blue curve\n"
+                           "${}_{{{}_{{\scriptscriptstyle \\cdot}}}} \\quad t=n \\rightarrow (N_n,H(N_n))$\n")
+        step_text2.set_text(r"$\text{Iterate}\left\{ \begin{array}{l} \\ \\ \\ \\ "
+                               r" \end{array} \right.$")
+    elif cobweb_frame < first_step_frames + wait_frames + remaining_frames:  # remaining frames
+        remaining_frame = cobweb_frame - first_step_frames - wait_frames
+        remaining_total_frames = remaining_frames
+        progress_remaining = remaining_frame / remaining_total_frames
+
+        segments_after_first = xs[2:]  # skip first 2 points
+        ys_after_first = ys[2:]
+
+        n_points = int(progress_remaining * (len(segments_after_first)-1))
+        n_points = min(n_points, len(segments_after_first)-2)
+
+        x_prev, y_prev = segments_after_first[n_points], ys_after_first[n_points]
+        x_next, y_next = segments_after_first[n_points+1], ys_after_first[n_points+1]
+        interp = progress_remaining * (len(segments_after_first)-1) - n_points
+
+        x_dot = x_prev + interp*(x_next - x_prev)
+        y_dot = y_prev + interp*(y_next - y_prev)
+
+        x_draw = xs[:2] + segments_after_first[:n_points+1] + [x_dot]
+        y_draw = ys[:2] + ys_after_first[:n_points+1] + [y_dot]
+
+        point.set_data([x_dot], [y_dot])
+        cobweb_line.set_data(x_draw, y_draw)
+        if n_points%2 == 0:
+          time_progress_int = math.floor(1.0 + (n_steps-2.0)*progress_remaining)
+          time_progress_cont = 1.0 + (n_steps-2.0)*progress_remaining - time_progress_int
+          time_progress = time_progress_int + 2.0*time_progress_cont
+        else:
+          time_progress = math.floor(2 + n_points/2.0)
+
+    # ---- Time series ----
+    ti = int(math.floor(time_progress))
+    tp = time_progress - ti
+    t_draw = time_vals[:ti+1]
+    p_draw = pop_vals[:ti+1]
+    if ti+1 < len(time_vals):
+        t0, p0 = time_vals[ti], pop_vals[ti]
+        t1, p1 = time_vals[ti+1], pop_vals[ti+1]
+        t_draw = list(t_draw) + [t0 + tp*(t1-t0)]
+        p_draw = list(p_draw) + [p0 + tp*(p1-p0)]
+    time_line.set_data(t_draw, p_draw)
+
+    return curve_line, diag_line, cobweb_line, time_line, point, step_text2
+
+# ------------------------
+# Run animation
+# ------------------------
+ani = animation.FuncAnimation(
+    fig,
+    update,
+    frames=total_frames+final_wait,
+    interval=100,
+    blit=True
+)
+
+display(HTML(ani.to_html5_video()))
+plt.close(fig)
 ```
 
 ### Bifurcation diagrams
