@@ -226,7 +226,7 @@
         "\n",
         "### Numerical solutions"
       ],
-      "id": "009ad7bf"
+      "id": "68b8cca1"
     },
     {
       "cell_type": "code",
@@ -339,7 +339,7 @@
         "See @fig-lv-numsol-phplane for solution trajectories plotted in the phase plane using different initial conditions. Note the expected saddle like behaviour when trajectories that are close to the origin. Furthermore, note that the different initial conditions result in distinct closed loops and that the inner-most loop, i.e. that closest to the steady-state (1,1), behaves like a centre, as expected given the linear stability analysis.\n",
         "However, far from the steady-state the solution trajectory deviates from the linearised model. \n"
       ],
-      "id": "5f092c3d"
+      "id": "9ff1073c"
     },
     {
       "cell_type": "code",
@@ -627,7 +627,7 @@
         "### Phase portrait\n",
         "See @fig-comp-numsol-phplane for phase portraits of three of the four cases that we have considered. It is expected that you can sketch phase portraits. Key details to consider are the steady states and their linear stability. You should also sketch the nullclines and depict the sign of the derivatives in the phase plane on either side of the nullclines. You should also sketch one or more sample trajectories."
       ],
-      "id": "63fcffa4"
+      "id": "fb8ef0d6"
     },
     {
       "cell_type": "code",
@@ -852,7 +852,7 @@
         "Using a similar analysis to the  competition model, it can be shown that the steady states (0,0), (1,0) and (0,1) are unstable. When $a_{12}a_{21}<1$ there is a stable coexistence steady state. \n",
         "See @fig-sym-numsol-phplane."
       ],
-      "id": "8b1d55e7"
+      "id": "542877d1"
     },
     {
       "cell_type": "code",
@@ -976,7 +976,7 @@
         "The important parameter in the model is the product $a_{12}a_{21}$. This quantifies the total amount of cooperativity in the model.\n",
         "All steady states that involve the extinction of a species are unstable. In the case where  if $a_{12}a_{21}<1$ there is a stable steady state. Note that steady states of both variables are higher than they would be in the absence of the  other species. In the  $a_{12}a_{21}>1$ there is no coexistence steady state and both populations grow in an unbounded manner."
       ],
-      "id": "ea57f947"
+      "id": "959698fc"
     }
   ],
   "metadata": {

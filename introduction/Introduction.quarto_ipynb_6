@@ -125,7 +125,7 @@
         "$$ {#eq-dim3}\n",
         "for dimensional consistency. This is a useful technique for making sure equations are correct and also gives some physical intuition as to what different parameters represent. In the above example $r$ is inverse in time, so it is describing a rate of change, which matches our intuiton that it is the difference in birth and death rate."
       ],
-      "id": "7206393f"
+      "id": "94a6d7b3"
     }
   ],
   "metadata": {

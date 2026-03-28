@@ -6,6 +6,8 @@ format:
   pdf:
     code-fold: false    
 jupyter: python3
+filters:
+  - pseudocode
 ---
 
 We first consider models of a single population defined at discrete times. Discrete (rather than continuous) time is used in population models where, for example, there are strong annual trends in the underlying animal behaviour (e.g. fish eggs hatching at a fixed time of the year), there are not overlapping generations and the population size at the next time step can be written as a function of the current population size (e.g. a mutation that evolves from one generation to the next).
@@ -43,7 +45,7 @@ N_t&=r^tN_0.
 
 Hence for the case of Malthusian growth, the size of the population can be explicitly calculated for all $t$. In @fig-plotmalthusian we present a numerical solution of the model where we have simply iterated through solutions for different values of the parameter $r$.
 
-**Exercise:** Use python to simulate the solution of a general difference equation $N_{t+1} = H(N_t)$. This should be modular so you pass it different models in the form of different functions $H$. Test it with the Malthusian model and compare with @fig-plotmalthusian.
+**Exercise:** Use python to simulate the solution of a general difference equation $N_{t+1} = H(N_t)$. This should be modular so you can pass it different models in the form of different functions $H$. Test it with the Malthusian model and compare with @fig-plotmalthusian.
 
 ```{python}
 #| label: fig-plotmalthusian
@@ -163,14 +165,6 @@ Note that model behaviour changes drastically as the parameter $r$ varies. For i
 -   when $r=1.5$ (@fig-plotricker (b)) it approaches two in an oscillatory manner; and
 -   when $r=2.5$ (@fig-plotricker (c)) it oscillates around two.
 
-The above numerical results raise the following questions:
-
--   can we develop tools that allow us to qualitatively describe how the model solutions depend on model parameters?
--   are the there certain families of solutions with qualitatively similar behaviours?
--   how do such families of solutions depend on model parameters?
-
-We will return to analysis of the Ricker model in Worksheet 1.
-
 ```{python}
 #| label: fig-plotricker
 #| fig-cap: "Numerical solutions of the Ricker model for (a)r=0.5, (b) r=1.5, (c) r=2.5."
@@ -230,6 +224,14 @@ ax[2].set_title('$r = 2.5$')
 plt.tight_layout()
 plt.show()
 ```
+
+The above numerical results raise the following questions:
+
+-   can we develop tools that allow us to qualitatively describe how the model solutions depend on model parameters?
+-   are the there certain families of solutions with qualitatively similar behaviours?
+-   how do such families of solutions depend on model parameters?
+
+The remainder of this chapter is focussed on these questions. We will apply the techniques to the Ricker model to understand the above behaviour (for all of $r$) in future tutorials.
 
 In @fig-rickerapp you can explore simulations of the Ricker model.
 
@@ -358,6 +360,8 @@ $$
 N_{t+1}=N_t f(N_t)=H(N_t).
 $$ {#eq-generaleqn}
 
+In most cases, unlike the Malthusian model, difference equations cannot be solved analytically. In such cases studying general properties can help us to catagorise the behaviour of different models.
+
 ### Computational solutions
 
 Perhaps the most obvious way to investigate an equation of the form of @eq-generaleqn is to iteratively compute $N_t$ over a prescribed time range.
@@ -366,48 +370,41 @@ Hence given some initial population $N_0$, the solution set $\{N_0,N_1,N_2,...,N
 
 ### Fixed points
 
-We define $N^*$ to be a fixed point of @eq-generaleqn if and only if 
+We define $N^*$ to be a fixed point of @eq-generaleqn if and only if
 $$ 
 N^*=N^*f(N^*)=H(N^*).
 $$ {#eq-noLabel}
-Hence the fixed points can be identified by solving an algebraic equation.
+Hence the fixed points can be identified by solving an algebraic equation. Hence for any given time $t^*$ if $N_{t^*} = N^*$ then $\forall t \geq t^*$, $N_t = N^*$. An interesting question is, how does the model behave when the population is close to a given critical point.
 
 ### Linear stability
 
-By linearising about the identified fixed points using a Taylor series expansion, it can be determined whether or not small perturbations around the fixed point grow or decay in subsequent iterations.
+By linearising about the identified fixed points using a Taylor series expansion, it can be determined whether or not small perturbations grow or decay in subsequent iterations. 
 
-Making a change of dependent variables 
+Making a change of dependent variables,
 $$
 N_t=N^*+\hat{N_t},
 $$ @eq-generaleqn 
 transforms upon substitution to 
 $$
-N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t). 
+N^*+\hat{N}_{t+1} =  H(N^*+\hat{N}_t),
 $$ {#eq-noLabel}
-
-Taylor expanding the right-hand side yields 
+where Taylor expanding the right-hand side yields 
 $$
-N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + h.o.t. .
+N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + \mathcal{O}(\hat{N}_t^2).
 $$ {#eq-noLabel}
-
-Noting that at the fixed point 
+Note that for a fixed point $N^*= H(N^*)$, which leads to a cancellation, 
 $$
-N^*= H(N^*), 
+\hat{N}_{t+1} = H'(N^*)\hat{N}_t + \mathcal{O}(\hat{N}_t^2). 
 $$ {#eq-noLabel}
-cancellation yields 
-$$
-\hat{N}_{t+1} = H'(N^*)\hat{N}_t + h.o.t. 
-$$ {#eq-noLabel}
-Hence considering only small perturbations about the fixed point, the leading order behaviour of the perturbation is governed by 
+Hence, if we consider small perturbations about the fixed point ($\hat{N}$ is small), the leading order behaviour of the perturbation is governed by 
 $$
 \hat{N}_{t} = (H'(N^*))^t\hat{N}_0.
 $$ {#eq-noLabel}
+Hence the linear stability of the fixed point is governed by the sign and magnitude of the term $H'(N^*)$,
 
-Hence the linear stability of the fixed point is governed by the sign and magnitude of the term $H'(N^*)$. If 
-$$
- |H'(N^*)| >1,
-$$ {#eq-noLabel}
-the fixed point is unstable. Otherwise it it stable.
+* $|H'(N^*)| < 1$, **stable**, the perturbation shrinks geometrically to zero.
+* $|H'(N^*)| > 1$, **unstable**, the perturbation grows exponentially in magnitude.
+* $|H'(N^*)| = 1$, **marginal** or borderline case, linear analysis is inconclusive and higher order terms $\mathcal{O}(\hat{N}_t)$ need to be considered.
 
 ### Cobwebbing and linear stability
 
@@ -415,17 +412,56 @@ A cobweb diagram allows solutions of a first order difference equation to be ske
 
 #### An algorithm for generating a cobweb diagram
 
-The cobweb diagram is created as follows:
+The cobweb diagram consists of multiple curves with $N_t$ on the horizontal azis and $N_{t+1}$ on the vertical axis. In words we then,
 
--   Plot the $t^{th}$ iterate, $N_t$, on the $x$ axis and the $t+1^{st}$, $N_{t+1}$ on the $y$ axis.
--   Sketch the net growth rate function $H(N_t)$.
--   Sketch the line $N_{t+1}=N_t$.
--   Note any intersections between the straight line and the graph of $H(N_t)$ are fixed points.
--   Plot the first point $(N_0, H(N_0))$ on the cobweb diagram.
--   Plot a horizontal line between $(N_0, H(N_0))$ and $(H(N_0),H(N_0))$. Note $N_1=H(N_0)$.
--   Plot a vertical line between $(N_1,N_1)$ and $(N_1,H(N_1))$. \*Repeat steps 6 and 7.
+1.  Sketch the net growth rate function $H(N_t)$.
+2.  Sketch the line $N_{t+1}=N_t$.
+3.  Plot the first point $(N_0, H(N_0))$ on the cobweb diagram.
+4.  Plot a horizontal line between $(N_0, H(N_0))$ and $(H(N_0),H(N_0))$. Note $N_1=H(N_0)$.
+5.  Plot a vertical line between $(N_1,N_1)$ and $(N_1,H(N_1))$.
+6.  Repeat steps 4 and 5.
 
-Plotting cobweb diagrams in the vicinity of a fixed point $N^*$ for different values of $H'(N^*)$ allows us to see graphically how the derivative of the right-hand side affects linear stability of a fixed point (see @fig-cobwebstepbystep). In particular,
+It should not be hard to convince yourself that iterating at right angles between the $N_{t+1} = N_{t}$ straight line and the graph of $H(N_t)$ performs succesive iterations of the map. In addition, a key observation is that any **intersections** between the straight line and the graph of $H(N_t)$ are **fixed points**.
+
+The above list is an algorithm, that we often display in a convenient or campact form using pseudo-code,
+
+```pseudocode
+#| label: algo-quicksort
+#| html-indent-size: "1.2em"
+#| html-comment-delimiter: "//"
+#| html-line-number: true
+#| html-line-number-punc: ":"
+#| html-no-end: false
+#| pdf-placement: "htb!"
+#| pdf-line-number: true
+
+\begin{algorithm}
+\caption{Quicksort}
+\begin{algorithmic}
+\Procedure{Quicksort}{$A, p, r$}
+  \If{$p < r$}
+    \State $q = $ \Call{Partition}{$A, p, r$}
+    \State \Call{Quicksort}{$A, p, q - 1$}
+    \State \Call{Quicksort}{$A, q + 1, r$}
+  \EndIf
+\EndProcedure
+\Procedure{Partition}{$A, p, r$}
+  \State $x = A[r]$
+  \State $i = p - 1$
+  \For{$j = p, \dots, r - 1$}
+    \If{$A[j] < x$}
+      \State $i = i + 1$
+      \State exchange
+      $A[i]$ with     $A[j]$
+    \EndIf
+    \State exchange $A[i]$ with $A[r]$
+  \EndFor
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+```
+
+Plotting cobweb diagrams in the vicinity of a fixed point $N^*$ (intersections) for different values of $H'(N^*)$ allows us to see graphically how the derivative of the right-hand side affects linear stability of a fixed point (see @fig-cobwebstepbystep). In particular,
 
 -   when $H'(N^*)>1$, the fixed point is monotonically unstable;
 -   when $0<H'(N^*)<1$, the fixed point is monotonically stable;
@@ -466,9 +502,7 @@ def SolveSingleDiffAndCobweb(t,rhs,N_0,r):
   N = np.zeros_like(t,dtype=float)
   N[0]=N_0
 
-
   num_time_steps=t.shape[0]
-
 
   # Initialise cobweb solution object
   CobwebSol=np.zeros((2*num_time_steps,2))
@@ -559,6 +593,8 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 from matplotlib import animation
+from IPython.display import HTML, display
+import os
 
 plt.rcParams.update({
     "text.usetex": True,
@@ -796,21 +832,30 @@ def update(frame):
 # ------------------------
 # Run animation
 # ------------------------
-ani = animation.FuncAnimation(
-    fig,
-    update,
-    frames=total_frames+final_wait,
-    interval=100,
-    blit=True
-)
+fmt = os.environ.get("QUARTO_FORMAT", "")
 
-display(HTML(ani.to_html5_video()))
-plt.close(fig)
+if "html" in fmt:
+    ani = animation.FuncAnimation(
+        fig,
+        update,
+        frames=total_frames+final_wait,
+        interval=100,
+        blit=True
+    )
+    display(HTML(ani.to_html5_video()))
+    plt.close(fig)
+
+else:
+    # ---- Render final frame for PDF ----
+    update(total_frames + final_wait - 1)
+    plt.show()
 ```
 
 ### Bifurcation diagrams
 
-A bifurcation is a qualitative change in solution behaviour (either a change in the number of fixed points or their stability). A bifurcation diagram is a compact means of describing bifurcations as a function of model parameters. Usually, the fixed point value of the population (i.e. $N^*$) is plotted against a model parameter of interest. From this diagram one can immediately see how the number of fixed points and their stability changes as a given parameter increases.
+A bifurcation is a qualitative change in solution behaviour as a function of the models parameters (either a change in the number of fixed points or their stability). A bifurcation diagram is a compact means of displaying bifurcations. 
+
+The simplest bifurcation digaram is a plot of the fixed point value of the population (which we have often denoted $N^*$) against a model parameter of interest. From this diagram one can immediately see how the number of fixed points and their stability changes as a given parameter increases.
 
 ### Perform a qualitative analysis on the Malhusian model
 
@@ -871,7 +916,8 @@ H_N_plot=malthusianrhs(N_plot,r)
 
 # Plot results
 fig, ax = plt.subplots(1,2)
-ax[0].plot(t, N)
+ax[0].plot(t, N, linestyle='-', alpha=0.4)
+ax[0].plot(t, N, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[0].set_xlabel('$t$')
 ax[0].set_ylabel('$N_t$')
 
@@ -952,13 +998,16 @@ N_3=SolveSingleDiff(t,densmodelrhs,N_0,gam_3)
 
 # PLot results
 fig, ax = plt.subplots(1,3)
-ax[0].plot(t, N_1)
+ax[0].plot(t, N_1, linestyle='-', alpha=0.4)
+ax[0].plot(t, N_1, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[0].set_xlabel('$t$')
 ax[0].set_ylabel('$N_{t}$')
-ax[1].plot(t, N_2)
+ax[1].plot(t, N_2, linestyle='-', alpha=0.4)
+ax[1].plot(t, N_2, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[1].set_xlabel('$t$')
 ax[1].set_ylabel('$N_{t}$')
-ax[2].plot(t, N_3)
+ax[2].plot(t, N_3, linestyle='-', alpha=0.4)
+ax[2].plot(t, N_3, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[2].set_xlabel('$t$')
 ax[2].set_ylabel('$N_{t}$')
 
@@ -1057,11 +1106,11 @@ def server(input, output, session):
 
         # Plot results
         
-        ax[0].plot(t,y)
+        ax[0].plot(t, y, linestyle='-', alpha=0.4)
+        ax[0].plot(t, y, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
         ax[0].set_xlabel('$t$')
         ax[0].set_ylabel('$N_t$')
         ax[0].set_title('Time series')
-
 
         ax[1].plot(CobwebSol[0,0], CobwebSol[0,1],'*')
         ax[1].plot(CobwebSol[:,0], CobwebSol[:,1],'-')
@@ -1360,15 +1409,18 @@ N_3=SolveSingleDiff(t,densmodelwithharvesting,N_0,[gam,h_3])
 
 # Plot results
 fig, ax = plt.subplots(1,3)
-ax[0].plot(t, N_1)
+ax[0].plot(t, N_1, linestyle='-', alpha=0.4)
+ax[0].plot(t, N_1, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[0].set_xlabel('$t$')
 ax[0].set_ylabel('$N_t$')
 
-ax[1].plot(t, N_2)
+ax[1].plot(t, N_2, linestyle='-', alpha=0.4)
+ax[1].plot(t, N_2, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[1].set_xlabel('$t$')
 ax[1].set_ylabel('$N_t$')
 
-ax[2].plot(t, N_3)
+ax[2].plot(t, N_3, linestyle='-', alpha=0.4)
+ax[2].plot(t, N_3, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[2].set_xlabel('$t$')
 ax[2].set_ylabel('$N_t$')
 plt.tight_layout()
@@ -1467,7 +1519,8 @@ def server(input, output, session):
 
         # Plot results
         
-        ax[0].plot(t,y)
+        ax[0].plot(t, y, linestyle='-', alpha=0.4)
+        ax[0].plot(t, y, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
         ax[0].set_xlabel('$t$')
         ax[0].set_ylabel('$N_t$')
         ax[0].set_ylim([0,max_sol])
@@ -1803,7 +1856,8 @@ H_N_plot3=densmodelwithharvesting(N_plot,[r_3,h])
 # Make figure
 fig, ax = plt.subplots(3,2)
 
-ax[0,0].plot(t, N1)
+ax[0,0].plot(t, N1, linestyle='-', alpha=0.4)
+ax[0,0].plot(t, N1, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[0,0].set_xlabel('$t$')
 ax[0,0].set_ylabel('$N_{t}$')
 
@@ -1814,7 +1868,8 @@ ax[0,1].plot(N_plot, H_N_plot1)
 ax[0,1].set_xlabel('$N_t$')
 ax[0,1].set_ylabel('$N_{t+1}$')
 
-ax[1,0].plot(t, N2)
+ax[1,0].plot(t, N2, linestyle='-', alpha=0.4)
+ax[1,0].plot(t, N2, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[1,0].set_xlabel('$t$')
 ax[1,0].set_ylabel('$N_{t}$')
 
@@ -1825,7 +1880,8 @@ ax[1,1].plot(N_plot, H_N_plot2)
 ax[1,1].set_xlabel('$N_t$')
 ax[1,1].set_ylabel('$N_{t+1}$')
 
-ax[2,0].plot(t, N3)
+ax[2,0].plot(t, N3, linestyle='-', alpha=0.4)
+ax[2,0].plot(t, N3, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[2,0].set_xlabel('$t$')
 ax[2,0].set_ylabel('$N_{t}$')
 
