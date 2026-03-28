@@ -832,23 +832,16 @@ def update(frame):
 # ------------------------
 # Run animation
 # ------------------------
-fmt = os.environ.get("QUARTO_FORMAT", "")
+ani = animation.FuncAnimation(
+    fig,
+    update,
+    frames=total_frames+final_wait,
+    interval=100,
+    blit=True
+)
 
-if "html" in fmt:
-    ani = animation.FuncAnimation(
-        fig,
-        update,
-        frames=total_frames+final_wait,
-        interval=100,
-        blit=True
-    )
-    display(HTML(ani.to_html5_video()))
-    plt.close(fig)
-
-else:
-    # ---- Render final frame for PDF ----
-    update(total_frames + final_wait - 1)
-    plt.show()
+display(HTML(ani.to_html5_video()))
+plt.close(fig)
 ```
 
 ### Bifurcation diagrams
