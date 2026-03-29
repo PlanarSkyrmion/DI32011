@@ -584,9 +584,9 @@ plt.tight_layout()
 plt.show()
 ```
 
+::: {#fig-cobwebMal}
+
 ```{python}
-#| label: fig-cobwebMal
-#| fig-cap: "Animation of a cobweb diagram for the Malthusian model with $N_0 = 0.2$ and $r = 1.5$."
 #| fig-show: false
 
 import numpy as np
@@ -850,6 +850,8 @@ else:
   update(total_frames + final_wait - 1)
   plt.show()
 ```
+Animation of a cobweb diagram for the Malthusian model with $N_0 = 0.2$ and $r = 1.5$.
+:::
 
 ### Bifurcation diagrams
 
@@ -1349,9 +1351,7 @@ plt.show()
 
 ### Symbolic computation
 
-We can use symbolic calculators to aid many of computations performed above. Below is an example using the Python library sympi.
-
-Many of the calculations can be aided by using a symbolic calculator.
+We can use symbolic calculators to aid many of computations performed above. Below is an example using the Python library sympi,
 
 ```{python}
 #| label: code-calc1
@@ -1402,7 +1402,7 @@ print(sp.simplify(H_p_eval_2))
 
 ## An application - how much harvesting can a population sustain?
 
-Models of population dynamics can be used to study how interventions will affect population dynamics. Extending from the model developed in the previous example, a valid question might be what is the maximal rate of harvesting a fish stock can sustain without becoming extinct? \### Including a harvesting term Introducing a harvesting term at per capita harvesting rate $h$, the governing model equation becomes 
+Models of population dynamics can be used to study how interventions will affect population dynamics. Extending from the model developed in the previous example, a valid question might be what is the maximal rate of harvesting a fish stock can sustain without becoming extinct? Introducing a harvesting term at per capita harvesting rate $h$, the governing model equation becomes 
 $$
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2} - h N_t,
 $$ {#eq-harvestingmodel}
@@ -1420,17 +1420,16 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define time vector
-T=10
+T=20
 t = np.arange(0, T, 1)
 
-
-# DEfine model parameters
+# Define model parameters
 N_0=0.1
 gam=5.0
 h_1=0.1
 h_2=1.0
 h_3=3.0
-
+h_4=5.0
 
 # Define rhs of differnece equation
 def densmodelwithharvesting(x,par):
@@ -1443,23 +1442,33 @@ def densmodelwithharvesting(x,par):
 N_1=SolveSingleDiff(t,densmodelwithharvesting,N_0,[gam,h_1])
 N_2=SolveSingleDiff(t,densmodelwithharvesting,N_0,[gam,h_2])
 N_3=SolveSingleDiff(t,densmodelwithharvesting,N_0,[gam,h_3])
+N_4=SolveSingleDiff(t,densmodelwithharvesting,N_0,[gam,h_4])
 
 # Plot results
-fig, ax = plt.subplots(1,3)
-ax[0].plot(t, N_1, linestyle='-', alpha=0.4)
-ax[0].plot(t, N_1, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
-ax[0].set_xlabel('$t$')
-ax[0].set_ylabel('$N_t$')
+fig, ax = plt.subplots(2,2)
+ax[0,0].plot(t, N_1, linestyle='-', alpha=0.4)
+ax[0,0].plot(t, N_1, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
+ax[0,0].set_xlabel('$t$')
+ax[0,0].set_ylabel('$N_t$')
+ax[0,0].set_title(f'$\gamma = ${gam}, $h = ${h_1}')
 
-ax[1].plot(t, N_2, linestyle='-', alpha=0.4)
-ax[1].plot(t, N_2, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
-ax[1].set_xlabel('$t$')
-ax[1].set_ylabel('$N_t$')
+ax[0,1].plot(t, N_2, linestyle='-', alpha=0.4)
+ax[0,1].plot(t, N_2, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
+ax[0,1].set_xlabel('$t$')
+ax[0,1].set_ylabel('$N_t$')
+ax[0,1].set_title(f'$\gamma = ${gam}, $h = ${h_2}')
 
-ax[2].plot(t, N_3, linestyle='-', alpha=0.4)
-ax[2].plot(t, N_3, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
-ax[2].set_xlabel('$t$')
-ax[2].set_ylabel('$N_t$')
+ax[1,0].plot(t, N_3, linestyle='-', alpha=0.4)
+ax[1,0].plot(t, N_3, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
+ax[1,0].set_xlabel('$t$')
+ax[1,0].set_ylabel('$N_t$')
+ax[1,0].set_title(f'$\gamma = ${gam}, $h = ${h_3}')
+
+ax[1,1].plot(t, N_4, linestyle='-', alpha=0.4)
+ax[1,1].plot(t, N_4, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
+ax[1,1].set_xlabel('$t$')
+ax[1,1].set_ylabel('$N_t$')
+ax[1,1].set_title(f'$\gamma = ${gam}, $h = ${h_4}')
 plt.tight_layout()
 plt.show()
 ```
