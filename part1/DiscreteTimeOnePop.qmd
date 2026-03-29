@@ -1665,6 +1665,8 @@ In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^
 #| fig-cap: "Stability regions from studying the linear stability of the fixed points of the harvesting model. This is not enough to understand population stability/collapse for the grey region, as can be seen in @fig-plotdensmodelharvest2"
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.image as mpimg 
+from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 
 # Discretize h
 h_vec = np.linspace(0.01, 5, 500)
@@ -1730,6 +1732,12 @@ ax.text(1.5, 1.945, '$N^*_1$ monotonically stable, population collapse', color='
 ax.text(1.5, 2.7, '$N^*_2$ Monotonically stable, population stable', color='darkblue', fontsize=10, alpha=1.0, rotation=text_angle)
 ax.text(0.1, 3.4, '$N^*_2$ Oscillatory stable, population stable', color='goldenrod', fontsize=10, alpha=1.0)
 ax.text(1.5, 8.5, '$N^*_2$ unstable\n (HERE THERE BE DRAGONS)', color='black', fontsize=10, alpha=1.0, ha='center')
+
+# create dragon image at data point
+img = mpimg.imread("./images/dragon.png")
+imagebox = OffsetImage(img, zoom=0.15)
+ab = AnnotationBbox(imagebox, (3.2, 9.7), frameon=False, xycoords='data')
+ax.add_artist(ab)
 
 plt.show()
 ```
