@@ -1313,27 +1313,33 @@ from matplotlib.lines import Line2D
 
 # Define gamma regions
 gamma_less1 = np.linspace(0, 1, 50) # N^*=0 stable
-gamma_greater1 = np.linspace(1, 4, 400) # N^*=0 unstable, non-zero N^* stable
+gamma_greater1 = np.linspace(1, 2, 200) # N^*=0 unstable, non-zero N^* montonically stable
+gamma_greater2 = np.linspace(2, 4, 200) # N^*=0 unstable, non-zero N^* oscillatory stable
 
 # Compute fixed points
 N_star_stable0 = np.zeros_like(gamma_less1)
-N_star_unstable0 = np.zeros_like(gamma_greater1)
-N_star_nonzero = np.sqrt(gamma_greater1 - 1)
+N_star_unstable0 = np.zeros_like(np.concatenate((gamma_greater1
+,gamma_greater2)))
+N_star_nonzero_mono = np.sqrt(gamma_greater1 - 1)
+N_star_nonzero_osc = np.sqrt(gamma_greater2 - 1)
 
 # Plot results
 fig, ax = plt.subplots(1)
 
 # Plot N^* = 0 as stable and unstable
 ax.plot(gamma_less1, N_star_stable0, 'g') 
-ax.plot(gamma_greater1, N_star_unstable0, 'r')
+ax.plot(np.concatenate((gamma_greater1
+,gamma_greater2)), N_star_unstable0, 'r')
 
 # Plot N^* = sqrt(gamma-1) as stable
-ax.plot(gamma_greater1, N_star_nonzero, 'g')
+ax.plot(gamma_greater1, N_star_nonzero_mono, 'g')
+ax.plot(gamma_greater2, N_star_nonzero_osc, 'b')
 
 # Custom legend
-stable_handle = Line2D([0], [0], color='green', lw=2, label='Stable')
-unstable_handle = Line2D([0], [0], color='red', lw=2, label='Unstable')
-ax.legend(handles=[stable_handle, unstable_handle], loc='upper left')
+stable_mon_handle = Line2D([0], [0], color='green', lw=2, label='Monotonically stable')
+stable_osc_handle = Line2D([0], [0], color='blue', lw=2, label='Oscillatory unstable')
+unstable_handle = Line2D([0], [0], color='red', lw=2, label=' Unstable')
+ax.legend(handles=[stable_mon_handle, stable_osc_handle, unstable_handle], loc='upper left')
 
 plt.xlabel('$\gamma$')
 plt.ylabel('$N^*$')
