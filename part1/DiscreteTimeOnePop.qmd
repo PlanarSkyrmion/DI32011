@@ -1637,9 +1637,32 @@ H'(N^*_2) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}
 $$ {#eq-arvestingH_prime}
 hence when $h=0$ we retrieve the stability condition from the previous model.
 
+### Stability boundaries in the $h\gamma$ plane
+The draw 
+The contour at $H'(N^*_2)=1$ can be identified by solving,
+$$
+ h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
+$$ {#eq-noLabel}
+yielding 
+$$
+ \gamma= 1+h.
+$$ {#eq-noLabel}
+
+The contour at $H'(N^*)=-1$ can be represented by 
+$$
+ h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
+$$ {#eq-noLabel}
+
+Solving for $\gamma$ yields 
+$$
+\gamma=\frac{(1+h)^2}{h}.
+$$ {#eq-noLabel}
+
+In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note that the points in parameter space used to generate the simulation results in @fig-plotdensmodelharvest are $(h,\gamma)=(0.1,5)$ $(h,\gamma)=(1,5)$ and $(h,\gamma)=(3,5)$.
+
 ```{python}
 #| label: fig-plotdensmodelharveststab
-#| fig-cap: "Stability regions for the harvesting model."
+#| fig-cap: "Stability regions from studying the linear stability of the fixed points of the harvesting model. This is not enough to understand population stability/collapse for the grey region!"
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -1706,33 +1729,13 @@ ax.text(1.5, 0.945, '$N^*_1$ oscillatory stable, population collapse', color='da
 ax.text(1.5, 1.945, '$N^*_1$ monotonically stable, population collapse', color='darkgreen', fontsize=10, alpha=1.0, rotation=text_angle)
 ax.text(1.5, 2.7, '$N^*_2$ Monotonically stable, population stable', color='darkblue', fontsize=10, alpha=1.0, rotation=text_angle)
 ax.text(0.1, 3.4, '$N^*_2$ Oscillatory stable, population stable', color='goldenrod', fontsize=10, alpha=1.0)
-ax.text(1.5, 8.5, '$N^*_2$ unstable', color='black', fontsize=10, alpha=1.0)
+ax.text(1.5, 8.5, '$N^*_2$ unstable\n (HERE THERE BE DRAGONS)', color='black', fontsize=10, alpha=1.0, ha='center')
 
 plt.show()
 ```
 
-### Stability boundaries in the $h\gamma$ plane
-The draw 
-The contour at $H'(N^*_2)=1$ can be identified by solving,
-$$
- h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
-$$ {#eq-noLabel}
-yielding 
-$$
- \gamma= 1+h.
-$$ {#eq-noLabel}
 
-The contour at $H'(N^*)=-1$ can be represented by 
-$$
- h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
-$$ {#eq-noLabel}
-
-Solving for $\gamma$ yields 
-$$
-\gamma=\frac{(1+h)^2}{h}.
-$$ {#eq-noLabel}
-
-In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note that the points in parameter space used to generate the simulation results in @fig-plotdensmodelharvest are $(h,\gamma)=(0.1,5)$ $(h,\gamma)=(1,5)$ and $(h,\gamma)=(3,5)$. Cobweb diagrams in different regions of parameter space are presented in @fig-densharvestingmodelcobweb. The plot in @fig-plotdensmodelharveststab can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to $1$ and then 5?
+Cobweb diagrams in different regions of parameter space are presented in @fig-densharvestingmodelcobweb. The plot in @fig-plotdensmodelharveststab can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to $1$ and then 5?
 
 
 ```{python}
