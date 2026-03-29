@@ -763,7 +763,7 @@ N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + \mathcal{O}(\hat{N}_t^2).
 </ol>
 <p>It should not be hard to convince yourself that iterating at right angles between the <span class="math inline">\(N_{t+1} = N_{t}\)</span> straight line and the graph of <span class="math inline">\(H(N_t)\)</span> performs succesive iterations of the map. In addition, a key observation is that any <strong>intersections</strong> between the straight line and the graph of <span class="math inline">\(H(N_t)\)</span> are <strong>fixed points</strong>.</p>
 <p>The above list is an algorithm, that we often display in a convenient or campact form using pseudo-code,</p>
-<div id="algo-quicksort" class="pseudocode-container quarto-float" data-indent-size="1.2em" data-pseudocode-number="1" data-comment-delimiter="//" data-line-number="true" data-no-end="false" data-line-number-punc=":" data-caption-prefix="Algorithm">
+<div id="algo-quicksort" class="pseudocode-container quarto-float" data-indent-size="1.2em" data-comment-delimiter="//" data-no-end="false" data-pseudocode-number="1" data-caption-prefix="Algorithm" data-line-number-punc=":" data-line-number="true">
 <div class="pseudocode">
 \begin{algorithm} \caption{Quicksort} \begin{algorithmic} \Procedure{Quicksort}{$A, p, r$} \If{$p &lt; r$} \State $q = $ \Call{Partition}{$A, p, r$} \State \Call{Quicksort}{$A, p, q - 1$} \State \Call{Quicksort}{$A, q + 1, r$} \EndIf \EndProcedure \Procedure{Partition}{$A, p, r$} \State $x = A[r]$ \State $i = p - 1$ \For{$j = p, \dots, r - 1$} \If{$A[j] &lt; x$} \State $i = i + 1$ \State exchange $A[i]$ with $A[j]$ \EndIf \State exchange $A[i]$ with $A[r]$ \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
 </div>
@@ -1169,7 +1169,7 @@ Figure&nbsp;2.4: Generating a cobweb plot.
 <div id="fig-cobwebMal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cobwebMal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="3185aaa3" class="cell" data-fig-show="false" data-execution_count="4">
+<div id="e2e62804" class="cell" data-fig-show="false" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <video width="960" height="384" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAoVRtZGF0AAACrwYF//+r
@@ -2754,7 +2754,7 @@ Figure&nbsp;2.13: An app to explore behaviour in the harvesting model.
 </figcaption>
 </figure>
 </div>
-<p>In <a href="#fig-plotdensmodelharvest" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> time series solutions at increasing harvesting rates (<span class="math inline">\(h=0.1\)</span>, <span class="math inline">\(h=1\)</span>, <span class="math inline">\(h=3\)</span>) are presented. For low harvesting rates the system behaves almost identically to the no harvesting case but with an expected reduction in the fixed point value. However for intermediate harvesting the population undergoes oscillations. However, for further increased harvesting rates there appears again to be a stable fixed point.</p>
+<p>In <a href="#fig-plotdensmodelharvest" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> time series solutions at increasing harvesting rates (<span class="math inline">\(h=0.1\)</span>, <span class="math inline">\(h=1\)</span>, <span class="math inline">\(h=3\)</span>, <span class="math inline">\(h=5\)</span>) are presented. For low harvesting rates the system behaves almost identically to the no harvesting case but with an expected reduction in the fixed point value. However for intermediate harvesting the population undergoes oscillations. However, for further increased harvesting rates there appears again to be a stable fixed point. Eventually we harvest too many fish and the population collapses.</p>
 <p>Can analysis of the model help us understand how/why changes in solutions occur?</p>
 </section>
 <section id="fixed-points-2" class="level3" data-number="2.6.2">
@@ -2763,75 +2763,101 @@ Figure&nbsp;2.13: An app to explore behaviour in the harvesting model.
 N^*=\frac{\gamma N^*}{1+{N^*}^2} - h N^*.
 \tag{2.26}\]</span></span></p>
 <p>Hence the fixed points are <span id="eq-noLabel"><span class="math display">\[
-N^*=0
-\tag{2.27}\]</span></span></p>
-<p>and <span id="eq-noLabel"><span class="math display">\[
-N^*=\sqrt{\frac{\gamma}{1+h}-1}.
+N^*_1=0 \qquad \text{and} \qquad N^*_2=\sqrt{\frac{\gamma}{1+h}-1}.
+\tag{2.27}\]</span></span> Note that harvesting lowers the population size of the non-zero fixed point (<span class="math inline">\(N^*_2\)</span>) when it exists. The condition on the parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span> in order that there is a non trivial biologically relevant fixed point (<span class="math inline">\(N^*_2 &gt; 0\)</span>) is given by, <span id="eq-noLabel"><span class="math display">\[
+\frac{\gamma}{1+h}-1&gt;0 \qquad \Rightarrow \qquad \gamma &gt; 1+h.
 \tag{2.28}\]</span></span></p>
-<p>Note that harvesting lowers the population size of the non-zero fixed point (when it exists).</p>
-<p>Can we deduce a condition that must hold on the parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span> in order that there is a non trivial biologically relevant fixed point?</p>
-<p>Requiring <span id="eq-noLabel"><span class="math display">\[
-N^* &gt;0
-\tag{2.29}\]</span></span></p>
-<p>implies <span id="eq-noLabel"><span class="math display">\[
-\frac{\gamma}{1+h}-1&gt;0.
-\tag{2.30}\]</span></span></p>
 </section>
 <section id="linear-stability-1" class="level3" data-number="2.6.3">
 <h3 data-number="2.6.3" class="anchored" data-anchor-id="linear-stability-1"><span class="header-section-number">2.6.3</span> Linear stability</h3>
-<p>The linear stability is determined by <span id="eq-noLabel"><span class="math display">\[
+<p>Linear stability is determined by, <span id="eq-noLabel"><span class="math display">\[
 H'(N_t)=\frac{\gamma }{1+{N_t}^2} - \frac{2\gamma N_t^2 }{(1+{N_t}^2)^2} - h.
-\tag{2.31}\]</span></span></p>
-<p>At <span class="math inline">\(N^*=0\)</span> we obtain <span id="eq-noLabel"><span class="math display">\[
+\tag{2.29}\]</span></span></p>
+<p>At <span class="math inline">\(N^*_1=0\)</span> we obtain, <span id="eq-noLabel"><span class="math display">\[
 H'(0)=\gamma-h.
-\tag{2.32}\]</span></span></p>
-<p>Hence if <span class="math inline">\(\gamma&gt;1+h\)</span>, <span class="math inline">\(N^*=0\)</span> is unstable. Note that this is the condition that determines whether the non-zero fixed point exists or not.</p>
-<p>At <span id="eq-noLabel"><span class="math display">\[
-N^*=\sqrt{\frac{\gamma}{1+h}-1},
-\tag{2.33}\]</span></span></p>
-<p><span id="eq-noLabel"><span class="math display">\[
+\tag{2.30}\]</span></span> Hence if <span class="math inline">\(\gamma&gt;1+h\)</span>, <span class="math inline">\(N^*=0\)</span> is unstable. Note that this is the condition that determines whether the non-zero fixed point <span class="math inline">\(N^*_2\)</span> exists or not. For the other fixed point <span class="math inline">\(N_t = N^*_2\)</span> we get, <span id="eq-noLabel"><span class="math display">\[
 H'\left(\sqrt{\frac{\gamma}{1+h}-1}\right)=\frac{\gamma }{1+\frac{\gamma}{1+h}-1} - \frac{2\gamma \frac{\gamma}{1+h}-1 }{(1+\frac{\gamma}{1+h}-1)^2} - h.
-\tag{2.34}\]</span></span></p>
-<p>Hence linear stability is a function of two parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span>.</p>
-<p>We can show that <span id="eq-arvestingH_prime"><span class="math display">\[
-H'(N^*) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1,
-\tag{2.35}\]</span></span></p>
-<p>and hence that when <span class="math inline">\(h=0\)</span> we retrieve the stability condition from the previous model.</p>
+\tag{2.31}\]</span></span> Hence, unsurprisingly, linear stability is now a function of two parameters <span class="math inline">\(\gamma\)</span> and <span class="math inline">\(h\)</span>. A bit of algebra produces a simpler form as a polynomial in <span class="math inline">\(h\)</span>, <span id="eq-arvestingH_prime"><span class="math display">\[
+H'(N^*_2) = h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1,
+\tag{2.32}\]</span></span> hence when <span class="math inline">\(h=0\)</span> we retrieve the stability condition from the previous model.</p>
 <div id="cell-fig-plotdensmodelharveststab" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise h</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>h_vec<span class="op">=</span>np.linspace(<span class="fl">0.1</span>,<span class="dv">5</span>,<span class="dv">100</span>)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretize h</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>h_vec <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">500</span>)</span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot gamma for the different stability boundaries</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>gamma_1<span class="op">=</span>(<span class="dv">1</span><span class="op">+</span>h_vec)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>h_vec</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gamma_2<span class="op">=</span><span class="dv">1</span><span class="op">+</span>h_vec</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>gamma_3<span class="op">=</span>h_vec</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>gamma_4<span class="op">=</span><span class="dv">2</span><span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>h_vec)<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">1</span><span class="op">+</span><span class="dv">2</span><span class="op">*</span>h_vec)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute stability boundaries</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>gamma_1 <span class="op">=</span> (<span class="dv">1</span> <span class="op">+</span> h_vec)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> h_vec      <span class="co"># H_d = -1</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>gamma_2 <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> h_vec                    <span class="co"># H_d = 1</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>gamma_3 <span class="op">=</span> h_vec                         <span class="co"># N^* = 0 monotonic</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>gamma_4 <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> h_vec)<span class="op">**</span><span class="dv">2</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="dv">2</span><span class="op">*</span>h_vec)  <span class="co"># H_d = 0</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>gamma_5 <span class="op">=</span> h_vec <span class="op">-</span> <span class="dv">1</span> <span class="co"># N^* = 0 oscillatory</span></span>
 <span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># PLot results</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">1</span>)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_1)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_4)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_2)</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_3)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>ax.legend([<span class="st">'$H_p$=-1'</span>,<span class="st">'$H_p$=0'</span>,<span class="st">'$H_p$=1'</span>,<span class="st">'$N^*=0$ mon'</span>])</span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'$h$'</span>)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$</span><span class="er">\</span><span class="st">gamma$'</span>)</span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>,<span class="fl">12.0</span>)</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>,<span class="fl">5.0</span>)</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Define colors for regions</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> {</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>    <span class="st">'N0_stable'</span>: <span class="st">'lightcoral'</span>,</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">'nonzero_monot'</span>: <span class="st">'lightgreen'</span>,</span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">'oscillatory'</span>: <span class="st">'lightblue'</span>,</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">'period_doubling'</span>: <span class="st">'khaki'</span></span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot shaded regions first</span></span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, <span class="dv">0</span>, gamma_5, color<span class="op">=</span><span class="st">'lightcyan'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-29"><a href="#cb16-29" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, gamma_5, gamma_3, color<span class="op">=</span>colors[<span class="st">'N0_stable'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-30"><a href="#cb16-30" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, gamma_3, gamma_2, color<span class="op">=</span>colors[<span class="st">'nonzero_monot'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-31"><a href="#cb16-31" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, gamma_2, gamma_4, color<span class="op">=</span>colors[<span class="st">'oscillatory'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-32"><a href="#cb16-32" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, gamma_4, gamma_1, color<span class="op">=</span>colors[<span class="st">'period_doubling'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-33"><a href="#cb16-33" aria-hidden="true" tabindex="-1"></a>ax.fill_between(h_vec, gamma_1, ax.get_ylim()[<span class="dv">1</span>], color<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb16-34"><a href="#cb16-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-35"><a href="#cb16-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-36"><a href="#cb16-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the boundaries with matching colors (darker for contrast)</span></span>
+<span id="cb16-37"><a href="#cb16-37" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_5, color<span class="op">=</span><span class="st">'purple'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"$H'(N_1^*) = -1$"</span>)</span>
+<span id="cb16-38"><a href="#cb16-38" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_3, color<span class="op">=</span><span class="st">'darkred'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"$H'(N^*_1)=0$"</span>)</span>
+<span id="cb16-39"><a href="#cb16-39" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_2, color<span class="op">=</span><span class="st">'darkgreen'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"$H'(N^*_2)=1$"</span>)</span>
+<span id="cb16-40"><a href="#cb16-40" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_4, color<span class="op">=</span><span class="st">'darkblue'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"$H'(N^*_2)=0$"</span>)</span>
+<span id="cb16-41"><a href="#cb16-41" aria-hidden="true" tabindex="-1"></a>ax.plot(h_vec, gamma_1, color<span class="op">=</span><span class="st">'goldenrod'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"$H'(N^*_2)=-1$"</span>)</span>
+<span id="cb16-42"><a href="#cb16-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-43"><a href="#cb16-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Labels and title</span></span>
+<span id="cb16-44"><a href="#cb16-44" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'$h$'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-45"><a href="#cb16-45" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'$</span><span class="er">\</span><span class="st">gamma$'</span>, fontsize<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb16-46"><a href="#cb16-46" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Stability Regions'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb16-47"><a href="#cb16-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-48"><a href="#cb16-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Legend</span></span>
+<span id="cb16-49"><a href="#cb16-49" aria-hidden="true" tabindex="-1"></a>ax.legend(loc<span class="op">=</span><span class="st">'upper left'</span>, bbox_to_anchor<span class="op">=</span>(<span class="fl">0.05</span>, <span class="dv">1</span>), fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb16-50"><a href="#cb16-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-51"><a href="#cb16-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Tight layout and grid</span></span>
+<span id="cb16-52"><a href="#cb16-52" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb16-53"><a href="#cb16-53" aria-hidden="true" tabindex="-1"></a>ax.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb16-54"><a href="#cb16-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-55"><a href="#cb16-55" aria-hidden="true" tabindex="-1"></a>x_0, y_0, x_1, y_1 <span class="op">=</span> <span class="fl">1.0</span>, <span class="fl">1.0</span>, <span class="fl">2.0</span>, <span class="fl">2.0</span>  <span class="co"># data coordinates</span></span>
+<span id="cb16-56"><a href="#cb16-56" aria-hidden="true" tabindex="-1"></a>x_0_screen, y_0_screen <span class="op">=</span> ax.transData.transform((x_0, y_0))</span>
+<span id="cb16-57"><a href="#cb16-57" aria-hidden="true" tabindex="-1"></a>x_1_screen, y_1_screen <span class="op">=</span> ax.transData.transform((x_1, y_1))</span>
+<span id="cb16-58"><a href="#cb16-58" aria-hidden="true" tabindex="-1"></a>screen_grad <span class="op">=</span> (y_1_screen <span class="op">-</span> y_0_screen)<span class="op">/</span>(x_1_screen <span class="op">-</span> x_0_screen)</span>
+<span id="cb16-59"><a href="#cb16-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-60"><a href="#cb16-60" aria-hidden="true" tabindex="-1"></a><span class="co"># For large h, all slopes ≈ 1</span></span>
+<span id="cb16-61"><a href="#cb16-61" aria-hidden="true" tabindex="-1"></a>text_angle <span class="op">=</span> np.degrees(np.arctan(screen_grad))</span>
+<span id="cb16-62"><a href="#cb16-62" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">3.5</span>, <span class="fl">1.0</span>, <span class="st">'$N^*_1$ oscillatory unstable, population collapse'</span>, color<span class="op">=</span><span class="st">'purple'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb16-63"><a href="#cb16-63" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">1.5</span>, <span class="fl">0.945</span>, <span class="st">'$N^*_1$ oscillatory stable, population collapse'</span>, color<span class="op">=</span><span class="st">'darkred'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>, rotation<span class="op">=</span>text_angle)</span>
+<span id="cb16-64"><a href="#cb16-64" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">1.5</span>, <span class="fl">1.945</span>, <span class="st">'$N^*_1$ monotonically stable, population collapse'</span>, color<span class="op">=</span><span class="st">'darkgreen'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>, rotation<span class="op">=</span>text_angle)</span>
+<span id="cb16-65"><a href="#cb16-65" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">1.5</span>, <span class="fl">2.7</span>, <span class="st">'$N^*_2$ Monotonically stable, population stable'</span>, color<span class="op">=</span><span class="st">'darkblue'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>, rotation<span class="op">=</span>text_angle)</span>
+<span id="cb16-66"><a href="#cb16-66" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">0.1</span>, <span class="fl">3.4</span>, <span class="st">'$N^*_2$ Oscillatory stable, population stable'</span>, color<span class="op">=</span><span class="st">'goldenrod'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb16-67"><a href="#cb16-67" aria-hidden="true" tabindex="-1"></a>ax.text(<span class="fl">1.5</span>, <span class="fl">8.5</span>, <span class="st">'$N^*_2$ unstable'</span>, color<span class="op">=</span><span class="st">'black'</span>, fontsize<span class="op">=</span><span class="dv">10</span>, alpha<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb16-68"><a href="#cb16-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-69"><a href="#cb16-69" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-plotdensmodelharveststab" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-plotdensmodelharveststab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="DiscreteTimeOnePop_files/figure-html/fig-plotdensmodelharveststab-output-1.png" width="580" height="427" class="figure-img">
+<img src="DiscreteTimeOnePop_files/figure-html/fig-plotdensmodelharveststab-output-1.png" width="950" height="566" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-plotdensmodelharveststab-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2.14: Stability regions for the harvesting model.
@@ -2843,17 +2869,17 @@ Figure&nbsp;2.14: Stability regions for the harvesting model.
 </section>
 <section id="stability-boundaries-in-the-hgamma-plane" class="level3" data-number="2.6.4">
 <h3 data-number="2.6.4" class="anchored" data-anchor-id="stability-boundaries-in-the-hgamma-plane"><span class="header-section-number">2.6.4</span> Stability boundaries in the <span class="math inline">\(h\gamma\)</span> plane</h3>
-<p>The contour at <span class="math inline">\(H'(N^*)=1\)</span> can be identified by solving <span id="eq-noLabel"><span class="math display">\[
+<p>The draw The contour at <span class="math inline">\(H'(N^*_2)=1\)</span> can be identified by solving, <span id="eq-noLabel"><span class="math display">\[
 h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
-\tag{2.36}\]</span></span> yielding <span id="eq-noLabel"><span class="math display">\[
+\tag{2.33}\]</span></span> yielding <span id="eq-noLabel"><span class="math display">\[
 \gamma= 1+h.
-\tag{2.37}\]</span></span></p>
+\tag{2.34}\]</span></span></p>
 <p>The contour at <span class="math inline">\(H'(N^*)=-1\)</span> can be represented by <span id="eq-noLabel"><span class="math display">\[
 h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
-\tag{2.38}\]</span></span></p>
+\tag{2.35}\]</span></span></p>
 <p>Solving for <span class="math inline">\(\gamma\)</span> yields <span id="eq-noLabel"><span class="math display">\[
 \gamma=\frac{(1+h)^2}{h}.
-\tag{2.39}\]</span></span></p>
+\tag{2.36}\]</span></span></p>
 <p>In <a href="#fig-plotdensmodelharveststab" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> we plot the contours of the hypersurface <span class="math inline">\(H'(N^*)\)</span> at the critical values of <span class="math inline">\(-1\)</span>, <span class="math inline">\(0\)</span> and 1. Note that the points in parameter space used to generate the simulation results in <a href="#fig-plotdensmodelharvest" class="quarto-xref">Figure&nbsp;<span>2.12</span></a> are <span class="math inline">\((h,\gamma)=(0.1,5)\)</span> <span class="math inline">\((h,\gamma)=(1,5)\)</span> and <span class="math inline">\((h,\gamma)=(3,5)\)</span>. Cobweb diagrams in different regions of parameter space are presented in <a href="#fig-densharvestingmodelcobweb" class="quarto-xref">Figure&nbsp;<span>2.15</span></a>. The plot in <a href="#fig-plotdensmodelharveststab" class="quarto-xref">Figure&nbsp;<span>2.14</span></a> can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to <span class="math inline">\(1\)</span> and then 5?</p>
 <div id="cell-fig-densharvestingmodelcobweb" class="cell" data-execution_count="13">
 <details class="code-fold">
@@ -2993,21 +3019,21 @@ The derivative evaluated at FP 2 is:
 <p>Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where <span class="math inline">\(H'(N^*)&lt;-1\)</span>, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions.<br>
 ### Defining a periodic solution Consider the general form <span id="eq-genformagain"><span class="math display">\[
 N_{t+1}=H(N_t)
-\tag{2.40}\]</span></span></p>
-<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.40</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[\begin{align}
+\tag{2.37}\]</span></span></p>
+<p>A solution to <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.37</span></a> is defined to be periodic with period <span class="math inline">\(T\)</span> if <span class="math display">\[\begin{align}
 N_{t+T}&amp;=N_t \ \  \forall t,
 N_{t+\tau}&amp;\neq N_t  \ \ \forall t, \  \ \ \tau&lt;T.
 \end{align}\]</span></p>
-<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.40</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span id="eq-noLabel"><span class="math display">\[
+<p>Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose <span class="math inline">\(\bar{N}\)</span> is a period 2 solution of <a href="#eq-genformagain" class="quarto-xref">Equation&nbsp;<span>2.37</span></a> and let <span class="math inline">\(\bar{N}=N_1\)</span>. Then <span id="eq-noLabel"><span class="math display">\[
 N_{2}=H(\bar{N}).
-\tag{2.41}\]</span></span></p>
+\tag{2.38}\]</span></span></p>
 <p>However, <span id="eq-noLabel"><span class="math display">\[
 N_{3}=H(N_2)=H(H(\bar{N}))
-\tag{2.42}\]</span></span> and if <span class="math inline">\(\bar{N}\)</span> is a period 2 solution <span class="math inline">\(N_3=N_1=\bar{N}\)</span>. Hence period 2 solutions can be calculated by solving the algebraic equation <span id="eq-noLabel"><span class="math display">\[
+\tag{2.39}\]</span></span> and if <span class="math inline">\(\bar{N}\)</span> is a period 2 solution <span class="math inline">\(N_3=N_1=\bar{N}\)</span>. Hence period 2 solutions can be calculated by solving the algebraic equation <span id="eq-noLabel"><span class="math display">\[
 \bar{N}=H(H(\bar{N})).
-\tag{2.43}\]</span></span> Note that period two solutions are fixed points of the problem <span id="eq-noLabel"><span class="math display">\[
+\tag{2.40}\]</span></span> Note that period two solutions are fixed points of the problem <span id="eq-noLabel"><span class="math display">\[
 N_{t+2}=H^2(N_t)=g(N_t).
-\tag{2.44}\]</span></span> Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.16</span></a>).</p>
+\tag{2.41}\]</span></span> Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.16</span></a>).</p>
 <div id="cell-fig-densharvestingmodelcobwebp4" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
@@ -3101,7 +3127,7 @@ Figure&nbsp;2.16: Transition form period 2 to period 4 solutions in the harvesti
 </div>
 <p>Exercise: identify an equation satisfied by period 2 solutions of the logistic map <span id="eq-noLabel"><span class="math display">\[
 N_{t+1}=rN_1(1-N_t).
-\tag{2.45}\]</span></span></p>
+\tag{2.42}\]</span></span></p>
 </section>
 <section id="a-note-on-the-modelling-of-real-world-fish-stocks" class="level2" data-number="2.8">
 <h2 data-number="2.8" class="anchored" data-anchor-id="a-note-on-the-modelling-of-real-world-fish-stocks"><span class="header-section-number">2.8</span> A note on the modelling of real-world fish stocks</h2>
