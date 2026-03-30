@@ -1730,7 +1730,7 @@ All the above analysis can now be summarised by fixing $h$ where we have the fol
 3. $\boldsymbol{h < \gamma < h+1} \; \Rightarrow \; 0 < H'(0) < 1$, $\, N^*_1$ is monotonically stable  $\rightarrow$ population collapse, 
 4. $\boldsymbol{h+1 < \gamma < \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 < H'(N^*_2) < 1$, $\, $N^*_2$ is monotonically stable $\rightarrow$ population stable,
 5. $\boldsymbol{\frac{2(h+1)^2}{2h+1}<\gamma <\frac{(1+h)^2}{h}} \; \Rightarrow \; -1 < H'(N^*_2) < 0$, $\, N^*_2$ is oscillatory stable $\rightarrow$ population stable,
-6. $\boldsymbol{\gamma >\frac{(1+h)^2}{h}}\; \Rightarrow \; H'(N^*_2) < -1$, $N^*_2$ is oscillatory unstable $\rightarrow$ population won't collapse but isn't stable.
+6. $\boldsymbol{\gamma >\frac{(1+h)^2}{h}}\; \Rightarrow \; H'(N^*_2) < -1$, $N^*_2$ is oscillatory unstable $\rightarrow$ don't have the tools to know!
 
 In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note, that as $h \rightarrow 0$ we retain the behaviour of the previous model with no harvesting. Also for $h \gg 3$ the contours all become linear with gradient $1$. We now understand the long time behaviour of the population unless $\gamma >\frac{(1+h)^2}{h}$, where $N^*_2$ is unstable. 
 
@@ -1948,11 +1948,11 @@ where $\tau < T$.
 Period 2 solutions or **2-cycles** can be identified by looking for solutions that repeat after two iterations, hence a population $\bar{N}$ defines a 2-cycle if and only if,
 $$
 \bar{N} = H(H(\bar{N})) = H^2(\bar{N}), \quad \text{where} \, \bar{N} \neq H(\bar{N}),
-$$
+$${#eq-nolabel} 
 Hence, we can define a general $n$-cycle as $\bar{N}$ such that,
 $$
 \bar{N} = H^n(\bar{N}), \quad \text{where} \, \bar{N} \neq H^k(\bar{N}) \; \forall \, k\in \mathbb{N}, \, k < n.
-$$
+$${#eq-nolabel} 
 Hence, $n$-cycles are fixed points of the problem,
 $$
 N_{t+n}=H^n(N_t).
@@ -1968,17 +1968,17 @@ In many systems, such as the harvesting model and the logistic equation, increas
 Consider period 2 solutions $\bar{N}$ of @eq-harvestingmodel, namely solutions of,
 $$
 \bar{N} = H^2(\bar{N}) = \frac{\gamma \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}}{1 + \left( \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N} \right)^2} - h \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}.
-$$ {eq-harvest2cycle}
+$$ {#eq-harvest2cycle}
 This is certainly solvable by hand but is easier using SymPy which we do below. We simplified @eq-harvest2cycle so it became a degree 9 polynomial in $\bar{N}$. We already know some of the roots however, as all 1-cycles (fixed points of $H$) will be fixed points of $H^2$. So we can divide by these three roots simplifying to a sextic but with even powers only. Hence we end up with a cubic in $\bar{n} = \bar{N}^2$, which we can solve. We then select only positive cycles $(\bar{N}_1, \bar{N_2})$ such that,
 $$
 \bar{N}_1 = H(\bar{N}_2), \quad \text{and} \; \bar{N}_2 = H(\bar{N}_1).
-$$
+$${#eq-nolabel} 
 Note that the pair $(-\bar{N}_1, -\bar{N_2})$ will always exist due to the symmetry of the polynomial.
 
 Finally we now consider the stability of each fixed point, which is given by $(H^2)'(\bar{N}_1)$ which is simply given by the chain rule to be,
 $$
 (H^2)'(\bar{N}_1) = H'(H(\bar{N}_1))H'(\bar{N}_1) = H'(\bar{N}_2)H'(\bar{N}_1),
-$$
+$${#eq-nolabel} 
 which is equivalent for $(H^2)'(\bar{N}_2)$. In @fig-densharvestingmodel2cycle we then plot three regions in the $(h,\gamma)$ plane,
 
 - discriminant of the quadratic $\Delta(\bar{n}) < 0$, hence no real solutions and no physical 2-cycle (grey),
@@ -2245,7 +2245,7 @@ We could repeat the above process for 4-cycles and then 8-cycles though it will 
 
 ```{python}
 #| label: fig-densharvestingmodelbifurcation
-#| fig-cap: "Bifurcation diagram showing how possible long time populations $N_\\infty$ change for $t > 300$ with $h$ for a fixed $\\gamma = 6$."
+#| fig-cap: "Bifurcation diagram showing how possible long time populations $N_\\infty$ change for $t > 300$ with $h$ for various values of fixed $\\gamma$ and varying $h$."
 import numpy as np
 import matplotlib.pyplot as plt
 
