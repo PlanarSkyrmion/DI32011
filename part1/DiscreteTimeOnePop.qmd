@@ -953,7 +953,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameter range
-r = np.linspace(-2, 2, 500)
+r = np.linspace(0, 2.2, 500)
 
 # Equilibrium (N^* = 0)
 N_star = np.zeros_like(r)
@@ -961,15 +961,16 @@ N_star = np.zeros_like(r)
 # Plot
 plt.figure(figsize=(8, 5))
 
-# Stable (r < 0)
-plt.plot(r[r < 0], N_star[r < 0], 'b', linewidth=3, label='Stable')
+# Stable (r < 1)
+plt.plot(r[r < 1], N_star[r < 1], 'b', linewidth=3, label='Stable')
 
-# Unstable (r > 0)
-plt.plot(r[r > 0], N_star[r > 0], 'r', linewidth=3, label='Unstable')
+# Unstable (r > 1)
+plt.plot(r[r > 1], N_star[r > 1], 'r', linewidth=3, label='Unstable')
 
 # Labels
 plt.xlabel('r')
 plt.ylabel(r'$N^*$')
+plt.xlim(-0.05, 2.05) 
 plt.title('Bifurcation Diagram of the Malthusian Model')
 plt.legend()
 
@@ -1330,8 +1331,7 @@ fig, ax = plt.subplots(1)
 
 # Plot N^* = 0 as stable and unstable
 ax.plot(gamma_less1, N_star_stable0, 'g') 
-ax.plot(np.concatenate((gamma_greater1
-,gamma_greater2)), N_star_unstable0, 'r')
+ax.plot(np.concatenate((gamma_greater1,gamma_greater2)), N_star_unstable0, 'r')
 
 # Plot N^* = sqrt(gamma-1) as stable
 ax.plot(gamma_greater1, N_star_nonzero_mono, 'g')
@@ -1339,7 +1339,7 @@ ax.plot(gamma_greater2, N_star_nonzero_osc, 'b')
 
 # Custom legend
 stable_mon_handle = Line2D([0], [0], color='green', lw=2, label='Monotonically stable')
-stable_osc_handle = Line2D([0], [0], color='blue', lw=2, label='Oscillatory unstable')
+stable_osc_handle = Line2D([0], [0], color='blue', lw=2, label='Oscillatory stable')
 unstable_handle = Line2D([0], [0], color='red', lw=2, label=' Unstable')
 ax.legend(handles=[stable_mon_handle, stable_osc_handle, unstable_handle], loc='upper left')
 
