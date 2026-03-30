@@ -1406,8 +1406,7 @@ Models of population dynamics can be used to study how interventions will affect
 $$
 N_{t+1}=\frac{\gamma N_t}{1+N_t^2} - h N_t,
 $$ {#eq-harvestingmodel}
-
-and the questions we want to ask are: (i) does the introduction of harvesting change the dynamics of the system?; and (ii) what rate of harvesting such a population could withstand?
+which suggests two fundamental questions: (i) does the introduction of harvesting change the dynamics of the system?; and (ii) what rate of harvesting such a population could withstand?
 
 ### Direct simulation
 
@@ -1469,6 +1468,84 @@ ax[1,1].plot(t, N_4, linestyle='None', alpha = 1, marker='o', color='C0', ms=3)
 ax[1,1].set_xlabel('$t$')
 ax[1,1].set_ylabel('$N_t$')
 ax[1,1].set_title(f'$\gamma = ${gam}, $h = ${h_4}')
+plt.tight_layout()
+plt.show()
+```
+
+```{python}
+#| label: fig-densharvestingmodelcobweb
+#| fig-cap: "Cobweb diagrams for different values of $h$ and $\\gamma = 5$. These are the same values as in @fig-plotdensmodelharvest. Note that the scales of the axes are very different in each plot and for $h = 5$ $N_1 < 0$ making the cobweb diagram non-physical"
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define time
+T=10
+t = np.arange(0, T, 1)
+
+# Define parameters
+N_0=0.2
+h_1=0.1
+h_2=1.0
+h_3=3.0
+h_4=5.0
+gamma=5.0
+
+N_max=4.0
+
+# Compute solution at differnet values of h
+N1,CobwebSol1=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_1])
+N2,CobwebSol2=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_2])
+N3,CobwebSol3=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_3])
+N4,CobwebSol4=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_4])
+
+# Evulate the function H at different values of H
+N_plot=np.linspace(0,N_max,100)
+H_N_plot1=densmodelwithharvesting(N_plot,[gamma,h_1])
+H_N_plot2=densmodelwithharvesting(N_plot,[gamma,h_2])
+H_N_plot3=densmodelwithharvesting(N_plot,[gamma,h_3])
+H_N_plot4=densmodelwithharvesting(N_plot,[gamma,h_4])
+
+# Plot results
+fig, ax = plt.subplots(2,2)
+
+ax[0,0].plot(CobwebSol1[:,0], CobwebSol1[:,1])
+ax[0,0].plot(CobwebSol1[0,0], CobwebSol1[0,1],'*')
+ax[0,0].plot([0, N_max], [0, N_max])
+ax[0,0].plot(N_plot, H_N_plot1)
+ax[0,0].set_ylim([-0.001, 4])
+ax[0,0].set_xlabel('$N_t$')
+ax[0,0].set_ylabel('$N_{t+1}$')
+ax[0,0].set_title(f'$\gamma = ${gamma}, $h = ${h_1}')
+
+ax[0,1].plot(CobwebSol2[:,0], CobwebSol2[:,1])
+ax[0,1].plot(CobwebSol2[0,0], CobwebSol2[0,1],'*')
+ax[0,1].plot([0, N_max], [0, N_max])
+ax[0,1].plot(N_plot, H_N_plot2)
+ax[0,1].set_ylim([-0.001, 2])
+ax[0,1].set_xlabel('$N_t$')
+ax[0,1].set_ylabel('$N_{t+1}$')
+ax[0,1].set_title(f'$\gamma = ${gamma}, $h = ${h_2}')
+
+ax[1,0].plot(CobwebSol3[:,0], CobwebSol3[:,1])
+ax[1,0].plot(CobwebSol3[0,0], CobwebSol3[0,1],'*')
+ax[1,0].plot([0, N_max], [0, N_max])
+ax[1,0].plot(N_plot, H_N_plot3)
+ax[1,0].set_ylim([-0.001, 1])
+ax[1,0].set_xlim([-0.001, 2])
+ax[1,0].set_xlabel('$N_t$')
+ax[1,0].set_ylabel('$N_{t+1}$')
+ax[1,0].set_title(f'$\gamma = ${gamma}, $h = ${h_3}')
+
+ax[1,1].plot(CobwebSol4[:,0], CobwebSol4[:,1])
+ax[1,1].plot(CobwebSol4[0,0], CobwebSol4[0,1],'*')
+ax[1,1].plot([0, N_max], [0, N_max])
+ax[1,1].plot(N_plot, H_N_plot4)
+ax[1,1].set_ylim([-0.01, 0.01])
+ax[1,1].set_xlim([-0.01, 0.01])
+ax[1,1].set_xlabel('$N_t$')
+ax[1,1].set_ylabel('$N_{t+1}$')
+ax[1,1].set_title(f'$\gamma = ${gamma}, $h = ${h_4}')
+
 plt.tight_layout()
 plt.show()
 ```
@@ -1596,9 +1673,9 @@ app = App(app_ui, server)
 An app to explore  behaviour in the harvesting model.
 :::
 
-In @fig-plotdensmodelharvest time series solutions at increasing harvesting rates ($h=0.1$, $h=1$, $h=3$, $h=5$) are presented. For low harvesting rates the system behaves almost identically to the no harvesting case but with an expected reduction in the fixed point value. However for intermediate harvesting the population undergoes oscillations. However, for further increased harvesting rates there appears again to be a stable fixed point. Eventually we harvest too many fish and the population collapses.
+In @fig-plotdensmodelharvest time series solutions at increasing harvesting rates ($h=0.1$, $h=1$, $h=3$, $h=5$) are presented, and their corresponding cobweb diagrams in @fig-densharvestingmodelcobweb. For low harvesting rates the system behaves almost identically to the no harvesting case but with an expected reduction in the fixed point value. For intermediate harvesting the population undergoes oscillations. However, for further increased harvesting rates there appears again to be a stable fixed point. Eventually we harvest too many fish and the population collapses.
 
-Can analysis of the model help us understand how/why changes in solutions occur?
+Can analysis of the model help us understand how/why changes in the form of solutions occur?
 
 ### Fixed points
 
@@ -1638,27 +1715,28 @@ $$ {#eq-arvestingH_prime}
 hence when $h=0$ we retrieve the stability condition from the previous model.
 
 ### Stability boundaries in the $h\gamma$ plane
-The draw 
-The contour at $H'(N^*_2)=1$ can be identified by solving,
+We want to understand the critical points for different parameters choices $(h,\gamma)$. We can break up the $(h,\gamma)$ plane into regions by the contours that determine a change in the linear stability of the critical points. To this end, we want to find the three fundamental contours $H'(N^*_2)=-1,\, 0,\, 1$ which we do by substituing those values into @eq-arvestingH_prime, which for our chosen values gives the contours,
 $$
- h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = 1,
+\begin{aligned}
+ H'(N^*_2) = -1 &\quad \Rightarrow \quad \gamma=\frac{(1+h)^2}{h},\\
+ H'(N^*_2) = 0 &\quad \Rightarrow \quad \gamma = \frac{2(h+1)^2}{2h+1},\\
+ H'(N^*_2) = 1 &\quad \Rightarrow \quad \gamma= 1+h,
+ \end{aligned}
 $$ {#eq-noLabel}
-yielding 
-$$
- \gamma= 1+h.
-$$ {#eq-noLabel}
+All the above analysis can now be summarised by fixing $h$ where we have the following regions in order of increasing $\gamma$,
 
-The contour at $H'(N^*)=-1$ can be represented by 
-$$
- h^2\frac{2}{\gamma} + h\frac{2}{\gamma}(2-\gamma) + \frac{2}{\gamma}-1 = -1,
-$$ {#eq-noLabel}
+1. $\boldsymbol{\gamma < h - 1 }\; \Rightarrow \; H'(0) < -1$, $\, N^*_1$ is oscillatory unstable  $\rightarrow$ population collapse,
+2. $\boldsymbol{h-1 < \gamma < h}\; \Rightarrow \; -1 < H'(0) < 0$, $\, N^*_1$ is oscillatory stable $\rightarrow$ population collapse,
+3. $\boldsymbol{h < \gamma < h+1} \; \Rightarrow \; 0 < H'(0) < 1$, $\, N^*_1$ is montonically stable  $\rightarrow$ population collapse, 
+4. $\boldsymbol{h+1 < \gamma < \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 < H'(N^*_2) < 1$, $\, $N^*_2$ is montonically stable $\rightarrow$ population stable,
+5. $\boldsymbol{\frac{2(h+1)^2}{2h+1}<\gamma <\frac{(1+h)^2}{h}} \; \Rightarrow \; -1 < H'(N^*_2) < 0$, $\, N^*_2$ is oscillatory stable $\rightarrow$ population stable,
+6. $\boldsymbol{\gamma >\frac{(1+h)^2}{h}}\; \Rightarrow \; H'(N^*_2) < -1$, $N^*_2$ is oscillatory unstable $\rightarrow$ population won't collapse but isn't stable.
 
-Solving for $\gamma$ yields 
-$$
-\gamma=\frac{(1+h)^2}{h}.
-$$ {#eq-noLabel}
+In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note, that as $h \rightarrow 0$ we retain the behaviour of the previous model with no harvesting. Also for $h \gg 3$ the contours all become linear with gradient $1$. We now understand the long time behaviour of the population unless $\gamma >\frac{(1+h)^2}{h}$, where $N^*_2$ is unstable. 
 
-In @fig-plotdensmodelharveststab we plot the contours of the hypersurface $H'(N^*)$ at the critical values of $-1$, $0$ and 1. Note that the points in parameter space used to generate the simulation results in @fig-plotdensmodelharvest are $(h,\gamma)=(0.1,5)$ $(h,\gamma)=(1,5)$ and $(h,\gamma)=(3,5)$.
+**Exercise:** Consider where in the parameter space the plots in @fig-plotdensmodelharvest and @fig-densharvestingmodelcobweb are and use this to explain the behaviour of the plots.
+
+In @fig-plotdensmodelharvest2 we have plotted the time series solution for parameters where $N^*_2$ is unstable for fixed $\gamma$. As $h$ increases the long-time behaviour jumps between 2-values, then jumps between 4-values in a cycle, then it becomes chaotic and finally it returns to a 2-cycle. The next section will attempt to understand this mysterious region.
 
 ```{python}
 #| label: fig-plotdensmodelharveststab
@@ -1802,86 +1880,6 @@ plt.tight_layout()
 plt.show()
 ```
 
-Cobweb diagrams in different regions of parameter space are presented in @fig-densharvestingmodelcobweb. The plot in @fig-plotdensmodelharveststab can be used to explain why the model transfers from a stable fixed point, through oscillatory fixed point and back to a stable fixed point as the harvesting rate increases from 0.1, to $1$ and then 5?
-
-```{python}
-#| label: fig-densharvestingmodelcobweb
-#| fig-cap: "Cobweb diagrams for different values of $h$ and $\\gamma = 5$. These are the same values as in @fig-plotdensmodelharvest. Note that the scales of the axes are very different in each plot and for $h = 5$ $N_1 < 0$ making the cobweb diagram non-physical"
-import numpy as np
-import matplotlib.pyplot as plt
-
-# Define time
-T=10
-t = np.arange(0, T, 1)
-
-# Define parameters
-N_0=0.2
-h_1=0.1
-h_2=1.0
-h_3=3.0
-h_4=5.0
-gamma=5.0
-
-N_max=4.0
-
-# Compute solution at differnet values of h
-N1,CobwebSol1=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_1])
-N2,CobwebSol2=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_2])
-N3,CobwebSol3=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_3])
-N4,CobwebSol4=SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[gamma,h_4])
-
-# Evulate the function H at different values of H
-N_plot=np.linspace(0,N_max,100)
-H_N_plot1=densmodelwithharvesting(N_plot,[gamma,h_1])
-H_N_plot2=densmodelwithharvesting(N_plot,[gamma,h_2])
-H_N_plot3=densmodelwithharvesting(N_plot,[gamma,h_3])
-H_N_plot4=densmodelwithharvesting(N_plot,[gamma,h_4])
-
-# Plot results
-fig, ax = plt.subplots(2,2)
-
-ax[0,0].plot(CobwebSol1[:,0], CobwebSol1[:,1])
-ax[0,0].plot(CobwebSol1[0,0], CobwebSol1[0,1],'*')
-ax[0,0].plot([0, N_max], [0, N_max])
-ax[0,0].plot(N_plot, H_N_plot1)
-ax[0,0].set_ylim([-0.001, 4])
-ax[0,0].set_xlabel('$N_t$')
-ax[0,0].set_ylabel('$N_{t+1}$')
-ax[0,0].set_title(f'$\gamma = ${gamma}, $h = ${h_1}')
-
-ax[0,1].plot(CobwebSol2[:,0], CobwebSol2[:,1])
-ax[0,1].plot(CobwebSol2[0,0], CobwebSol2[0,1],'*')
-ax[0,1].plot([0, N_max], [0, N_max])
-ax[0,1].plot(N_plot, H_N_plot2)
-ax[0,1].set_ylim([-0.001, 2])
-ax[0,1].set_xlabel('$N_t$')
-ax[0,1].set_ylabel('$N_{t+1}$')
-ax[0,1].set_title(f'$\gamma = ${gamma}, $h = ${h_2}')
-
-ax[1,0].plot(CobwebSol3[:,0], CobwebSol3[:,1])
-ax[1,0].plot(CobwebSol3[0,0], CobwebSol3[0,1],'*')
-ax[1,0].plot([0, N_max], [0, N_max])
-ax[1,0].plot(N_plot, H_N_plot3)
-ax[1,0].set_ylim([-0.001, 1])
-ax[1,0].set_xlim([-0.001, 2])
-ax[1,0].set_xlabel('$N_t$')
-ax[1,0].set_ylabel('$N_{t+1}$')
-ax[1,0].set_title(f'$\gamma = ${gamma}, $h = ${h_3}')
-
-ax[1,1].plot(CobwebSol4[:,0], CobwebSol4[:,1])
-ax[1,1].plot(CobwebSol4[0,0], CobwebSol4[0,1],'*')
-ax[1,1].plot([0, N_max], [0, N_max])
-ax[1,1].plot(N_plot, H_N_plot4)
-ax[1,1].set_ylim([-0.01, 0.01])
-ax[1,1].set_xlim([-0.01, 0.01])
-ax[1,1].set_xlabel('$N_t$')
-ax[1,1].set_ylabel('$N_{t+1}$')
-ax[1,1].set_title(f'$\gamma = ${gamma}, $h = ${h_4}')
-
-plt.tight_layout()
-plt.show()
-```
-
 Many of the above calculations can be aided using a symbolic calculator:
 
 ```{python}
@@ -1931,38 +1929,49 @@ print(sp.simplify(H_p_eval_2))
 
 ```
 
-## Oscillations
+## Oscillations, $n$-cycles and chaos
 
-Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where $H'(N^*)<-1$, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions.\
-\### Defining a periodic solution Consider the general form 
+Linear stability analysis describes the evolution of small perturbations close to a fixed point. But far from a fixed point the nonlinear terms that were dropped in a Taylor expansion are no longer negligible. In particular, in the case where $H'(N^*)<-1$, it can be the case that regions of parameter space in which a fixed point is oscillatory unstable can give rise to periodic and chaotic solutions. 
+
+Consider a general difference equation of the form,
 $$
 N_{t+1}=H(N_t)
 $$ {#eq-genformagain} 
+A solution to @eq-genformagain is defined to be **periodic** with period $T$ if and only if,
+$$
+\begin{aligned}
+N_{t+T}&=N_t& \forall t,\\ 
+N_{t+\tau}&\neq N_t& \forall t,
+\end{aligned}
+$$ {#eq-nolabel} 
+where $\tau < T$.
 
-A solution to @eq-genformagain is defined to be periodic with period $T$ if
-\begin{align}
-N_{t+T}&=N_t \ \  \forall t, 
-N_{t+\tau}&\neq N_t  \ \ \forall t, \  \ \ \tau<T.
-\end{align}
+Period 2 solutions or **2-cycles** can be identified by looking for solutions that repeat after two iterations, hence a population $\bar{N}$ defines a 2-cycle if and only if,
+$$
+\bar{N} = H(H(\bar{N})) = H^2(\bar{N}), \quad \text{where} \, \bar{N} \neq H(\bar{N}),
+$$
+Hence, we can define a general $n$-cycle as $\bar{N}$ such that,
+$$
+\bar{N} = H^n(\bar{N}), \quad \text{where} \, \bar{N} \neq H^k(\bar{N}) \; \forall \, k\in \mathbb{N}, \, k < n.
+$$
+Hence, $n$-cycles are fixed points of the problem,
+$$
+N_{t+n}=H^n(N_t).
+$$ {#eq-nCycle}
+Note that finding a fixed point of @eq-nCycle is not sufficient to show it is an $n$-cycle as it must also not be a fixed point of $N_{t+k} = H^k(N_t)$ where $0 < k < n$. For example, fixed points of $H(N_t)$ are all fixed points of $H^n(N_t)\; \forall \, n\in\mathbb{N}$. 
 
-Period 2 solutions can be identified by looking for solutions that repeat after two iterations. Suppose $\bar{N}$ is a period 2 solution of @eq-genformagain and let $\bar{N}=N_1$. Then 
-$$
-N_{2}=H(\bar{N}).
-$$ {#eq-noLabel}
+We have already developed the tools to find such fixed points and study their stability. Note that as the period of the solutions increases the right hand side of the function becomes increasingly complicated to tackle algebraically. 
 
-However, 
-$$
-N_{3}=H(N_2)=H(H(\bar{N}))
-$$ {#eq-noLabel}
-and if $\bar{N}$ is a period 2 solution $N_3=N_1=\bar{N}$. Hence period 2 solutions can be calculated by solving the algebraic equation 
-$$
-\bar{N}=H(H(\bar{N})).
-$$ {#eq-noLabel}
-Note that period two solutions are fixed points of the problem 
-$$
-N_{t+2}=H^2(N_t)=g(N_t).
-$$ {#eq-noLabel}
-Using the tools we have developed, period solutions and their stability can be determined. Furthermore, longer period solutions can be identified by generalising the argument but at the expense of ever increasingly complicated right-hand side functions. In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, @fig-densharvestingmodelcobwebp4).
+### Return to the harvesting model example
+
+
+
+
+
+
+
+
+In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, @fig-densharvestingmodelcobwebp4).
 
 ```{python}
 #| label: fig-densharvestingmodelcobwebp4
