@@ -1192,7 +1192,7 @@ The stability of the fixed point $N^*=0$ is determined by
 $$
 H'(0)= \gamma.
 $$ {#eq-noLabel}
-Hence if $\gamma < 1$ the first fixed point is monotonically stable as $0< H'(0) < 1$. When $\gamma > 1$ the first fixed point becomes montonically unstable, also the second fixed point becomes biologically relevant.
+Hence if $\gamma < 1$ the first fixed point is monotonically stable as $0< H'(0) < 1$. When $\gamma > 1$ the first fixed point becomes monotonically unstable, also the second fixed point becomes biologically relevant.
 
 The stability of the second fixed point, $N^*=\sqrt{\gamma-1}$, is determined by
 
@@ -1315,7 +1315,7 @@ from matplotlib.lines import Line2D
 
 # Define gamma regions
 gamma_less1 = np.linspace(0, 1, 50) # N^*=0 stable
-gamma_greater1 = np.linspace(1, 2, 200) # N^*=0 unstable, non-zero N^* montonically stable
+gamma_greater1 = np.linspace(1, 2, 200) # N^*=0 unstable, non-zero N^* monotonically stable
 gamma_greater2 = np.linspace(2, 4, 200) # N^*=0 unstable, non-zero N^* oscillatory stable
 
 # Compute fixed points
@@ -1727,8 +1727,8 @@ All the above analysis can now be summarised by fixing $h$ where we have the fol
 
 1. $\boldsymbol{\gamma < h - 1 }\; \Rightarrow \; H'(0) < -1$, $\, N^*_1$ is oscillatory unstable  $\rightarrow$ population collapse,
 2. $\boldsymbol{h-1 < \gamma < h}\; \Rightarrow \; -1 < H'(0) < 0$, $\, N^*_1$ is oscillatory stable $\rightarrow$ population collapse,
-3. $\boldsymbol{h < \gamma < h+1} \; \Rightarrow \; 0 < H'(0) < 1$, $\, N^*_1$ is montonically stable  $\rightarrow$ population collapse, 
-4. $\boldsymbol{h+1 < \gamma < \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 < H'(N^*_2) < 1$, $\, $N^*_2$ is montonically stable $\rightarrow$ population stable,
+3. $\boldsymbol{h < \gamma < h+1} \; \Rightarrow \; 0 < H'(0) < 1$, $\, N^*_1$ is monotonically stable  $\rightarrow$ population collapse, 
+4. $\boldsymbol{h+1 < \gamma < \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 < H'(N^*_2) < 1$, $\, $N^*_2$ is monotonically stable $\rightarrow$ population stable,
 5. $\boldsymbol{\frac{2(h+1)^2}{2h+1}<\gamma <\frac{(1+h)^2}{h}} \; \Rightarrow \; -1 < H'(N^*_2) < 0$, $\, N^*_2$ is oscillatory stable $\rightarrow$ population stable,
 6. $\boldsymbol{\gamma >\frac{(1+h)^2}{h}}\; \Rightarrow \; H'(N^*_2) < -1$, $N^*_2$ is oscillatory unstable $\rightarrow$ population won't collapse but isn't stable.
 
@@ -1926,7 +1926,6 @@ sol2=fp[2][N]
 H_p_eval_2=H_p.subs(N,sol2)
 
 print(sp.simplify(H_p_eval_2))
-
 ```
 
 ## Oscillations, $n$-cycles and chaos
@@ -1962,16 +1961,205 @@ Note that finding a fixed point of @eq-nCycle is not sufficient to show it is an
 
 We have already developed the tools to find such fixed points and study their stability. Note that as the period of the solutions increases the right hand side of the function becomes increasingly complicated to tackle algebraically. 
 
-### Return to the harvesting model example
+### The harvesting model revisted
 
+In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions.
 
+Consider period 2 solutions $\bar{N}$ of @eq-harvestingmodel, namely solutions of,
+$$
+\bar{N} = H^2(\bar{N}) = \frac{\gamma \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}}{1 + \left( \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N} \right)^2} - h \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}.
+$$ {eq-harvest2cycle}
+This is certainly solvable by hand but is easier using SymPy which we do below. We simplified @eq-harvest2cycle so it became a degree 9 polynomial in $\bar{N}$. We already know some of the roots however, as all 1-cycles (fixed points of $H$) will be fixed points of $H^2$. So we can divide by these three roots simplifying to a sextic but with even powers only. Hence we end up with a cubic in $\bar{n} = \bar{N}^2$, which we can solve. We then select only positive cycles $(\bar{N}_1, \bar{N_2})$ such that,
+$$
+\bar{N}_1 = H(\bar{N}_2), \quad \text{and} \; \bar{N}_2 = H(\bar{N}_1).
+$$
+Note that the pair $(-\bar{N}_1, -\bar{N_2})$ will always exist due to the symmetry of the polynomial.
 
+Finally we now consider the stability of each fixed point, which is given by $(H^2)'(\bar{N}_1)$ which is simply given by the chain rule to be,
+$$
+(H^2)'(\bar{N}_1) = H'(H(\bar{N}_1))H'(\bar{N}_1) = H'(\bar{N}_2)H'(\bar{N}_1),
+$$
+which is equivalent for $(H^2)'(\bar{N}_2)$. In @fig-densharvestingmodel2cycle we then plot three regions in the $(h,\gamma)$ plane,
 
+- discriminant of the quadratic $\Delta(\bar{n}) < 0$, hence no real solutions and no physical 2-cycle (grey),
+- $0 < H'(\bar{N}_1)H'(\bar{N}_2) < 1$, hence the 2-cycle is monotonically stable (blue), 
+- $-1 < H'(\bar{N}_1)H'(\bar{N}_2) < 0$, hence the 2-cycle is oscillatory stable (green), 
+- $H'(\bar{N}_1)H'(\bar{N}_2) < -1$, hence the 2-cycle is oscillatory unstable (red).
 
+```{python}
+#| label: fig-densharvestingmodel2cycle
+#| fig-cap: "The regions of stability of fixed points of period 2 or 2-cycles."
+import numpy as np
+import sympy as sp
+import matplotlib.pyplot as plt
 
+# Define variables and constants
+h=sp.symbols("h",real=True,nonnegative=True)
+gamma=sp.symbols("gamma",real=True,nonnegative=True)
+N = sp.symbols("N",real=True,nonnegative=True)
 
+# Define H
+H=gamma*N/(1+N**2)-h*N
 
-In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, @fig-densharvestingmodelcobwebp4).
+# Define H squared - N
+Hsq=gamma*H/(1+H**2)-h*H
+Hsq_minN=gamma*H/(1+H**2)-h*H - N
+# multiply through by the denominators and simplify
+Hsq_minN_simp=sp.simplify(Hsq_minN*(1+H**2)*(1+N**2)**3)
+
+# Solve the FP equation
+fp=sp.solve(H-N,N,dict=True)
+
+print("The FPs are:")
+print(fp[0])
+print(fp[1])
+print(fp[2])
+
+# Compute H prime
+H_p=H.diff(N)
+
+print("The derivative of H is:")
+print(sp.simplify(H_p))
+
+# Evaluate derivative
+
+print("The derivative evaluated at FP 0 is:")
+sol1=fp[0][N]
+H_p_eval_0=sp.simplify(H_p.subs(N,sol1))
+print(H_p_eval_0)
+
+print("The derivative evaluated at FP 2 is:")
+sol2=fp[2][N]
+H_p_eval_2=H_p.subs(N,sol2)
+print(sp.simplify(H_p_eval_2))
+
+# factor out N = 0 fixed point
+Q_N = sp.simplify(Hsq_minN_simp / N)
+
+# substitute in n = N^2 as this is a polynomial in N^2
+n = sp.symbols("n", real=True, nonnegative=True)
+Q_n = sp.expand(Q_N.subs(N, sp.sqrt(n)))
+Q_n_simp = sp.simplify(Q_n)
+
+n_fp = fp[2][N]**2
+Q_n_simp = sp.simplify(sp.expand(Q_n_simp)/(n-n_fp))
+
+print("The 2-cycle polynomial is:")
+print(sp.factor(Q_n_simp))
+
+# Solve the cubic for n
+solutions_n = sp.solve(Q_n_simp, n)
+
+# Remove any negative solutions (since n = N^2 >= 0)
+solutions_n = [sol for sol in solutions_n]
+
+# Recover N values
+print("with solutions:")
+N_vals = []
+for n_val in solutions_n:
+    print(n_val)
+    N_vals.append(sp.simplify(sp.sqrt(n_val)))
+    N_vals.append(sp.simplify(-sp.sqrt(n_val)))
+    
+physical_solutions = []
+    
+print("solutions with non-physical 2-cycles:")
+for n_val in solutions_n:
+    N1 = sp.sqrt(n_val)
+    N2 = -sp.sqrt(n_val)
+    # Check if the pair gives a valid 2-cycle
+    H_N1 = H.subs(N, N1)
+    H_N2 = H.subs(N, N2)
+    if sp.simplify(H_N1 - N2) != 0:
+        # Only keep the solution if it is a physical 2-cycle
+        physical_solutions.append(n_val)
+    else:
+        print(n_val)
+        
+# Reconstruct a polynomial with these roots
+poly_phys = 1
+for root in physical_solutions:
+    poly_phys *= (n - root)
+
+# Expand to get a proper polynomial
+poly_phys = sp.expand(poly_phys)
+poly_phys_poly = sp.Poly(poly_phys, n)
+disc_phys = sp.simplify(sp.discriminant(poly_phys_poly, n))
+
+print("Discriminant of the physical 2-cycle polynomial:")
+print(disc_phys)
+
+N1 = np.abs(sp.sqrt(physical_solutions[0]))
+N2 = np.abs(H.subs(N, N1))
+stability_expr = sp.simplify(H_p.subs(N, N1) * H_p.subs(N, N2))
+
+multiplier_func = sp.lambdify((h, gamma), stability_expr, 'numpy')
+N1_func = sp.lambdify((h, gamma), N1, 'numpy')
+N2_func = sp.lambdify((h, gamma), N2, 'numpy')
+
+# set up plot
+h_vals = np.linspace(0.01, 5, 3000) # avoid h=0 to prevent division by zero
+gamma_vals = np.linspace(0.01, 12, 3000)
+H_grid, G_grid = np.meshgrid(h_vals, gamma_vals)
+
+M = multiplier_func(H_grid, G_grid)
+N1_grid = np.real(N1_func(H_grid, G_grid))
+N2_grid = np.real(N2_func(H_grid, G_grid))
+
+# Mask for physical 2-cycles
+mask = (N1_grid > 0) & (N2_grid > 0) & np.isfinite(M)
+M_masked = np.where(mask, M, np.nan)
+
+# Define the regions
+stable_monotonic   = np.where((M_masked > 0) & (M_masked < 1), 1, np.nan)
+stable_oscillatory = np.where((M_masked < 0) & (M_masked > -1), 1, np.nan)
+unstable_monotonic = np.where(M_masked >= 1, 1, np.nan)
+unstable_oscillatory = np.where(M_masked <= -1, 1, np.nan)
+
+disc_func = sp.lambdify((h, gamma), disc_phys, 'numpy')
+D = disc_func(H_grid, G_grid)
+no_cycle_mask = D < 0 # True where 2-cycle does NOT exist
+
+plt.figure(figsize=(10,6))
+
+# Contours for multiplier -1, 0, 1
+levels = [-1, 0.0, 0.983]
+contour = plt.contour(H_grid, G_grid, M, levels=levels, colors=['darkred', 'darkgreen', 'darkblue'], linewidths=2)
+
+# Fill stable regions
+plt.contourf(H_grid, G_grid, stable_monotonic, levels=[0,1], colors=['lightblue'], alpha=0.3)
+plt.contourf(H_grid, G_grid, stable_oscillatory, levels=[0,1], colors=['lightgreen'], alpha=0.3)
+
+# Fill unstable regions
+plt.contourf(H_grid, G_grid, unstable_oscillatory, levels=[0,1], colors=['lightcoral'], alpha=0.3)
+plt.contourf(H_grid, G_grid, no_cycle_mask, levels=[0,1], colors=['lightgray'], alpha=0.3, extend='both')
+
+plt.xlabel('h')
+plt.ylabel('$\gamma$')
+plt.title('Stability regions of physical 2-cycles')
+plt.grid(True, linestyle='--', alpha=0.5)
+
+# Create custom legend for contours and regions
+from matplotlib.lines import Line2D
+
+# Contour lines for the legend only
+red_line   = Line2D([0], [0], color='darkred',   lw=2, label=r"$H'(\bar{N}_1) H'(\bar{N}_2) = -1$")
+green_line = Line2D([0], [0], color='darkgreen', lw=2, label=r"$H'(\bar{N}_1) H'(\bar{N}_2) = 0$")
+blue_line  = Line2D([0], [0], color='darkblue',  lw=2, label=r"$H'(\bar{N}_1) H'(\bar{N}_2) = 1$")
+
+# Create custom legend for contours and regions
+import matplotlib.patches as mpatches
+light_blue = mpatches.Patch(color='lightblue', alpha=0.3, label='Stable 2-cycle (monotonic)')
+light_red = mpatches.Patch(color='lightcoral', alpha=0.3, label='Unstable 2-cycle (oscillatory)')
+light_green = mpatches.Patch(color='lightgreen', alpha=0.3, label='Stable 2-cycle (oscillatory)')
+light_grey = mpatches.Patch(color='lightgray', alpha=0.3, label='No real solutions')
+
+plt.legend(handles=[red_line, green_line, blue_line, light_red, light_green, light_blue, light_grey], loc='upper right')
+
+plt.show()
+```
+
+ (see, for example, @fig-densharvestingmodelcobwebp4).
 
 ```{python}
 #| label: fig-densharvestingmodelcobwebp4
@@ -2052,10 +2240,55 @@ plt.tight_layout()
 plt.show()
 ```
 
-Exercise: identify an equation satisfied by period 2 solutions of the logistic map 
-$$ 
- N_{t+1}=rN_1(1-N_t).
-$$ {#eq-noLabel}
+We could repeat the above process for 4-cycles and then 8-cycles though it will get progressively harder. To get a feel for what happens as the harvesting rate increases in this region we could instead do some numerics to simulate a bifurcation diagram. Here we plot all possible final populations for each $h$, namely all $N_t$ for $300 < t < 800$. The results of this are shown in @fig-densharvestingmodelbifurcation, where we can see for $\gamma = 6$ as $h$ increases from 0 and decreases from 4 the period of the solution doubles with decresing interval and then becomes chaotic. There are also large white regions amonst the chaos, where ordered dynamics returns before becoming chaotic again. These kind of features appear in many non-linear population models.
+
+
+```{python}
+#| label: fig-densharvestingmodelbifurcation
+#| fig-cap: "Bifurcation diagram showing how possible long time populations $N_\\infty$ change for $t > 300$ with $h$ for a fixed $\\gamma = 6$."
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Parameters
+gamma_vals = [4.0, 5.0, 6.0, 7.0]  # different fixed gamma
+h_vals = np.linspace(0, 5, 2000)    # vary h
+N0 = 0.1                             # initial condition
+transient = 300                      # iterations to discard
+iterations = 800                     # total iterations
+
+# function H(N)
+def H(N, h, gamma):
+    return gamma * N / (1 + N**2) - h * N
+
+# create figure
+fig, axes = plt.subplots(2, 2, figsize=(12, 10))
+axes = axes.flatten()
+
+# loop through fixed gamma values
+for idx, gamma_val in enumerate(gamma_vals):
+    ax = axes[idx]
+    # loop through h
+    for h in h_vals:
+        N = N0
+        trajectory = []
+        # iterate H(N)
+        for i in range(iterations):
+            N = H(N, h, gamma_val)
+            if i >= transient:
+                trajectory.append(N)
+        # plot bifurcation points
+        ax.plot([h]*len(trajectory), trajectory, ',k', markersize=4, alpha=0.7)
+    
+    ax.set_title(f'$\gamma = ${gamma_val}')
+    ax.set_xlim(0, 5)
+    ax.set_ylim(0, 3)
+    ax.set_xlabel('$h$')
+    ax.set_ylabel('$N_{\infty}$')
+    ax.grid(True, linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+plt.show()
+```
 
 ## A note on the modelling of real-world fish stocks
 

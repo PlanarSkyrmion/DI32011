@@ -345,7 +345,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#oscillations-n-cycles-and-chaos" id="toc-oscillations-n-cycles-and-chaos" class="nav-link" data-scroll-target="#oscillations-n-cycles-and-chaos"><span class="header-section-number">2.7</span> Oscillations, <span class="math inline">\(n\)</span>-cycles and chaos</a>
   <ul class="collapse">
-  <li><a href="#return-to-the-harvesting-model-example" id="toc-return-to-the-harvesting-model-example" class="nav-link" data-scroll-target="#return-to-the-harvesting-model-example"><span class="header-section-number">2.7.1</span> Return to the harvesting model example</a></li>
+  <li><a href="#the-harvesting-model-revisted" id="toc-the-harvesting-model-revisted" class="nav-link" data-scroll-target="#the-harvesting-model-revisted"><span class="header-section-number">2.7.1</span> The harvesting model revisted</a></li>
   </ul></li>
   <li><a href="#a-note-on-the-modelling-of-real-world-fish-stocks" id="toc-a-note-on-the-modelling-of-real-world-fish-stocks" class="nav-link" data-scroll-target="#a-note-on-the-modelling-of-real-world-fish-stocks"><span class="header-section-number">2.8</span> A note on the modelling of real-world fish stocks</a></li>
   </ul>
@@ -766,7 +766,7 @@ N^*+\hat{N}_{t+1}= H(N^*)+H'(N^*)\hat{N}_t + \mathcal{O}(\hat{N}_t^2).
 </ol>
 <p>It should not be hard to convince yourself that iterating at right angles between the <span class="math inline">\(N_{t+1} = N_{t}\)</span> straight line and the graph of <span class="math inline">\(H(N_t)\)</span> performs succesive iterations of the map. In addition, a key observation is that any <strong>intersections</strong> between the straight line and the graph of <span class="math inline">\(H(N_t)\)</span> are <strong>fixed points</strong>.</p>
 <p>The above list is an algorithm, that we often display in a convenient or campact form using pseudo-code,</p>
-<div id="algo-quicksort" class="pseudocode-container quarto-float" data-caption-prefix="Algorithm" data-line-number-punc=":" data-line-number="true" data-indent-size="1.2em" data-no-end="false" data-pseudocode-number="1" data-comment-delimiter="//">
+<div id="algo-quicksort" class="pseudocode-container quarto-float" data-line-number="true" data-comment-delimiter="//" data-no-end="false" data-caption-prefix="Algorithm" data-indent-size="1.2em" data-pseudocode-number="1" data-line-number-punc=":">
 <div class="pseudocode">
 \begin{algorithm} \caption{Quicksort} \begin{algorithmic} \Procedure{Quicksort}{$A, p, r$} \If{$p &lt; r$} \State $q = $ \Call{Partition}{$A, p, r$} \State \Call{Quicksort}{$A, p, q - 1$} \State \Call{Quicksort}{$A, q + 1, r$} \EndIf \EndProcedure \Procedure{Partition}{$A, p, r$} \State $x = A[r]$ \State $i = p - 1$ \For{$j = p, \dots, r - 1$} \If{$A[j] &lt; x$} \State $i = i + 1$ \State exchange $A[i]$ with $A[j]$ \EndIf \State exchange $A[i]$ with $A[r]$ \EndFor \EndProcedure \end{algorithmic} \end{algorithm}
 </div>
@@ -1172,7 +1172,7 @@ Figure&nbsp;2.4: Generating a cobweb plot.
 <div id="fig-cobwebMal" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-cobwebMal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div id="80926f20" class="cell" data-fig-show="false" data-execution_count="4">
+<div id="0ddab6a3" class="cell" data-fig-show="false" data-execution_count="4">
 <div class="cell-output cell-output-display">
 <video width="960" height="384" controls="" autoplay="" loop="">
   <source type="video/mp4" src="data:video/mp4;base64,AAAAIGZ0eXBNNFYgAAACAE00ViBpc29taXNvMmF2YzEAAAAIZnJlZQAAoVRtZGF0AAACrwYF//+r
@@ -2322,7 +2322,7 @@ N^* = 0  \ \ \ \ \textrm{and} \ \ \ \ N^*=\sqrt{\gamma-1}.
 H'(N_t)= \frac{\gamma}{1+N_t^2} + \frac{-2 \gamma N_t^2}{(1+N_t^2)^2}.
 \tag{2.22}\]</span></span> The stability of the fixed point <span class="math inline">\(N^*=0\)</span> is determined by <span id="eq-noLabel"><span class="math display">\[
 H'(0)= \gamma.
-\tag{2.23}\]</span></span> Hence if <span class="math inline">\(\gamma &lt; 1\)</span> the first fixed point is monotonically stable as <span class="math inline">\(0&lt; H'(0) &lt; 1\)</span>. When <span class="math inline">\(\gamma &gt; 1\)</span> the first fixed point becomes montonically unstable, also the second fixed point becomes biologically relevant.</p>
+\tag{2.23}\]</span></span> Hence if <span class="math inline">\(\gamma &lt; 1\)</span> the first fixed point is monotonically stable as <span class="math inline">\(0&lt; H'(0) &lt; 1\)</span>. When <span class="math inline">\(\gamma &gt; 1\)</span> the first fixed point becomes monotonically unstable, also the second fixed point becomes biologically relevant.</p>
 <p>The stability of the second fixed point, <span class="math inline">\(N^*=\sqrt{\gamma-1}\)</span>, is determined by</p>
 <p><span class="math display">\[\begin{align}
 H'(\sqrt{\gamma-1})&amp;= \frac{\gamma}{1+\gamma-1} + \frac{-2 \gamma (\gamma-1)}{(1+(\gamma-1))^2}, \\
@@ -2445,7 +2445,7 @@ Figure&nbsp;2.10: Cobweb diagrams for different values of <span class="math inli
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define gamma regions</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>gamma_less1 <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">50</span>) <span class="co"># N^*=0 stable</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>gamma_greater1 <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">200</span>) <span class="co"># N^*=0 unstable, non-zero N^* montonically stable</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>gamma_greater1 <span class="op">=</span> np.linspace(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">200</span>) <span class="co"># N^*=0 unstable, non-zero N^* monotonically stable</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>gamma_greater2 <span class="op">=</span> np.linspace(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">200</span>) <span class="co"># N^*=0 unstable, non-zero N^* oscillatory stable</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute fixed points</span></span>
@@ -2885,8 +2885,8 @@ H'(N^*_2) = 1 &amp;\quad \Rightarrow \quad \gamma= 1+h,
 <ol type="1">
 <li><span class="math inline">\(\boldsymbol{\gamma &lt; h - 1 }\; \Rightarrow \; H'(0) &lt; -1\)</span>, <span class="math inline">\(\, N^*_1\)</span> is oscillatory unstable <span class="math inline">\(\rightarrow\)</span> population collapse,</li>
 <li><span class="math inline">\(\boldsymbol{h-1 &lt; \gamma &lt; h}\; \Rightarrow \; -1 &lt; H'(0) &lt; 0\)</span>, <span class="math inline">\(\, N^*_1\)</span> is oscillatory stable <span class="math inline">\(\rightarrow\)</span> population collapse,</li>
-<li><span class="math inline">\(\boldsymbol{h &lt; \gamma &lt; h+1} \; \Rightarrow \; 0 &lt; H'(0) &lt; 1\)</span>, <span class="math inline">\(\, N^*_1\)</span> is montonically stable <span class="math inline">\(\rightarrow\)</span> population collapse,</li>
-<li><span class="math inline">\(\boldsymbol{h+1 &lt; \gamma &lt; \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 &lt; H'(N^*_2) &lt; 1\)</span>, $, <span class="math inline">\(N^*_2\)</span> is montonically stable <span class="math inline">\(\rightarrow\)</span> population stable,</li>
+<li><span class="math inline">\(\boldsymbol{h &lt; \gamma &lt; h+1} \; \Rightarrow \; 0 &lt; H'(0) &lt; 1\)</span>, <span class="math inline">\(\, N^*_1\)</span> is monotonically stable <span class="math inline">\(\rightarrow\)</span> population collapse,</li>
+<li><span class="math inline">\(\boldsymbol{h+1 &lt; \gamma &lt; \frac{2(h+1)^2}{2h+1}} \; \Rightarrow \; 0 &lt; H'(N^*_2) &lt; 1\)</span>, $, <span class="math inline">\(N^*_2\)</span> is monotonically stable <span class="math inline">\(\rightarrow\)</span> population stable,</li>
 <li><span class="math inline">\(\boldsymbol{\frac{2(h+1)^2}{2h+1}&lt;\gamma &lt;\frac{(1+h)^2}{h}} \; \Rightarrow \; -1 &lt; H'(N^*_2) &lt; 0\)</span>, <span class="math inline">\(\, N^*_2\)</span> is oscillatory stable <span class="math inline">\(\rightarrow\)</span> population stable,</li>
 <li><span class="math inline">\(\boldsymbol{\gamma &gt;\frac{(1+h)^2}{h}}\; \Rightarrow \; H'(N^*_2) &lt; -1\)</span>, <span class="math inline">\(N^*_2\)</span> is oscillatory unstable <span class="math inline">\(\rightarrow\)</span> population won’t collapse but isn’t stable.</li>
 </ol>
@@ -3136,86 +3136,308 @@ N_{t+\tau}&amp;\neq N_t&amp; \forall t,
 N_{t+n}=H^n(N_t).
 \tag{2.36}\]</span></span> Note that finding a fixed point of <a href="#eq-nCycle" class="quarto-xref">Equation&nbsp;<span>2.36</span></a> is not sufficient to show it is an <span class="math inline">\(n\)</span>-cycle as it must also not be a fixed point of <span class="math inline">\(N_{t+k} = H^k(N_t)\)</span> where <span class="math inline">\(0 &lt; k &lt; n\)</span>. For example, fixed points of <span class="math inline">\(H(N_t)\)</span> are all fixed points of <span class="math inline">\(H^n(N_t)\; \forall \, n\in\mathbb{N}\)</span>.</p>
 <p>We have already developed the tools to find such fixed points and study their stability. Note that as the period of the solutions increases the right hand side of the function becomes increasingly complicated to tackle algebraically.</p>
-<section id="return-to-the-harvesting-model-example" class="level3" data-number="2.7.1">
-<h3 data-number="2.7.1" class="anchored" data-anchor-id="return-to-the-harvesting-model-example"><span class="header-section-number">2.7.1</span> Return to the harvesting model example</h3>
-<p>In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions (see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.17</span></a>).</p>
-<div id="cell-fig-densharvestingmodelcobwebp4" class="cell" data-execution_count="16">
+<section id="the-harvesting-model-revisted" class="level3" data-number="2.7.1">
+<h3 data-number="2.7.1" class="anchored" data-anchor-id="the-harvesting-model-revisted"><span class="header-section-number">2.7.1</span> The harvesting model revisted</h3>
+<p>In many systems, such as the harvesting model and the logistic equation, increasing the growth rate parameter leads initially to the fixed point becoming unstable and the emergence of period two solutions, then period 4 solutions and so on until eventually there is a transition to chaotic solutions.</p>
+<p>Consider period 2 solutions <span class="math inline">\(\bar{N}\)</span> of <a href="#eq-harvestingmodel" class="quarto-xref">Equation&nbsp;<span>2.25</span></a>, namely solutions of, <span class="math display">\[
+\bar{N} = H^2(\bar{N}) = \frac{\gamma \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}}{1 + \left( \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N} \right)^2} - h \frac{\gamma\bar{N}}{1+\bar{N}^2}-h\bar{N}.
+\]</span> {eq-harvest2cycle} This is certainly solvable by hand but is easier using SymPy which we do below. We simplified <span class="quarto-unresolved-ref">?eq-harvest2cycle</span> so it became a degree 9 polynomial in <span class="math inline">\(\bar{N}\)</span>. We already know some of the roots however, as all 1-cycles (fixed points of <span class="math inline">\(H\)</span>) will be fixed points of <span class="math inline">\(H^2\)</span>. So we can divide by these three roots simplifying to a sextic but with even powers only. Hence we end up with a cubic in <span class="math inline">\(\bar{n} = \bar{N}^2\)</span>, which we can solve. We then select only positive cycles <span class="math inline">\((\bar{N}_1, \bar{N_2})\)</span> such that, <span class="math display">\[
+\bar{N}_1 = H(\bar{N}_2), \quad \text{and} \; \bar{N}_2 = H(\bar{N}_1).
+\]</span> Note that the pair <span class="math inline">\((-\bar{N}_1, -\bar{N_2})\)</span> will always exist due to the symmetry of the polynomial.</p>
+<p>Finally we now consider the stability of each fixed point, which is given by <span class="math inline">\((H^2)'(\bar{N}_1)\)</span> which is simply given by the chain rule to be, <span class="math display">\[
+(H^2)'(\bar{N}_1) = H'(H(\bar{N}_1))H'(\bar{N}_1) = H'(\bar{N}_2)H'(\bar{N}_1),
+\]</span> which is equivalent for <span class="math inline">\((H^2)'(\bar{N}_2)\)</span>. In <a href="#fig-densharvestingmodel2cycle" class="quarto-xref">Figure&nbsp;<span>2.17</span></a> we then plot three regions in the <span class="math inline">\((h,\gamma)\)</span> plane,</p>
+<ul>
+<li>discriminant of the quadratic <span class="math inline">\(\Delta(\bar{n}) &lt; 0\)</span>, hence no real solutions and no physical 2-cycle (grey),</li>
+<li><span class="math inline">\(0 &lt; H'(\bar{N}_1)H'(\bar{N}_2) &lt; 1\)</span>, hence the 2-cycle is monotonically stable (blue),</li>
+<li><span class="math inline">\(-1 &lt; H'(\bar{N}_1)H'(\bar{N}_2) &lt; 0\)</span>, hence the 2-cycle is oscillatory stable (green),</li>
+<li><span class="math inline">\(H'(\bar{N}_1)H'(\bar{N}_2) &lt; -1\)</span>, hence the 2-cycle is oscillatory unstable (red).</li>
+</ul>
+<div id="cell-fig-densharvestingmodel2cycle" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define time</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>T<span class="op">=</span><span class="dv">40</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T, <span class="dv">1</span>)</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">9.68</span></span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">12.221</span></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">30.25</span></span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>h<span class="op">=</span><span class="fl">0.1</span></span>
-<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting parameters</span></span>
-<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">20.0</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sympy <span class="im">as</span> sp</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define variables and constants</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>h<span class="op">=</span>sp.symbols(<span class="st">"h"</span>,real<span class="op">=</span><span class="va">True</span>,nonnegative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>gamma<span class="op">=</span>sp.symbols(<span class="st">"gamma"</span>,real<span class="op">=</span><span class="va">True</span>,nonnegative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> sp.symbols(<span class="st">"N"</span>,real<span class="op">=</span><span class="va">True</span>,nonnegative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Define H</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>H<span class="op">=</span>gamma<span class="op">*</span>N<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>N<span class="op">**</span><span class="dv">2</span>)<span class="op">-</span>h<span class="op">*</span>N</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Define H squared - N</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>Hsq<span class="op">=</span>gamma<span class="op">*</span>H<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>H<span class="op">**</span><span class="dv">2</span>)<span class="op">-</span>h<span class="op">*</span>H</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>Hsq_minN<span class="op">=</span>gamma<span class="op">*</span>H<span class="op">/</span>(<span class="dv">1</span><span class="op">+</span>H<span class="op">**</span><span class="dv">2</span>)<span class="op">-</span>h<span class="op">*</span>H <span class="op">-</span> N</span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a><span class="co"># multiply through by the denominators and simplify</span></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>Hsq_minN_simp<span class="op">=</span>sp.simplify(Hsq_minN<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>H<span class="op">**</span><span class="dv">2</span>)<span class="op">*</span>(<span class="dv">1</span><span class="op">+</span>N<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span><span class="dv">3</span>)</span>
 <span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve model and compuote cobweb data</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the FP equation</span></span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>fp<span class="op">=</span>sp.solve(H<span class="op">-</span>N,N,<span class="bu">dict</span><span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>N1,CobwebSol1<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_1,h])</span>
-<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>N2,CobwebSol2<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_2,h])</span>
-<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>N3,CobwebSol3<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_3,h])</span>
-<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The FPs are:"</span>)</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fp[<span class="dv">0</span>])</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fp[<span class="dv">1</span>])</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(fp[<span class="dv">2</span>])</span>
 <span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise N and generate H for different values of r</span></span>
-<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>N_plot<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
-<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>H_N_plot1<span class="op">=</span>densmodelwithharvesting(N_plot,[r_1,h])</span>
-<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>H_N_plot2<span class="op">=</span>densmodelwithharvesting(N_plot,[r_2,h])</span>
-<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>H_N_plot3<span class="op">=</span>densmodelwithharvesting(N_plot,[r_3,h])</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute H prime</span></span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>H_p<span class="op">=</span>H.diff(N)</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The derivative of H is:"</span>)</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sp.simplify(H_p))</span>
 <span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Make figure</span></span>
-<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">2</span>)</span>
-<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(t, N1, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(t, N1, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(CobwebSol1[:,<span class="dv">0</span>], CobwebSol1[:,<span class="dv">1</span>])</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(CobwebSol1[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol1[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
-<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
-<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot1)</span>
-<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
-<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
-<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(t, N2, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(t, N2, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(CobwebSol2[:,<span class="dv">0</span>], CobwebSol2[:,<span class="dv">1</span>])</span>
-<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(CobwebSol2[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol2[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
-<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
-<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot2)</span>
-<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
-<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
-<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].plot(t, N3, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
-<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].plot(t, N3, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
-<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
-<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(CobwebSol3[:,<span class="dv">0</span>], CobwebSol3[:,<span class="dv">1</span>])</span>
-<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(CobwebSol3[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol3[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
-<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
-<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot3)</span>
-<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
-<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
-<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluate derivative</span></span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The derivative evaluated at FP 0 is:"</span>)</span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>sol1<span class="op">=</span>fp[<span class="dv">0</span>][N]</span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>H_p_eval_0<span class="op">=</span>sp.simplify(H_p.subs(N,sol1))</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(H_p_eval_0)</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The derivative evaluated at FP 2 is:"</span>)</span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>sol2<span class="op">=</span>fp[<span class="dv">2</span>][N]</span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>H_p_eval_2<span class="op">=</span>H_p.subs(N,sol2)</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sp.simplify(H_p_eval_2))</span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="co"># factor out N = 0 fixed point</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a>Q_N <span class="op">=</span> sp.simplify(Hsq_minN_simp <span class="op">/</span> N)</span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a><span class="co"># substitute in n = N^2 as this is a polynomial in N^2</span></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> sp.symbols(<span class="st">"n"</span>, real<span class="op">=</span><span class="va">True</span>, nonnegative<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>Q_n <span class="op">=</span> sp.expand(Q_N.subs(N, sp.sqrt(n)))</span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>Q_n_simp <span class="op">=</span> sp.simplify(Q_n)</span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>n_fp <span class="op">=</span> fp[<span class="dv">2</span>][N]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>Q_n_simp <span class="op">=</span> sp.simplify(sp.expand(Q_n_simp)<span class="op">/</span>(n<span class="op">-</span>n_fp))</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The 2-cycle polynomial is:"</span>)</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sp.factor(Q_n_simp))</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-59"><a href="#cb21-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve the cubic for n</span></span>
+<span id="cb21-60"><a href="#cb21-60" aria-hidden="true" tabindex="-1"></a>solutions_n <span class="op">=</span> sp.solve(Q_n_simp, n)</span>
+<span id="cb21-61"><a href="#cb21-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-62"><a href="#cb21-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove any negative solutions (since n = N^2 &gt;= 0)</span></span>
+<span id="cb21-63"><a href="#cb21-63" aria-hidden="true" tabindex="-1"></a>solutions_n <span class="op">=</span> [sol <span class="cf">for</span> sol <span class="kw">in</span> solutions_n]</span>
+<span id="cb21-64"><a href="#cb21-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-65"><a href="#cb21-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Recover N values</span></span>
+<span id="cb21-66"><a href="#cb21-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"with solutions:"</span>)</span>
+<span id="cb21-67"><a href="#cb21-67" aria-hidden="true" tabindex="-1"></a>N_vals <span class="op">=</span> []</span>
+<span id="cb21-68"><a href="#cb21-68" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_val <span class="kw">in</span> solutions_n:</span>
+<span id="cb21-69"><a href="#cb21-69" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(n_val)</span>
+<span id="cb21-70"><a href="#cb21-70" aria-hidden="true" tabindex="-1"></a>    N_vals.append(sp.simplify(sp.sqrt(n_val)))</span>
+<span id="cb21-71"><a href="#cb21-71" aria-hidden="true" tabindex="-1"></a>    N_vals.append(sp.simplify(<span class="op">-</span>sp.sqrt(n_val)))</span>
+<span id="cb21-72"><a href="#cb21-72" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-73"><a href="#cb21-73" aria-hidden="true" tabindex="-1"></a>physical_solutions <span class="op">=</span> []</span>
+<span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"solutions with non-physical 2-cycles:"</span>)</span>
+<span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n_val <span class="kw">in</span> solutions_n:</span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>    N1 <span class="op">=</span> sp.sqrt(n_val)</span>
+<span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>    N2 <span class="op">=</span> <span class="op">-</span>sp.sqrt(n_val)</span>
+<span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if the pair gives a valid 2-cycle</span></span>
+<span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>    H_N1 <span class="op">=</span> H.subs(N, N1)</span>
+<span id="cb21-81"><a href="#cb21-81" aria-hidden="true" tabindex="-1"></a>    H_N2 <span class="op">=</span> H.subs(N, N2)</span>
+<span id="cb21-82"><a href="#cb21-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> sp.simplify(H_N1 <span class="op">-</span> N2) <span class="op">!=</span> <span class="dv">0</span>:</span>
+<span id="cb21-83"><a href="#cb21-83" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Only keep the solution if it is a physical 2-cycle</span></span>
+<span id="cb21-84"><a href="#cb21-84" aria-hidden="true" tabindex="-1"></a>        physical_solutions.append(n_val)</span>
+<span id="cb21-85"><a href="#cb21-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb21-86"><a href="#cb21-86" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(n_val)</span>
+<span id="cb21-87"><a href="#cb21-87" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb21-88"><a href="#cb21-88" aria-hidden="true" tabindex="-1"></a><span class="co"># Reconstruct a polynomial with these roots</span></span>
+<span id="cb21-89"><a href="#cb21-89" aria-hidden="true" tabindex="-1"></a>poly_phys <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb21-90"><a href="#cb21-90" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> root <span class="kw">in</span> physical_solutions:</span>
+<span id="cb21-91"><a href="#cb21-91" aria-hidden="true" tabindex="-1"></a>    poly_phys <span class="op">*=</span> (n <span class="op">-</span> root)</span>
+<span id="cb21-92"><a href="#cb21-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-93"><a href="#cb21-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Expand to get a proper polynomial</span></span>
+<span id="cb21-94"><a href="#cb21-94" aria-hidden="true" tabindex="-1"></a>poly_phys <span class="op">=</span> sp.expand(poly_phys)</span>
+<span id="cb21-95"><a href="#cb21-95" aria-hidden="true" tabindex="-1"></a>poly_phys_poly <span class="op">=</span> sp.Poly(poly_phys, n)</span>
+<span id="cb21-96"><a href="#cb21-96" aria-hidden="true" tabindex="-1"></a>disc_phys <span class="op">=</span> sp.simplify(sp.discriminant(poly_phys_poly, n))</span>
+<span id="cb21-97"><a href="#cb21-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-98"><a href="#cb21-98" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Discriminant of the physical 2-cycle polynomial:"</span>)</span>
+<span id="cb21-99"><a href="#cb21-99" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(disc_phys)</span>
+<span id="cb21-100"><a href="#cb21-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-101"><a href="#cb21-101" aria-hidden="true" tabindex="-1"></a>N1 <span class="op">=</span> np.<span class="bu">abs</span>(sp.sqrt(physical_solutions[<span class="dv">0</span>]))</span>
+<span id="cb21-102"><a href="#cb21-102" aria-hidden="true" tabindex="-1"></a>N2 <span class="op">=</span> np.<span class="bu">abs</span>(H.subs(N, N1))</span>
+<span id="cb21-103"><a href="#cb21-103" aria-hidden="true" tabindex="-1"></a>stability_expr <span class="op">=</span> sp.simplify(H_p.subs(N, N1) <span class="op">*</span> H_p.subs(N, N2))</span>
+<span id="cb21-104"><a href="#cb21-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-105"><a href="#cb21-105" aria-hidden="true" tabindex="-1"></a>multiplier_func <span class="op">=</span> sp.lambdify((h, gamma), stability_expr, <span class="st">'numpy'</span>)</span>
+<span id="cb21-106"><a href="#cb21-106" aria-hidden="true" tabindex="-1"></a>N1_func <span class="op">=</span> sp.lambdify((h, gamma), N1, <span class="st">'numpy'</span>)</span>
+<span id="cb21-107"><a href="#cb21-107" aria-hidden="true" tabindex="-1"></a>N2_func <span class="op">=</span> sp.lambdify((h, gamma), N2, <span class="st">'numpy'</span>)</span>
+<span id="cb21-108"><a href="#cb21-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-109"><a href="#cb21-109" aria-hidden="true" tabindex="-1"></a><span class="co"># set up plot</span></span>
+<span id="cb21-110"><a href="#cb21-110" aria-hidden="true" tabindex="-1"></a>h_vals <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">5</span>, <span class="dv">3000</span>) <span class="co"># avoid h=0 to prevent division by zero</span></span>
+<span id="cb21-111"><a href="#cb21-111" aria-hidden="true" tabindex="-1"></a>gamma_vals <span class="op">=</span> np.linspace(<span class="fl">0.01</span>, <span class="dv">12</span>, <span class="dv">3000</span>)</span>
+<span id="cb21-112"><a href="#cb21-112" aria-hidden="true" tabindex="-1"></a>H_grid, G_grid <span class="op">=</span> np.meshgrid(h_vals, gamma_vals)</span>
+<span id="cb21-113"><a href="#cb21-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-114"><a href="#cb21-114" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> multiplier_func(H_grid, G_grid)</span>
+<span id="cb21-115"><a href="#cb21-115" aria-hidden="true" tabindex="-1"></a>N1_grid <span class="op">=</span> np.real(N1_func(H_grid, G_grid))</span>
+<span id="cb21-116"><a href="#cb21-116" aria-hidden="true" tabindex="-1"></a>N2_grid <span class="op">=</span> np.real(N2_func(H_grid, G_grid))</span>
+<span id="cb21-117"><a href="#cb21-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-118"><a href="#cb21-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Mask for physical 2-cycles</span></span>
+<span id="cb21-119"><a href="#cb21-119" aria-hidden="true" tabindex="-1"></a>mask <span class="op">=</span> (N1_grid <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (N2_grid <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> np.isfinite(M)</span>
+<span id="cb21-120"><a href="#cb21-120" aria-hidden="true" tabindex="-1"></a>M_masked <span class="op">=</span> np.where(mask, M, np.nan)</span>
+<span id="cb21-121"><a href="#cb21-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-122"><a href="#cb21-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the regions</span></span>
+<span id="cb21-123"><a href="#cb21-123" aria-hidden="true" tabindex="-1"></a>stable_monotonic   <span class="op">=</span> np.where((M_masked <span class="op">&gt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (M_masked <span class="op">&lt;</span> <span class="dv">1</span>), <span class="dv">1</span>, np.nan)</span>
+<span id="cb21-124"><a href="#cb21-124" aria-hidden="true" tabindex="-1"></a>stable_oscillatory <span class="op">=</span> np.where((M_masked <span class="op">&lt;</span> <span class="dv">0</span>) <span class="op">&amp;</span> (M_masked <span class="op">&gt;</span> <span class="op">-</span><span class="dv">1</span>), <span class="dv">1</span>, np.nan)</span>
+<span id="cb21-125"><a href="#cb21-125" aria-hidden="true" tabindex="-1"></a>unstable_monotonic <span class="op">=</span> np.where(M_masked <span class="op">&gt;=</span> <span class="dv">1</span>, <span class="dv">1</span>, np.nan)</span>
+<span id="cb21-126"><a href="#cb21-126" aria-hidden="true" tabindex="-1"></a>unstable_oscillatory <span class="op">=</span> np.where(M_masked <span class="op">&lt;=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>, np.nan)</span>
+<span id="cb21-127"><a href="#cb21-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-128"><a href="#cb21-128" aria-hidden="true" tabindex="-1"></a>disc_func <span class="op">=</span> sp.lambdify((h, gamma), disc_phys, <span class="st">'numpy'</span>)</span>
+<span id="cb21-129"><a href="#cb21-129" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> disc_func(H_grid, G_grid)</span>
+<span id="cb21-130"><a href="#cb21-130" aria-hidden="true" tabindex="-1"></a>no_cycle_mask <span class="op">=</span> D <span class="op">&lt;</span> <span class="dv">0</span> <span class="co"># True where 2-cycle does NOT exist</span></span>
+<span id="cb21-131"><a href="#cb21-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-132"><a href="#cb21-132" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb21-133"><a href="#cb21-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-134"><a href="#cb21-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Contours for multiplier -1, 0, 1</span></span>
+<span id="cb21-135"><a href="#cb21-135" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [<span class="op">-</span><span class="dv">1</span>, <span class="fl">0.0</span>, <span class="fl">0.983</span>]</span>
+<span id="cb21-136"><a href="#cb21-136" aria-hidden="true" tabindex="-1"></a>contour <span class="op">=</span> plt.contour(H_grid, G_grid, M, levels<span class="op">=</span>levels, colors<span class="op">=</span>[<span class="st">'darkred'</span>, <span class="st">'darkgreen'</span>, <span class="st">'darkblue'</span>], linewidths<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb21-137"><a href="#cb21-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-138"><a href="#cb21-138" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill stable regions</span></span>
+<span id="cb21-139"><a href="#cb21-139" aria-hidden="true" tabindex="-1"></a>plt.contourf(H_grid, G_grid, stable_monotonic, levels<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>], colors<span class="op">=</span>[<span class="st">'lightblue'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb21-140"><a href="#cb21-140" aria-hidden="true" tabindex="-1"></a>plt.contourf(H_grid, G_grid, stable_oscillatory, levels<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>], colors<span class="op">=</span>[<span class="st">'lightgreen'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb21-141"><a href="#cb21-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-142"><a href="#cb21-142" aria-hidden="true" tabindex="-1"></a><span class="co"># Fill unstable regions</span></span>
+<span id="cb21-143"><a href="#cb21-143" aria-hidden="true" tabindex="-1"></a>plt.contourf(H_grid, G_grid, unstable_oscillatory, levels<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>], colors<span class="op">=</span>[<span class="st">'lightcoral'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb21-144"><a href="#cb21-144" aria-hidden="true" tabindex="-1"></a>plt.contourf(H_grid, G_grid, no_cycle_mask, levels<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>], colors<span class="op">=</span>[<span class="st">'lightgray'</span>], alpha<span class="op">=</span><span class="fl">0.3</span>, extend<span class="op">=</span><span class="st">'both'</span>)</span>
+<span id="cb21-145"><a href="#cb21-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-146"><a href="#cb21-146" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'h'</span>)</span>
+<span id="cb21-147"><a href="#cb21-147" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'$</span><span class="er">\</span><span class="st">gamma$'</span>)</span>
+<span id="cb21-148"><a href="#cb21-148" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Stability regions of physical 2-cycles'</span>)</span>
+<span id="cb21-149"><a href="#cb21-149" aria-hidden="true" tabindex="-1"></a>plt.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb21-150"><a href="#cb21-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-151"><a href="#cb21-151" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom legend for contours and regions</span></span>
+<span id="cb21-152"><a href="#cb21-152" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> matplotlib.lines <span class="im">import</span> Line2D</span>
+<span id="cb21-153"><a href="#cb21-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-154"><a href="#cb21-154" aria-hidden="true" tabindex="-1"></a><span class="co"># Contour lines for the legend only</span></span>
+<span id="cb21-155"><a href="#cb21-155" aria-hidden="true" tabindex="-1"></a>red_line   <span class="op">=</span> Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], color<span class="op">=</span><span class="st">'darkred'</span>,   lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_1</span><span class="kw">)</span><span class="vs"> H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_2</span><span class="kw">)</span><span class="vs"> = -1</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb21-156"><a href="#cb21-156" aria-hidden="true" tabindex="-1"></a>green_line <span class="op">=</span> Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], color<span class="op">=</span><span class="st">'darkgreen'</span>, lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_1</span><span class="kw">)</span><span class="vs"> H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_2</span><span class="kw">)</span><span class="vs"> = 0</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb21-157"><a href="#cb21-157" aria-hidden="true" tabindex="-1"></a>blue_line  <span class="op">=</span> Line2D([<span class="dv">0</span>], [<span class="dv">0</span>], color<span class="op">=</span><span class="st">'darkblue'</span>,  lw<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="vs">r"</span><span class="dv">$</span><span class="vs">H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_1</span><span class="kw">)</span><span class="vs"> H'</span><span class="kw">(</span><span class="dv">\b</span><span class="vs">ar{N}_2</span><span class="kw">)</span><span class="vs"> = 1</span><span class="dv">$</span><span class="vs">"</span>)</span>
+<span id="cb21-158"><a href="#cb21-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-159"><a href="#cb21-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom legend for contours and regions</span></span>
+<span id="cb21-160"><a href="#cb21-160" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.patches <span class="im">as</span> mpatches</span>
+<span id="cb21-161"><a href="#cb21-161" aria-hidden="true" tabindex="-1"></a>light_blue <span class="op">=</span> mpatches.Patch(color<span class="op">=</span><span class="st">'lightblue'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Stable 2-cycle (monotonic)'</span>)</span>
+<span id="cb21-162"><a href="#cb21-162" aria-hidden="true" tabindex="-1"></a>light_red <span class="op">=</span> mpatches.Patch(color<span class="op">=</span><span class="st">'lightcoral'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Unstable 2-cycle (oscillatory)'</span>)</span>
+<span id="cb21-163"><a href="#cb21-163" aria-hidden="true" tabindex="-1"></a>light_green <span class="op">=</span> mpatches.Patch(color<span class="op">=</span><span class="st">'lightgreen'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'Stable 2-cycle (oscillatory)'</span>)</span>
+<span id="cb21-164"><a href="#cb21-164" aria-hidden="true" tabindex="-1"></a>light_grey <span class="op">=</span> mpatches.Patch(color<span class="op">=</span><span class="st">'lightgray'</span>, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span><span class="st">'No real solutions'</span>)</span>
+<span id="cb21-165"><a href="#cb21-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-166"><a href="#cb21-166" aria-hidden="true" tabindex="-1"></a>plt.legend(handles<span class="op">=</span>[red_line, green_line, blue_line, light_red, light_green, light_blue, light_grey], loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb21-167"><a href="#cb21-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-168"><a href="#cb21-168" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>The FPs are:
+{N: 0}
+{N: -sqrt(gamma - h - 1)/sqrt(h + 1)}
+{N: sqrt(gamma - h - 1)/sqrt(h + 1)}
+The derivative of H is:
+-N**2*gamma/(N**2 + 1)**2 + gamma/(N**2 + 1)**2 - h
+The derivative evaluated at FP 0 is:
+gamma - h
+The derivative evaluated at FP 2 is:
+(gamma + 2*(h + 1)*(-gamma + h + 1))/gamma
+The 2-cycle polynomial is:
+(h + 1)*(-gamma + h*n + h - n - 1)*(-gamma*h*n + h**2*n**2 + h**2*n + n + 1)
+with solutions:
+(gamma*h - h**2 - sqrt(gamma**2*h**2 - 2*gamma*h**3 - 2*gamma*h + h**4 - 2*h**2 + 1) - 1)/(2*h**2)
+(gamma*h - h**2 + sqrt(gamma**2*h**2 - 2*gamma*h**3 - 2*gamma*h + h**4 - 2*h**2 + 1) - 1)/(2*h**2)
+(gamma - h + 1)/(h - 1)
+solutions with non-physical 2-cycles:
+(gamma - h + 1)/(h - 1)
+Discriminant of the physical 2-cycle polynomial:
+gamma**2/h**2 - 2*gamma/h - 2*gamma/h**3 + 1 - 2/h**2 + h**(-4)</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-densharvestingmodel2cycle" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-densharvestingmodel2cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="DiscreteTimeOnePop_files/figure-html/fig-densharvestingmodel2cycle-output-2.png" width="806" height="520" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-densharvestingmodel2cycle-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.17: The regions of stability of fixed points of period 2 or 2-cycles.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>(see, for example, <a href="#fig-densharvestingmodelcobwebp4" class="quarto-xref">Figure&nbsp;<span>2.18</span></a>).</p>
+<div id="cell-fig-densharvestingmodelcobwebp4" class="cell" data-execution_count="17">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define time</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>T<span class="op">=</span><span class="dv">40</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> np.arange(<span class="dv">0</span>, T, <span class="dv">1</span>)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define model parameters</span></span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>N_0<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>r_1<span class="op">=</span><span class="fl">9.68</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>r_2<span class="op">=</span><span class="fl">12.221</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>r_3<span class="op">=</span><span class="fl">30.25</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>h<span class="op">=</span><span class="fl">0.1</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting parameters</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>N_max<span class="op">=</span><span class="fl">20.0</span></span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Solve model and compuote cobweb data</span></span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>N1,CobwebSol1<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_1,h])</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>N2,CobwebSol2<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_2,h])</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>N3,CobwebSol3<span class="op">=</span>SolveSingleDiffAndCobweb(t,densmodelwithharvesting,N_0,[r_3,h])</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Discretise N and generate H for different values of r</span></span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a>N_plot<span class="op">=</span>np.linspace(<span class="dv">0</span>,N_max,<span class="dv">100</span>)</span>
+<span id="cb23-29"><a href="#cb23-29" aria-hidden="true" tabindex="-1"></a>H_N_plot1<span class="op">=</span>densmodelwithharvesting(N_plot,[r_1,h])</span>
+<span id="cb23-30"><a href="#cb23-30" aria-hidden="true" tabindex="-1"></a>H_N_plot2<span class="op">=</span>densmodelwithharvesting(N_plot,[r_2,h])</span>
+<span id="cb23-31"><a href="#cb23-31" aria-hidden="true" tabindex="-1"></a>H_N_plot3<span class="op">=</span>densmodelwithharvesting(N_plot,[r_3,h])</span>
+<span id="cb23-32"><a href="#cb23-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-33"><a href="#cb23-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-34"><a href="#cb23-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Make figure</span></span>
+<span id="cb23-35"><a href="#cb23-35" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(<span class="dv">3</span>,<span class="dv">2</span>)</span>
+<span id="cb23-36"><a href="#cb23-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-37"><a href="#cb23-37" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(t, N1, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb23-38"><a href="#cb23-38" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].plot(t, N1, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb23-39"><a href="#cb23-39" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb23-40"><a href="#cb23-40" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb23-41"><a href="#cb23-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-42"><a href="#cb23-42" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(CobwebSol1[:,<span class="dv">0</span>], CobwebSol1[:,<span class="dv">1</span>])</span>
+<span id="cb23-43"><a href="#cb23-43" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(CobwebSol1[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol1[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
+<span id="cb23-44"><a href="#cb23-44" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
+<span id="cb23-45"><a href="#cb23-45" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot1)</span>
+<span id="cb23-46"><a href="#cb23-46" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
+<span id="cb23-47"><a href="#cb23-47" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">0</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
+<span id="cb23-48"><a href="#cb23-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-49"><a href="#cb23-49" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(t, N2, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb23-50"><a href="#cb23-50" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].plot(t, N2, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb23-51"><a href="#cb23-51" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb23-52"><a href="#cb23-52" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb23-53"><a href="#cb23-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-54"><a href="#cb23-54" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(CobwebSol2[:,<span class="dv">0</span>], CobwebSol2[:,<span class="dv">1</span>])</span>
+<span id="cb23-55"><a href="#cb23-55" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(CobwebSol2[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol2[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
+<span id="cb23-56"><a href="#cb23-56" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
+<span id="cb23-57"><a href="#cb23-57" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot2)</span>
+<span id="cb23-58"><a href="#cb23-58" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
+<span id="cb23-59"><a href="#cb23-59" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">1</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
+<span id="cb23-60"><a href="#cb23-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-61"><a href="#cb23-61" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].plot(t, N3, linestyle<span class="op">=</span><span class="st">'-'</span>, alpha<span class="op">=</span><span class="fl">0.4</span>)</span>
+<span id="cb23-62"><a href="#cb23-62" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].plot(t, N3, linestyle<span class="op">=</span><span class="st">'None'</span>, alpha <span class="op">=</span> <span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'C0'</span>, ms<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb23-63"><a href="#cb23-63" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].set_xlabel(<span class="st">'$t$'</span>)</span>
+<span id="cb23-64"><a href="#cb23-64" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">0</span>].set_ylabel(<span class="st">'$N_</span><span class="sc">{t}</span><span class="st">$'</span>)</span>
+<span id="cb23-65"><a href="#cb23-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-66"><a href="#cb23-66" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(CobwebSol3[:,<span class="dv">0</span>], CobwebSol3[:,<span class="dv">1</span>])</span>
+<span id="cb23-67"><a href="#cb23-67" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(CobwebSol3[<span class="dv">0</span>,<span class="dv">0</span>], CobwebSol3[<span class="dv">0</span>,<span class="dv">1</span>],<span class="st">'*'</span>)</span>
+<span id="cb23-68"><a href="#cb23-68" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot([<span class="dv">0</span>, N_max], [<span class="dv">0</span>, N_max])</span>
+<span id="cb23-69"><a href="#cb23-69" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].plot(N_plot, H_N_plot3)</span>
+<span id="cb23-70"><a href="#cb23-70" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].set_xlabel(<span class="st">'$N_t$'</span>)</span>
+<span id="cb23-71"><a href="#cb23-71" aria-hidden="true" tabindex="-1"></a>ax[<span class="dv">2</span>,<span class="dv">1</span>].set_ylabel(<span class="st">'$N_{t+1}$'</span>)</span>
+<span id="cb23-72"><a href="#cb23-72" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb23-73"><a href="#cb23-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-74"><a href="#cb23-74" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-display">
 <div id="fig-densharvestingmodelcobwebp4" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -3224,15 +3446,72 @@ N_{t+n}=H^n(N_t).
 <img src="DiscreteTimeOnePop_files/figure-html/fig-densharvestingmodelcobwebp4-output-1.png" width="666" height="470" class="figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-densharvestingmodelcobwebp4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2.17: Transition form period 2 to period 4 solutions in the harvesting model
+Figure&nbsp;2.18: Transition form period 2 to period 4 solutions in the harvesting model
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Exercise: identify an equation satisfied by period 2 solutions of the logistic map <span id="eq-noLabel"><span class="math display">\[
-N_{t+1}=rN_1(1-N_t).
-\tag{2.37}\]</span></span></p>
+<p>We could repeat the above process for 4-cycles and then 8-cycles though it will get progressively harder. To get a feel for what happens as the harvesting rate increases in this region we could instead do some numerics to simulate a bifurcation diagram. Here we plot all possible final populations for each <span class="math inline">\(h\)</span>, namely all <span class="math inline">\(N_t\)</span> for <span class="math inline">\(300 &lt; t &lt; 800\)</span>. The results of this are shown in <a href="#fig-densharvestingmodelbifurcation" class="quarto-xref">Figure&nbsp;<span>2.19</span></a>, where we can see for <span class="math inline">\(\gamma = 6\)</span> as <span class="math inline">\(h\)</span> increases from 0 and decreases from 4 the period of the solution doubles with decresing interval and then becomes chaotic. There are also large white regions amonst the chaos, where ordered dynamics returns before becoming chaotic again. These kind of features appear in many non-linear population models.</p>
+<div id="cell-fig-densharvestingmodelbifurcation" class="cell" data-execution_count="18">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>gamma_vals <span class="op">=</span> [<span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">6.0</span>, <span class="fl">7.0</span>]  <span class="co"># different fixed gamma</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>h_vals <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">2000</span>)    <span class="co"># vary h</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>N0 <span class="op">=</span> <span class="fl">0.1</span>                             <span class="co"># initial condition</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>transient <span class="op">=</span> <span class="dv">300</span>                      <span class="co"># iterations to discard</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>iterations <span class="op">=</span> <span class="dv">800</span>                     <span class="co"># total iterations</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="co"># function H(N)</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> H(N, h, gamma):</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> gamma <span class="op">*</span> N <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> N<span class="op">**</span><span class="dv">2</span>) <span class="op">-</span> h <span class="op">*</span> N</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="co"># create figure</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">2</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">10</span>))</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> axes.flatten()</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a><span class="co"># loop through fixed gamma values</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx, gamma_val <span class="kw">in</span> <span class="bu">enumerate</span>(gamma_vals):</span>
+<span id="cb24-21"><a href="#cb24-21" aria-hidden="true" tabindex="-1"></a>    ax <span class="op">=</span> axes[idx]</span>
+<span id="cb24-22"><a href="#cb24-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># loop through h</span></span>
+<span id="cb24-23"><a href="#cb24-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> h <span class="kw">in</span> h_vals:</span>
+<span id="cb24-24"><a href="#cb24-24" aria-hidden="true" tabindex="-1"></a>        N <span class="op">=</span> N0</span>
+<span id="cb24-25"><a href="#cb24-25" aria-hidden="true" tabindex="-1"></a>        trajectory <span class="op">=</span> []</span>
+<span id="cb24-26"><a href="#cb24-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># iterate H(N)</span></span>
+<span id="cb24-27"><a href="#cb24-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(iterations):</span>
+<span id="cb24-28"><a href="#cb24-28" aria-hidden="true" tabindex="-1"></a>            N <span class="op">=</span> H(N, h, gamma_val)</span>
+<span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> i <span class="op">&gt;=</span> transient:</span>
+<span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a>                trajectory.append(N)</span>
+<span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>        <span class="co"># plot bifurcation points</span></span>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>        ax.plot([h]<span class="op">*</span><span class="bu">len</span>(trajectory), trajectory, <span class="st">',k'</span>, markersize<span class="op">=</span><span class="dv">4</span>, alpha<span class="op">=</span><span class="fl">0.7</span>)</span>
+<span id="cb24-33"><a href="#cb24-33" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb24-34"><a href="#cb24-34" aria-hidden="true" tabindex="-1"></a>    ax.set_title(<span class="ss">f'$</span><span class="er">\</span><span class="ss">gamma = $</span><span class="sc">{</span>gamma_val<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb24-35"><a href="#cb24-35" aria-hidden="true" tabindex="-1"></a>    ax.set_xlim(<span class="dv">0</span>, <span class="dv">5</span>)</span>
+<span id="cb24-36"><a href="#cb24-36" aria-hidden="true" tabindex="-1"></a>    ax.set_ylim(<span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb24-37"><a href="#cb24-37" aria-hidden="true" tabindex="-1"></a>    ax.set_xlabel(<span class="st">'$h$'</span>)</span>
+<span id="cb24-38"><a href="#cb24-38" aria-hidden="true" tabindex="-1"></a>    ax.set_ylabel(<span class="st">'$N_{</span><span class="er">\</span><span class="st">infty}$'</span>)</span>
+<span id="cb24-39"><a href="#cb24-39" aria-hidden="true" tabindex="-1"></a>    ax.grid(<span class="va">True</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb24-40"><a href="#cb24-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-41"><a href="#cb24-41" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb24-42"><a href="#cb24-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-display">
+<div id="fig-densharvestingmodelbifurcation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-densharvestingmodelbifurcation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="DiscreteTimeOnePop_files/figure-html/fig-densharvestingmodelbifurcation-output-1.png" width="1142" height="950" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-densharvestingmodelbifurcation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2.19: Bifurcation diagram showing how possible long time populations <span class="math inline">\(N_\infty\)</span> change for <span class="math inline">\(t &gt; 300\)</span> with <span class="math inline">\(h\)</span> for a fixed <span class="math inline">\(\gamma = 6\)</span>.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="a-note-on-the-modelling-of-real-world-fish-stocks" class="level2" data-number="2.8">
