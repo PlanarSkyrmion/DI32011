@@ -8,28 +8,25 @@ format:
 jupyter: python3
 ---
 
-
 In this chapter we generalise the previous approach by considering the population dynamics of two interacting populations.
 
 ## A general model of two interacting species in discrete time
 
-Let $N_t$ and $P_t$ represent population densities at time $t$ where $t$ is a discrete variable. 
-
-We consider governing equations of the form
+Let $N_t$ and $P_t$ represent population densities at time $t$ where $t$ is a discrete variable. We will consider systems that can be written as a system of 2 difference equations of the form,
 $$
 \begin{aligned}
 N_{t+1}=f(N_t,P_t), \nonumber \\
 P_{t+1}=g(N_t,P_t).
 \end{aligned}
 $$ {#eq-discretetimetwovar}
-where the population dynamics of the species are coupled to one another via the functions $f$ and $g$. 
+where the population dynamics of the species are coupled to one another via the functions $f$ and $g$.
 
-The precise form for $f$ and $g$ will be defined by the biological system under study. Typical interpopulation interactions that are studied are: predator prey models, competition and cooperation.
+The precise form for $f$ and $g$ will be defined by the biological system we study. Typical inter-population interactions that are studied are: predator prey models, competition and cooperation.
 
 
 ## General techniques for analysing coupled  first order difference equations
 
-### Fixed points 
+### Fixed points and linear stability
 
 The fixed points of @eq-discretetimetwovar $(N^*,P^*)$ satisfy
 $$
@@ -56,82 +53,67 @@ P^*&=N^*+P^*.
 Thus the only fixed point is (0,0).
 -->
 
-### Linear stability analysis
-To consider linear stability of a steady state we consider the change of variable
+To consider the linear stability of a steady state we consider the change of variables,
 $$
 \begin{aligned}
 N_t&=N^*+\hat{N}_{t},   \nonumber\\
-P_t&=P^*+\hat{P}_{t}.  \nonumber
+P_t&=P^*+\hat{P}_{t},  \nonumber
 \end{aligned}
 $$ {#eq-noLabel}
-After substitution in @eq-discretetimetwovar and making Taylor expansions about $(N^*,P^*)$ we obtain at leading order
-
+where we can collect the perturbations into a vector,
 $$
-\left(\begin{array}{c}
-\hat{N}_{t+1} \\ \hat{P}_{t+1}\end{array}\right) = \left(\begin{array}{rr}
-\frac{\partial f}{\partial N}&\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&\frac{\partial g}{\partial P} \end{array}\right)_{(N^*,P^*)} \left(\begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array}\right).
+\hat{\phi}_t = \left( \begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array} \right).
+$$ {#eq-noLabel}
+After substitution into @eq-discretetimetwovar and performing a Taylor expansion about $(N^*,P^*)$,
+$$
+\hat{\phi}_{t+1} = J \hat{\phi}_t + \mathcal{O}\left(\|\hat{\phi}_t \|^2\right).
+$$ {#eq-nolabel}
+If we assume that $\hat{N}$ and $\hat{P}$ are both small then we can consider this equation to linear (leading) order,
+$$
+\hat{\phi}_{t+1} = J \hat{\phi}_t,
 $$ {#eq-discretetimesecondorderdiff}
-
-Note the appearance of the Jacobian matrix 
+where the matrix $J$ is the familiar Jacobian matrix,
 $$
-A= \left(\begin{array}{rr}
-\frac{\partial f}{\partial N}&\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&\frac{\partial g}{\partial P} \end{array}\right)_{(N^*,P^*)} \left(\begin{array}{c} \hat{N}_{t} \\ \hat{P}_{t}\end{array}\right).
-$$ {#eq-noLabel}
-
-
-### Solving the linearised problem 
-Defining
-$$
-\mathbf{w}_t=\left(\begin{array}{c}\hat{N}_{t} \\ \hat{P}_{t}\end{array}\right), 
-$$ {#eq-noLabel}
-
-$$
-\mathbf{w}_{t+1}=A\mathbf{w}_{t}
+J = \left.\left(\begin{array}{rr}
+\frac{\partial f}{\partial N}&\frac{\partial f}{\partial P} \\ \frac{\partial g}{\partial N }&\frac{\partial g}{\partial P} \end{array}\right)\right|_{(N^*,P^*)}.
 $$ {#eq-noLabel}
 By solving this linear system we can investigate whether small perturbation about the fixed point grow or decay in magnitude as time evolves and hence determine the linear stability of the fixed point.
 
- 
-The solution of @eq-discretetimesecondorderdiff takes the form
+The solution of @eq-discretetimesecondorderdiff takes the form,
 $$
-\mathbf{w}_t=\sum_{i=1}^2 C_i \lambda_i^t\mathbf{c}_i,
+\hat{\phi}_t=\sum_{i=1}^2 C_i \lambda_i^t\mathbf{c}_i,
 $$ {#eq-noLabel}
-where  the $C_i$'s are constants determined by initial conditions and the $\lambda_i$'s and $\mathbf{c}_i$'s are the eigenvalues and eigenvectors of A, respectively. From this form we can see that if the magnitude of all eigenvalues is less than one, i.e.
-$$
-|\lambda_i|<1, \ \ \ \ \ \forall i,
-$$ {#eq-noLabel}
-the fixed point is linearly stable. If at least one of the eigenvalues has $|\lambda_i|>1$ then the fixed point is unstable to linear perturbations.
+where  the $C_i$'s are constants determined by initial conditions and the $\lambda_i$'s and $\mathbf{c}_i$'s are the eigenvalues and eigenvectors of $J$, respectively. From this form we can split into three cases:
 
-
-
+- $|\lambda_i|<1\ \ \ \forall i$, the fixed point is *linearly stable*,
+- $\exists \; i \; s.t. \; |\lambda_i|>1\ \ $, the fixed point is **linearly unstable** to perturbations,
+- $|\lambda_i|=1\ \ \ \forall i$, the fixed point is **marginal**, linear analysis is inconclusive and higher order terms $\mathcal{O}\left(\|\hat{\phi}_t \|^2\right)$ need to be considered.
 
 ###  Jury conditions 
 
-In many cases it is not very useful to explicitly compute the eigenvalues of the Jacobian matrix. In such cases we can employ the Jury conditions in order to determine when a fixed point is linearly stable.
+In many cases it is not useful to explicitly compute the eigenvalues of the Jacobian matrix. In such cases we can employ the Jury conditions in order to determine when a fixed point is linearly stable.
 
-
-Recall that for a two dimensional matrix, the eigenvalues satisfy the quadratic characteristic equation
-
+Recall that for a two dimensional matrix $A$, the eigenvalues satisfy the quadratic characteristic equation
 $$
 \lambda^2- trA \lambda + detA=0.
 $$ {#eq-noLabel}
-
 The stability of the fixed is guaranteed if $|\lambda _i|<1$ $\forall i$.
 
-Consider the characteristic equation
+Consider the characteristic equation,
 $$
 P(\lambda)=\lambda^2 + a \lambda +b=0,
 $$ {#eq-noLabel}
 where $a,b \in \Re$. Note that $a=-tr{A}$ and $b=\det{A}$.
 
-The Jury conditions state that  $|\lambda_i |<1 \forall \ \  i$ if, and only if,
-* $b<1$,
-* $1+a+b>0$,
-* *$1-a+b>0$.
-See @fig-juryconditions for schematic diagram.
+The Jury conditions state that  $|\lambda_i |<1 \; \forall i$ if, and only if,
 
+- $b<1$,
+- $1+a+b>0$,
+- $1-a+b>0$.
+
+See @fig-juryconditions for a schematic diagram.
 
 ![Jury conditions](images/JuryConditions2D.png){#fig-juryconditions}
-
 
 ### Proof of the Jury conditions
 
@@ -330,12 +312,14 @@ N,P=SolveTwoPopDiff(t,rhsNicholsonBailey,N_0,[R_0,C,a])
 
 # Plot results
 fig, ax = plt.subplots(1,2)
-ax[0].plot(t, N)
+ax[0].plot(t, N, linestyle='-', alpha=0.4)
+ax[0].plot(t, N, linestyle='None', marker='o', color='C0')
 ax[0].set_xlabel('$t$')
 ax[0].set_ylabel('$N_t$')
 ax[0].set_ylim([0,100])
 
-ax[1].plot(t, P)
+ax[1].plot(t, P, linestyle='-', alpha=0.4)
+ax[1].plot(t, P, linestyle='None', marker='o', color='C0')
 ax[1].set_xlabel('$t$')
 ax[1].set_ylabel('$P_t$')
 plt.tight_layout()
@@ -440,7 +424,8 @@ def server(input, output, session):
 
         # Plot results
         
-        ax.plot(t,N,t,P)
+        ax.plot(t,N,t,P,linestyle='-',alpha=0.4)
+        ax.plot(t,N,t,P,linestyle='None',marker='o')
         ax.set_xlabel('$t$')
         ax.legend(['$N_t$','$P_t$'])
         #ax.set_ylim([0,max_sol])
