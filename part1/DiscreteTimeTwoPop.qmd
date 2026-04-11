@@ -122,17 +122,12 @@ $$
 \lambda_{1,2}=\frac{-a \pm \sqrt{a^2-4b}}{2}.
 $$ {#eq-noLabel}
 
-### Complex roots 
-
-Suppose $a^2-4b< 0$. 
-The roots are complex. Since $b$ is equal to the product of the roots, we find that 
-
+### Complex roots
+Suppose $a^2-4b< 0$, then the roots $\lambda_{1,2}$ are complex conjugates. Since $b$ is equal to the product of the roots (and they have the magnitude), we find that 
 $$
-b=\lambda_1\lambda_2 = |\lambda_1|^2 = |\lambda_2^2|.
+|b|=|\lambda_1\lambda_2| = |\lambda_1|^2 = |\lambda_2^2|.
 $$ {#eq-noLabel}
-Hence $\lambda_i<1$ $\forall \ \ i$ if and only if $b<1$.
-
-
+Hence $|\lambda_i|<1$ $\forall \ \ i$ if and only if $|b|<1$.
 
 For the other conditions we introduce the identity:
 $$
@@ -147,26 +142,27 @@ $$
 1+b-|a| >0 \implies 1+b-a>0 \ \ \textrm{and} \ \  1+b+a>0.
 $$ {#eq-noLabel}
 
+Note that the above inequality also gives us,
+$$
+1+b > |a| \geq 0 \quad \Rightarrow \quad b > -1,
+$$
+Hence, rather than stating $|b| < 1$ from the start of the proof it is sufficient to use the simpler $b < 1$, as the last two Jury conditions imply $b>1$ regardless.
 
 ###  Real roots 
-Suppose $a^2-4b\geq 0$
-
-The largest magnitude of the roots
-is
+Suppose $a^2-4b\geq 0$ such that the roots $\lambda_{1,2} \in \mathbb{R}$ and take $R$ to be the largest of their absolute values,
 $$
 R=\max\{|\lambda_1|,|\lambda_2|\} =  \frac{|a| + \sqrt{a^2-4b}}{2}.
 $$ {#eq-noLabel}
-This is an increasing function of $|a|$. 
-
-$R=1$
+This is an increasing function of $|a|$. Thus we can bound $a$ by considering $R=1$,
 $$
-\implies  \frac{|a| + \sqrt{a^2-4b}}{2}=1
-\implies |a|-2=-\sqrt{|a|^2-4b}
-\implies |a|^2-4|a|+4=|a|^2-4b 
-\implies |a|=b+1.
+\begin{aligned}
+R=1 \; & \Rightarrow \; \frac{|a| + \sqrt{a^2-4b}}{2}=1,\\
+& \Rightarrow \; |a|-2=-\sqrt{|a|^2-4b},\\
+& \Rightarrow \; |a|^2-4|a|+4=|a|^2-4b,\\
+& \Rightarrow \; |a|=b+1.
+\end{aligned}
 $$ {#eq-noLabel}
-Hence $0\leq R < 1$ if and only if $0\leq |a|<1+b$. Also, since $|\lambda_i|<1 \forall i$ implies that $|\lambda_1\lambda_2|<1$, it follows that $|b|<1$ must hold.
-
+Hence $0\leq R < 1$ if and only if $0\leq |a|<1+b$. Also, since $|\lambda_i|<1 \forall i$ implies that $|\lambda_1\lambda_2|<1$, it follows that $|b|<1$ must hold. Similar to the argument for complex roots $b>-1$ is already implied by the last two Jury conditions thus it is sufficent to take $b<1$.
 
 <!--
 \begin{figure}
@@ -208,8 +204,7 @@ P_{t+1}&=CN_t (1- f(N_t,P_t)). \nonumber
 \end{aligned}
 $${#eq-discretetimetwovar}
 
-The justification for this form is that at a given time $t$ there are $N_t$ hosts. A total of $N_t f(N_t,P_t)$ escape the parasite and are able to reproduce whilst a total of $N_t(1-f(N_t,P_t))$ do not escape the parasite and lead to parasitic reproduction at the next time step.  
-
+The justification for this form is that at a given time $t$ there are $N_t$ hosts. A total of $N_t f(N_t,P_t)$ escape the parasite and are able to reproduce whilst a total of $N_t(1-f(N_t,P_t))$ do not escape the parasite and lead to parasitic reproduction at the next time step.
 
 Choosing 
 $$
@@ -496,7 +491,6 @@ $$
 $$ {#eq-noLabel}
 is a fixed point. We can then deduce a condition on the model parameters that must hold in order that the fixed point is biologically relevant.
 
-
 To verify by substitution we substitute the proposed solution into the governing equations. 
 Note that
 $$
@@ -560,7 +554,6 @@ and
 $$
 b=\frac{R_0\ln(R_0)}{R_0-1}.
 $$ {#eq-noLabel}
-
 
 The third Jury condition ($b<1$) implies that for linear stability
 $$
