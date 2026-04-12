@@ -303,11 +303,7 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-malthusian-linear-model" id="toc-the-malthusian-linear-model" class="nav-link active" data-scroll-target="#the-malthusian-linear-model"><span class="header-section-number">4.1</span> The Malthusian (linear) model</a>
-  <ul class="collapse">
-  <li><a href="#deriviation" id="toc-deriviation" class="nav-link" data-scroll-target="#deriviation"><span class="header-section-number">4.1.1</span> Deriviation</a></li>
-  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution"><span class="header-section-number">4.1.2</span> Solution</a></li>
-  </ul></li>
+  <li><a href="#the-malthusian-linear-model" id="toc-the-malthusian-linear-model" class="nav-link active" data-scroll-target="#the-malthusian-linear-model"><span class="header-section-number">4.1</span> The Malthusian (linear) model</a></li>
   <li><a href="#tools-for-analysing-the-dynamics-of-a-single-population-in-continuous-time" id="toc-tools-for-analysing-the-dynamics-of-a-single-population-in-continuous-time" class="nav-link" data-scroll-target="#tools-for-analysing-the-dynamics-of-a-single-population-in-continuous-time"><span class="header-section-number">4.2</span> Tools for analysing the dynamics of a single population in continuous time</a>
   <ul class="collapse">
   <li><a href="#numerical-solution" id="toc-numerical-solution" class="nav-link" data-scroll-target="#numerical-solution"><span class="header-section-number">4.2.1</span> Numerical solution</a></li>
@@ -364,8 +360,6 @@ window.Quarto = {
 <p>In this chapter we define time, <span class="math inline">\(t\)</span>, to be a continuous variable and the population density, <span class="math inline">\(N(t)\)</span>, to represent the size of a given population.</p>
 <section id="the-malthusian-linear-model" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="the-malthusian-linear-model"><span class="header-section-number">4.1</span> The Malthusian (linear) model</h2>
-<section id="deriviation" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="deriviation"><span class="header-section-number">4.1.1</span> Deriviation</h3>
 <p>As time is now a continuous variable, we consider an interval of time <span class="math inline">\(\delta t\)</span>. Consider a population of size <span class="math inline">\(N(t)\)</span>. If the per capita production rate is <span class="math inline">\(b\)</span>, then in time <span class="math inline">\(\delta t\)</span> the increase in population size will be <span id="eq-noLabel"><span class="math display">\[
 b N(t) \delta t.
 \tag{4.1}\]</span></span> Similarly, if the per capita death rate is <span class="math inline">\(d\)</span>, the decrease in population size in time <span class="math inline">\(\delta t\)</span> will be <span id="eq-noLabel"><span class="math display">\[
@@ -375,17 +369,16 @@ N(t+\delta t)= N(t) + (bN(t)-dN(t))\delta t.
 \tag{4.3}\]</span></span> Rearranging and taking the limit as <span class="math inline">\(\delta t \rightarrow 0\)</span> yields <span id="eq-noLabel"><span class="math display">\[
 \frac{dN}{dt}=(b-d)N=rN(t).
 \tag{4.4}\]</span></span></p>
-</section>
-<section id="solution" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="solution"><span class="header-section-number">4.1.2</span> Solution</h3>
-<p>The solution is given by <span id="eq-noLabel"><span class="math display">\[
-N(t)=N_0\exp(rt).
-\tag{4.5}\]</span></span></p>
-<p>We can describe qualitatively different solutions behaviours.</p>
-<p>If <span class="math inline">\(r&gt;0\)</span> the solution increases exponentially with time. If <span class="math inline">\(r&lt;0\)</span> it decreases exponentially. When <span class="math inline">\(r=0\)</span> the solution is constant.</p>
+<p>The solution can be found using seperation of variables, <span id="eq-noLabel"><span class="math display">\[
+N(t)=N_0\exp(rt),
+\tag{4.5}\]</span></span> where <span class="math inline">\(N_0\)</span> is the initial population at time <span class="math inline">\(t=0\)</span>. We can describe qualitatively different solutions behaviours,</p>
+<ul>
+<li><span class="math inline">\(r&gt;0\)</span>, the solution increases exponentially,</li>
+<li><span class="math inline">\(r&lt;0\)</span>, the solution decreases exponentially,</li>
+<li><span class="math inline">\(r=0\)</span>, the solution is constant.</li>
+</ul>
 <p>Malthusian growth in the continuous time model leads to either a constant population, exponentially increasing or exponentially decreasing growth. As was the case for the discrete time model, such a model could account for biological system only in particularly limited circumstances.</p>
 <p>The Malthusian model (constant per capita growth rate) can exhibit a limited range of behaviour. To account for limitation of population growth at large population densities due to, for example, limited resources, we consider nonlinear per capita growth rates.</p>
-</section>
 </section>
 <section id="tools-for-analysing-the-dynamics-of-a-single-population-in-continuous-time" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="tools-for-analysing-the-dynamics-of-a-single-population-in-continuous-time"><span class="header-section-number">4.2</span> Tools for analysing the dynamics of a single population in continuous time</h2>
@@ -425,6 +418,7 @@ N(t)=N^*+\hat{N}(t)
 <li><span class="math inline">\(H'(N^*)&lt;0,\)</span> the perturbation decays exponentially fast and the steady-state is <strong>stable</strong>.</li>
 <li><span class="math inline">\(H'(N^*)=0,\)</span> the <strong>marginal</strong> case where linearisation is inconclusive and higher-order terms determine stability.</li>
 </ul>
+<p>Note that, for the discrete time case, our solutions could decay or grow montonically or oscillatory. This is no longer the case for the continous model (as it would require <span class="math inline">\(H'(N^*)\)</span> to change in time). So we only have monotonic decay or growth.</p>
 </section>
 <section id="graphical-solution" class="level3" data-number="4.2.4">
 <h3 data-number="4.2.4" class="anchored" data-anchor-id="graphical-solution"><span class="header-section-number">4.2.4</span> Graphical solution</h3>
