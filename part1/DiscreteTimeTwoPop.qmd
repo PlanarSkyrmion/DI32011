@@ -87,7 +87,7 @@ where  the $C_i$'s are constants determined by initial conditions and the $\lamb
 
 - $|\lambda_i|<1\ \ \ \forall i$, the fixed point is *linearly stable*,
 - $\exists \; i \; s.t. \; |\lambda_i|>1\ \ $, the fixed point is **linearly unstable** to perturbations,
-- $|\lambda_i|=1\ \ \ \forall i$, the fixed point is **marginal**, linear analysis is inconclusive and higher order terms $\mathcal{O}\left(\|\hat{\phi}_t \|^2\right)$ need to be considered.
+- $\exists \; i \; s.t. \; |\lambda_i|=1 \; \wedge \;|\lambda_i|\leq 1 \ \ \ \forall i$, the fixed point is **marginal**, linear analysis is inconclusive and higher order terms $\mathcal{O}\left(\|\hat{\phi}_t \|^2\right)$ need to be considered.
 
 ###  Jury conditions 
 
