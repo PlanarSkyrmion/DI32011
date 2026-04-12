@@ -58,26 +58,22 @@ Although an equation of the form @eq-gensinglespecodeagain may not be explicitly
 
 ### Steady-state
 
-We denote steady-state solutions of @eq-gensinglespecodeagain using $N=N^*$. At a steady-state,
+We denote **steady-state solutions** or **equilibria** of @eq-gensinglespecodeagain using $N=N^*$. At a steady-state,
 $$
 \frac{dN}{dt}=0
 $$ {#eq-noLabel}
-and hence steady-states can be obtained by solving the algebraic equation
+and hence steady-states can be obtained by solving the algebraic equation,
 $$
 H(N^*)=0.
 $$ {#eq-noLabel}
-
+Note, some texts may call these fixed points or critical points. The first is often used in dynamical systems, while the second is older and rarely used as it can be ambiguous.
 
 ### Linear stability analysis
-
-####  A change of dependent variable
-To perform a linear stability analysis we make the change of variables
+To perform a linear stability analysis near an equillibrium we make the change of variables,
 $$
 N(t)=N^*+\hat{N}(t)
 $$ {#eq-noLabel}
-where the new dependent variable, $\hat{N}(t)$, is a perturbation about the steady state.
-
-The time derivative on the left-hand side of @eq-gensinglespecodeagain transforms to
+where the new dependent variable, $\hat{N}(t)$, is a perturbation about the steady state $N^*$. The time derivative on the left-hand side of @eq-gensinglespecodeagain transforms to,
 $$
 \frac{dN}{dt}= \frac{d }{dt} (N^*) + \frac{d }{dt}(\hat{N}(t))=\frac{d\hat{N}(t) }{dt}.
 $$ {#eq-noLabel}
@@ -86,29 +82,23 @@ $$
 \frac{d\hat{N}(t) }{dt} = H(N^*+\hat{N}(t)).
 $$ {#eq-noLabel}
 
-####  Taylor expansion and a linear system
-
-Employing the Taylor expansion on the right-hand side of @eq-gensinglespecodeagain and making  the assumption that perturbations are small
+Employing a Taylor expansion on the right-hand side of @eq-gensinglespecodeagain we get,
 $$
-\frac{d\hat{N}(t) }{dt} = H(N^*)+  H'(N^*)\hat{N}(t) + H''(N^*)\hat{N}^2(t) + h.o.t.
+\frac{d\hat{N}(t) }{dt} = H(N^*)+  H'(N^*)\hat{N}(t) + \frac{1}{2}H''(N^*)\hat{N}^2(t) + \mathcal{O}(\hat{N}^3),
 $$ {#eq-noLabel}
-Noting that  
-$$
-H(N^*)=0
-$$ {#eq-noLabel}
-and retaining linear terms yields 
+where we use $H(N^*)=0$ and assume the perturbation $\hat{N}$ is small to neglect all terms quadratic and higher, which yields the linear ODE,
 $$
 \frac{d\hat{N}(t) }{dt} =  H'(N^*)\hat{N}(t)
 $$ {#eq-noLabel}
-with solution
+with solution (by separation of variables),
 $$
 \hat{N}(t)=  \eta e^{H'(N^*) t}
 $$ {#eq-noLabel}
-where $\eta$ is some initial perturbation about the steady-state.
+where $\eta$ is some initial perturbation about the steady-state. We now have 3 phases in this linear regime,
 
-#### A condition for linear stability
-When $H'(N^*)>0$ the perturbation grows exponentially fast and the steady-state is unstable.
-When $H'(N^*)<0$ the perturbation decays exponentially fast and the steady-state is stable.
+- $H'(N^*)>0,$ the pertubration grows exponentially fast and the steady-state is **unstable**.
+- $H'(N^*)<0,$ the perturbation decays exponentially fast and the steady-state is **stable**.
+- $H'(N^*)=0,$ the **marginal** case where linearisation is inconclusive and higher-order terms determine stability.
 
 ### Graphical solution
 We can graphically identify steady-states and their stability by plotting $dN/dt$ against $N(t)$. 
