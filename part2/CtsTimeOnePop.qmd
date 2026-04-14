@@ -195,7 +195,7 @@ $$ {#eq-noLabel}
 
 In the case of the logistic equation there is only one time scale and density scale in the problem, hence we choose
 $$
-\tilde{T}=\frac{1}{r}  \ \ \ and \ \ \ \tilde{N}=K
+\tilde{T}=\frac{1}{r} \ \ \ and \ \ \ \tilde{N}=K
 $$ {#eq-noLabel}
 and the dimensionless model is
 $$
@@ -276,7 +276,7 @@ Using partial fractions
 $$
 \int\frac{ dN}{N} + \frac{1}{K}\int\frac{ dN}{1-\frac{N}{K}}=r\int dt.
 $$ {#eq-noLabel}
-Integration yields
+Integration yields,
 $$
 \ln N - \ln\left(1-\frac{N}{K}\right)= \ln \frac{N }{1-\frac{N}{K}} =  rt+C.
 $$ {#eq-noLabel}

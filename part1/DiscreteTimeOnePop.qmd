@@ -18,7 +18,7 @@ Let $N_t$ be a dependent variable, representing the population size of a single 
 $$
 N_{t+1} = H(N_t) = N_tf(N_t),
 $$ {#eq-GeneralPopulationModel} 
-where the function $H(N_t)$ describes the total net growth rate and $f(N_t)$ defines the *net per capita* growth rate.
+where the function $H:\mathbb{R}\rightarrow\mathbb{R}$ is the population update (or transition) function with units of population. Alternatively, $f(N_t)$ defines the *per capita* growth factor and is dimensionless.
 
 Note, *per capita* is Latin for *per person* and hence is used to express something averaged over the population.
 
@@ -28,11 +28,11 @@ Finally, note that many of you were introduced to difference equations in the mo
 
 ## The Malthusian model
 
-The simplest form for @eq-GeneralPopulationModel is a *constant net per capita growth rate*. Let $b$ be the per capita growth rate and $d$ the per capita death rate where $b,d \in \mathbb{R}^+$ ($b$ and $d$ are both positive real constants) and $d \leq 1$ (it's not possible for more than 100 \% of the population to die). This gives the difference equations as,
+The simplest form for @eq-GeneralPopulationModel is a *constant per capita growth factor*. Let $b$ be the per capita birth rate and $d$ the per capita death rate where $b,d \in \mathbb{R}^+$ ($b$ and $d$ are both positive real constants). This gives us that $b-d$ is the constant net per capita growth rate. We write the corresponding difference equations as,
 $$
 N_{t+1}=N_t + bN_t - dN_t=rN_t,
 $$ {#eq-MalthusianEqn} 
-where the parameter $r=1+b-d$ is the *net per capita growth rate*. Note that $d \leq 1$ and $b \geq 0$ implies that $r \geq 0$.
+where the parameter $r=1+b-d$ is the *per capita growth factor*. Note that $d \leq 1 + b$ as you can't have more deaths than current population plus births, which implies that $r \geq 0$.
 
 Given the initial condition $N_0$, @eq-MalthusianEqn can be solved recursively,
 \begin{align}

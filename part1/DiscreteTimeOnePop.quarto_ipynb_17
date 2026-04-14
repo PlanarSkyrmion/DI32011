@@ -702,17 +702,17 @@
       "<>:177: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "<>:194: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "<>:196: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:140: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:140: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=1 \\\\rightarrow (H(N_0),H(N_0))$\\n\")\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:163: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:163: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=1 \\\\rightarrow (H(N_0),H(N_0))$\\n\")\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:175: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:175: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=1 \\\\rightarrow (H(N_0),H(N_0))$\\n\"\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:177: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:177: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=1 \\\\rightarrow (N_1,H(N_1))$\\n\")\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:194: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:194: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=n \\\\rightarrow (H(N_{n-1}),H(N_{n-1}))$\\n\"\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1353073874.py:196: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1353073874.py:196: SyntaxWarning: \"\\s\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\s\"? A raw string is also an option.\n",
       "  \"${}_{{{}_{{\\scriptscriptstyle \\\\cdot}}}} \\\\quad t=n \\\\rightarrow (N_n,H(N_n))$\\n\")\n"
      ]
     },
@@ -2245,9 +2245,9 @@
      "text": [
       "<>:36: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:36: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/208729578.py:36: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/208729578.py:36: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  axis.set_title(f'$\\gamma = {gamma}$, $N_0 = {N0}$')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/208729578.py:73: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/208729578.py:73: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.\n",
       "  plt.tight_layout(rect=[0, 0.05, 1, 1])  # leave space at bottom for legend\n"
      ]
     },
@@ -2368,7 +2368,7 @@
      "text": [
       "<>:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/20451307.py:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/20451307.py:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  plt.xlabel('$\\gamma$')\n"
      ]
     },
@@ -2544,13 +2544,13 @@
       "<>:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1794420354.py:35: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1794420354.py:35: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,0].set_title(f'$\\gamma = ${gam}, $h = ${h_1}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1794420354.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1794420354.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,1].set_title(f'$\\gamma = ${gam}, $h = ${h_2}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1794420354.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1794420354.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,0].set_title(f'$\\gamma = ${gam}, $h = ${h_3}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1794420354.py:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1794420354.py:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,1].set_title(f'$\\gamma = ${gam}, $h = ${h_4}')\n"
      ]
     },
@@ -2648,13 +2648,13 @@
       "<>:50: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:60: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:70: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/4046840700.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/4046840700.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,0].set_title(f'$\\gamma = ${gamma}, $h = ${h_1}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/4046840700.py:50: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/4046840700.py:50: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,1].set_title(f'$\\gamma = ${gamma}, $h = ${h_2}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/4046840700.py:60: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/4046840700.py:60: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,0].set_title(f'$\\gamma = ${gamma}, $h = ${h_3}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/4046840700.py:70: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/4046840700.py:70: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,1].set_title(f'$\\gamma = ${gamma}, $h = ${h_4}')\n"
      ]
     },
@@ -2958,7 +2958,7 @@
      "text": [
       "<>:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/2539546010.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/2539546010.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax.set_ylabel('$\\gamma$', fontsize=12)\n"
      ]
     },
@@ -3078,13 +3078,13 @@
       "<>:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3259859286.py:35: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3259859286.py:35: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,0].set_title(f'$\\gamma = ${gam}, $h = ${h_1}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3259859286.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3259859286.py:41: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[0,1].set_title(f'$\\gamma = ${gam}, $h = ${h_2}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3259859286.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3259859286.py:47: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,0].set_title(f'$\\gamma = ${gam}, $h = ${h_3}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3259859286.py:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3259859286.py:53: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax[1,1].set_title(f'$\\gamma = ${gam}, $h = ${h_4}')\n"
      ]
     },
@@ -3318,7 +3318,7 @@
      "text": [
       "<>:147: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:147: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/1929767141.py:147: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/1929767141.py:147: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  plt.ylabel('$\\gamma$')\n"
      ]
     },
@@ -3337,24 +3337,24 @@
       "The derivative evaluated at FP 2 is:\n",
       "(gamma + 2*(h + 1)*(-gamma + h + 1))/gamma\n",
       "The 2-cycle polynomial is:\n",
-      "(h + 1)*(-gamma + h*n + h - n - 1)*(-gamma*h*n + h**2*n**2 + h**2*n + n + 1)\n",
+      "(h + 1)*(-gamma + h*n + h - n - 1)*(-gamma*h*n + h**2*n**2 + h**2*n + n + 1)\n"
+     ]
+    },
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
       "with solutions:\n",
-      "(gamma*h - h**2 - sqrt(gamma**2*h**2 - 2*gamma*h**3 - 2*gamma*h + h**4 - 2*h**2 + 1) - 1)/(2*h**2)\n"
-     ]
-    },
-    {
-     "name": "stdout",
-     "output_type": "stream",
-     "text": [
+      "(gamma*h - h**2 - sqrt(gamma**2*h**2 - 2*gamma*h**3 - 2*gamma*h + h**4 - 2*h**2 + 1) - 1)/(2*h**2)\n",
       "(gamma*h - h**2 + sqrt(gamma**2*h**2 - 2*gamma*h**3 - 2*gamma*h + h**4 - 2*h**2 + 1) - 1)/(2*h**2)\n",
-      "(gamma - h + 1)/(h - 1)\n",
-      "solutions with non-physical 2-cycles:\n"
+      "(gamma - h + 1)/(h - 1)\n"
      ]
     },
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
+      "solutions with non-physical 2-cycles:\n",
       "(gamma - h + 1)/(h - 1)\n",
       "Discriminant of the physical 2-cycle polynomial:\n",
       "gamma**2/h**2 - 2*gamma/h - 2*gamma/h**3 + 1 - 2/h**2 + h**(-4)\n"
@@ -3698,15 +3698,15 @@
       "<>:38: SyntaxWarning: \"\\i\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\i\"? A raw string is also an option.\n",
       "<>:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "<>:38: SyntaxWarning: \"\\i\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\i\"? A raw string is also an option.\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3597312091.py:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3597312091.py:34: SyntaxWarning: \"\\g\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\g\"? A raw string is also an option.\n",
       "  ax.set_title(f'$\\gamma = ${gamma_val}')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3597312091.py:38: SyntaxWarning: \"\\i\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\i\"? A raw string is also an option.\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3597312091.py:38: SyntaxWarning: \"\\i\" is an invalid escape sequence. Such sequences will not work in the future. Did you mean \"\\\\i\"? A raw string is also an option.\n",
       "  ax.set_ylabel('$N_{\\infty}$')\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3597312091.py:13: RuntimeWarning: overflow encountered in scalar power\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3597312091.py:13: RuntimeWarning: overflow encountered in scalar power\n",
       "  return gamma * N / (1 + N**2) - h * N\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3597312091.py:13: RuntimeWarning: overflow encountered in scalar multiply\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3597312091.py:13: RuntimeWarning: overflow encountered in scalar multiply\n",
       "  return gamma * N / (1 + N**2) - h * N\n",
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_19524/3597312091.py:13: RuntimeWarning: invalid value encountered in scalar divide\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_69871/3597312091.py:13: RuntimeWarning: invalid value encountered in scalar divide\n",
       "  return gamma * N / (1 + N**2) - h * N\n",
       "/Users/thomas/venvs/jupyter/lib/python3.14/site-packages/matplotlib/axes/_base.py:3067: RuntimeWarning: overflow encountered in scalar subtract\n",
       "  delta = (x1t - x0t) * margin\n"
