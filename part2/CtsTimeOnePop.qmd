@@ -170,8 +170,6 @@ plt.legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
 plt.show()
 ```
 
-
-
 #### Dimensional analysis and nondimensionalisation
 $N$ represents the population density and has units of one over area (say $1/m^2$) and $t$ has units of time (say, seconds, $s$). Hence the left-hand side of @eq-logisticode  has units of $1/(m^2 s)$. 
 The first term on the right-hand side of @eq-logisticode is $rN$. 
@@ -204,9 +202,6 @@ $$
 \end{aligned}
 $${#eq-logisticnondim}
 Note that we can retrieve the original equation by rescaling and calculating $N=\tilde{N}n$ and  $t=\tilde{T}\tau$.
-
-
-
 
 
 ### Steady states and linear stability
@@ -299,7 +294,6 @@ $$ {#eq-noLabel}
 
 Note that in almost all the models that we will consider the above method is not an usually an option as the ODE is not explicitly integrable.
 
-
 ## The spruce budworm model
 The spruce budworm is a destructive and widely distributed forest defoliator in North America. Massive outbreaks occur periodically and can destroy large quantities of valuable spruce and fir. To understand the outbreak behaviour and develop and management strategies, a series of mathematical models have been developed, beginning with @ludwig1978qualitative. The goal of the models is to explain the qualitative pattern of sudden outbreaks and then a sudden collapse.
 
@@ -315,7 +309,6 @@ p(N) =\frac{B N^2}{A^2 +N^2},
 $$ {#eq-noLabel}
 $r_B$ is the linear growth rate, $K_B$ is the carrying capacity, $B$ is the maximum rate of predation and $A$ is a measure of budworm population where predation switches on (specifically, $A$ represents the budworm density at which predation is half its maximum value).
 
-
 It is informative to graph  the predation term
 $$
 p(N) =\frac{B N^2}{A^2 +N^2},
@@ -324,7 +317,7 @@ and annotate the parameters $A$ and $B$.
 
 There is a root at $N=0$.
 In the limit $N\rightarrow \infty$, $p \rightarrow B$.
-Note that $N=A$, $p=A/2$.
+Note that for $N=A$, $p(A)=B/2$.
 The derivative is
 $$
 p'(N)=\frac{2BN}{A^2+N^2} - \frac{2BN^3}{(A^2+N^2)^2} =  \frac{2BA^2N}{(A^2+N^2)^2}
@@ -426,9 +419,6 @@ Numerical solutions of @eq-budwormnondim  indicate that there is a single stable
 
 Our goal is to analyse the model and understand why different parameter values yield these strikingly different model behaviours.
 
-
-
-
 ```{python}
 #| label: fig-sprucebudworm-numsol
 #| fig-cap: "Numerical solution of spr. budworm model"
@@ -470,26 +460,20 @@ or $n^*$ satisfies the cubic equation
 $$
 r\left(1-\frac{n^*}{q}\right)- \frac{n^*}{1+n^*{^2}}=0.
 $$ {#eq-noLabel}
-
 Explicit solutions to such a cubic can be immediately written down but they are cumbersome to work with.  We proceed using a graphical/qualitative approach.
 
 Define
 $$
 f(n^*)=r\left(1-\frac{n^*}{q}\right) \ \ \textrm{and} \ \ g(n^*)=\frac{n^*}{1+n^*{^2}}.
 $${#eq-sprucebudwormfgn}
-
 Roots occur for values of $n^*$ that satisfy $f=g$. 
-
-
 
 In @fig-sprucebudworm-rhsfg (a) we fix the parameter $q=10$ and consider model behaviour as a function of the parameter $r$. 
 When $r\gg1$ there is a nonzero steady-state corresponding to $n^*\gg 1$. 
 When   $r\ll1$ there is a nonzero steady-state corresponding to $n^*\ll 1$. 
 In the intermediate case there can be three intersection points.
 
-
 We can use the curve sketching techniques form Tutorial Sheet 1 to sketch $f$ and $g$.
-
 
 $f$ is linear.
 There is  a root at $n^*=q$.
@@ -503,8 +487,6 @@ $$ {#eq-noLabel}
 There is a turning point at $n^*=1$. Here $g=1/2$.
 As $n^*\rightarrow \infty$, $g\rightarrow 0$.
 $f'(0)=1$.
-
-
 
 ### Linear stability analysis
 
@@ -587,9 +569,6 @@ ax[1].legend(['r='+str(r_1),'r='+str(r_2),'r='+str(r_3)])
 plt.tight_layout()
 plt.show()
 ```
-
-
-
 
 ### Bifurcation analysis
 The goal is to identify boundaries of $rq$ parameter space where the stability changes occur and/or the number of steady states changes.
@@ -702,8 +681,6 @@ $$
 $$ {#eq-noLabel}
 See @fig-sprucebudworm-rq.
 
-
-
 ### Hysteresis 
 
 Finally, rearranging the steady-state equation 
@@ -751,34 +728,203 @@ plt.grid(True)
 plt.show()
 ```
 
-
 A system exhibiting hysteresis shows a response to an increases in a control parameter that is not exactly reversed when the parameter is decreased. We can show that the spruce budworm model exhibits hysteresis by considering the argument below.
+
+```{python}
+#| label: fig-hysteresis
+#| fig-cap: "Animation demonstrating hysteresis as $r$ increases (picks left stable critical point) and decreases (picks right stable critical point)."
+#| fig-show: false
+
+import numpy as np
+import math
+import matplotlib.pyplot as plt
+from matplotlib import animation
+from IPython.display import HTML, display
+import os
+
+fmt = os.getenv("QUARTO_FORMAT")
+
+plt.rcParams.update({
+    "text.usetex": True,
+    "text.latex.preamble": r"\usepackage{amsmath}\usepackage{xcolor}"
+})
+
+# -----------------------
+# Parameters
+# -----------------------
+q = 12
+n_vec = np.linspace(0, 13, 200)
+rmax = 0.8
+rmin = 0.05
+
+# -----------------------
+# Functions
+# -----------------------
+def f_func(x, r):
+    return r * (1 - x / q)
+
+def g_func(x):
+    return x / (1 + x**2)
+
+g = g_func(n_vec)
+
+# -----------------------
+# Figure set up
+# -----------------------
+fig, ax = plt.subplots(2, 1, figsize=(6, 9))
+
+fig.suptitle("Hysteresis of spruce budworm model")
+
+line_f, = ax[0].plot(n_vec, f_func(n_vec, 0.1), label="f")
+line_g, = ax[0].plot(n_vec, g, label="g")
+pts, = ax[0].plot([], [], "ro")
+
+line_up, = ax[1].plot([], [], 'b-', label="r increasing")
+line_down, = ax[1].plot([], [], 'r-', label="r decreasing")
+
+ax[0].set_xlabel("n")
+ax[0].set_ylabel("f, g")
+ax[0].legend()
+
+ax[1].set_xlabel("r")
+ax[1].set_ylabel("n*")
+ax[1].set_xlim(rmin, rmax)
+ax[1].set_ylim(0, 11)
+ax[1].legend(loc="upper left", frameon=True)
+
+# -----------------------
+# Storage
+# -----------------------
+r_up_hist = []
+n_up_hist = []
+
+r_down_hist = []
+n_down_hist = []
+
+# -----------------------
+# Root finding
+# -----------------------
+def find_roots(r):
+    y = f_func(n_vec, r) - g_func(n_vec)
+
+    roots = []
+    for i in range(len(n_vec) - 1):
+        if y[i] * y[i + 1] < 0:
+            n1, n2 = n_vec[i], n_vec[i + 1]
+            y1, y2 = y[i], y[i + 1]
+            root = n1 - y1 * (n2 - n1) / (y2 - y1)
+            roots.append(root)
+
+    return roots
+
+# -----------------------
+# Hysteresis sweep
+# -----------------------
+r_up = np.linspace(rmin, rmax, 120)
+r_down = np.linspace(rmax, rmin, 120)
+r_vals = np.concatenate([r_up, r_down])
+
+# -----------------------
+# Clear bottom plot
+# -----------------------
+def clear_bottom():
+    r_up_hist.clear()
+    n_up_hist.clear()
+    r_down_hist.clear()
+    n_down_hist.clear()
+
+    line_up.set_data([], [])
+    line_down.set_data([], [])
+
+    fig.canvas.draw_idle()
+
+# -----------------------
+# Update function
+# -----------------------
+prev_r = None
+def update(r):
+
+    global prev_r
+
+    # direction detection
+    if prev_r is None:
+        direction = 1
+    else:
+        direction = 1 if r >= prev_r else -1
+
+    prev_r = r
+
+    # update f curve
+    line_f.set_ydata(f_func(n_vec, r))
+
+    roots = find_roots(r)
+
+    if roots:
+        if direction == 1:
+            chosen = min(roots)
+            r_up_hist.append(r)
+            n_up_hist.append(chosen)
+        else:
+            chosen = max(roots)
+            r_down_hist.append(r)
+            n_down_hist.append(chosen)
+
+        pts.set_data([chosen], [f_func(chosen, r)])
+    else:
+        pts.set_data([], [])
+
+    # update hysteresis curves
+    line_up.set_data(r_up_hist, n_up_hist)
+    line_down.set_data(r_down_hist, n_down_hist)
+
+    ax[0].set_title(f"r = {r:.2f}")
+
+    fig.canvas.draw()
+    fig.canvas.flush_events()
+
+    # Clear bottom plot after loop
+    if np.isclose(r, r_vals[-1]):
+        clear_bottom()
+
+    return line_f, pts, line_up, line_down
+
+# -----------------------
+# Animation
+# -----------------------
+ani = animation.FuncAnimation(fig, update, frames=r_vals, interval=50, blit=True)
+
+if fmt == "html" or fmt is None:
+  display(HTML(ani.to_html5_video()))
+  plt.close(fig)
+else:
+  # ---- Render final frame for PDF ----
+  update(total_frames + final_wait - 1)
+  plt.show()
+
+```
 
 Suppose $r$ is initially small ($r<r_1$). There is only one steady-state and any initial condition will converge towards it. 
 
- Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system system was originally in the first stable steady state, it will remain there. 
+ Suppose we increase the value of the parameter $r$. There will be a critical value of $r$ ($r=r_1$)where a second stable steady-state arises and the model enters the bistable regime, where there are two possible stable steady-states. Given the system was originally in the first stable steady state, it will remain there. 
 
  Suppose we continue to increase $r$. Eventually we reach  critical value of $r$ ($r=r_2$) where the first stable steady state is lost and there is again only one stable steady-state. 
 
  Suppose we now decrease the parameter $r$ below the threshold $r=r_2$. The system again enters the bistable regime but as the second solution is stable, it remains the solution. 
 
- Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable steady state. 
- 
+ Suppose we continue to decrease $r$ until eventually $r<r_1$. We return to the case where the system has only a single stable steady state.
 
 ## Harvesting
 By introducing terms that represent harvesting, population models can be used to investigate management strategies for resource management.  The modelling problem is to maximise the sustained yield. 
 
-
 Consider a model for logistic growth supplemented with a harvesting term
 $$
-\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right) -EN.
+\frac{dN}{dt}=rN\left(1-\frac{N}{K}\right) - EN.
 $$ {#eq-noLabel}
 The term $EN$ is the harvesting yield per unit time and the constant $E$ represents the harvesting effort.
 
-
 Steady states satisfy
 $$
-rN^*\left(1-\frac{N^*}{K}\right) -EN^*=0
+rN^*\left(1-\frac{N^*}{K}\right) - EN^*=0
 $$ {#eq-noLabel}
 Thus either $N^*=0$ or
 $$
@@ -794,11 +940,10 @@ E<r.
 $$ {#eq-noLabel}
 Thus if the harvesting rate exceeds the linear growth rate the only steady state corresponds to extinction.
 
-The yield is
+The yield is,
 $$
 Y(E)=EN^*=EK(1-\frac{E}{r})
 $$ {#eq-noLabel}
-
 
 To maximise the yields we differentiate with respect to $E$.
 $$
@@ -816,7 +961,6 @@ The maximum yield is
 $$
 E^*=\frac{rK}{4}.
 $$ {#eq-noLabel}
-
 
 We identify the time scale over which stocks return to steady state by linearising about the steady state $N^*=K(1-E/r)$, hence
 $$

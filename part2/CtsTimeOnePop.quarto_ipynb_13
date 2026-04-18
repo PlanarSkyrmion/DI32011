@@ -797,7 +797,7 @@
      "name": "stderr",
      "output_type": "stream",
      "text": [
-      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_56582/1365770302.py:3: RuntimeWarning: divide by zero encountered in divide\n",
+      "/var/folders/jh/j8kp6dwn7p7fw9q5g7012shc0000gn/T/ipykernel_7565/1365770302.py:3: RuntimeWarning: divide by zero encountered in divide\n",
       "  q_n_star=2*x**3/(x**2-1)\n"
      ]
     },
